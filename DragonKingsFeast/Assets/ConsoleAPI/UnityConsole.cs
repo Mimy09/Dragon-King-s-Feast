@@ -23,7 +23,10 @@ namespace UnityEngine.Console {
         }
     }
 
+
     public class UnityConsole : MonoBehaviour {
+        public static readonly bool CONSOLE_ENABLE = false;
+
         public Thread console_thread;
         public string message;
         public string stacktrace;
@@ -36,6 +39,7 @@ namespace UnityEngine.Console {
         }
 
         void HandleLog(string logString, string stackTrace, LogType type) {
+            if (!CONSOLE_ENABLE) return;
             if (!Debug.isDebugBuild) return;
 
             message = logString;
@@ -49,6 +53,8 @@ namespace UnityEngine.Console {
         }
 
         public void LogConsole(string msg) {
+            if (!CONSOLE_ENABLE) return;
+
             console_thread = new Thread(
                 () => console_api.ConsoleAPI.LogConsole(msg));
             console_thread.Start(msg);
@@ -63,6 +69,8 @@ namespace UnityEngine.Console {
         public static UnityConsole Instance {
             get {
                 if (s_instance == null) {
+                    if (!CONSOLE_ENABLE) return new GameObject("Console").AddComponent<UnityConsole>();
+
                     console_api.ConsoleAPI.CreateConsole();
                     console_api.ConsoleAPI.LogConsole("[STARTING CONSOLE]\n\n");
                     return new GameObject("Console").AddComponent<UnityConsole>();
@@ -81,6 +89,8 @@ namespace UnityEngine.Console {
         }
 
         private void OnApplicationQuit() {
+            if (!CONSOLE_ENABLE) return;
+
             console_api.ConsoleAPI.LogConsole("[CLOSING CONSOLE]\n\n");
 #if UNITY_EDITOR
             console_api.ConsoleAPI.CloseConsole();

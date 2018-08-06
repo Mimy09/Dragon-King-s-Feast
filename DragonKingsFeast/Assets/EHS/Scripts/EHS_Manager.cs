@@ -37,7 +37,7 @@ public class EHS_Manager : MonoBehaviour {
         if (s_everInialized) throw new System.Exception("Tried to initialize twice in one session");
         DontDestroyOnLoad(gameObject);
         
-        int handle = __event<__eType>.Raise(this, HandleEvents);
+        int handle = __event<e_SystemEvents>.Raise(this, HandleEvents);
         if (handle == RESULTS.FAILURE) {
             LogMessage("[ERROR] Could no initialize manager!");
             throw new System.Exception("Failed to create a raise a message loop");
@@ -52,11 +52,11 @@ public class EHS_Manager : MonoBehaviour {
     }
 
     private void Start () {
-        __event<__eType>.InvokeEvent(this, __eType._INIT_, true);
+        __event<e_SystemEvents>.InvokeEvent(this, e_SystemEvents._INIT_, true);
     }
 
     private void OnApplicationQuit () {
-        __event<__eType>.InvokeEvent(this, __eType._CLOSE_);
+        __event<e_SystemEvents>.InvokeEvent(this, e_SystemEvents._CLOSE_);
     }
     
     public delegate void RepaintAction ();
@@ -94,21 +94,21 @@ public class EHS_Manager : MonoBehaviour {
     public static void ClearMessages () { }
 #endif
 
-    private void HandleEvents(object s, __eArg<__eType> e) {
+    private void HandleEvents(object s, __eArg<e_SystemEvents> e) {
         switch (e.arg) {
-        case __eType._CLOSE_:
+        case e_SystemEvents._CLOSE_:
 #if UNITY_EDITOR
             LogMessage("[CLOSING]");
 #endif
-            __event<__eType>.UnsubscribeAll();
-            __event<__eType>.ConsumeAll();
+            __event<e_SystemEvents>.UnsubscribeAll();
+            __event<e_SystemEvents>.ConsumeAll();
             break;
-        case __eType._ERROR_:
+        case e_SystemEvents._ERROR_:
 #if UNITY_EDITOR
             LogMessage("[ERROR MSG='"+e.value+"', FROM=" + (s as MonoBehaviour).name+"]");
 #endif
-            __event<__eType>.UnsubscribeAll();
-            __event<__eType>.ConsumeAll();
+            __event<e_SystemEvents>.UnsubscribeAll();
+            __event<e_SystemEvents>.ConsumeAll();
             break;
         }
     }

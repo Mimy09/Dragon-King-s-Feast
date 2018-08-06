@@ -13,7 +13,7 @@ using global::UnityEngine.Console;
 
 #region Handles
 public delegate void __eHandle<S, E> (S sender, E eventArgs);
-public enum __eType { _NULL_, _INIT_, _CLOSE_, _ERROR_ }
+public enum e_SystemEvents { _NULL_, _INIT_, _CLOSE_, _ERROR_ }
 
 public delegate void __OnEventInvoked();
 #endregion
@@ -63,9 +63,9 @@ public struct __eventSystemOptions {
         logToFile           = 1 << 2,
     }
     public static int DefaultOptions =
-        (int)SystemOptions.logEventsInEditor |
-        (int)SystemOptions.logEventsInBuild |
-        (int)SystemOptions.logToFile;
+        (int)SystemOptions.logEventsInEditor
+        | (int)SystemOptions.logEventsInBuild
+        /*| (int)SystemOptions.logToFile*/;
 }
 
 // Event XML system
