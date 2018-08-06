@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
+    public static Player player;
+    public static PlayerIK playerIK;
+    public static PlayerMovement playerMovement;
+
     //**************************************************************************************/
     // ---- Manager functions ---- //
 
@@ -11,25 +15,30 @@ public class GameManager : MonoBehaviour {
     }
 
     // ---- Get Functions ----
+    
 
-    public void GetPlayer() {
-
-    }
-
-    public void GetOpjectPool() {
-
+    public ObjectPoolManager GetObjectPool() {
+        return GetComponent<ObjectPoolManager>();
     }
 
     public void GetItems() {
 
     }
-
+    
     public void GetEnemy() {
-
+        
     }
 
     public void GetUI() {
 
+    }
+
+    public Camera GetCamera() {
+        return Camera.main;
+    }
+
+    public PlayerCamera GetPlayerCamera() {
+        return GetCamera().gameObject.GetComponent<PlayerCamera>();
     }
 
     // ---- Set Functions ----
@@ -53,6 +62,15 @@ public class GameManager : MonoBehaviour {
 
         if (instance != null) {
             Initialize();
+
+            // INIT
+            Player player_go = FindObjectOfType<Player>();
+            if (player_go != null) {
+                player          = player_go;
+                playerIK        = player_go.GetComponent<PlayerIK>();
+                playerMovement  = player_go.GetComponent<PlayerMovement>();
+            }
+
             __event<e_GameEvents>.Raise(this, EventHandle);
         }
     }
