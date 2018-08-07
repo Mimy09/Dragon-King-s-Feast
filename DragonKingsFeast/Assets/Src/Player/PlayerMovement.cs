@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
+
 public class PlayerMovement : MonoBehaviour {
 
     //valuse that we use to figure out when to start slowing the players directional movemeant
@@ -29,25 +29,45 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 
+        ReadPhoneControls();
+        SpeedScale();
 
-	}
+        transform.Translate((velocity * Time.deltaTime) * moveSpeed);
+
+    }
 
     public void SpeedScale() {
-        
+
+        Vector3 pos = transform.position - startPos;
+        float scale = 0;
+
         if (velocity.z > 0) {
-            //pos
+            if (pos.z > 0) {
+                scale = (horizontalBounds - pos.z) / horizontalBounds;
+                velocity *= scale;
+            }
         }
         else {
-            
+
+            if (pos.z < 0) {
+                scale = (horizontalBounds + pos.z) / horizontalBounds;
+                velocity *= scale;
+            }
         }
 
         if (velocity.y > 0) {
-
+            if (pos.y > 0) {
+                scale = (verticalBounds - pos.y) / verticalBounds;
+                velocity *= scale;
+            }
         }
         else {
 
+            if (pos.y < 0) {
+                scale = (verticalBounds + pos.y) / verticalBounds;
+                velocity *= scale;
+            }
         }
     }
 
