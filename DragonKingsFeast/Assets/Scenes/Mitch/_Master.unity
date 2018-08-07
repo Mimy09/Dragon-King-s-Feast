@@ -189,6 +189,9 @@ GameObject:
   - component: {fileID: 768648967}
   - component: {fileID: 768648966}
   - component: {fileID: 768648965}
+  - component: {fileID: 768648971}
+  - component: {fileID: 768648970}
+  - component: {fileID: 768648969}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -253,12 +256,51 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 768648964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &768648969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768648964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52c7493a3f1cbc849a7cb58c502a3f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &768648970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768648964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a135a25cb2492894aab21cfeced4244b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalBounds: 0
+  verticalBounds: 0
+  forwardSpeed: 0
+  moveSpeed: 0
+  velocity: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: 0, z: 0}
+--- !u!114 &768648971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 768648964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98da14707e9cce548ad2756f4ba83958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1575733672
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivotPoint: {fileID: 768648968}
-  _V_CW_Bend_X: -0.5
+  _V_CW_Bend_X: -1.5
   _V_CW_Bend_Y: 0
   _V_CW_Bend_Z: 0
   _V_CW_Bias_X: 0
