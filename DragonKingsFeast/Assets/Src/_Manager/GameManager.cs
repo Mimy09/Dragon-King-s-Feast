@@ -10,9 +10,14 @@ public class GameManager : MonoBehaviour {
     public static PlayerIK          playerIK;
     public static PlayerMovement    playerMovement;
 
+    // Player Object
+    public static GameObject        playerObject;
+
     // Managers
     public static ObjectPoolManager objectPoolManager;
     public static MapManager        mapManager;
+
+
 
     //**************************************************************************************/
     // ---- Manager functions ---- //
@@ -51,20 +56,27 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
     private void Awake() {
+
+        // Instance the manager
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        else if (instance != this) {
+        } else if (instance != this) {
             Destroy(gameObject);
         }
 
+        // If was instanced
         if (instance != null) {
+            // Initialize manager
             Initialize();
 
             // Get player scripts
             Player player_go = FindObjectOfType<Player>();
             if (player_go != null) {
+                // Player object
+                playerObject    = player_go.gameObject;
+
+                // Player scripts
                 player          = player_go;
                 playerIK        = player_go.GetComponent<PlayerIK>();
                 playerMovement  = player_go.GetComponent<PlayerMovement>();
@@ -78,6 +90,7 @@ public class GameManager : MonoBehaviour {
             if (mapManager == null)
                 mapManager = GetComponent<MapManager>();
 
+            // Set up event handler
             __event<e_GameEvents>.Raise(this, EventHandle);
         }
     }
@@ -98,11 +111,13 @@ public class GameManager : MonoBehaviour {
     // ---- System events ---- //
 
     private void Initialize() {
+        // Send INIT event
         __event<e_SystemEvents>.InvokeEvent(this, e_SystemEvents._INIT_);
     }
 
     private void OnApplicationQuit() {
-        __event<e_SystemEvents>.InvokeEvent(this, e_SystemEvents._INIT_);
+        // Send CLOSE event
+        __event<e_SystemEvents>.InvokeEvent(this, e_SystemEvents._CLOSE_);
     }
 
     //**************************************************************************************/
