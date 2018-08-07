@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AdultDragon : MonoBehaviour {
+public class AdultDragon : Enemy {
 
 	// Use this for initialization
 	void Start () {

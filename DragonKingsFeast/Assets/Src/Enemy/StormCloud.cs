@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StormCloud : MonoBehaviour {
+public class StormCloud : Enemy {
 
 	// Use this for initialization
 	void Start () {

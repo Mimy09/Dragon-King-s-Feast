@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phoenix : MonoBehaviour {
+public class Phoenix : Enemy {
 
 	// Use this for initialization
 	void Start () {

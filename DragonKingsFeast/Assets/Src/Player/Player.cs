@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerIK))]
+[RequireComponent(typeof(PlayerMovement))]
 public class Player : MonoBehaviour {
 
 	// Use this for initialization

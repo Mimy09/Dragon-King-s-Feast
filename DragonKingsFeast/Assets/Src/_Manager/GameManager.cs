@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(ObjectPoolManager))]
+[RequireComponent(typeof(MapManager))]
 public class GameManager : MonoBehaviour {
 
-    public static Player player;
-    public static PlayerIK playerIK;
-    public static PlayerMovement playerMovement;
+    // Player scripts
+    public static Player            player;
+    public static PlayerIK          playerIK;
+    public static PlayerMovement    playerMovement;
+
+    // Managers
+    public static ObjectPoolManager objectPoolManager;
+    public static MapManager        mapManager;
 
     //**************************************************************************************/
     // ---- Manager functions ---- //
@@ -18,27 +25,19 @@ public class GameManager : MonoBehaviour {
     
 
     public ObjectPoolManager GetObjectPool() {
-        return GetComponent<ObjectPoolManager>();
+        if (objectPoolManager == null)
+            objectPoolManager = GetComponent<ObjectPoolManager>();
+        return objectPoolManager;
     }
 
-    public void GetItems() {
-
-    }
-    
-    public void GetEnemy() {
-        
-    }
-
-    public void GetUI() {
-
-    }
-
-    public Camera GetCamera() {
-        return Camera.main;
+    public MapManager GetMapManager() {
+        if (mapManager == null)
+            mapManager = GetComponent<MapManager>();
+        return mapManager;
     }
 
     public PlayerCamera GetPlayerCamera() {
-        return GetCamera().gameObject.GetComponent<PlayerCamera>();
+        return Camera.main.gameObject.GetComponent<PlayerCamera>();
     }
 
     // ---- Set Functions ----
@@ -63,13 +62,21 @@ public class GameManager : MonoBehaviour {
         if (instance != null) {
             Initialize();
 
-            // INIT
+            // Get player scripts
             Player player_go = FindObjectOfType<Player>();
             if (player_go != null) {
                 player          = player_go;
                 playerIK        = player_go.GetComponent<PlayerIK>();
                 playerMovement  = player_go.GetComponent<PlayerMovement>();
             }
+
+            // get object pool manager
+            if (objectPoolManager == null)
+                objectPoolManager = GetComponent<ObjectPoolManager>();
+
+            // get map manager
+            if (mapManager == null)
+                mapManager = GetComponent<MapManager>();
 
             __event<e_GameEvents>.Raise(this, EventHandle);
         }

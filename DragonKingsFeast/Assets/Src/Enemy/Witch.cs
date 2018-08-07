@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Witch : MonoBehaviour {
+public class Witch : Enemy {
 
 	// Use this for initialization
 	void Start () {
