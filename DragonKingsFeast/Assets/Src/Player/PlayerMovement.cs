@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour {
     public float horizontalBounds;
     public float verticalBounds;
 
+    //this value is used to determin how far the player is from the center before applying the slow down
+    public float slowDownOffSet;
+
     //the base speed that we are moving the player forward
     public float forwardSpeed;
 
@@ -17,6 +20,9 @@ public class PlayerMovement : MonoBehaviour {
 
     //how much the player will move this frame
     public Vector3 velocity;
+
+    //these values are applyed to the axis when moving thecharacter up, down, left or right
+    public Vector2 axisSpeedMultiplyer;
 
     public Vector3 startPos;
     
@@ -30,7 +36,14 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+#if UNITY_STANDALONE_WIN
+
+#endif
+
+#if UNITY_ANDROID
         ReadPhoneControls();
+#endif
+
         SpeedScale();
 
         transform.Translate((velocity * Time.deltaTime) * moveSpeed);
@@ -42,16 +55,23 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 pos = transform.position - startPos;
         float scale = 0;
 
-        if (velocity.z > 0) {
-            if (pos.z > 0) {
-                scale = (horizontalBounds - pos.z) / horizontalBounds;
+        float horizontalValue = horizontalBounds - slowDownOffSet;
+        float verticalValue = verticalBounds - slowDownOffSet;
+
+        if (velocity.x > 0) {
+            if (pos.x > 0) {
+                scale = (horizontalBounds - pos.x) / horizontalBounds;
+
+                //if (scale > slowDownOffSet) {
+                //    velocity *= scale;
+                //}
                 velocity *= scale;
             }
         }
         else {
 
-            if (pos.z < 0) {
-                scale = (horizontalBounds + pos.z) / horizontalBounds;
+            if (pos.x < 0) {
+                scale = (horizontalBounds + pos.x) / horizontalBounds;
                 velocity *= scale;
             }
         }
@@ -71,28 +91,53 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    public void ReadKeyBoardControls() {
+
+        Vector3 acceleration = new Vector3(0, 0, 0);
+
+        //Right
+        if (Input.GetKeyDown(KeyCode.D)) {
+            acceleration.x += 1 * axisSpeedMultiplyer.x;
+        }
+
+        //Left
+        if (Input.GetKeyDown(KeyCode.A)) {
+            acceleration.x -= 1 * axisSpeedMultiplyer.x;
+        }
+
+        //Up
+        if (Input.GetKeyDown(KeyCode.W)) {
+            acceleration.y += 1 * axisSpeedMultiplyer.y;
+        }
+
+        //Down
+        if (Input.GetKeyDown(KeyCode.S)) {
+            acceleration.y -= 1 * axisSpeedMultiplyer.y;
+        }
+
+        velocity = (acceleration);
+    }
+
+
+
     private void ReadPhoneControls() {
 
         Vector3 acceleration = new Vector3(0, 0, 0);
         
         //////////////////Right, Left/////////////////
 
-        float xHolder = -Input.acceleration.x;
+        float xHolder = (Input.acceleration.x * axisSpeedMultiplyer.x);
 
-        acceleration.z = xHolder;
-
-        Debug.Log("running, X = " + acceleration);
-
+        acceleration.x = xHolder;
+        
         //////////////////Up, down/////////////////
         
-            float tiltvalue = Input.acceleration.z;
-
-            Debug.Log("running, X = " + tiltvalue);
+        float tiltvalue = Input.acceleration.z * axisSpeedMultiplyer.y;
         
-            acceleration.y = -tiltvalue;
+        acceleration.y = -tiltvalue;
         
+        //////////////////////////////////////////
 
         velocity = (acceleration);
-
     }
 }
