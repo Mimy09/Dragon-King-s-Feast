@@ -38,12 +38,10 @@ public class PlayerMovement : MonoBehaviour {
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
         ReadKeyBoardControls();
-        Debug.Log("UNITY EDITOR CODE RUNNING");
 #endif
 
 #if UNITY_ANDROID
         ReadPhoneControls();
-        Debug.Log("ANDROID CODE RUNNING");
 #endif
 
         SpeedScale();
