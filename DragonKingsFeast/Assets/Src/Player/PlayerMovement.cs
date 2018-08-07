@@ -48,6 +48,8 @@ public class PlayerMovement : MonoBehaviour {
 
         SpeedScale();
 
+        velocity.z += forwardSpeed;
+
         transform.Translate((velocity * Time.deltaTime) * moveSpeed);
 
     }
