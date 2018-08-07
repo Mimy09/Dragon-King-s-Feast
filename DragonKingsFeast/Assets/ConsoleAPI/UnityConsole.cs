@@ -26,6 +26,7 @@ namespace UnityEngine.Console {
 
     public class UnityConsole : MonoBehaviour {
         public static readonly bool CONSOLE_ENABLE = false;
+        public static bool CONSOLE_CREATED = false;
 
         public Thread console_thread;
         public string message;
@@ -61,7 +62,13 @@ namespace UnityEngine.Console {
         }
 
         public string ScanConsole() {
+            if (CONSOLE_CREATED == false) {
+                console_api.ConsoleAPI.CreateConsole();
+                console_api.ConsoleAPI.LogConsole("[STARTING CONSOLE]\n\n");
+                CONSOLE_CREATED = true;
+            }
             Instance.LogConsole("\n>> ");
+
             return console_api.ConsoleAPI.ScanConsole();
         }
 
@@ -73,6 +80,7 @@ namespace UnityEngine.Console {
 
                     console_api.ConsoleAPI.CreateConsole();
                     console_api.ConsoleAPI.LogConsole("[STARTING CONSOLE]\n\n");
+                    CONSOLE_CREATED = true;
                     return new GameObject("Console").AddComponent<UnityConsole>();
                 } else { return s_instance; }
             }

@@ -95,6 +95,10 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private void Update() {
+        InputCommand();
+    }
+
     //**************************************************************************************/
     // ---- Game event handler ---- //
 
