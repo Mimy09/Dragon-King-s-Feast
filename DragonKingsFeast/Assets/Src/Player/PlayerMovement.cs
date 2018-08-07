@@ -62,29 +62,40 @@ public class PlayerMovement : MonoBehaviour {
 
         if (velocity.x > 0) {
             if (pos.x > 0) {
-                scale = (horizontalBounds - pos.x) / horizontalBounds;
-                velocity *= scale;
+                scale = (horizontalBounds - pos.x);
+
+                if (scale < slowDownOffSet) {
+                    velocity.x *= 1 - (slowDownOffSet - scale) / slowDownOffSet;
+                }
             }
         }
         else {
 
             if (pos.x < 0) {
-                scale = (horizontalBounds + pos.x) / horizontalBounds;
-                velocity *= scale;
+                scale = (horizontalBounds + pos.x);
+                if (scale < slowDownOffSet) {
+                    velocity.x *= 1 - (slowDownOffSet - scale) / slowDownOffSet;
+                }
             }
         }
 
         if (velocity.y > 0) {
             if (pos.y > 0) {
-                scale = (verticalBounds - pos.y) / verticalBounds;
-                velocity *= scale;
+                scale = (verticalBounds - pos.y);
+
+                if (scale < slowDownOffSet) {
+                    velocity.y *= 1 - (slowDownOffSet - scale) / slowDownOffSet;
+                }
             }
         }
         else {
 
             if (pos.y < 0) {
-                scale = (verticalBounds + pos.y) / verticalBounds;
-                velocity *= scale;
+                scale = (verticalBounds + pos.y);
+
+                if (scale < slowDownOffSet) {
+                    velocity.y *= 1 - (slowDownOffSet - scale) / slowDownOffSet;
+                }
             }
         }
     }
@@ -126,6 +137,10 @@ public class PlayerMovement : MonoBehaviour {
 
         float xHolder = (Input.acceleration.x * axisSpeedMultiplyer.x);
 
+        Debug.Log("x: " + Input.acceleration);
+        //Debug.Log("y: " + Input.acceleration.y);
+        //Debug.Log("z: " + Input.acceleration.z);
+        
         acceleration.x = xHolder;
         
         //////////////////Up, down/////////////////
