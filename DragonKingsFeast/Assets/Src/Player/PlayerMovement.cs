@@ -36,12 +36,14 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-#if UNITY_STANDALONE_WIN
-
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+        ReadKeyBoardControls();
+        Debug.Log("UNITY EDITOR CODE RUNNING");
 #endif
 
 #if UNITY_ANDROID
         ReadPhoneControls();
+        Debug.Log("ANDROID CODE RUNNING");
 #endif
 
         SpeedScale();
@@ -61,10 +63,6 @@ public class PlayerMovement : MonoBehaviour {
         if (velocity.x > 0) {
             if (pos.x > 0) {
                 scale = (horizontalBounds - pos.x) / horizontalBounds;
-
-                //if (scale > slowDownOffSet) {
-                //    velocity *= scale;
-                //}
                 velocity *= scale;
             }
         }
@@ -96,22 +94,22 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 acceleration = new Vector3(0, 0, 0);
 
         //Right
-        if (Input.GetKeyDown(KeyCode.D)) {
+        if (Input.GetKey(KeyCode.D)) {
             acceleration.x += 1 * axisSpeedMultiplyer.x;
         }
 
         //Left
-        if (Input.GetKeyDown(KeyCode.A)) {
+        if (Input.GetKey(KeyCode.A)) {
             acceleration.x -= 1 * axisSpeedMultiplyer.x;
         }
 
         //Up
-        if (Input.GetKeyDown(KeyCode.W)) {
+        if (Input.GetKey(KeyCode.W)) {
             acceleration.y += 1 * axisSpeedMultiplyer.y;
         }
 
         //Down
-        if (Input.GetKeyDown(KeyCode.S)) {
+        if (Input.GetKey(KeyCode.S)) {
             acceleration.y -= 1 * axisSpeedMultiplyer.y;
         }
 

@@ -405,7 +405,7 @@ MonoBehaviour:
   forwardSpeed: 0
   moveSpeed: 5
   velocity: {x: 0, y: 0, z: 0}
-  axisSpeedMultiplyer: {x: 10, y: 5}
+  axisSpeedMultiplyer: {x: 1, y: 1}
   startPos: {x: 0, y: 0, z: 0}
 --- !u!23 &1880025448
 MeshRenderer:
