@@ -3,14 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Witch : Enemy {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Awake() {
+        m_enemyType = e_EnemyType.Witch;
+    }
 }

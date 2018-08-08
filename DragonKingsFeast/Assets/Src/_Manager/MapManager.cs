@@ -16,10 +16,12 @@ public class MapManager : MonoBehaviour {
     public bool level1ShowGismoz = true;
     public int level1LoadDistance = 0;
     public int level1UnloadDistance = 100;
+
     [Header("Level 2")]
     public bool level2ShowGismoz = true;
     public int level2LoadDistance = 25;
     public int level2UnloadDistance = 200;
+
     [Header("Level 3")]
     public bool level3ShowGismoz = true;
     public int level3LoadDistance = 125;
@@ -84,6 +86,7 @@ public class MapManager : MonoBehaviour {
         }
     }
 
+    // returns if level is loaded
     bool IsLevelLoaded(int level) {
         switch (level) {
             case 1: return isLoaded_level1;
