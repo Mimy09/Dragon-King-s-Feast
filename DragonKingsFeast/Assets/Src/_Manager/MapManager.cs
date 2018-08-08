@@ -8,7 +8,22 @@ public class MapManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- Variables ---- //
 
+    // private
     bool isLoaded_level1, isLoaded_level2, isLoaded_level3;
+
+    // public
+    [Header("Level 1")]
+    public bool level1ShowGismoz = true;
+    public int level1LoadDistance = 0;
+    public int level1UnloadDistance = 100;
+    [Header("Level 2")]
+    public bool level2ShowGismoz = true;
+    public int level2LoadDistance = 25;
+    public int level2UnloadDistance = 200;
+    [Header("Level 3")]
+    public bool level3ShowGismoz = true;
+    public int level3LoadDistance = 125;
+    public int level3UnloadDistance = 300;
 
     //**************************************************************************************/
     // ---- Functions ---- //
@@ -20,10 +35,10 @@ public class MapManager : MonoBehaviour {
             Vector3 pos = GameManager.playerObject.transform.position;
 
             // levels 1
-            if (pos.z >= 0) {
+            if (pos.z >= level1LoadDistance) {
                 
                 // Load level
-                if (pos.z <= 100) {
+                if (pos.z <= level1UnloadDistance) {
                     LoadLevel(1);
                 }
                 
@@ -36,10 +51,10 @@ public class MapManager : MonoBehaviour {
             }
 
             // levels 2
-            if (pos.z >= 25) {
+            if (pos.z >= level2LoadDistance) {
 
                 // Load level
-                if (pos.z <= 200) {
+                if (pos.z <= level2UnloadDistance) {
                     LoadLevel(2);
                 }
 
@@ -52,10 +67,10 @@ public class MapManager : MonoBehaviour {
             }
 
             // levels 3
-            if (pos.z >= 125) {
+            if (pos.z >= level3LoadDistance) {
 
                 // Load level
-                if (pos.z <= 300) {
+                if (pos.z <= level3UnloadDistance) {
                     LoadLevel(3);
                 }
 
@@ -129,4 +144,32 @@ public class MapManager : MonoBehaviour {
         }
     }
 
+    //**************************************************************************************/
+    // ---- Gizmos ---- //
+
+    private void OnDrawGizmos() {
+        Vector3 scale = new Vector3(50, 50, 1);
+
+        if (level1ShowGismoz) {
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(new Vector3(0, 0, level1LoadDistance), scale);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawCube(new Vector3(0, 0, level1UnloadDistance), scale);
+        }
+        if (level2ShowGismoz) {
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(new Vector3(0, 0, level2LoadDistance), scale);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawCube(new Vector3(0, 0, level2UnloadDistance), scale);
+        }
+        if (level3ShowGismoz) {
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(new Vector3(0, 0, level3LoadDistance), scale);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawCube(new Vector3(0, 0, level3UnloadDistance), scale);
+        }
+    }
 }
