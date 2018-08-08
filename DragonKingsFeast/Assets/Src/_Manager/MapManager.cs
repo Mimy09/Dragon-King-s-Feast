@@ -51,10 +51,11 @@ public class MapManager : MonoBehaviour {
                 UnloadLevel(2);
             }
 
+            // levels 3
             if (pos.z >= 125) {
 
                 // Load level
-                if (pos.z <= 200) {
+                if (pos.z <= 300) {
                     LoadLevel(3);
                 }
 
@@ -65,10 +66,16 @@ public class MapManager : MonoBehaviour {
             } else {
                 UnloadLevel(3);
             }
-
-            
         }
+    }
 
+    bool IsLevelLoaded(int level) {
+        switch (level) {
+            case 1: return isLoaded_level1;
+            case 2: return isLoaded_level2;
+            case 3: return isLoaded_level3;
+            default: return false;
+        }
     }
 
     void LoadLevel(int level) {
