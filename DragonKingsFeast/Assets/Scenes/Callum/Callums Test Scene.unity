@@ -405,8 +405,9 @@ MonoBehaviour:
   forwardSpeed: 0
   moveSpeed: 5
   velocity: {x: 0, y: 0, z: 0}
-  axisSpeedMultiplyer: {x: 1, y: 1}
+  axisSpeedMultiplyer: {x: 2, y: 2}
   startPos: {x: 0, y: 0, z: 0}
+  tiltAngle: -55
 --- !u!23 &1880025448
 MeshRenderer:
   m_ObjectHideFlags: 0

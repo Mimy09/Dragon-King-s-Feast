@@ -25,7 +25,9 @@ public class PlayerMovement : MonoBehaviour {
     public Vector2 axisSpeedMultiplyer;
 
     public Vector3 startPos;
-    
+
+    public int tiltAngle;
+
 	// Use this for initialization
 	void Start () {
         startPos = transform.position;
@@ -130,27 +132,16 @@ public class PlayerMovement : MonoBehaviour {
 
 
     private void ReadPhoneControls() {
+        
+        //Get Speed based off Acelleromator
+        Vector3 acelleromatorTiltValues = Quaternion.Euler(tiltAngle, 0, 0) * Input.acceleration;
+        Vector3 Speed = Vector3.Scale(new Vector3(1, 1, 0), new Vector3(acelleromatorTiltValues.x, acelleromatorTiltValues.z, acelleromatorTiltValues.y));
 
-        Vector3 acceleration = new Vector3(0, 0, 0);
-        
-        //////////////////Right, Left/////////////////
+        //apply speed modifiers
+        Speed.x *= axisSpeedMultiplyer.x;
+        Speed.y = (-Speed.y * axisSpeedMultiplyer.y);
 
-        float xHolder = (Input.acceleration.x * axisSpeedMultiplyer.x);
-
-        Debug.Log("x: " + Input.acceleration);
-        //Debug.Log("y: " + Input.acceleration.y);
-        //Debug.Log("z: " + Input.acceleration.z);
-        
-        acceleration.x = xHolder;
-        
-        //////////////////Up, down/////////////////
-        
-        float tiltvalue = Input.acceleration.z * axisSpeedMultiplyer.y;
-        
-        acceleration.y = -tiltvalue;
-        
-        //////////////////////////////////////////
-
-        velocity = (acceleration);
+        //apply the speed to the velocity
+        velocity = (Speed);
     }
 }
