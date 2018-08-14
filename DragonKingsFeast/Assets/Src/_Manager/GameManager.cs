@@ -45,9 +45,21 @@ public class GameManager : MonoBehaviour {
         return Camera.main.gameObject.GetComponent<PlayerCamera>();
     }
 
+    public Player GetPlayer() {
+        return player;
+    }
+
+    public PlayerIK GetPlayerIK() {
+        return playerIK;
+    }
+
+    public PlayerMovement GetPlayerMovement() {
+        return playerMovement;
+    }
+
     // ---- Set Functions ----
 
-    
+
 
 
     //**************************************************************************************/
