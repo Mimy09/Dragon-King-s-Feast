@@ -21,6 +21,26 @@ public class Player : MonoBehaviour {
         health -= (int)(amount + 0.5f);
     }
 
+    public void ApplyBoost(e_ItemType type, int amount) {
+        switch (type) {
+            case e_ItemType.Boost_Speed:
+                break;
+
+            case e_ItemType.Boost_Attack:
+                break;
+
+            case e_ItemType.Boost_Defense:
+                break;
+
+            case e_ItemType.Pickup:
+                health += amount;
+                break;
+
+            default:
+                break;
+        }
+    }
+
 
 	// Use this for initialization
 	void Start () {
