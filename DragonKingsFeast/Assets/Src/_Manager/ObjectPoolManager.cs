@@ -8,8 +8,8 @@ public class ObjectPoolManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- Variables ---- //
 
-    List<Item> objectPool_item = new List<Item>();
-    List<Enemy> objectPool_enemy = new List<Enemy>();
+    [ReadOnly] public List<Item> objectPool_item = new List<Item>();
+    [ReadOnly] public List<Enemy> objectPool_enemy = new List<Enemy>();
 
     //**************************************************************************************/
     // ---- Public functions ---- //

@@ -48,9 +48,9 @@ public class ItemSpawnManager : MonoBehaviour {
 
         for (; chunkID < depth; chunkID++) {
             SpawnEnemyObject();
-            enemyList[enemyList.Count - 1].transform.position +=
+            enemyList[enemyList.Count - 1].transform.position =
                 new Vector3(
-                    Random.Range(-width, width+1),
+                    Random.Range(-width, width + 1),
                     Random.Range(-height, height + 1),
                     1 * chunkID * spawnOffset);
         }
@@ -60,7 +60,7 @@ public class ItemSpawnManager : MonoBehaviour {
     // ---- spawn functions ---- //
 
     void SpawnEnemyObject() {
-        enemyList.Add(GameManager.instance.GetObjectPool().FindEnemyOfType((e_EnemyType)Random.Range(1, 5)));
+        enemyList.Add(GameManager.instance.GetObjectPool().FindEnemyOfType((e_EnemyType)Random.Range(1, 1)));
     }
 
     void SpawnItemObject() {
