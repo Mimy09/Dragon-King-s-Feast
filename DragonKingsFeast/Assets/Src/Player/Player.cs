@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
         health -= (int)(amount + 0.5f);
     }
 
-    public void ApplyBoost(e_ItemType type, int amount) {
+    public void ApplyBoost(e_ItemType type) {
         switch (type) {
             case e_ItemType.Boost_Speed:
                 break;
@@ -33,12 +33,16 @@ public class Player : MonoBehaviour {
                 break;
 
             case e_ItemType.Pickup:
-                health += amount;
+                Debug.LogError("USE OTHER FUNCTION WRONG ONE");
                 break;
 
             default:
                 break;
         }
+    }
+
+    public void ApplyLoot(int amount) {
+        health += amount;
     }
 
 
