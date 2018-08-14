@@ -5,7 +5,6 @@ using UnityEngine;
 public class Witch : Enemy {
 
     public float rangedAttackSpeed;
-    public GameObject rangedAttack;
 
     public float attackCoolDownSpeed;
     private float attackTimer = 0;
@@ -39,7 +38,8 @@ public class Witch : Enemy {
 
         if (attackTimer > attackCoolDownSpeed) {
             if (dist <= attackRange) {
-                GameObject go = Instantiate(rangedAttack, transform.position + (transform.forward * 1), Quaternion.identity);
+                GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
+                go.transform.position = transform.position + (transform.forward * 3);
                 go.GetComponent<Projectile>().SetUp(player.transform.position, damage, false, rangedAttackSpeed + forwardSpeed);
                 attackTimer = 0;
             }
