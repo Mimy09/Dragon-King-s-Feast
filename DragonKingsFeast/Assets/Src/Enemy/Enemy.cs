@@ -15,11 +15,14 @@ public class Enemy : MonoBehaviour {
     public Player player;
 
     public float damage;
+    public float attackRange;
+
     public float baseHealth;
     public float speed;
     public float forwardSpeed;
     public float despawnOffset;
 
+    
     protected float m_health;
     protected bool m_hasAttacked;
 
