@@ -6,16 +6,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     // Player scripts
-    public static Player            player;
-    public static PlayerIK          playerIK;
-    public static PlayerMovement    playerMovement;
+    public static Player player;
+    public static PlayerIK playerIK;
+    public static PlayerMovement playerMovement;
 
     // Player Object
-    public static GameObject        playerObject;
+    public static GameObject playerObject;
 
     // Managers
     public static ObjectPoolManager objectPoolManager;
-    public static MapManager        mapManager;
+    public static MapManager mapManager;
+    public static ItemSpawnManager itemSpawnManager;
 
 
 
@@ -23,11 +24,11 @@ public class GameManager : MonoBehaviour {
     // ---- Manager functions ---- //
 
     public void ResetLevel() {
-        
+
     }
 
     // ---- Get Functions ----
-    
+
 
     public ObjectPoolManager GetObjectPool() {
         if (objectPoolManager == null)
@@ -41,10 +42,16 @@ public class GameManager : MonoBehaviour {
         return mapManager;
     }
 
+    public ItemSpawnManager GetItemSpawnManager() {
+        if (itemSpawnManager == null)
+            itemSpawnManager = GetComponent<ItemSpawnManager>();
+        return itemSpawnManager;
+    }
+
     public PlayerCamera GetPlayerCamera() {
         return Camera.main.gameObject.GetComponent<PlayerCamera>();
     }
-
+    
     public Player GetPlayer() {
         return player;
     }
