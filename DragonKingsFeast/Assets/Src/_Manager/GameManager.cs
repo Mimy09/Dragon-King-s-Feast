@@ -111,6 +111,9 @@ public class GameManager : MonoBehaviour {
 
             // Set up event handler
             __event<e_GameEvents>.Raise(this, EventHandle);
+
+            // Set timeout to never
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
         }
     }
 
