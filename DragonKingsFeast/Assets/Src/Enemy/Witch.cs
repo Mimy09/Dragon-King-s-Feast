@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Witch : Enemy {
 
+    //this variable dictates how 
     public float rangedAttackSpeed;
 
     public float attackCoolDownSpeed;
