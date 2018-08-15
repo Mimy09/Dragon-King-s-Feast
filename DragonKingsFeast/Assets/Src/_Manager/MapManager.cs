@@ -32,6 +32,10 @@ public class MapManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- Functions ---- //
 
+    private void Awake() {
+        Application.backgroundLoadingPriority = ThreadPriority.Low;
+    }
+
     private void Update() {
         if (GameManager.playerObject != null) {
 
@@ -107,7 +111,7 @@ public class MapManager : MonoBehaviour {
                     isLoaded_level1 = true;
                     AO.allowSceneActivation = false;
                     while (AO.progress < 0.9f) {
-                        yield return null;
+                        yield return new WaitForEndOfFrame();
                     }
 
                     AO.allowSceneActivation = true;
@@ -119,8 +123,10 @@ public class MapManager : MonoBehaviour {
                     AO = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
                     isLoaded_level2 = true;
                     AO.allowSceneActivation = false;
+
+
                     while (AO.progress < 0.9f) {
-                        yield return null;
+                        yield return new WaitForEndOfFrame();
                     }
 
                     AO.allowSceneActivation = true;
@@ -133,7 +139,7 @@ public class MapManager : MonoBehaviour {
                     isLoaded_level3 = true;
                     AO.allowSceneActivation = false;
                     while (AO.progress < 0.9f) {
-                        yield return null;
+                        yield return new WaitForEndOfFrame();
                     }
 
                     AO.allowSceneActivation = true;
