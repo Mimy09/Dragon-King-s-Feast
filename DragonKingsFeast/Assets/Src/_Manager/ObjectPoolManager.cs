@@ -8,8 +8,9 @@ public class ObjectPoolManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- Variables ---- //
 
-    [ReadOnly] public List<Item> objectPool_item = new List<Item>();
-    [ReadOnly] public List<Enemy> objectPool_enemy = new List<Enemy>();
+    [ReadOnly] public List<Item>        objectPool_item =               new List<Item>();
+    [ReadOnly] public List<Enemy>       objectPool_enemy =              new List<Enemy>();
+    [ReadOnly] public List<Projectile>  objectPool_Projectile =         new List<Projectile>();
 
     //**************************************************************************************/
     // ---- Public functions ---- //
@@ -111,6 +112,30 @@ public class ObjectPoolManager : MonoBehaviour {
                 Debug.LogError("FindEnemyOfType - Returned null");
                 return null;
         }
+    }
+
+
+    //**************************************************************************************/
+    // ---- Projectile functions ---- //
+
+    public void AddProjectileToPool(Projectile obj) {
+        obj.gameObject.SetActive(false);
+        objectPool_Projectile.Add(obj);
+    }
+
+    public GameObject FindProjectile() {
+        GameObject go;
+
+        if (objectPool_Projectile.Count > 0) {
+            go = objectPool_Projectile[0].gameObject;
+            objectPool_Projectile[0].TurnOn();
+            objectPool_Projectile.RemoveAt(0);
+            return go;
+        }
+
+        go = Instantiate(Helper.ProjectilePath) as GameObject;
+        go.GetComponent<Projectile>().TurnOn();
+        return go;
     }
 
 }

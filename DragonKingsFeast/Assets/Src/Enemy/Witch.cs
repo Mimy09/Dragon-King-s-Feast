@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Witch : Enemy {
+
+    public float rangedAttackSpeed;
+
+    public float attackCoolDownSpeed;
+    private float attackTimer = 0;
+
     void Awake() {
         m_enemyType = e_EnemyType.Witch;
     }
@@ -13,6 +19,8 @@ public class Witch : Enemy {
         m_hasAttacked = false;
     }
     public void Update() {
+        attackTimer += Time.deltaTime;
+
         MoveToPlayer();
         ShootAttack();
     }
@@ -26,6 +34,15 @@ public class Witch : Enemy {
     }
 
     private void ShootAttack() {
-        Vector3.Distance(transform.position, player.transform.position);
+        float dist = Vector3.Distance(transform.position, player.transform.position);
+
+        if (attackTimer > attackCoolDownSpeed) {
+            if (dist <= attackRange) {
+                GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
+                go.transform.position = transform.position + (transform.forward * 3);
+                go.GetComponent<Projectile>().SetUp(player.transform.position, damage, false, rangedAttackSpeed + forwardSpeed);
+                attackTimer = 0;
+            }
+        }
     }
 }

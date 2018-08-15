@@ -21,4 +21,7 @@ public class Helper {
     // Pickup path
     public static Object ItemPath_pickUp = Resources.Load("Pickups\\PickUp") as Object;
 
+    //projectile Path
+    public static Object ProjectilePath = Resources.Load("Projectile\\Projectile") as Object;
+
 }
