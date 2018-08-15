@@ -433,8 +433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalBounds: 10
   verticalBounds: 10
-  slowDownOffSet: 0
-  forwardSpeed: 0
+  slowDownOffSet: 1
+  forwardSpeed: 2
   moveSpeed: 3
   velocity: {x: 0, y: 0, z: 0}
   axisSpeedMultiplyer: {x: 2, y: 2}
@@ -578,6 +578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00461c2f04108e4aa243af2d2576afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectPool_item: []
+  objectPool_enemy: []
 --- !u!4 &1575733674
 Transform:
   m_ObjectHideFlags: 0
@@ -675,7 +677,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1825820521}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 2056026012, guid: 8b701c814d4d4ef4e963629b54896ec8, type: 3}
   m_Name: 

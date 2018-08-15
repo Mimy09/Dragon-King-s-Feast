@@ -9,6 +9,7 @@ public class ItemSpawnManager : MonoBehaviour {
 
     private int chunkID = 0;
     PlayerMovement playerMovement;
+    float dist = 0;
 
     //**************************************************************************************/
     // ---- Public Variables ---- //
@@ -44,15 +45,18 @@ public class ItemSpawnManager : MonoBehaviour {
 
     private void Update() {
         if (playerMovement != null)
-            depth = spawnDistance + (playerMovement.transform.position.z - playerMovement.startPos.z) / spawnOffset;
-
-        for (; chunkID < depth; chunkID++) {
+            depth = (playerMovement.transform.position.z - playerMovement.startPos.z) / spawnDistance;
+        
+        for (; chunkID < spawnDistance + depth; chunkID++) {
             SpawnEnemyObject();
+            if (chunkID != 0) {
+                dist = (chunkID - 1) * spawnOffset - enemyList[enemyList.Count - 2].transform.position.z;
+            }
             enemyList[enemyList.Count - 1].transform.position =
                 new Vector3(
                     Random.Range(-width, width + 1),
                     Random.Range(-height, height + 1),
-                    1 * chunkID * spawnOffset);
+                    chunkID * spawnOffset - dist);
         }
     }
 
