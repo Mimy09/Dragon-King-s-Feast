@@ -1,5 +1,6 @@
 ﻿//**************************************************************************************/
 // ---- Includes ---- //
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class MapManager : MonoBehaviour {
 
     // private
     bool isLoaded_level1, isLoaded_level2, isLoaded_level3;
+    AsyncOperation AO;
 
     // public
     [Header("Level 1")]
@@ -38,10 +40,10 @@ public class MapManager : MonoBehaviour {
 
             // levels 1
             if (pos.z >= level1LoadDistance) {
-                
+
                 // Load level
                 if (pos.z <= level1UnloadDistance) {
-                    LoadLevel(1);
+                    StartCoroutine(LoadLevel(1));
                 }
                 
                 // Unload levels
@@ -57,7 +59,7 @@ public class MapManager : MonoBehaviour {
 
                 // Load level
                 if (pos.z <= level2UnloadDistance) {
-                    LoadLevel(2);
+                    StartCoroutine(LoadLevel(2));
                 }
 
                 // Unload levels
@@ -73,7 +75,7 @@ public class MapManager : MonoBehaviour {
 
                 // Load level
                 if (pos.z <= level3UnloadDistance) {
-                    LoadLevel(3);
+                    StartCoroutine(LoadLevel(3));
                 }
 
                 // Unload levels
@@ -96,27 +98,45 @@ public class MapManager : MonoBehaviour {
         }
     }
 
-    void LoadLevel(int level) {
+    IEnumerator LoadLevel(int level) {
         switch (level) {
             case 1:
                 // If level 1 is not loaded then load it in
                 if (!isLoaded_level1) {
-                    SceneManager.LoadScene(1, LoadSceneMode.Additive);
+                    AO = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
                     isLoaded_level1 = true;
+                    AO.allowSceneActivation = false;
+                    while (AO.progress < 0.9f) {
+                        yield return null;
+                    }
+
+                    AO.allowSceneActivation = true;
                 }
                 break;
             case 2:
                 // If level 2 is not loaded then load it in
                 if (!isLoaded_level2) {
-                    SceneManager.LoadScene(2, LoadSceneMode.Additive);
+                    AO = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
                     isLoaded_level2 = true;
+                    AO.allowSceneActivation = false;
+                    while (AO.progress < 0.9f) {
+                        yield return null;
+                    }
+
+                    AO.allowSceneActivation = true;
                 }
                 break;
             case 3:
                 // If level 3 is not loaded then load it in
                 if (!isLoaded_level3) {
-                    SceneManager.LoadScene(3, LoadSceneMode.Additive);
+                    AO = SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive);
                     isLoaded_level3 = true;
+                    AO.allowSceneActivation = false;
+                    while (AO.progress < 0.9f) {
+                        yield return null;
+                    }
+
+                    AO.allowSceneActivation = true;
                 }
                 break;
         }
