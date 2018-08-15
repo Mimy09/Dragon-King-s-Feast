@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Witch : Enemy {
 
-    //this variable dictates how 
+    //this variable dictates how fast the witchs attack projectile will move relative to it
     public float rangedAttackSpeed;
 
+    //how quickly the witch can attack
     public float attackCoolDownSpeed;
     private float attackTimer = 0;
 
