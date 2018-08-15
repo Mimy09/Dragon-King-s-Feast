@@ -108,8 +108,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  damage: 0
-  baseHealth: 0
-  speed: 0
-  forwardSpeed: 0
-  despawnOffset: 0
+  damage: 50
+  attackRange: 10
+  baseHealth: 50
+  speed: 3
+  forwardSpeed: 3.5
+  despawnOffset: 5
+  rangedAttackSpeed: 3
+  attackCoolDownSpeed: 2

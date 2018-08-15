@@ -44,8 +44,8 @@ public class ItemSpawnManager : MonoBehaviour {
     // ---- Update functions ---- //
 
     private void Update() {
-        if (playerMovement != null)
-            depth = (playerMovement.transform.position.z - playerMovement.startPos.z) / spawnDistance;
+        //if (playerMovement != null)
+        //    depth = (playerMovement.transform.position.z - playerMovement.startPos.z) / spawnDistance;
         
         for (; chunkID < spawnDistance + depth; chunkID++) {
             SpawnEnemyObject();
@@ -64,10 +64,14 @@ public class ItemSpawnManager : MonoBehaviour {
     // ---- spawn functions ---- //
 
     void SpawnEnemyObject() {
-        enemyList.Add(GameManager.instance.GetObjectPool().FindEnemyOfType((e_EnemyType)Random.Range(1, 1)));
+        enemyList.Add(GameManager.instance.GetObjectPool().FindEnemyOfType((e_EnemyType)Random.Range(1, 4)));
     }
 
     void SpawnItemObject() {
         itemList.Add(GameManager.instance.GetObjectPool().FindItemOfType((e_ItemType)Random.Range(0, 4)));
+    }
+
+    public void SpawnEnemy() {
+        depth++;
     }
 }

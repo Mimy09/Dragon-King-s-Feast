@@ -19,7 +19,7 @@ public class Ghost : Enemy {
 
     private void MoveToPlayer() {
         transform.LookAt(player.transform.position);
-       // transform.position += (transform.forward * Time.deltaTime) * speed;
+        transform.position += (transform.forward * Time.deltaTime) * speed;
         transform.position += (Vector3.back * Time.deltaTime) * forwardSpeed;
 
         if(player.transform.position.z > (transform.position.z + despawnOffset)) {
