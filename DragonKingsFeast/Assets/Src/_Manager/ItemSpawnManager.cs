@@ -64,7 +64,7 @@ public class ItemSpawnManager : MonoBehaviour {
     // ---- spawn functions ---- //
 
     void SpawnEnemyObject() {
-        enemyList.Add(GameManager.instance.GetObjectPool().FindEnemyOfType((e_EnemyType)Random.Range(1, 4)));
+        enemyList.Add(GameManager.instance.GetObjectPool().FindEnemyOfType((e_EnemyType)Random.Range(1, 5)));
     }
 
     void SpawnItemObject() {

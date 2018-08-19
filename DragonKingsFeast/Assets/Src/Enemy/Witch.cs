@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class Witch : Enemy {
 
-    //this variable dictates how fast the witchs attack projectile will move relative to it
-    public float rangedAttackSpeed;
+    public RangedAttack rangedAttack;
 
-    //how quickly the witch can attack
-    public float attackCoolDownSpeed;
-    private float attackTimer = 0;
+    public override void Reset() {
+        base.Reset();
+        rangedAttack.Reset();
+    }
 
     void Awake() {
+        player = GameManager.player;
+        rangedAttack.SetUp(player, this);
         m_enemyType = e_EnemyType.Witch;
     }
 
     private void Start() {
         player = GameManager.player;
         m_health = baseHealth;
-        m_hasAttacked = false;
     }
-    public void Update() {
-        attackTimer += Time.deltaTime;
 
-        MoveToPlayer();
+    public void Update() {
+        rangedAttack.Update();
+
+        MoveForward();
         ShootAttack();
     }
 
-    private void MoveToPlayer() {
+    private void MoveForward() {
         transform.position += (Vector3.back * Time.deltaTime) * forwardSpeed;
 
         if (player.transform.position.z > (transform.position.z + despawnOffset)) {
@@ -36,15 +38,6 @@ public class Witch : Enemy {
     }
 
     private void ShootAttack() {
-        float dist = Vector3.Distance(transform.position, player.transform.position);
-
-        if (attackTimer > attackCoolDownSpeed) {
-            if (dist <= attackRange) {
-                GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
-                go.transform.position = transform.position + (transform.forward * 3);
-                go.GetComponent<Projectile>().SetUp(player.transform.position, damage, false, rangedAttackSpeed + forwardSpeed);
-                attackTimer = 0;
-            }
-        }
+        rangedAttack.AttackPlayer();
     }
 }

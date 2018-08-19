@@ -15,12 +15,7 @@ public class Enemy : MonoBehaviour {
 
     //this is a refrence to the player character, used for attacks
     public Player player;
-
-    //this is how much damage the enemy dose if it hits the player
-    public float damage;
-    //this is used to determin the units attack range for ranged attacks
-    public float attackRange;
-
+        
     //this is the units base health that it will be set at when reset
     public float baseHealth;
     //this is how fast the unit moves through the scene
@@ -32,10 +27,8 @@ public class Enemy : MonoBehaviour {
 
     //the units current health   
     protected float m_health;
-    //determins if it has made a melee attack or not
-    protected bool m_hasAttacked;
 
-    public virtual void Reset() { m_hasAttacked = false; m_health = baseHealth; }
+    public virtual void Reset() { m_health = baseHealth; }
     public virtual void TurnOff() {
         GameManager.instance.GetObjectPool().AddEnemyTooPool(this);
         GameManager.instance.GetItemSpawnManager().enemyList.RemoveAt(0);
