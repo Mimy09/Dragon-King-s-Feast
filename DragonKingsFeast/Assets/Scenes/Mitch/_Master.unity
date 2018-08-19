@@ -621,13 +621,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f05820af109484abf2ce0021e5a45f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level1ShowGismoz: 0
+  level1ShowGismoz: 1
   level1LoadDistance: 0
   level1UnloadDistance: 200
-  level2ShowGismoz: 0
+  level2ShowGismoz: 1
   level2LoadDistance: 90
   level2UnloadDistance: 400
-  level3ShowGismoz: 0
+  level3ShowGismoz: 1
   level3LoadDistance: 291
   level3UnloadDistance: 600
 --- !u!114 &1575733676

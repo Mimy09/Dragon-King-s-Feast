@@ -11,7 +11,7 @@ public class MapManager : MonoBehaviour {
 
     // private
     bool isLoaded_level1, isLoaded_level2, isLoaded_level3;
-    AsyncOperation AO;
+    AsyncOperation AO_level1, AO_level2, AO_level3;
 
     // public
     [Header("Level 1")]
@@ -32,6 +32,32 @@ public class MapManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- Functions ---- //
 
+    private void Start() {
+        Application.backgroundLoadingPriority = ThreadPriority.Low;
+        StartCoroutine(LoadAllInBackground());
+    }
+
+    IEnumerator LoadAllInBackground() {
+        AO_level1 = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+        AO_level1.allowSceneActivation = false;
+        while (AO_level1.progress < 0.9f) {
+            yield return null;
+        }
+
+        AO_level2 = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
+        AO_level2.allowSceneActivation = false;
+        while (AO_level2.progress < 0.9f) {
+            yield return null;
+        }
+
+        AO_level3 = SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive);
+        isLoaded_level3 = true;
+        AO_level3.allowSceneActivation = false;
+        while (AO_level3.progress < 0.9f) {
+            yield return null;
+        }
+    }
+
     private void Update() {
         if (GameManager.playerObject != null) {
 
@@ -43,7 +69,7 @@ public class MapManager : MonoBehaviour {
 
                 // Load level
                 if (pos.z <= level1UnloadDistance) {
-                    StartCoroutine(LoadLevel(1));
+                    LoadLevel(1);
                 }
                 
                 // Unload levels
@@ -59,7 +85,7 @@ public class MapManager : MonoBehaviour {
 
                 // Load level
                 if (pos.z <= level2UnloadDistance) {
-                    StartCoroutine(LoadLevel(2));
+                    LoadLevel(2);
                 }
 
                 // Unload levels
@@ -75,7 +101,7 @@ public class MapManager : MonoBehaviour {
 
                 // Load level
                 if (pos.z <= level3UnloadDistance) {
-                    StartCoroutine(LoadLevel(3));
+                    LoadLevel(3);
                 }
 
                 // Unload levels
@@ -98,45 +124,27 @@ public class MapManager : MonoBehaviour {
         }
     }
 
-    IEnumerator LoadLevel(int level) {
+    void LoadLevel(int level) {
         switch (level) {
             case 1:
                 // If level 1 is not loaded then load it in
                 if (!isLoaded_level1) {
-                    AO = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
                     isLoaded_level1 = true;
-                    AO.allowSceneActivation = false;
-                    while (AO.progress < 0.9f) {
-                        yield return null;
-                    }
-
-                    AO.allowSceneActivation = true;
+                    AO_level1.allowSceneActivation = true;
                 }
                 break;
             case 2:
                 // If level 2 is not loaded then load it in
                 if (!isLoaded_level2) {
-                    AO = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
                     isLoaded_level2 = true;
-                    AO.allowSceneActivation = false;
-                    while (AO.progress < 0.9f) {
-                        yield return null;
-                    }
-
-                    AO.allowSceneActivation = true;
+                    AO_level2.allowSceneActivation = true;
                 }
                 break;
             case 3:
                 // If level 3 is not loaded then load it in
                 if (!isLoaded_level3) {
-                    AO = SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive);
                     isLoaded_level3 = true;
-                    AO.allowSceneActivation = false;
-                    while (AO.progress < 0.9f) {
-                        yield return null;
-                    }
-
-                    AO.allowSceneActivation = true;
+                    AO_level3.allowSceneActivation = true;
                 }
                 break;
         }
@@ -146,21 +154,21 @@ public class MapManager : MonoBehaviour {
             case 1:
                 // If level 1 is loaded then unload
                 if (isLoaded_level1) {
-                    SceneManager.UnloadSceneAsync(1);
+                    SceneManager.UnloadScene(1);
                     isLoaded_level1 = false;
                 }
                 break;
             case 2:
                 // If level 2 is loaded then unload
                 if (isLoaded_level2) {
-                    SceneManager.UnloadSceneAsync(2);
+                    SceneManager.UnloadScene(2);
                     isLoaded_level2 = false;
                 }
                 break;
             case 3:
                 // If level 3 is loaded then unload
                 if (isLoaded_level3) {
-                    SceneManager.UnloadSceneAsync(3);
+                    SceneManager.UnloadScene(3);
                     isLoaded_level3 = false;
                 }
                 break;
