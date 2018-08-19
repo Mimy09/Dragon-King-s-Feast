@@ -760,11 +760,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  damage: 50
-  attackRange: 50
   baseHealth: 50
   speed: 3
   forwardSpeed: 3.5
   despawnOffset: 5
-  rangedAttackSpeed: 3
-  attackCoolDownSpeed: 2
+  rangedAttack:
+    damage: 10
+    attackRange: 25
+    rangedAttackSpeed: 1
+    attackCoolDownSpeed: 2

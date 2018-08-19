@@ -9,24 +9,26 @@ public enum e_EnemyType {
 }
 
 public class Enemy : MonoBehaviour {
+    //this is used to determin what type of enemy it is
     protected e_EnemyType m_enemyType;
     public e_EnemyType EnemyType { get { return m_enemyType; } }
 
+    //this is a refrence to the player character, used for attacks
     public Player player;
-
-    public float damage;
-    public float attackRange;
-
+        
+    //this is the units base health that it will be set at when reset
     public float baseHealth;
+    //this is how fast the unit moves through the scene
     public float speed;
+    //this is how fast the unit moves forward 
     public float forwardSpeed;
+    //this determins how far behind the player it must be before being turned off
     public float despawnOffset;
 
-    
+    //the units current health   
     protected float m_health;
-    protected bool m_hasAttacked;
 
-    public virtual void Reset() { m_hasAttacked = false; m_health = baseHealth; }
+    public virtual void Reset() { m_health = baseHealth; }
     public virtual void TurnOff() {
         GameManager.instance.GetObjectPool().AddEnemyTooPool(this);
         GameManager.instance.GetItemSpawnManager().enemyList.RemoveAt(0);

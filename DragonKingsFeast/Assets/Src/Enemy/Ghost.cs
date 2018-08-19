@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Ghost : Enemy {
 
+    public MeleeAttack meleeAttack;
+
+    public override void Reset() {
+        base.Reset();
+        meleeAttack.Reset();
+    }
+
     void Awake() {
+        player = GameManager.player;
+        meleeAttack.SetUp(player, this);
         m_enemyType = e_EnemyType.Ghost;
     }
     private void Start() {
         player = GameManager.player;
         m_health = baseHealth;
-        m_hasAttacked = false;
     }
 
     public void Update() {
@@ -28,11 +36,8 @@ public class Ghost : Enemy {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (m_hasAttacked == false) {
-            if (other.tag == "Player") {
-                player.TakeDamage(damage);
-                m_hasAttacked = true;
-            }
+        if (other.tag == "Player") {
+            meleeAttack.AttackPlayer();
         }
     }
 }

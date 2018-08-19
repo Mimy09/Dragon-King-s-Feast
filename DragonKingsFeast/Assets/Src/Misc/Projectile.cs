@@ -53,11 +53,13 @@ public class Projectile : MonoBehaviour {
         if (playerAttack) {
             if (other.tag == "Enemy") {
                 other.GetComponent<Enemy>().TakeDamage(damage);
+                TurnOff();
             }
         }
         else {
             if (other.tag == "Player") {
                 other.GetComponent<Player>().TakeDamage(damage);
+                TurnOff();
             }
         }
     }
