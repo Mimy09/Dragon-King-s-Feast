@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour {
 
         velocity.z += forwardSpeed;
 
+        //GetComponent<Rigidbody>().AddForce(velocity * moveSpeed);
         transform.Translate((velocity * Time.deltaTime) * moveSpeed);
 
     }

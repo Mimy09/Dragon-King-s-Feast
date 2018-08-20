@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour {
         playerAttack = false;
         forwardSpeed = 0;
         dir = new Vector3();
+        gameObject.SetActive(true);
     }
 
     public void TurnOff() {

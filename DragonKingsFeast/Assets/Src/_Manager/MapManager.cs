@@ -36,7 +36,7 @@ public class MapManager : MonoBehaviour {
     // ---- Functions ---- //
 
     private void Start() {
-        Application.backgroundLoadingPriority = ThreadPriority.Low;
+        Application.backgroundLoadingPriority = ThreadPriority.Normal;
         StartCoroutine(LoadAllInBackground());
     }
 
@@ -47,6 +47,7 @@ public class MapManager : MonoBehaviour {
         while (AO_level1.progress < 0.9f) {
             yield return null;
         }
+        AO_level1.allowSceneActivation = true;
         loaded_percent = AO_level1.progress * 38;
 
         AO_level2 = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
@@ -54,6 +55,7 @@ public class MapManager : MonoBehaviour {
         while (AO_level2.progress < 0.9f) {
             yield return null;
         }
+        AO_level2.allowSceneActivation = true;
         loaded_percent += AO_level2.progress * 38;
 
         AO_level3 = SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive);
@@ -62,6 +64,7 @@ public class MapManager : MonoBehaviour {
         while (AO_level3.progress < 0.9f) {
             yield return null;
         }
+        AO_level3.allowSceneActivation = true;
         loaded_percent += AO_level3.progress * 38;
 
         loaded_percent = Mathf.Min(loaded_percent, 100);
@@ -136,6 +139,8 @@ public class MapManager : MonoBehaviour {
     }
 
     void LoadLevel(int level) {
+        return;
+
         switch (level) {
             case 1:
                 // If level 1 is not loaded then load it in
