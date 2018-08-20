@@ -13,6 +13,9 @@ public class MapManager : MonoBehaviour {
     bool isLoaded_level1, isLoaded_level2, isLoaded_level3;
     AsyncOperation AO_level1, AO_level2, AO_level3;
 
+    public float loaded_percent = 0;
+    public bool loaded = false;
+
     // public
     [Header("Level 1")]
     public bool level1ShowGismoz = true;
@@ -38,17 +41,20 @@ public class MapManager : MonoBehaviour {
     }
 
     IEnumerator LoadAllInBackground() {
+        
         AO_level1 = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
         AO_level1.allowSceneActivation = false;
         while (AO_level1.progress < 0.9f) {
             yield return null;
         }
+        loaded_percent = AO_level1.progress * 38;
 
         AO_level2 = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
         AO_level2.allowSceneActivation = false;
         while (AO_level2.progress < 0.9f) {
             yield return null;
         }
+        loaded_percent += AO_level2.progress * 38;
 
         AO_level3 = SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive);
         isLoaded_level3 = true;
@@ -56,6 +62,11 @@ public class MapManager : MonoBehaviour {
         while (AO_level3.progress < 0.9f) {
             yield return null;
         }
+        loaded_percent += AO_level3.progress * 38;
+
+        loaded_percent = Mathf.Min(loaded_percent, 100);
+
+        loaded = true;
     }
 
     private void Update() {
@@ -154,21 +165,21 @@ public class MapManager : MonoBehaviour {
             case 1:
                 // If level 1 is loaded then unload
                 if (isLoaded_level1) {
-                    SceneManager.UnloadScene(1);
+                    SceneManager.UnloadSceneAsync(1);
                     isLoaded_level1 = false;
                 }
                 break;
             case 2:
                 // If level 2 is loaded then unload
                 if (isLoaded_level2) {
-                    SceneManager.UnloadScene(2);
+                    SceneManager.UnloadSceneAsync(2);
                     isLoaded_level2 = false;
                 }
                 break;
             case 3:
                 // If level 3 is loaded then unload
                 if (isLoaded_level3) {
-                    SceneManager.UnloadScene(3);
+                    SceneManager.UnloadSceneAsync(3);
                     isLoaded_level3 = false;
                 }
                 break;
