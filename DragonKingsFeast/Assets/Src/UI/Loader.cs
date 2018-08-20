@@ -11,12 +11,12 @@ public class Loader : MonoBehaviour {
         Time.timeScale = 0;
     }
 
+    public void StratGame() {
+        Time.timeScale = 1;
+        Destroy(gameObject);
+    }
+
     void Update () {
-		if (GameManager.instance.GetMapManager().loaded) {
-            Time.timeScale = 1;
-            Destroy(gameObject);
-        } else {
-            percent.text = "Loading: " + GameManager.instance.GetMapManager().loaded_percent.ToString() + "%";
-        }
+        percent.text = "Loading: " + GameManager.instance.GetMapManager().loaded_percent.ToString() + "%";
 	}
 }

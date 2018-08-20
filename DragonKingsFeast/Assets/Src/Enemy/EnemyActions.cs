@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 
-[Serializable]
+[System.Serializable]
 public class EnemyActions{
 
     //this is how much damage the enemy dose if it hits the player
@@ -19,7 +18,7 @@ public class EnemyActions{
     public virtual void Reset() { }
 }
 
-[Serializable]
+[System.Serializable]
 public class MeleeAttack : EnemyActions {
     //determins if it has made a melee attack or not
     protected bool m_hasAttacked;
@@ -36,7 +35,7 @@ public class MeleeAttack : EnemyActions {
 
 }
 
-[Serializable]
+[System.Serializable]
 public class RangedAttack : EnemyActions {
 
     //this is used to determin the units attack range for ranged attacks
