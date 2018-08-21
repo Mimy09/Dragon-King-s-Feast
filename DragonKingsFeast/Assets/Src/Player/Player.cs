@@ -53,6 +53,29 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    #if UNITY_STANDALONE_WIN || UNITY_EDITOR
+            if (Input.GetMouseButtonDown(0)) {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit)) {
+                    if (hit.transform.gameObject.tag == "Enemy") {
+                        Attack();
+                    }
+                }
+            }
+    #endif
+    
+    #if UNITY_ANDROID
+            if (true) {
+                Attack();
+            }
+    #endif
+
+    }
+
+    public void Attack() {
+        Debug.Log("AAAAAAA IT WORKED");
+    }
 }
