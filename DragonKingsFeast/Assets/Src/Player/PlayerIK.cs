@@ -47,6 +47,12 @@ public class PlayerIK : MonoBehaviour {
                     ),
                     lerp
                 );
+                bones[i].transform.position += new Vector3(
+                    (Mathf.Sin((-Time.time * 10.0f) + (i * 0.5f)) * 0.01f) * ((i - 7) * 0.03f),
+                    (Mathf.Cos((-Time.time * 10.0f) + (i * 0.5f)) * 0.01f) * ((i - 7) * 0.03f),
+                    0
+                    );
+
             }
 
             bones[0].transform.LookAt(head.transform);
