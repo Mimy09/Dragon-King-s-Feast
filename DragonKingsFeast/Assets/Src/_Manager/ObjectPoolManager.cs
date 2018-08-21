@@ -12,8 +12,24 @@ public class ObjectPoolManager : MonoBehaviour {
     [ReadOnly] public List<Enemy>       objectPool_enemy =              new List<Enemy>();
     [ReadOnly] public List<Projectile>  objectPool_Projectile =         new List<Projectile>();
 
+    private GameObject ObjectPool;
+    private GameObject ItemParent;
+    private GameObject EnemyParent;
+    private GameObject ProjectileParent;
+
     //**************************************************************************************/
     // ---- Public functions ---- //
+
+    private void Start() {
+        ObjectPool =        new GameObject("Object Pool");
+        ItemParent =        new GameObject("Item");
+        EnemyParent =       new GameObject("Enemy");
+        ProjectileParent =  new GameObject("Projectile");
+
+        ItemParent.transform.parent         = ObjectPool.transform;
+        EnemyParent.transform.parent        = ObjectPool.transform;
+        ProjectileParent.transform.parent   = ObjectPool.transform;
+    }
 
     public void Reset() {
         for (int i = 0; i < objectPool_item.Count; i++) {
@@ -46,23 +62,23 @@ public class ObjectPoolManager : MonoBehaviour {
 
         switch (type) {
             case e_EnemyType.AdultDragon:
-                go = Instantiate(Helper.EnemyPath_AdultDragon) as GameObject;
+                go = Instantiate(Helper.EnemyPath_AdultDragon, EnemyParent.transform) as GameObject;
                 go.GetComponent<Enemy>().TurnOn();
                 return go;
             case e_EnemyType.Ghost:
-                go = Instantiate(Helper.EnemyPath_Ghost) as GameObject;
+                go = Instantiate(Helper.EnemyPath_Ghost, EnemyParent.transform) as GameObject;
                 go.GetComponent<Enemy>().TurnOn();
                 return go;
             case e_EnemyType.Phoenix:
-                go = Instantiate(Helper.EnemyPath_Phoenix) as GameObject;
+                go = Instantiate(Helper.EnemyPath_Phoenix, EnemyParent.transform) as GameObject;
                 go.GetComponent<Enemy>().TurnOn();
                 return go;
             case e_EnemyType.StormCloud:
-                go = Instantiate(Helper.EnemyPath_StormCloud) as GameObject;
+                go = Instantiate(Helper.EnemyPath_StormCloud, EnemyParent.transform) as GameObject;
                 go.GetComponent<Enemy>().TurnOn();
                 return go;
             case e_EnemyType.Witch:
-                go = Instantiate(Helper.EnemyPath_Witch) as GameObject;
+                go = Instantiate(Helper.EnemyPath_Witch, EnemyParent.transform) as GameObject;
                 go.GetComponent<Enemy>().TurnOn();
                 return go;
             default:
@@ -93,19 +109,19 @@ public class ObjectPoolManager : MonoBehaviour {
 
         switch (type) {
             case e_ItemType.Boost_Attack:
-                go = Instantiate(Helper.ItemPath_Boost_attack) as GameObject;
+                go = Instantiate(Helper.ItemPath_Boost_attack, ItemParent.transform) as GameObject;
                 go.GetComponent<Item>().TurnOn();
                 return go;
             case e_ItemType.Boost_Speed:
-                go = Instantiate(Helper.ItemPath_Boost_speed) as GameObject;
+                go = Instantiate(Helper.ItemPath_Boost_speed, ItemParent.transform) as GameObject;
                 go.GetComponent<Item>().TurnOn();
                 return go;
             case e_ItemType.Boost_Defense:
-                go = Instantiate(Helper.ItemPath_Boost_defense) as GameObject;
+                go = Instantiate(Helper.ItemPath_Boost_defense, ItemParent.transform) as GameObject;
                 go.GetComponent<Item>().TurnOn();
                 return go;
             case e_ItemType.Pickup:
-                go = Instantiate(Helper.ItemPath_pickUp) as GameObject;
+                go = Instantiate(Helper.ItemPath_pickUp, ItemParent.transform) as GameObject;
                 go.GetComponent<Item>().TurnOn();
                 return go;
             default:
@@ -133,7 +149,7 @@ public class ObjectPoolManager : MonoBehaviour {
             return go;
         }
 
-        go = Instantiate(Helper.ProjectilePath) as GameObject;
+        go = Instantiate(Helper.ProjectilePath, ProjectileParent.transform) as GameObject;
         go.GetComponent<Projectile>().TurnOn();
         return go;
     }

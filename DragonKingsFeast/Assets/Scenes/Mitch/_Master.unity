@@ -168,7 +168,7 @@ Transform:
   - {fileID: 1728033012}
   - {fileID: 510712641}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &219979217
 GameObject:
@@ -576,7 +576,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &400582669
 GameObject:
@@ -1067,7 +1067,7 @@ MonoBehaviour:
   bone_parent: {fileID: 96655931}
   head: {fileID: 599800180}
   bones: []
-  lerp: 1.1
+  lerp: 0.6
   interval: 0
 --- !u!114 &772054231
 MonoBehaviour:
@@ -1103,9 +1103,9 @@ MonoBehaviour:
   health: 0
   pm: {fileID: 772054231}
   projectileSpawnPoint: {fileID: 219979218}
-  damage: 0
-  range: 0
-  rangedAttackSpeed: 0
+  damage: 10000
+  range: 10000
+  rangedAttackSpeed: 3
   attackCoolDownSpeed: 0
 --- !u!54 &772054233
 Rigidbody:
@@ -2168,7 +2168,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1575733675
 MonoBehaviour:
@@ -2467,7 +2467,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1825820523
 MonoBehaviour:
