@@ -38,4 +38,8 @@ public class Enemy : MonoBehaviour {
     public virtual void OnDeath() { }
     public virtual void TakeDamage(float damage) { m_health -= damage; if (m_health < 0) { OnDeath(); TurnOff(); } }
     public Enemy GetEnemy() { return this; }
+
+    public void ColliderUpdate() {
+        
+    }
 }

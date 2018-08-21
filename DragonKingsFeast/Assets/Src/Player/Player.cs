@@ -55,16 +55,17 @@ public class Player : MonoBehaviour {
 	void Update () {
 
     #if UNITY_STANDALONE_WIN || UNITY_EDITOR
-            if (Input.GetMouseButtonDown(0)) {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit)) {
-                    if (hit.transform.gameObject.tag == "Enemy") {
-                        Attack();
-                    }
+        if (Input.GetMouseButtonDown(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            
+            if (Physics.Raycast(Camera.main.transform.position, ray.direction * 100, out hit)) {
+                
+                if (hit.transform.gameObject.tag == "Enemy") {
+                    Attack();
                 }
             }
+        }
     #endif
     
     #if UNITY_ANDROID

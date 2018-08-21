@@ -55,7 +55,6 @@ public class RangedAttack : EnemyActions {
     public override bool AttackPlayer() {
         float dist = Vector3.Distance(owner.transform.position, player.transform.position);
 
-        Debug.Log("We are running");
         if (attackTimer > attackCoolDownSpeed) {
             if (dist <= attackRange) {
                 GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
