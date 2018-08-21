@@ -4,13 +4,61 @@ using UnityEngine;
 
 public class PlayerIK : MonoBehaviour {
 
-	// Use this for initialization
+    public GameObject bone_parent;
+    public GameObject head;
+    public GameObject[] bones;
+
+    public float lerp;
+    public float interval;
+    private float timer;
+
+    Vector3 Mult(Vector3 v1, Vector3 v2) {
+        return new Vector3(v1.x * v1.x, v1.y * v1.y, v1.z * v1.z);
+    }
+
+
 	void Start () {
-		
+        bones = new GameObject[bone_parent.transform.childCount];
+
+        for (int i = 0; i < bone_parent.transform.childCount; i++) {
+            bones[i] = bone_parent.transform.GetChild(i).gameObject;
+        }
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		
-	}
+        
+
+        timer += Time.deltaTime;
+        if (timer > interval) {
+            timer = 0;
+            bones[0].transform.position = new Vector3(
+                    head.transform.position.x,
+                    head.transform.position.y,
+                    head.transform.position.z
+                    );
+
+            for (int i = bones.Length - 1; i > 0; i--) {
+                bones[i].transform.position = Vector3.Lerp(
+                    bones[i].transform.position,
+                    new Vector3(
+                        bones[i - 1].transform.position.x,
+                        bones[i - 1].transform.position.y,
+                        bones[i - 1].transform.position.z
+                    ),
+                    lerp
+                );
+            }
+
+            bones[0].transform.LookAt(head.transform);
+        
+            for (int i = 1; i < bones.Length; i++) {
+                bones[i].transform.LookAt(bones[i - 1].transform);
+                Quaternion q = bones[i].transform.rotation;
+                q.eulerAngles += new Vector3(0, -90, 0);
+                bones[i].transform.rotation = q;
+            }
+        }
+
+
+    }
 }
