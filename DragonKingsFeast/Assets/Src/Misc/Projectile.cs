@@ -14,41 +14,69 @@ public class Projectile : MonoBehaviour {
     [ReadOnly] public float forwardSpeed;
 
     //how long it will wait before shutting its self off
-    public float KillTime;
-    private float killtimer;
+    private float m_liveTime;
+    private float m_killtimer;
 
     //the direction the projectile will move
-    private Vector3 dir;
+    private Vector3 m_target;
+    private Transform m_enemy;
 
     public void TurnOn() {
-        killtimer = 0;
+        m_killtimer = 0;
         damage = 0;
         playerAttack = false;
         forwardSpeed = 0;
-        dir = new Vector3();
+        m_target = new Vector3();
         gameObject.SetActive(true);
+        m_enemy = null;
+        m_liveTime = 0;
     }
 
     public void TurnOff() {
         GameManager.instance.GetObjectPool().AddProjectileToPool(this);
     }
 
-    public void SetUp(Vector3 _target, float _damage, bool _playerAttack, float _forwardSpeed) {
+    public void SetUp(Vector3 _target, float _damage, float _forwardSpeed, float _liveTime) {
+        damage = _damage;
+        playerAttack = false;
+        forwardSpeed = _forwardSpeed;
+        m_target = _target;
+        transform.LookAt(_target);
+
+        m_liveTime = _liveTime;
+    }
+
+    public void SetUp(Transform _target, float _damage, bool _playerAttack, float _forwardSpeed, float _liveTime) {
         damage = _damage;
         playerAttack = _playerAttack;
         forwardSpeed = _forwardSpeed;
-        dir = _target - transform.position;
-        transform.LookAt(_target);
-    }
-    
-	void Update () {
-        killtimer += Time.deltaTime;
-        transform.position += (dir * Time.deltaTime) * forwardSpeed;
+        m_enemy = _target;
+        m_target = _target.transform.position;
+        transform.LookAt(_target.transform.position);
 
-        if (killtimer > KillTime) {
+        m_liveTime = _liveTime;
+    }
+
+    void Update () {
+        m_killtimer += Time.deltaTime;
+        
+        Move();
+
+        transform.position += (transform.forward * Time.deltaTime) * forwardSpeed;
+
+        if (m_killtimer > m_liveTime) {
             TurnOff();
         }
 	}
+
+    private void Move() {
+        if (playerAttack) {
+            if (transform.position.z < m_enemy.transform.position.z) {
+                m_target = Vector3.Lerp(m_target, m_enemy.transform.position, 0.1f);
+                transform.LookAt(m_target);
+            }
+        }
+    }
 
     public void OnTriggerEnter(Collider other) {
         if (playerAttack) {

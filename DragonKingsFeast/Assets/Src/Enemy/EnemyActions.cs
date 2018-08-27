@@ -47,6 +47,8 @@ public class RangedAttack : EnemyActions {
     //how quickly the witch can attack
     public float attackCoolDownSpeed;
     private float attackTimer = 0;
+
+    public float projectileLiveTime;
     
     public void Update() {
         attackTimer += Time.deltaTime;
@@ -59,7 +61,7 @@ public class RangedAttack : EnemyActions {
             if (dist <= attackRange) {
                 GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
                 go.transform.position = owner.transform.position + (owner.transform.forward * 3);
-                go.GetComponent<Projectile>().SetUp(player.transform.position, damage, false, rangedAttackSpeed + owner.forwardSpeed);
+                go.GetComponent<Projectile>().SetUp(player.transform.position, damage, rangedAttackSpeed + owner.forwardSpeed, projectileLiveTime);
                 attackTimer = 0;
                 
                 return true;

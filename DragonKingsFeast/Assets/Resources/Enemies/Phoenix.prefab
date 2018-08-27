@@ -134,6 +134,7 @@ MonoBehaviour:
     attackRange: 50
     rangedAttackSpeed: 2
     attackCoolDownSpeed: 2
+    projectileLiveTime: 4
   meleeAttack:
     damage: 100
     player: {fileID: 0}

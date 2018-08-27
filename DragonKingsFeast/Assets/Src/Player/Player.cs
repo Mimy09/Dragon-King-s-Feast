@@ -27,20 +27,38 @@ public class Player : MonoBehaviour {
     [ReadOnly]
     private float attackTimer;
 
+    public float projectileLiveTime;
+    
+    public float attackBoostTime;
+    private float m_attackBoostTimer;
+
+    public float speedBoostTime;
+    private float m_speedBoostTimer;
+
+    private bool m_sheild;
 
     public void TakeDamage(float amount) {
+
+        if (m_sheild) {
+            m_sheild = false;
+            return;
+        }
+
         health -= (int)(amount + 0.5f);
     }
 
     public void ApplyBoost(e_ItemType type) {
         switch (type) {
             case e_ItemType.Boost_Speed:
+                m_attackBoostTimer = 0;
                 break;
 
             case e_ItemType.Boost_Attack:
+                m_speedBoostTimer = 0;
                 break;
 
             case e_ItemType.Boost_Defense:
+                m_sheild = true;
                 break;
 
             case e_ItemType.Pickup:
@@ -108,7 +126,7 @@ public class Player : MonoBehaviour {
             if (dist <= range) {
                 GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
                 go.transform.position = projectileSpawnPoint.position;
-                go.GetComponent<Projectile>().SetUp(E.transform.position, damage, true, rangedAttackSpeed + pm.forwardSpeed);
+                go.GetComponent<Projectile>().SetUp(E.transform, damage, true, rangedAttackSpeed + pm.forwardSpeed, projectileLiveTime);
                 attackTimer = 0;
             }
         }

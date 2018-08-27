@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: 95e24325176ddd54b845745794aabc0e
+timeCreated: 1535339605
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Geo
+    100002: Geo_Arms_low
+    100004: Geo_Body_low
+    100006: Geo_Eyes_low
+    100008: Geo_Hair_low
+    100010: Geo_Head_low
+    100012: Geo_Horns_low
+    100014: Geo_Jaw_low
+    100016: Joint_Head_End
+    100018: Joint_Neck
+    100020: Joint_Spine_01
+    100022: Joint_Spine_02
+    100024: Joint_Spine_03
+    100026: Joint_Spine_04
+    100028: Joint_Spine_05
+    100030: Joint_Spine_06
+    100032: Joint_Spine_07
+    100034: Joint_Spine_08
+    100036: Joint_Spine_09
+    100038: Joint_Spine_10
+    100040: Joint_Spine_11
+    100042: Joint_Spine_12
+    100044: Joint_Spine_13
+    100046: Joint_Spine_14
+    100048: Joint_Spine_15
+    100050: Joint_Spine_16
+    100052: Joint_Spine_17
+    100054: Joint_Spine_18
+    100056: Joint_Spine_19
+    100058: Joint_Spine_20
+    100060: Joint_Spine_21
+    100062: Joint_Spine_22
+    100064: Joint_Spine_23
+    100066: Joint_Spine_24
+    100068: Joint_Spine_25
+    100070: Joint_Spine_26
+    100072: Joint_Spine_27
+    100074: Joint_Spine_28
+    100076: Joint_Spine_29
+    100078: Joint_Spine_30
+    100080: Joint_Spine_31
+    100082: Joints
+    100084: //RootNode
+    400000: Geo
+    400002: Geo_Arms_low
+    400004: Geo_Body_low
+    400006: Geo_Eyes_low
+    400008: Geo_Hair_low
+    400010: Geo_Head_low
+    400012: Geo_Horns_low
+    400014: Geo_Jaw_low
+    400016: Joint_Head_End
+    400018: Joint_Neck
+    400020: Joint_Spine_01
+    400022: Joint_Spine_02
+    400024: Joint_Spine_03
+    400026: Joint_Spine_04
+    400028: Joint_Spine_05
+    400030: Joint_Spine_06
+    400032: Joint_Spine_07
+    400034: Joint_Spine_08
+    400036: Joint_Spine_09
+    400038: Joint_Spine_10
+    400040: Joint_Spine_11
+    400042: Joint_Spine_12
+    400044: Joint_Spine_13
+    400046: Joint_Spine_14
+    400048: Joint_Spine_15
+    400050: Joint_Spine_16
+    400052: Joint_Spine_17
+    400054: Joint_Spine_18
+    400056: Joint_Spine_19
+    400058: Joint_Spine_20
+    400060: Joint_Spine_21
+    400062: Joint_Spine_22
+    400064: Joint_Spine_23
+    400066: Joint_Spine_24
+    400068: Joint_Spine_25
+    400070: Joint_Spine_26
+    400072: Joint_Spine_27
+    400074: Joint_Spine_28
+    400076: Joint_Spine_29
+    400078: Joint_Spine_30
+    400080: Joint_Spine_31
+    400082: Joints
+    400084: //RootNode
+    2100000: lambert9
+    4300000: Geo_Head_low
+    4300002: Geo_Jaw_low
+    4300004: Geo_Body_low
+    4300006: Geo_Eyes_low
+    4300008: Geo_Hair_low
+    4300010: Geo_Arms_low
+    4300012: Geo_Horns_low
+    9500000: //RootNode
+    13700000: Geo_Arms_low
+    13700002: Geo_Body_low
+    13700004: Geo_Eyes_low
+    13700006: Geo_Hair_low
+    13700008: Geo_Head_low
+    13700010: Geo_Horns_low
+    13700012: Geo_Jaw_low
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
