@@ -402,7 +402,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 772054225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.7, z: 532.1}
+  m_LocalPosition: {x: 0, y: 4.7, z: 355.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 768648968}
@@ -463,6 +463,9 @@ MonoBehaviour:
   range: 0
   rangedAttackSpeed: 0
   attackCoolDownSpeed: 0
+  projectileLiveTime: 0
+  attackBoostTime: 0
+  speedBoostTime: 0
 --- !u!1 &1575733672
 GameObject:
   m_ObjectHideFlags: 0
