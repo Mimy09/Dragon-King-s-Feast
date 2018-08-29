@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.6096838, g: 0.7649094, b: 0.8161765, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.015
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -1067,6 +1067,8 @@ MonoBehaviour:
   bone_parent: {fileID: 96655931}
   head: {fileID: 599800180}
   bones: []
+  wiggleX: 4
+  wiggleY: 5
   lerp: 0.6
   interval: 0
 --- !u!114 &772054231
@@ -1089,6 +1091,8 @@ MonoBehaviour:
   axisSpeedMultiplyer: {x: 2, y: 2}
   startPos: {x: 0, y: 0, z: 0}
   tiltAngle: -55
+  neck: {fileID: 1079998681}
+  constraint: 15
 --- !u!114 &772054232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1622,13 +1626,13 @@ Transform:
   m_PrefabParentObject: {fileID: 400018, guid: ad29994e2db48e144a4c22a9ad924bc0, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1079998681}
-  m_LocalRotation: {x: -0.49888328, y: -0.50111425, z: 0.49888328, w: 0.50111425}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.058234617, y: 0.058234617, z: 0.058234613}
   m_Children: []
   m_Father: {fileID: 324897415}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
 --- !u!1 &1134946036
 GameObject:
   m_ObjectHideFlags: 0
