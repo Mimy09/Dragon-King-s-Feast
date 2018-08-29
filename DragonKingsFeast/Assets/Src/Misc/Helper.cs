@@ -2,9 +2,12 @@
 
 public class Helper {
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // OBJECTS
+
     // full path
-    public static Object[] PickupPath = Resources.LoadAll("Pickups", typeof(Object)) as Object[];
-    public static Object[] EnemyPath  = Resources.LoadAll("Enemies", typeof(Object)) as Object[];
+    public static Object[] PickupPath           = Resources.LoadAll("Pickups", typeof(Object)) as Object[];
+    public static Object[] EnemyPath            = Resources.LoadAll("Enemies", typeof(Object)) as Object[];
 
     // Enemy paths
     public static Object EnemyPath_AdultDragon  = Resources.Load("Enemies\\AdultDragon") as Object;
@@ -14,14 +17,50 @@ public class Helper {
     public static Object EnemyPath_Phoenix      = Resources.Load("Enemies\\Phoenix") as Object;
 
     // boost path
-    public static Object ItemPath_Boost_speed = Resources.Load("Pickups\\speed") as Object;
-    public static Object ItemPath_Boost_attack = Resources.Load("Pickups\\attack") as Object;
+    public static Object ItemPath_Boost_speed   = Resources.Load("Pickups\\speed") as Object;
+    public static Object ItemPath_Boost_attack  = Resources.Load("Pickups\\attack") as Object;
     public static Object ItemPath_Boost_defense = Resources.Load("Pickups\\defense") as Object;
 
     // Pickup path
-    public static Object ItemPath_pickUp = Resources.Load("Pickups\\PickUp") as Object;
+    public static Object ItemPath_pickUp        = Resources.Load("Pickups\\PickUp") as Object;
 
     //projectile Path
-    public static Object ProjectilePath = Resources.Load("Projectile\\Projectile") as Object;
+    public static Object ProjectilePath         = Resources.Load("Projectile\\Projectile") as Object;
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // AUDIO
+
+    // Audio - character
+    public static AudioClip Audio_Character_BigDragonGrowl    = Resources.Load("Sounds\\Characters\\BigDragonGrowl") as AudioClip;
+    public static AudioClip Audio_Character_BlueWhale         = Resources.Load("Sounds\\Characters\\bluewhale") as AudioClip;
+    public static AudioClip Audio_Character_Brazire           = Resources.Load("Sounds\\Characters\\Brazire") as AudioClip;
+    public static AudioClip Audio_Character_DragonRoar        = Resources.Load("Sounds\\Characters\\DragonRoar") as AudioClip;
+    public static AudioClip Audio_Character_Explosion         = Resources.Load("Sounds\\Characters\\explosion") as AudioClip;
+    public static AudioClip Audio_Character_ExplosionLarge    = Resources.Load("Sounds\\Characters\\explosionLarge") as AudioClip;
+    public static AudioClip Audio_Character_FemaleScream      = Resources.Load("Sounds\\Characters\\FemaleScream") as AudioClip;
+    public static AudioClip Audio_Character_Lightning         = Resources.Load("Sounds\\Characters\\lightning") as AudioClip;
+    public static AudioClip Audio_Character_MonsterAttack     = Resources.Load("Sounds\\Characters\\MonsterAttack") as AudioClip;
+    public static AudioClip Audio_Character_PainDeath         = Resources.Load("Sounds\\Characters\\PainDeath") as AudioClip;
+    public static AudioClip Audio_Character_RoarGrowl         = Resources.Load("Sounds\\Characters\\RoarGrowl") as AudioClip;
+    public static AudioClip Audio_Character_Spell             = Resources.Load("Sounds\\Characters\\Spell") as AudioClip;
+    public static AudioClip Audio_Character_WetImpact         = Resources.Load("Sounds\\Characters\\WetImpact") as AudioClip;
+
+    // Audio - Environment
+    public static AudioClip Audio_Environment_Beach           = Resources.Load("Sounds\\Environment\\beach") as AudioClip;
+    public static AudioClip Audio_Environment_Grass           = Resources.Load("Sounds\\Environment\\Grass") as AudioClip;
+    public static AudioClip Audio_Environment_Lake            = Resources.Load("Sounds\\Environment\\Lake") as AudioClip;
+    public static AudioClip Audio_Environment_Ocean           = Resources.Load("Sounds\\Environment\\Ocean") as AudioClip;
+
+    // Audio - Music
+    public static AudioClip Audio_Music_Level1                = Resources.Load("Sounds\\Music\\DKF01") as AudioClip;
+    public static AudioClip Audio_Music_Level2                = Resources.Load("Sounds\\Music\\DKF02") as AudioClip;
+    public static AudioClip Audio_Music_Level3                = Resources.Load("Sounds\\Music\\DKF03") as AudioClip;
+    public static AudioClip Audio_Music_BossFight             = Resources.Load("Sounds\\Music\\DKF04") as AudioClip;
+    public static AudioClip Audio_Music_Menu                  = Resources.Load("Sounds\\Music\\Menu") as AudioClip;
+
+    // Audio - Pickups
+    public static AudioClip Audio_Pickup_1                    = Resources.Load("Sounds\\Music\\Metalics04") as AudioClip;
+    public static AudioClip Audio_Pickup_2                    = Resources.Load("Sounds\\Music\\Metalics05") as AudioClip;
+    public static AudioClip Audio_Pickup_3                    = Resources.Load("Sounds\\Music\\Metalics07") as AudioClip;
+    public static AudioClip Audio_Pickup_4                    = Resources.Load("Sounds\\Music\\Metalics08") as AudioClip;
 }

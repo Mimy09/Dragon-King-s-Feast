@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour {
 
     // Managers
     public static ObjectPoolManager objectPoolManager;
-    public static MapManager mapManager;
     public static ItemSpawnManager itemSpawnManager;
+    public static AudioManager audioManager;
+    public static MapManager mapManager;
 
 
 
@@ -28,7 +29,11 @@ public class GameManager : MonoBehaviour {
     }
 
     // ---- Get Functions ----
-
+    public AudioManager GetAudioManager() {
+        if (audioManager == null)
+            audioManager = GetComponent<AudioManager>();
+        return audioManager;
+    }
 
     public ObjectPoolManager GetObjectPool() {
         if (objectPoolManager == null)
@@ -109,17 +114,36 @@ public class GameManager : MonoBehaviour {
             if (mapManager == null)
                 mapManager = GetComponent<MapManager>();
 
+            // get audio manager
+            if (audioManager == null)
+                audioManager = GetComponent<AudioManager>();
+
             // Set up event handler
             __event<e_GameEvents>.Raise(this, EventHandle);
 
             // Set timeout to never
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+            // Init music
+            InitAudio();
         }
     }
 
     private void Update() {
         InputCommand();
     }
+
+    //**************************************************************************************/
+    // ---- Audio Init---- //
+    private void InitAudio() {
+        if (audioManager) {
+            audioManager.volume = 0.5f;
+            audioManager.AddMusic(Helper.Audio_Music_Level1);
+            audioManager.PlayMusic(Helper.Audio_Music_Level1, true);
+            audioManager.FadeInMusic(Helper.Audio_Music_Level1, 0.1f);
+        }
+    }
+
 
     //**************************************************************************************/
     // ---- Game event handler ---- //
