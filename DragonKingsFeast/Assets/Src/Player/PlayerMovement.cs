@@ -28,15 +28,37 @@ public class PlayerMovement : MonoBehaviour {
 
     public int tiltAngle;
 
-	// Use this for initialization
-	void Start () {
+    public GameObject neck;
+    public float constraint;
+
+    // Use this for initialization
+    void Start () {
         startPos = transform.position;
         
 
 	}
 	
+    void UpdateNeckBone() {
+        Quaternion r = neck.transform.rotation;
+        Vector3 e = r.eulerAngles;
+
+        e.x = 0;
+        e.y = -90 + (velocity.x * constraint);
+        e.z = velocity.y * constraint;
+
+        r.eulerAngles =  e;
+        neck.transform.rotation = r;
+
+        Vector3 t = neck.transform.localPosition;
+        t.x += Mathf.Sin(-Time.time)  * 0.002f - t.x;
+        t.z += Mathf.Sin(Time.time*2) * 0.002f - t.z;
+        neck.transform.localPosition = t;
+    }
+
 	// Update is called once per frame
 	void Update () {
+
+        UpdateNeckBone();
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
         ReadKeyBoardControls();
