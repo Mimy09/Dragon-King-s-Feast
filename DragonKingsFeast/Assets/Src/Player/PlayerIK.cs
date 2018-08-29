@@ -8,6 +8,7 @@ public class PlayerIK : MonoBehaviour {
     public GameObject head;
     public GameObject[] bones;
 
+    public float wiggleX, wiggleY;
     public float lerp;
     public float interval;
     private float timer;
@@ -48,8 +49,8 @@ public class PlayerIK : MonoBehaviour {
                     lerp
                 );
                 bones[i].transform.position += new Vector3(
-                    (Mathf.Sin((-Time.time * 10.0f) + (i * 0.05f)) * 0.1f) * ((i - 7) * 0.03f),
-                    (Mathf.Cos((-Time.time * 12.0f) + (i * 0.05f)) * 0.1f) * ((i - 7) * 0.03f),
+                    (Mathf.Sin((-Time.time * wiggleY) /*+ (i * 0.05f)*/) * 0.1f) * (/*(i - 7) **/ 0.03f),
+                    (Mathf.Cos((-Time.time * wiggleX) /*+ (i * 0.05f)*/) * 0.1f) * (/*(i - 7) **/ 0.03f),
                     0
                     );
 
