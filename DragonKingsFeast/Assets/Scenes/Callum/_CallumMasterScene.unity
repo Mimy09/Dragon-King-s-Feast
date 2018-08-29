@@ -852,7 +852,7 @@ MonoBehaviour:
   bone_parent: {fileID: 1319960446}
   head: {fileID: 1319956990}
   bones: []
-  lerp: 0.15
+  lerp: 0.6
   interval: 0
 --- !u!114 &772054231
 MonoBehaviour:
@@ -895,6 +895,8 @@ MonoBehaviour:
   rangedAttackSpeed: 10
   attackCoolDownSpeed: 1
   projectileLiveTime: 5
+  attackBoostTime: 0
+  speedBoostTime: 0
 --- !u!54 &772054233
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1107,6 +1107,9 @@ MonoBehaviour:
   range: 10000
   rangedAttackSpeed: 3
   attackCoolDownSpeed: 0
+  projectileLiveTime: 0
+  attackBoostTime: 0
+  speedBoostTime: 0
 --- !u!54 &772054233
 Rigidbody:
   m_ObjectHideFlags: 0
