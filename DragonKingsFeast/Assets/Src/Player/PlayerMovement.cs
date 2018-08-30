@@ -31,13 +31,16 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject neck;
     public float constraint;
 
-    // Use this for initialization
-    void Start () {
-        startPos = transform.position;
-        
+    [ReadOnly]
+    private float inverse;
 
-	}
-	
+    // Use this for initialization
+    void Start() {
+        startPos = transform.position;
+        inverse = 1;
+
+    }
+
     void UpdateNeckBone() {
         Quaternion r = neck.transform.rotation;
         Vector3 e = r.eulerAngles;
@@ -46,17 +49,17 @@ public class PlayerMovement : MonoBehaviour {
         e.y = -90 + (velocity.x * constraint);
         e.z = velocity.y * constraint;
 
-        r.eulerAngles =  e;
+        r.eulerAngles = e;
         neck.transform.rotation = r;
 
         Vector3 t = neck.transform.localPosition;
-        t.x += Mathf.Sin(-Time.time)  * 0.002f - t.x;
-        t.z += Mathf.Sin(Time.time*2) * 0.002f - t.z;
+        t.x += Mathf.Sin(-Time.time) * 0.002f - t.x;
+        t.z += Mathf.Sin(Time.time * 2) * 0.002f - t.z;
         neck.transform.localPosition = t;
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update() {
 
         UpdateNeckBone();
 
@@ -155,10 +158,10 @@ public class PlayerMovement : MonoBehaviour {
 
 
     private void ReadPhoneControls() {
-        
+
         //Get Speed based off Acelleromator
         Vector3 acelleromatorTiltValues = Quaternion.Euler(tiltAngle, 0, 0) * Input.acceleration;
-        Vector3 Speed = Vector3.Scale(new Vector3(1, 1, 0), new Vector3(acelleromatorTiltValues.x, acelleromatorTiltValues.z, acelleromatorTiltValues.y));
+        Vector3 Speed = Vector3.Scale(new Vector3(1, 1, 0), new Vector3(acelleromatorTiltValues.x, acelleromatorTiltValues.z * inverse, acelleromatorTiltValues.y));
 
         //apply speed modifiers
         Speed.x *= axisSpeedMultiplyer.x;
@@ -166,5 +169,23 @@ public class PlayerMovement : MonoBehaviour {
 
         //apply the speed to the velocity
         velocity = (Speed);
+    }
+
+    public void InverseTilt() {
+        if (inverse == 1) {
+            inverse = -1;
+        }
+        else {
+            inverse = 1;
+        }
+    }
+
+    public void SetTilt() {
+        int holder = (int)(Input.acceleration.z * 90);
+        //holder *= -1;
+
+        tiltAngle = holder;
+
+        Debug.Log(Input.acceleration.z);
     }
 }
