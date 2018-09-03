@@ -1160,7 +1160,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 150
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1288,7 +1288,7 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   tiltAngle: -55
   neck: {fileID: 1079998681}
-  constraint: 15
+  constraint: 30
 --- !u!114 &772054232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,7 +1305,11 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 219979218}
   damage: 10000
   range: 10000
+<<<<<<< Updated upstream
   rangedAttackSpeed: 9
+=======
+  rangedAttackSpeed: 10
+>>>>>>> Stashed changes
   attackCoolDownSpeed: 1
   projectileLiveTime: 5
   attackBoostTime: 0
@@ -2393,10 +2397,10 @@ MonoBehaviour:
   level1LoadDistance: 0
   level1UnloadDistance: 200
   level2ShowGismoz: 0
-  level2LoadDistance: 90
+  level2LoadDistance: 200
   level2UnloadDistance: 400
   level3ShowGismoz: 0
-  level3LoadDistance: 291
+  level3LoadDistance: 400
   level3UnloadDistance: 600
 --- !u!114 &1575733676
 MonoBehaviour:
@@ -2701,10 +2705,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivotPoint: {fileID: 768648968}
-  _V_CW_Bend_X: -10
+  _V_CW_Bend_X: -40
   _V_CW_Bend_Y: 0
   _V_CW_Bend_Z: 0
-  _V_CW_Bias_X: 30
+  _V_CW_Bias_X: 45
   _V_CW_Bias_Y: 0
   _V_CW_Bias_Z: 0
   disableInEditor: 1
