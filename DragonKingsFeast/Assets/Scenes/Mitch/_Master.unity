@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5141124, g: 0.51990426, b: 0.56847703, a: 1}
+  m_IndirectSpecularColor: {r: 0.51358247, g: 0.5200253, b: 0.56882155, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1470,6 +1470,7 @@ MonoBehaviour:
   tiltAngle: -55
   neck: {fileID: 167781789}
   constraint: 30
+  boostSpeed: 0
 --- !u!114 &772054232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1489,8 +1490,10 @@ MonoBehaviour:
   rangedAttackSpeed: 10
   attackCoolDownSpeed: 1
   projectileLiveTime: 5
-  attackBoostTime: 0
-  speedBoostTime: 0
+  attackBoostTime: 5
+  boostDamage: 3
+  speedBoostTime: 5
+  speedBoost: 3
 --- !u!54 &772054233
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2573,7 +2576,7 @@ MonoBehaviour:
   lvl_1_GhostSpawnRate: 100
   lvl_1_WitchSpawnRate: 0
   lvl_1_StormSpawnRate: 50
-  lvl_1_PhoenixSpawnRate: 0
+  lvl_1_PhoenixSpawnRate: 234243
   lvl_2_GhostSpawnRate: 25
   lvl_2_WitchSpawnRate: 75
   lvl_2_StormSpawnRate: 50

@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
             foreach (AudioClip key in fadeTable.Keys) {
                 fadeTable[key].Update();
                 if (fadeTable[key].IsFadeComplete()) {
-                    Debug.Log("removing fade");
+                    //Debug.Log("removing fade");
                     fadeTable.Remove(key);
                 }
             }
@@ -90,7 +90,7 @@ public class AudioManager : MonoBehaviour
     }
     void FadeClip(AudioSource source, AudioClip clip, float speed)
     {
-        Debug.Log(speed < 0 ? "[Fade] adding fadeOut" : "[Fade] adding fadeIn");
+        //Debug.Log(speed < 0 ? "[Fade] adding fadeOut" : "[Fade] adding fadeIn");
         if (!musicClips.Contains(clip) && !soundClips.Contains(clip)) return;
         FadeInformation info = new FadeInformation();
         info.source = source;

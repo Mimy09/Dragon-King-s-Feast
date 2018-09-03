@@ -31,14 +31,19 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject neck;
     public float constraint;
 
+    public float boostSpeed;
+
     [ReadOnly]
     private float inverse;
+
+    private Player player;
 
     // Use this for initialization
     void Start() {
         startPos = transform.position;
-        inverse = 1;
+        inverse = -1;
 
+        player = GameManager.player;
     }
 
     void UpdateNeckBone() {
@@ -74,6 +79,11 @@ public class PlayerMovement : MonoBehaviour {
         SpeedScale();
 
         velocity.z += forwardSpeed;
+
+        Vector3 holder = ((velocity * Time.deltaTime) * moveSpeed);
+        if (player.speedBoostTimer > player.speedBoostTime) {
+            holder *= player.speedBoost;
+        }
 
         //GetComponent<Rigidbody>().AddForce(velocity * moveSpeed);
         transform.Translate((velocity * Time.deltaTime) * moveSpeed);

@@ -30,10 +30,18 @@ public class Player : MonoBehaviour {
     public float projectileLiveTime;
     
     public float attackBoostTime;
+    public float boostDamage;
     private float m_attackBoostTimer;
 
     public float speedBoostTime;
     private float m_speedBoostTimer;
+    public float speedBoost;
+
+    public float speedBoostTimer {
+        get {
+            return m_speedBoostTimer;
+        }
+    }
 
     private bool m_sheild;
 
@@ -83,6 +91,8 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         attackTimer += Time.deltaTime;
+        m_attackBoostTimer += Time.deltaTime;
+        m_speedBoostTimer += Time.deltaTime;
 
     #if UNITY_STANDALONE_WIN || UNITY_EDITOR
         if (Input.GetMouseButtonDown(0)) {
@@ -126,7 +136,7 @@ public class Player : MonoBehaviour {
             if (dist <= range) {
                 GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
                 go.transform.position = projectileSpawnPoint.position;
-                go.GetComponent<Projectile>().SetUp(E.transform, damage, true, rangedAttackSpeed + pm.forwardSpeed, projectileLiveTime);
+                go.GetComponent<Projectile>().SetUp(E.transform, m_attackBoostTimer < attackBoostTime ? damage + boostDamage : damage, true, rangedAttackSpeed + pm.forwardSpeed, projectileLiveTime);
                 attackTimer = 0;
             }
         }

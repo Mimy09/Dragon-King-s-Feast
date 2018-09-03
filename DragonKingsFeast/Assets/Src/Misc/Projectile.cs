@@ -36,11 +36,12 @@ public class Projectile : MonoBehaviour {
         GameManager.instance.GetObjectPool().AddProjectileToPool(this);
     }
 
-    public void SetUp(Vector3 _target, float _damage, float _forwardSpeed, float _liveTime) {
+    public void SetUp(Transform _target, float _damage, float _forwardSpeed, float _liveTime) {
         damage = _damage;
         playerAttack = false;
         forwardSpeed = _forwardSpeed;
-        m_target = _target;
+        m_enemy = _target;
+        m_target = _target.transform.position;
         transform.LookAt(_target);
 
         m_liveTime = _liveTime;
@@ -72,6 +73,12 @@ public class Projectile : MonoBehaviour {
     private void Move() {
         if (playerAttack) {
             if (transform.position.z < m_enemy.transform.position.z) {
+                m_target = Vector3.Lerp(m_target, m_enemy.transform.position, 0.1f);
+                transform.LookAt(m_target);
+            }
+        }
+        else {
+            if (transform.position.z > m_enemy.transform.position.z) {
                 m_target = Vector3.Lerp(m_target, m_enemy.transform.position, 0.1f);
                 transform.LookAt(m_target);
             }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -337,7 +337,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 147085944}
-  m_LocalRotation: {x: 0.113358594, y: -0, z: -0, w: 0.9935541}
+  m_LocalRotation: {x: 0.1133586, y: -0, z: -0, w: 0.9935542}
   m_LocalPosition: {x: 11.21, y: -17.31, z: 22.75998}
   m_LocalScale: {x: 15.167581, y: 15.16757, z: 15.167568}
   m_Children: []
@@ -1167,7 +1167,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2e27add64f909f94e907231a604888c8, type: 2}
+  - {fileID: 2100000, guid: 0a5df9e71045b9b4cb1c8934a3bb1cb4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2106,7 +2106,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2e27add64f909f94e907231a604888c8, type: 2}
+  - {fileID: 2100000, guid: 0a5df9e71045b9b4cb1c8934a3bb1cb4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2193,7 +2193,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 978285074}
-  m_LocalRotation: {x: -0.10042528, y: -0, z: -0, w: 0.9949446}
+  m_LocalRotation: {x: -0.10042529, y: -0, z: -0, w: 0.99494463}
   m_LocalPosition: {x: 38, y: 52.199997, z: 50.69998}
   m_LocalScale: {x: 30.597755, y: 30.597803, z: 30.597795}
   m_Children: []
@@ -2264,7 +2264,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 998298039}
-  m_LocalRotation: {x: -0, y: 0.11988473, z: -0, w: 0.9927878}
+  m_LocalRotation: {x: -0, y: 0.11988474, z: -0, w: 0.99278784}
   m_LocalPosition: {x: 68.3, y: -14.7, z: -26.600006}
   m_LocalScale: {x: -39.97856, y: 39.97858, z: 39.978573}
   m_Children: []

@@ -61,7 +61,7 @@ public class RangedAttack : EnemyActions {
             if (dist <= attackRange) {
                 GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
                 go.transform.position = owner.transform.position + (owner.transform.forward * 3);
-                go.GetComponent<Projectile>().SetUp(player.transform.position, damage, rangedAttackSpeed + owner.forwardSpeed, projectileLiveTime);
+                go.GetComponent<Projectile>().SetUp(player.transform, damage, rangedAttackSpeed + owner.forwardSpeed, projectileLiveTime);
                 attackTimer = 0;
                 
                 return true;
