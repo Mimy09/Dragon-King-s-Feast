@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1842,6 +1842,41 @@ Prefab:
       propertyPath: neck
       value: 
       objectReference: {fileID: 418599498}
+    - target: {fileID: 137730159326050464, guid: 67cb18afad93c1343919a2d6037273cf,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c34e46a27e27d7e44875b67eb1737d01, type: 2}
+    - target: {fileID: 137901443759879800, guid: 67cb18afad93c1343919a2d6037273cf,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c34e46a27e27d7e44875b67eb1737d01, type: 2}
+    - target: {fileID: 137807028588033560, guid: 67cb18afad93c1343919a2d6037273cf,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c34e46a27e27d7e44875b67eb1737d01, type: 2}
+    - target: {fileID: 137414965367329444, guid: 67cb18afad93c1343919a2d6037273cf,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c34e46a27e27d7e44875b67eb1737d01, type: 2}
+    - target: {fileID: 137615129678543398, guid: 67cb18afad93c1343919a2d6037273cf,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c34e46a27e27d7e44875b67eb1737d01, type: 2}
+    - target: {fileID: 137033529725340374, guid: 67cb18afad93c1343919a2d6037273cf,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c34e46a27e27d7e44875b67eb1737d01, type: 2}
+    - target: {fileID: 137945494740778332, guid: 67cb18afad93c1343919a2d6037273cf,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c34e46a27e27d7e44875b67eb1737d01, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67cb18afad93c1343919a2d6037273cf, type: 2}
   m_IsPrefabParent: 0
@@ -2557,6 +2592,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f05820af109484abf2ce0021e5a45f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLoaded_level1: 0
+  isLoaded_level2: 0
+  isLoaded_level3: 0
   loaded_percent: 0
   loaded: 0
   level1ShowGismoz: 0
@@ -2592,6 +2630,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDistance: 30
   spawnOffset: 10
+  lvl_1_GhostSpawnRate: 100
+  lvl_1_WitchSpawnRate: 100
+  lvl_1_StormSpawnRate: 100
+  lvl_1_PhoenixSpawnRate: 100
+  lvl_2_GhostSpawnRate: 100
+  lvl_2_WitchSpawnRate: 100
+  lvl_2_StormSpawnRate: 100
+  lvl_2_PhoenixSpawnRate: 100
+  lvl_3_GhostSpawnRate: 100
+  lvl_3_WitchSpawnRate: 100
+  lvl_3_StormSpawnRate: 100
+  lvl_3_PhoenixSpawnRate: 100
   width: 0
   height: 0
   depth: 0
