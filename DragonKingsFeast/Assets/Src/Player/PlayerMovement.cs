@@ -53,8 +53,8 @@ public class PlayerMovement : MonoBehaviour {
         neck.transform.rotation = r;
 
         Vector3 t = neck.transform.localPosition;
-        t.x += Mathf.Sin(-Time.time) * 0.002f - t.x;
-        t.z += Mathf.Sin(Time.time * 2) * 0.002f - t.z;
+        t.x += Mathf.Sin(-Time.time) * 0.05f - t.x;
+        t.z += Mathf.Sin(Time.time * 2) * 0.05f - t.z;
         neck.transform.localPosition = t;
     }
 

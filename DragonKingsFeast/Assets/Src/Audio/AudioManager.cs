@@ -40,16 +40,17 @@ public class AudioManager : MonoBehaviour
     }
     void Update()
     {
-        FadeInformation.maximum = volume;
-        foreach (AudioClip key in fadeTable.Keys)
-        {
-            fadeTable[key].Update();
-            if (fadeTable[key].IsFadeComplete())
-            {
-                Debug.Log("removing fade");
-                fadeTable.Remove(key);
+        try {
+            FadeInformation.maximum = volume;
+            foreach (AudioClip key in fadeTable.Keys) {
+                fadeTable[key].Update();
+                if (fadeTable[key].IsFadeComplete()) {
+                    Debug.Log("removing fade");
+                    fadeTable.Remove(key);
+                }
             }
         }
+        catch { }
     }
     void AddClip(AudioClip clip, float volume)
     {
@@ -115,7 +116,7 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic(AudioClip clip, bool repeat) { PlayClip(clip, repeat); }
     public void PlaySound(AudioClip clip, bool repeat) { PlayClip(clip, repeat); }
     public void FadeInMusic(int index, float speed) { FadeInMusic(musicClips[index], speed); }
-    public void FadeInMusic(AudioClip clip, float speed) { FadeClip(sourceTable[clip], clip, speed); }
+    public void FadeInMusic(AudioClip clip, float speed) { try { FadeClip(sourceTable[clip], clip, speed); } catch { } }
     public void FadeOutMusic(int index, float speed) { FadeOutMusic(musicClips[index], speed); }
-    public void FadeOutMusic(AudioClip clip, float speed) { FadeClip(sourceTable[clip], clip, -speed); }
+    public void FadeOutMusic(AudioClip clip, float speed) { try { FadeClip(sourceTable[clip], clip, -speed); } catch { } }
 }

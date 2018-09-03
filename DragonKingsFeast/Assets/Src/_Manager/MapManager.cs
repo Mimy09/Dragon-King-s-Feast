@@ -10,7 +10,7 @@ public class MapManager : MonoBehaviour {
     // ---- Variables ---- //
 
     // private
-    bool isLoaded_level1, isLoaded_level2, isLoaded_level3;
+    [ReadOnly] public bool isLoaded_level1, isLoaded_level2, isLoaded_level3;
     AsyncOperation AO_level1, AO_level2, AO_level3;
 
     public float loaded_percent = 0;
