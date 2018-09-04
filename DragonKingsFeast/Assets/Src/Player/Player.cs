@@ -6,6 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class Player : MonoBehaviour {
 
+    private PlayerMovement pm;
+
+    [Header("Player Stats")]
     public int health;
 
     public int score {
@@ -14,8 +17,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public PlayerMovement pm;
-
+    [Header("Projectile Info")]
     public Transform projectileSpawnPoint;
 
     public int damage;
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour {
 
     public float projectileLiveTime;
     
+    [Header("Boost Values")]
     public float attackBoostTime;
     public float boostDamage;
     private float m_attackBoostTimer;
@@ -86,6 +89,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         attackTimer = attackCoolDownSpeed;
+        pm = GetComponent<PlayerMovement>();
 	}
 	
 	// Update is called once per frame
