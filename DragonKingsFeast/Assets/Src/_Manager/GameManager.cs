@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public static GameObject playerObject;
 
     // Managers
+    public static UnloadObjects unloadObjects;
     public static ObjectPoolManager objectPoolManager;
     public static ItemSpawnManager itemSpawnManager;
     public static AudioManager audioManager;
@@ -51,6 +52,12 @@ public class GameManager : MonoBehaviour {
         if (itemSpawnManager == null)
             itemSpawnManager = GetComponent<ItemSpawnManager>();
         return itemSpawnManager;
+    }
+
+    public UnloadObjects GetUnloadObjects() {
+        if (unloadObjects == null)
+            unloadObjects = GetComponent<UnloadObjects>();
+        return unloadObjects;
     }
 
     public PlayerCamera GetPlayerCamera() {
@@ -117,6 +124,10 @@ public class GameManager : MonoBehaviour {
             // get audio manager
             if (audioManager == null)
                 audioManager = GetComponent<AudioManager>();
+
+            // get Unload manager
+            if (unloadObjects == null)
+                unloadObjects = GetComponent<UnloadObjects>();
 
             // Set up event handler
             __event<e_GameEvents>.Raise(this, EventHandle);

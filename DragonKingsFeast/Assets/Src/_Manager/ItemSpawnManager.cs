@@ -18,7 +18,6 @@ public class ItemSpawnManager : MonoBehaviour {
     public float spawnOffset = 10;
 
     [Header("Level 1 Spawn Rate")]
-
     [LabelOverride("Ghost")] [SerializeField] public float lvl_1_GhostSpawnRate = 100;
     [LabelOverride("Witch")] [SerializeField] public float lvl_1_WitchSpawnRate = 100;
     [LabelOverride("Storm")] [SerializeField] public float lvl_1_StormSpawnRate = 100;

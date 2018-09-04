@@ -48,7 +48,7 @@ public class MapManager : MonoBehaviour {
             yield return null;
         }
         AO_level1.allowSceneActivation = true;
-        loaded_percent = AO_level1.progress * 38;
+        loaded_percent = AO_level1.progress;
 
         AO_level2 = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
         AO_level2.allowSceneActivation = false;
@@ -56,7 +56,7 @@ public class MapManager : MonoBehaviour {
             yield return null;
         }
         AO_level2.allowSceneActivation = true;
-        loaded_percent += AO_level2.progress * 38;
+        loaded_percent += AO_level2.progress;
 
         AO_level3 = SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive);
         isLoaded_level3 = true;
@@ -65,14 +65,17 @@ public class MapManager : MonoBehaviour {
             yield return null;
         }
         AO_level3.allowSceneActivation = true;
-        loaded_percent += AO_level3.progress * 38;
+        loaded_percent += AO_level3.progress;
 
-        loaded_percent = Mathf.Min(loaded_percent, 100);
-
+        loaded_percent = Mathf.CeilToInt(loaded_percent / 2.7f * 100);
         loaded = true;
     }
 
     private void Update() {
+        if (AO_level1.isDone == true && AO_level2.isDone == true && AO_level3.isDone == true) {
+            GameManager.instance.GetUnloadObjects().SetUnloadObjects();
+        }
+
         if (GameManager.playerObject != null) {
 
             // Get Player position
@@ -177,6 +180,7 @@ public class MapManager : MonoBehaviour {
             case 1:
                 // If level 1 is loaded then unload
                 if (isLoaded_level1) {
+                    GameManager.instance.GetUnloadObjects().UnloadLevel(1);
                     SceneManager.UnloadSceneAsync(1);
                     isLoaded_level1 = false;
                     GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level1, 3);
@@ -185,6 +189,7 @@ public class MapManager : MonoBehaviour {
             case 2:
                 // If level 2 is loaded then unload
                 if (isLoaded_level2) {
+                    GameManager.instance.GetUnloadObjects().UnloadLevel(2);
                     SceneManager.UnloadSceneAsync(2);
                     isLoaded_level2 = false;
                     GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level2, 3);
@@ -193,6 +198,7 @@ public class MapManager : MonoBehaviour {
             case 3:
                 // If level 3 is loaded then unload
                 if (isLoaded_level3) {
+                    GameManager.instance.GetUnloadObjects().UnloadLevel(3);
                     SceneManager.UnloadSceneAsync(3);
                     isLoaded_level3 = false;
                     GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level3, 10);
