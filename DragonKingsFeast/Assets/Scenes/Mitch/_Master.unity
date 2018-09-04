@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5141124, g: 0.51990426, b: 0.56847703, a: 1}
+  m_IndirectSpecularColor: {r: 0.51358247, g: 0.5200253, b: 0.56882155, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2571,9 +2571,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1efc9df67a2946241af7f0dbb5d4f268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDistance: 10
-  spawnOffset: 10
-  lvl_1_GhostSpawnRate: 0
+  spawnDistance: 20
+  spawnOffset: 20
+  lvl_1_GhostSpawnRate: 100
   lvl_1_WitchSpawnRate: 50
   lvl_1_StormSpawnRate: 0
   lvl_1_PhoenixSpawnRate: 50
