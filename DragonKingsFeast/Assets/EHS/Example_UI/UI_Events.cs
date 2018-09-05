@@ -3,5 +3,7 @@
     GAME,
     PAUSE,
     OPTIONS,
+    LOADING,
+    EXIT,
     NULL,
 }

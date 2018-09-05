@@ -5,15 +5,10 @@ using UnityEngine.UI;
 
 public class Loader : MonoBehaviour {
 
-    public Text percent;
+    private Text percent;
 
-    private void Awake() {
-        Time.timeScale = 0;
-    }
-
-    public void StratGame() {
-        Time.timeScale = 1;
-        Destroy(gameObject);
+    private void Start() {
+        percent = GetComponent<Text>();
     }
 
     void Update () {

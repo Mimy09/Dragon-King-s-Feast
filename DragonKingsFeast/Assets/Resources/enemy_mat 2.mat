@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: enemy_mat 2
   m_Shader: {fileID: 4800000, guid: 9aa93289d4310914ab6adfa612cec257, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: V_CW_FOG
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -113,7 +113,7 @@ Material:
     - _V_CW_Specular_Intensity: 1
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.33542386, g: 0.35259807, b: 0.6911765, a: 1}
+    - _Color: {r: 0.8602941, g: 0.5287405, b: 0.22772492, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _V_CW_MainTex_Scroll: {r: 0, g: 0, b: 0, a: 0}
     - _V_CW_ReflectColor: {r: 1, g: 1, b: 1, a: 1}

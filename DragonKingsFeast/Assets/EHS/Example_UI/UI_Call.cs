@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class UI_Call : EHSEditor {
+public class UI_Call : MonoBehaviour {
     public e_UI active_type;
 
     public void Call () {

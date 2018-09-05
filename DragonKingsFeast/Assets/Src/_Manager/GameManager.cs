@@ -96,6 +96,8 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        Time.timeScale = 0;
+
         // If was instanced
         if (instance != null) {
             // Initialize manager
@@ -131,6 +133,9 @@ public class GameManager : MonoBehaviour {
 
             // Set up event handler
             __event<e_GameEvents>.Raise(this, EventHandle);
+
+            // Make menu show up
+            __event<e_UI>.InvokeEvent(this, e_UI.MENU);
 
             // Set timeout to never
             Screen.sleepTimeout = SleepTimeout.NeverSleep;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class UI_Type : EHSEditor {
+public class UI_Type : MonoBehaviour {
     public e_UI type;
 
     private void Awake () {
@@ -8,6 +8,13 @@ public class UI_Type : EHSEditor {
     }
 
     private void EventHandle (object s, __eArg<e_UI> e) {
+
+        if (e.arg == e_UI.LOADING && type == e_UI.LOADING)
+            GameManager.instance.GetMapManager().StartLoad();
+
+        if (e.arg == e_UI.EXIT && type == e_UI.EXIT)
+            Application.Quit();
+
         if (e.arg == type) {
             for (int i = 0; i < transform.childCount; i++)
                 transform.GetChild(i).gameObject.SetActive(true);
