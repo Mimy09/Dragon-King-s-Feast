@@ -402,7 +402,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 772054225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.7, z: 355.2}
+  m_LocalPosition: {x: 0, y: 4.7, z: 414.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 768648968}
@@ -423,6 +423,8 @@ MonoBehaviour:
   bone_parent: {fileID: 0}
   head: {fileID: 0}
   bones: []
+  wiggleX: 0
+  wiggleY: 0
   lerp: 0
   interval: 0
 --- !u!114 &772054231
@@ -445,6 +447,9 @@ MonoBehaviour:
   axisSpeedMultiplyer: {x: 2, y: 2}
   startPos: {x: 0, y: 0, z: 0}
   tiltAngle: 0
+  neck: {fileID: 0}
+  constraint: 0
+  boostSpeed: 0
 --- !u!114 &772054232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +462,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  pm: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
   damage: 0
   range: 0
@@ -465,7 +469,9 @@ MonoBehaviour:
   attackCoolDownSpeed: 0
   projectileLiveTime: 0
   attackBoostTime: 0
+  boostDamage: 0
   speedBoostTime: 0
+  speedBoost: 0
 --- !u!1 &1575733672
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +530,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loaded_percent: 0
+  isLoaded_level1: 0
+  isLoaded_level2: 0
+  isLoaded_level3: 0
   loaded: 0
   level1ShowGismoz: 0
   level1LoadDistance: -100
@@ -558,6 +567,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDistance: 10
   spawnOffset: 10
+  lvl_1_GhostSpawnRate: 100
+  lvl_1_WitchSpawnRate: 100
+  lvl_1_StormSpawnRate: 100
+  lvl_1_PhoenixSpawnRate: 100
+  lvl_2_GhostSpawnRate: 100
+  lvl_2_WitchSpawnRate: 100
+  lvl_2_StormSpawnRate: 100
+  lvl_2_PhoenixSpawnRate: 100
+  lvl_3_GhostSpawnRate: 100
+  lvl_3_WitchSpawnRate: 100
+  lvl_3_StormSpawnRate: 100
+  lvl_3_PhoenixSpawnRate: 100
   width: 0
   height: 0
   depth: 0
