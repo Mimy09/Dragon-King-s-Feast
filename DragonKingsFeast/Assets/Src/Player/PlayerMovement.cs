@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour {
 
     public float boostSpeed;
 
+    public AnimationCurve aniCurve;
+    public Vector2 num;
+
     [ReadOnly]
     private float inverse;
 
@@ -107,7 +110,9 @@ public class PlayerMovement : MonoBehaviour {
                 scale = (horizontalBounds - pos.x);
 
                 if (scale < slowDownOffSet) {
-                    velocity.x *= 1 - (slowDownOffSet - scale) / slowDownOffSet;
+                    velocity.x *= aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+                    /////////////////
+                    num.x = aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
                 }
             }
         }
@@ -116,7 +121,9 @@ public class PlayerMovement : MonoBehaviour {
             if (pos.x < 0) {
                 scale = (horizontalBounds + pos.x);
                 if (scale < slowDownOffSet) {
-                    velocity.x *= 1 - (slowDownOffSet - scale) / slowDownOffSet;
+                    velocity.x *= aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+                    //////////////////
+                    num.x = aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
                 }
             }
         }
@@ -126,7 +133,9 @@ public class PlayerMovement : MonoBehaviour {
                 scale = (verticalBounds - pos.y);
 
                 if (scale < slowDownOffSet) {
-                    velocity.y *= 1 - (slowDownOffSet - scale) / slowDownOffSet;
+                    velocity.y *= aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+                    //////////////////
+                    num.y = aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
                 }
             }
         }
@@ -136,35 +145,45 @@ public class PlayerMovement : MonoBehaviour {
                 scale = (verticalBounds + pos.y);
 
                 if (scale < slowDownOffSet) {
-                    velocity.y *= 1 - (slowDownOffSet - scale) / slowDownOffSet;
+                    velocity.y *= aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+                    //////////////////
+                    num.y = aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
                 }
             }
         }
+        
     }
 
     public void ReadKeyBoardControls() {
 
-        Vector3 acceleration = new Vector3(0, 0, 0);
+        Vector3 acceleration = new Vector3(velocity.x, velocity.y, 0);
 
         //Right
         if (Input.GetKey(KeyCode.D)) {
-            acceleration.x += 1 * axisSpeedMultiplyer.x;
+            if (acceleration.x < 2)
+                acceleration.x += 1 * axisSpeedMultiplyer.x * Time.deltaTime;
         }
 
         //Left
         if (Input.GetKey(KeyCode.A)) {
-            acceleration.x -= 1 * axisSpeedMultiplyer.x;
+            if (acceleration.x > -2)
+                acceleration.x -= 1 * axisSpeedMultiplyer.x * Time.deltaTime;
         }
 
         //Up
         if (Input.GetKey(KeyCode.W)) {
-            acceleration.y += 1 * axisSpeedMultiplyer.y;
+            if (acceleration.y < 2)
+                acceleration.y += 1 * axisSpeedMultiplyer.y * Time.deltaTime;
         }
 
         //Down
         if (Input.GetKey(KeyCode.S)) {
-            acceleration.y -= 1 * axisSpeedMultiplyer.y;
+            if (acceleration.y > -2)
+                acceleration.y -= 1 * axisSpeedMultiplyer.y * Time.deltaTime;
         }
+
+        acceleration = Vector3.Lerp(acceleration, new Vector3(0,0,0), Time.deltaTime);
+
 
         velocity = (acceleration);
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5141124, g: 0.51990426, b: 0.56847703, a: 1}
+  m_IndirectSpecularColor: {r: 0.48100787, g: 0.48981595, b: 0.6401509, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1855,7 +1855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalBounds: 10
   verticalBounds: 10
-  slowDownOffSet: 1
+  slowDownOffSet: 5
   forwardSpeed: 2
   moveSpeed: 3
   velocity: {x: 0, y: 0, z: 0}
@@ -1865,6 +1865,25 @@ MonoBehaviour:
   neck: {fileID: 167781789}
   constraint: 30
   boostSpeed: 0
+  aniCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  num: {x: 0, y: 0}
 --- !u!114 &772054232
 MonoBehaviour:
   m_ObjectHideFlags: 0
