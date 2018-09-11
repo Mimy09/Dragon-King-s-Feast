@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Rock_2
+  m_Name: Wall3
   m_Shader: {fileID: 4800000, guid: f7742757fa2e3d34f860c2a3539f739e, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: f25972b163d844143b14b3f0db9801e7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 096abe3d0acd6c04c87c2c2d9688473b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,11 +39,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ba92201f73c99384bb38d2a2b4bca5ef, type: 3}
+        m_Texture: {fileID: 2800000, guid: e7286d56a4a9ee9469b9e1e828f11f76, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: bd9859f0236471d41808742ae2de1724, type: 3}
+        m_Texture: {fileID: 2800000, guid: 53df6a7a31dce424088ab003bbd8696f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
