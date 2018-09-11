@@ -11,7 +11,9 @@ public class Ghost : Enemy {
         meleeAttack.Reset();
     }
 
-    void Awake() {
+    protected override void Awake() {
+        base.Awake();
+
         player = GameManager.player;
         meleeAttack.SetUp(player, this);
         m_enemyType = e_EnemyType.Ghost;
@@ -23,6 +25,10 @@ public class Ghost : Enemy {
 
     public void Update() {
         MoveToPlayer();
+
+        //if (animat.GetBool("Attack") == true) {
+        //    animat.SetBool("Attack", false);
+        //}
     }
 
     private void MoveToPlayer() {
@@ -37,6 +43,7 @@ public class Ghost : Enemy {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
+            animat.SetBool("Attack", true);
             meleeAttack.AttackPlayer();
         }
     }
