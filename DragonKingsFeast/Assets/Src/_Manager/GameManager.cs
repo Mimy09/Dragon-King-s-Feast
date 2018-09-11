@@ -152,12 +152,12 @@ public class GameManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- Audio Init---- //
     private void InitAudio() {
-        if (audioManager) {
-            audioManager.volume = 0.5f;
-            audioManager.AddMusic(Helper.Audio_Music_Level1);
-            audioManager.PlayMusic(Helper.Audio_Music_Level1, true);
-            audioManager.FadeInMusic(Helper.Audio_Music_Level1, 0.1f);
-        }
+        //if (audioManager) {
+        //    audioManager.volume = 0.5f;
+        //    audioManager.AddMusic(Helper.Audio_Music_Level1);
+        //    audioManager.PlayMusic(Helper.Audio_Music_Level1, true);
+        //    audioManager.FadeInMusic(Helper.Audio_Music_Level1, 0.1f);
+        //}
     }
 
 
