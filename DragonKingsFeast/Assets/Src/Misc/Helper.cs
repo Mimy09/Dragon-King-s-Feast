@@ -55,6 +55,8 @@ public class Helper {
     public static AudioClip Audio_Music_Level1                = Resources.Load("Sounds\\Music\\DKF01") as AudioClip;
     public static AudioClip Audio_Music_Level2                = Resources.Load("Sounds\\Music\\DKF02") as AudioClip;
     public static AudioClip Audio_Music_Level3                = Resources.Load("Sounds\\Music\\DKF03") as AudioClip;
+    public static AudioClip Audio_Music_Level                 = Resources.Load("Sounds\\Music\\LevelMusic") as AudioClip;
+
     public static AudioClip Audio_Music_BossFight             = Resources.Load("Sounds\\Music\\DKF04") as AudioClip;
     public static AudioClip Audio_Music_Menu                  = Resources.Load("Sounds\\Music\\Menu") as AudioClip;
 
@@ -63,4 +65,5 @@ public class Helper {
     public static AudioClip Audio_Pickup_2                    = Resources.Load("Sounds\\Music\\Metalics05") as AudioClip;
     public static AudioClip Audio_Pickup_3                    = Resources.Load("Sounds\\Music\\Metalics07") as AudioClip;
     public static AudioClip Audio_Pickup_4                    = Resources.Load("Sounds\\Music\\Metalics08") as AudioClip;
+
 }

@@ -37,6 +37,13 @@ public class MapManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- Functions ---- //
 
+    private void Start() {
+        GameManager.instance.GetAudioManager().volume = 0.5f;
+        GameManager.instance.GetAudioManager().AddMusic(Helper.Audio_Music_Level);
+        GameManager.instance.GetAudioManager().PlayMusic(Helper.Audio_Music_Level, true);
+        GameManager.instance.GetAudioManager().FadeInMusic(Helper.Audio_Music_Level, 3);
+    }
+
     public void StartLoad() {
         Application.backgroundLoadingPriority = ThreadPriority.Normal;
         StartCoroutine(LoadAllInBackground());
@@ -152,30 +159,30 @@ public class MapManager : MonoBehaviour {
                 // If level 1 is not loaded then load it in
                 if (!isLoaded_level1) {
                     isLoaded_level1 = true;
-                    GameManager.instance.GetAudioManager().volume = 0.5f;
-                    GameManager.instance.GetAudioManager().AddMusic(Helper.Audio_Music_Level1);
-                    GameManager.instance.GetAudioManager().PlayMusic(Helper.Audio_Music_Level1, true);
-                    GameManager.instance.GetAudioManager().FadeInMusic(Helper.Audio_Music_Level1, 3);
+                    //GameManager.instance.GetAudioManager().volume = 0.5f;
+                    //GameManager.instance.GetAudioManager().AddMusic(Helper.Audio_Music_Level1);
+                    //GameManager.instance.GetAudioManager().PlayMusic(Helper.Audio_Music_Level1, true);
+                    //GameManager.instance.GetAudioManager().FadeInMusic(Helper.Audio_Music_Level1, 3);
                 }
                 break;
             case 2:
                 // If level 2 is not loaded then load it in
                 if (!isLoaded_level2) {
                     isLoaded_level2 = true;
-                    GameManager.instance.GetAudioManager().volume = 0.5f;
-                    GameManager.instance.GetAudioManager().AddMusic(Helper.Audio_Music_Level2);
-                    GameManager.instance.GetAudioManager().PlayMusic(Helper.Audio_Music_Level2, true);
-                    GameManager.instance.GetAudioManager().FadeInMusic(Helper.Audio_Music_Level2, 3);
+                    //GameManager.instance.GetAudioManager().volume = 0.5f;
+                    //GameManager.instance.GetAudioManager().AddMusic(Helper.Audio_Music_Level2);
+                    //GameManager.instance.GetAudioManager().PlayMusic(Helper.Audio_Music_Level2, true);
+                    //GameManager.instance.GetAudioManager().FadeInMusic(Helper.Audio_Music_Level2, 3);
                 }
                 break;
             case 3:
                 // If level 3 is not loaded then load it in
                 if (!isLoaded_level3) {
                     isLoaded_level3 = true;
-                    GameManager.instance.GetAudioManager().volume = 0.5f;
-                    GameManager.instance.GetAudioManager().AddMusic(Helper.Audio_Music_Level3);
-                    GameManager.instance.GetAudioManager().PlayMusic(Helper.Audio_Music_Level3, true);
-                    GameManager.instance.GetAudioManager().FadeInMusic(Helper.Audio_Music_Level3, 3);
+                    //GameManager.instance.GetAudioManager().volume = 0.5f;
+                    //GameManager.instance.GetAudioManager().AddMusic(Helper.Audio_Music_Level3);
+                    //GameManager.instance.GetAudioManager().PlayMusic(Helper.Audio_Music_Level3, true);
+                    //GameManager.instance.GetAudioManager().FadeInMusic(Helper.Audio_Music_Level3, 3);
                 }
                 break;
         }
@@ -188,7 +195,7 @@ public class MapManager : MonoBehaviour {
                     GameManager.instance.GetUnloadObjects().UnloadLevel(1);
                     SceneManager.UnloadSceneAsync(1);
                     isLoaded_level1 = false;
-                    GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level1, 3);
+                    //GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level1, 3);
                 }
                 break;
             case 2:
@@ -197,7 +204,7 @@ public class MapManager : MonoBehaviour {
                     GameManager.instance.GetUnloadObjects().UnloadLevel(2);
                     SceneManager.UnloadSceneAsync(2);
                     isLoaded_level2 = false;
-                    GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level2, 3);
+                    //GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level2, 3);
                 }
                 break;
             case 3:
@@ -206,7 +213,7 @@ public class MapManager : MonoBehaviour {
                     GameManager.instance.GetUnloadObjects().UnloadLevel(3);
                     SceneManager.UnloadSceneAsync(3);
                     isLoaded_level3 = false;
-                    GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level3, 10);
+                    //GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level3, 10);
                 }
                 break;
         }
