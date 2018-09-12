@@ -41,6 +41,10 @@ public class PlayerMovement : MonoBehaviour {
 
     private Player player;
 
+    public void ResetPlayerPos() {
+        transform.position = startPos;
+    }
+
     // Use this for initialization
     void Start() {
         startPos = transform.position;

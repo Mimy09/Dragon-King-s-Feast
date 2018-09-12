@@ -99,10 +99,7 @@ public class MapManager : MonoBehaviour {
                 // Load level
                 if (pos.z <= level1UnloadDistance) {
                     LoadLevel(1);
-                }
-
-                // Unload levels
-                else {
+                } else { // Unload levels
                     UnloadLevel(1);
                 }
             } else {
@@ -115,10 +112,7 @@ public class MapManager : MonoBehaviour {
                 // Load level
                 if (pos.z <= level2UnloadDistance) {
                     LoadLevel(2);
-                }
-
-                // Unload levels
-                else {
+                } else { // Unload levels
                     UnloadLevel(2);
                 }
             } else {
@@ -131,14 +125,9 @@ public class MapManager : MonoBehaviour {
                 // Load level
                 if (pos.z <= level3UnloadDistance) {
                     LoadLevel(3);
-                }
-
-                // Unload levels
-                else {
+                } else { // Unload levels
                     UnloadLevel(3);
                 }
-            } else {
-                UnloadLevel(3);
             }
         }
     }
@@ -187,6 +176,17 @@ public class MapManager : MonoBehaviour {
                 break;
         }
     }
+
+    void UnloadAll() {
+        isLoaded_level1 = false;
+        isLoaded_level2 = false;
+        isLoaded_level3 = false;
+        loaded = false;
+        AO_level1 = null;
+        AO_level2 = null;
+        AO_level3 = null;
+    }
+
     void UnloadLevel(int level) {
         switch (level) {
             case 1:
@@ -214,6 +214,12 @@ public class MapManager : MonoBehaviour {
                     SceneManager.UnloadSceneAsync(3);
                     isLoaded_level3 = false;
                     //GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level3, 10);
+
+                    UnloadAll();
+
+                    GameManager.instance.GetPlayerMovement().ResetPlayerPos();
+                    Time.timeScale = 0;
+                    __event<e_UI>.InvokeEvent(this, e_UI.MENU);
                 }
                 break;
         }
