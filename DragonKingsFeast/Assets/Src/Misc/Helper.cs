@@ -32,18 +32,29 @@ public class Helper {
 
     // Audio - character
     public static AudioClip Audio_Character_BigDragonGrowl    = Resources.Load("Sounds\\Characters\\BigDragonGrowl") as AudioClip;
+	public static AudioClip Audio_Character_DragonFireball    = Resources.Load("Sounds\\Characters\\DragonFireball") as AudioClip;
+	public static AudioClip Audio_Character_BigDragonFireball    = Resources.Load("Sounds\\Characters\\BigDragonFireball") as AudioClip;
     public static AudioClip Audio_Character_BlueWhale         = Resources.Load("Sounds\\Characters\\bluewhale") as AudioClip;
     public static AudioClip Audio_Character_Brazire           = Resources.Load("Sounds\\Characters\\Brazire") as AudioClip;
     public static AudioClip Audio_Character_DragonRoar        = Resources.Load("Sounds\\Characters\\DragonRoar") as AudioClip;
     public static AudioClip Audio_Character_Explosion         = Resources.Load("Sounds\\Characters\\explosion") as AudioClip;
     public static AudioClip Audio_Character_ExplosionLarge    = Resources.Load("Sounds\\Characters\\explosionLarge") as AudioClip;
+	public static AudioClip Audio_Character_FireImpact 	    = Resources.Load("Sounds\\Characters\\FireImpact") as AudioClip;
     public static AudioClip Audio_Character_FemaleScream      = Resources.Load("Sounds\\Characters\\FemaleScream") as AudioClip;
-    public static AudioClip Audio_Character_Lightning         = Resources.Load("Sounds\\Characters\\lightning") as AudioClip;
+    public static AudioClip Audio_Character_Lightning         = Resources.Load("Sounds\\Characters\\Thunder") as AudioClip;
     public static AudioClip Audio_Character_MonsterAttack     = Resources.Load("Sounds\\Characters\\MonsterAttack") as AudioClip;
     public static AudioClip Audio_Character_PainDeath         = Resources.Load("Sounds\\Characters\\PainDeath") as AudioClip;
     public static AudioClip Audio_Character_RoarGrowl         = Resources.Load("Sounds\\Characters\\RoarGrowl") as AudioClip;
     public static AudioClip Audio_Character_Spell             = Resources.Load("Sounds\\Characters\\Spell") as AudioClip;
     public static AudioClip Audio_Character_WetImpact         = Resources.Load("Sounds\\Characters\\WetImpact") as AudioClip;
+	public static AudioClip Audio_BDBreathe					   = Resources.Load("Sounds\\Characters\\BDBreathe") as AudioClip;
+	public static AudioClip Audio_Character_BDDeepHurt   	= Resources.Load("Sounds\\Characters\\BDDeepHurt") as AudioClip;
+	public static AudioClip Audio_Character_BDShortGrowl    = Resources.Load("Sounds\\Characters\\BDShortGrowl") as AudioClip;
+	public static AudioClip Audio_Character_BDTired		    = Resources.Load("Sounds\\Characters\\BDTired") as AudioClip;
+	public static AudioClip Audio_Character_DragonGrr  		  = Resources.Load("Sounds\\Characters\\DragonGrr") as AudioClip;
+	public static AudioClip Audio_Character_SwingEffect    = Resources.Load("Sounds\\Characters\\SwingEffect") as AudioClip;
+	public static AudioClip Audio_Character_SwingHit	    = Resources.Load("Sounds\\Characters\\SwingHit") as AudioClip;
+	public static AudioClip Audio_Character_TimeWarp    = Resources.Load("Sounds\\Characters\\TimeWarp") as AudioClip;
 
     // Audio - Environment
     public static AudioClip Audio_Environment_Beach           = Resources.Load("Sounds\\Environment\\beach") as AudioClip;
@@ -65,5 +76,6 @@ public class Helper {
     public static AudioClip Audio_Pickup_2                    = Resources.Load("Sounds\\Music\\Metalics05") as AudioClip;
     public static AudioClip Audio_Pickup_3                    = Resources.Load("Sounds\\Music\\Metalics07") as AudioClip;
     public static AudioClip Audio_Pickup_4                    = Resources.Load("Sounds\\Music\\Metalics08") as AudioClip;
+	public static AudioClip CoinCollection                    = Resources.Load("Sounds\\Pickups\\CoinCollection") as AudioClip;
 
 }
