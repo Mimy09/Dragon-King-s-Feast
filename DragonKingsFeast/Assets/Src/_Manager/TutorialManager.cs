@@ -35,6 +35,7 @@ public class TutorialManager : MonoBehaviour {
             __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.TILT);
 
             if (Input.GetMouseButtonDown(1)) {
+                __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.NULL);
                 LearnToFly = false;
                 CloudAhead = true;
             }
@@ -50,6 +51,7 @@ public class TutorialManager : MonoBehaviour {
             __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.TAP);
 
             if (Input.GetMouseButtonDown(1)) {
+                __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.NULL);
                 CloudAhead = false;
             }
 
