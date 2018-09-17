@@ -47,6 +47,9 @@ public class MapManager : MonoBehaviour {
     public void StartLoad() {
         Application.backgroundLoadingPriority = ThreadPriority.Normal;
         StartCoroutine(LoadAllInBackground());
+        if (GameManager.firstTimeLoading) {
+            GameManager.instance.GetTutorialManager().Init();
+        }
     }
 
     IEnumerator LoadAllInBackground() {

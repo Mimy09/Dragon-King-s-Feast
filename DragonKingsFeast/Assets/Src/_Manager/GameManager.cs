@@ -17,10 +17,11 @@ public class GameManager : MonoBehaviour {
     public static UnloadObjects unloadObjects;
     public static ObjectPoolManager objectPoolManager;
     public static ItemSpawnManager itemSpawnManager;
+    public static TutorialManager tutorialManager;
     public static AudioManager audioManager;
     public static MapManager mapManager;
 
-
+    public static bool firstTimeLoading = true;
 
     //**************************************************************************************/
     // ---- Manager functions ---- //
@@ -60,6 +61,12 @@ public class GameManager : MonoBehaviour {
         return unloadObjects;
     }
 
+    public TutorialManager GetTutorialManager() {
+        if (tutorialManager == null)
+            tutorialManager = GetComponent<TutorialManager>();
+        return tutorialManager;
+    }
+
     public PlayerCamera GetPlayerCamera() {
         return Camera.main.gameObject.GetComponent<PlayerCamera>();
     }
@@ -88,7 +95,14 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
 
-        // Instance the manager
+        if (IO.Read("data.dat") == null) {
+            IO.Write("data.dat", "loaded");
+            firstTimeLoading = true;
+        } else {
+            firstTimeLoading = false;
+        }
+
+            // Instance the manager
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -131,6 +145,9 @@ public class GameManager : MonoBehaviour {
             if (unloadObjects == null)
                 unloadObjects = GetComponent<UnloadObjects>();
 
+            if (tutorialManager == null)
+                tutorialManager = GetComponent<TutorialManager>();
+            
             // Set up event handler
             __event<e_GameEvents>.Raise(this, EventHandle);
 
