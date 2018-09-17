@@ -11,4 +11,5 @@
 public enum e_UI_TUTRIAL {
     TILT,
     TAP,
+    NULL,
 }
