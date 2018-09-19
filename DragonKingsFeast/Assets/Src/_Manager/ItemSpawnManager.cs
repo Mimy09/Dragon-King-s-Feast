@@ -8,6 +8,7 @@ public class ItemSpawnManager : MonoBehaviour {
     // ---- Private Variables ---- //
 
     private int chunkID = 0;
+    private int chunkID_Item = 0;
     PlayerMovement playerMovement;
     float dist = 0;
 
@@ -16,6 +17,13 @@ public class ItemSpawnManager : MonoBehaviour {
     [Header("Options")]
     public float spawnDistance = 10;
     public float spawnOffset = 10;
+
+    [Header("Item Spawn Rate")]
+    [LabelOverride("Coin")] [SerializeField] public float CoinSpawnRate = 100;
+    [LabelOverride("Attack")] [SerializeField] public float AttackSpawnRate = 100;
+    [LabelOverride("Defense")] [SerializeField] public float DefenseSpawnRate = 100;
+    [LabelOverride("Speed")] [SerializeField] public float SpeedSpawnRate = 100;
+
 
     [Header("Level 1 Spawn Rate")]
     [LabelOverride("Ghost")] [SerializeField] public float lvl_1_GhostSpawnRate = 100;
@@ -67,6 +75,7 @@ public class ItemSpawnManager : MonoBehaviour {
         
         for (; chunkID < spawnDistance + depth; chunkID++) {
             SpawnEnemyObject();
+
             if (chunkID != 0) {
                 dist = (chunkID - 1) * spawnOffset - enemyList[enemyList.Count - 2].transform.position.z;
             }
@@ -75,6 +84,20 @@ public class ItemSpawnManager : MonoBehaviour {
                     Random.Range(-width, width + 1),
                     Random.Range(-height, height + 1),
                     chunkID * spawnOffset - dist);
+        }
+
+        for (; chunkID_Item < spawnDistance + depth; chunkID_Item++) {
+            SpawnItemObject();
+
+            if (chunkID_Item != 0) {
+                dist = (chunkID_Item - 1) * spawnOffset - itemList[itemList.Count - 2].transform.position.z;
+            }
+            itemList[itemList.Count - 1].transform.position =
+                new Vector3(
+                    Random.Range(-width, width + 1),
+                    Random.Range(-height, height + 1),
+                    chunkID_Item * spawnOffset - dist);
+
         }
     }
 
@@ -128,7 +151,23 @@ public class ItemSpawnManager : MonoBehaviour {
     }
 
     void SpawnItemObject() {
-        itemList.Add(GameManager.instance.GetObjectPool().FindItemOfType((e_ItemType)Random.Range(0, 4)));
+        float coin, speed, defence, attack;
+        coin = Random.Range(0, CoinSpawnRate);
+        speed = Random.Range(0, SpeedSpawnRate);
+        defence = Random.Range(0, DefenseSpawnRate);
+        attack = Random.Range(0, AttackSpawnRate);
+
+        float max = Mathf.Max(coin, speed);
+        max = Mathf.Max(max, defence);
+        max = Mathf.Max(max, attack);
+
+        int i = 0;
+        if (max == coin) i = 3;
+        else if (max == speed) i = 0;
+        else if (max == defence) i = 2;
+        else if (max == attack) i = 1;
+
+        itemList.Add(GameManager.instance.GetObjectPool().FindItemOfType((e_ItemType)i));
     }
 
     public void SpawnEnemy() {
