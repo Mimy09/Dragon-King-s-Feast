@@ -3674,6 +3674,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDistance: 10
   spawnOffset: 20
+  CoinSpawnRate: 100
+  AttackSpawnRate: 25
+  DefenseSpawnRate: 25
+  SpeedSpawnRate: 25
   lvl_1_GhostSpawnRate: 100
   lvl_1_WitchSpawnRate: 0
   lvl_1_StormSpawnRate: 50
