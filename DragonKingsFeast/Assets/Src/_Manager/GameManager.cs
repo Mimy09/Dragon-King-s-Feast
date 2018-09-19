@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
     public static AudioManager audioManager;
     public static MapManager mapManager;
 
-    public static bool firstTimeLoading = true;
+    public static bool firstTimeLoading = false;
 
     //**************************************************************************************/
     // ---- Manager functions ---- //
