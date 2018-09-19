@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCamera : MonoBehaviour {
 
@@ -8,38 +9,31 @@ public class PlayerCamera : MonoBehaviour {
     public float distanceFromPlayer;
     public float hightFromPlayer;
 
-    [Header("bounds")]
-    public float xbounds;
-    public float ybounds;
-
-    public bool realined;
-    
     public float speed;
 
+    [Header("Debugning")]
+    public Text debugText;
+
+
     public void Start() {
-        realined = true;
     }
 
     public void Update() {
 
         transform.position = new Vector3(transform.position.x, transform.position.y, player.transform.position.z + distanceFromPlayer);
-
-        if (realined == true) {
-            Vector3 holder = player.transform.position;
-
-            if (holder.x - transform.position.x > xbounds || holder.x - transform.position.x < -xbounds || holder.y - transform.position.y > ybounds || holder.y - transform.position.y < -ybounds) {
-                realined = false;
-            }
-        }
-        else {
-            UpdatePosition();
-        }
+        
+        UpdatePosition();
     }
 
     private void UpdatePosition() {
-        Vector3 targetDir =  player.transform.position - transform.position;
+        Vector3 targtPos = new Vector3(player.transform.position.x, player.transform.position.y - hightFromPlayer, player.transform.position.z + distanceFromPlayer);
+        Vector3 targetDir = targtPos - transform.position;
         transform.position += (targetDir * Time.deltaTime * speed);
-        Debug.Log(targetDir * Time.deltaTime * speed);
+
+       //debugText.text = targetDir.ToString();
+       //debugText.text += "\n" + targetDir * Time.deltaTime;
+       //debugText.text +=  "\n" + ((targetDir * Time.deltaTime) * speed).ToString();
+
         //transform.position = new Vector3(player.transform.position.x, player.transform.position.y - hightFromPlayer, player.transform.position.z + distanceFromPlayer);
     }
 }

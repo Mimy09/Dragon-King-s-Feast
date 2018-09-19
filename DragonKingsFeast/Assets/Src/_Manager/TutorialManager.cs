@@ -34,7 +34,7 @@ public class TutorialManager : MonoBehaviour {
             GameManager.instance.GetPlayerIK().MoveBone();
             __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.TILT);
 
-            if (Input.GetMouseButtonDown(1)) {
+            if (Input.GetMouseButtonDown(1) || Input.GetTouch(0).tapCount > 0) {
                 __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.NULL);
                 LearnToFly = false;
                 CloudAhead = true;
@@ -50,7 +50,7 @@ public class TutorialManager : MonoBehaviour {
             GameManager.instance.GetPlayerIK().MoveBone();
             __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.TAP);
 
-            if (Input.GetMouseButtonDown(1)) {
+            if (Input.GetMouseButtonDown(1) || Input.GetTouch(0).tapCount > 0) {
                 __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.NULL);
                 CloudAhead = false;
             }

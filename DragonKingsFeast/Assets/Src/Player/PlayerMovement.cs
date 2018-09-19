@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour {
         startPos = transform.position;
         inverse = -1;
 
-        player = GameManager.player;
+        player = GetComponent<Player>();
     }
 
     void UpdateNeckBone() {

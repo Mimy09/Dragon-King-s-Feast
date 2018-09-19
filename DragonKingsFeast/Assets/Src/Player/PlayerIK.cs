@@ -26,7 +26,7 @@ public class PlayerIK : MonoBehaviour {
 	}
 
     public void MoveBone() {
-        bone_parent.transform.position -= new Vector3(0, 0, 1 - Time.timeScale) * Time.fixedDeltaTime * 5;
+        //bone_parent.transform.position -= new Vector3(0, 0, 1 - Time.timeScale) * Time.fixedDeltaTime * 5;
     }
 	
 	void Update () {

@@ -12,7 +12,7 @@ public class UI_Type : MonoBehaviour {
         if (e.arg == e_UI.LOADING && type == e_UI.LOADING)
             GameManager.instance.GetMapManager().StartLoad();
 
-        if (e.arg == e_UI.EXIT && type == e_UI.EXIT)
+        if (e.arg == e_UI.EXIT) 
             Application.Quit();
 
         if (e.arg == type) {

@@ -94,21 +94,23 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
     private void Awake() {
-
-        if (IO.Read("data.dat") == null) {
-            IO.Write("data.dat", "loaded");
-            firstTimeLoading = true;
-        } else {
-            firstTimeLoading = false;
-        }
-
-            // Instance the manager
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        } else if (instance != this) {
+        }
+        else if (instance != this) {
             Destroy(gameObject);
         }
+    }
+
+    private void Start() {
+
+        //if (IO.Read("data.dat") == null) {
+        //    //IO.Write("data.dat", "loaded");
+        //    firstTimeLoading = false;
+        //} else {
+        //    firstTimeLoading = false;
+        //}
 
         Time.timeScale = 0;
 
@@ -162,11 +164,7 @@ public class GameManager : MonoBehaviour {
             InitAudio();
         }
     }
-
-    private void Update() {
-        InputCommand();
-    }
-
+    
     //**************************************************************************************/
     // ---- Audio Init---- //
     private void InitAudio() {
@@ -202,46 +200,5 @@ public class GameManager : MonoBehaviour {
     private void OnApplicationQuit() {
         // Send CLOSE event
         __event<e_SystemEvents>.InvokeEvent(this, e_SystemEvents._CLOSE_);
-    }
-
-    //**************************************************************************************/
-    // ---- Console commands ---- //
-
-    void InputCommand() {
-        if (Input.GetKeyDown(KeyCode.BackQuote)) {
-            RunCommands();
-        }
-    }
-
-    void RunCommands() {
-        if (UnityEngine.Console.UnityConsole.Instance == null) return;
-        string[] msg = UnityEngine.Console.UnityConsole.Instance.ScanConsole().Split(':');
-
-        switch (msg[0]) {
-            case "Done":
-            case "done":
-                return;
-            case "Quit":
-            case "quit":
-                Application.Quit();
-                break;
-            case "Close":
-            case "close":
-                UnityEngine.Console.console_api.ConsoleAPI.CloseConsole();
-                break;
-            case "ResetScene":
-            case "resetScene":
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                break;
-            case "Reset":
-            case "reset":
-                ResetLevel();
-                break;
-            default:
-                print("[COMMAND FAILED] - Unknown command\n");
-                break;
-        }
-
-        RunCommands();
     }
 }
