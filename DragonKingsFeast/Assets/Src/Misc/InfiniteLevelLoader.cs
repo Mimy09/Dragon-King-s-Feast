@@ -11,15 +11,20 @@ public class InfiniteLevelLoader : MonoBehaviour {
     private Vector3 prevPlayerPos;
     private Vector3 currPlayerPos;
     public Transform p_transform;
+    private GameObject BadDragon;
 
     private void Start() {
         chunkLoads = new List<GameObject>();
+        BadDragon = GameObject.FindGameObjectWithTag("BadDragon");
+        BadDragon.SetActive(false);
     }
     private void Update() {
         currPlayerPos = GameManager.instance.GetPlayer().transform.position;
         //currPlayerPos = p_transform.position;
 
         if (currPlayerPos.z < transform.position.z - chunkLoadDistance) return;
+        BadDragon.SetActive(true);
+
         if (currPlayerPos.z - prevPlayerPos.z > chunkLoadDistance * 2) {
             if (chunkLoads.Count != 0) {
                 LoadChunk();
