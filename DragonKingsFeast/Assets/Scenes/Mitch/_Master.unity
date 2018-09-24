@@ -216,7 +216,7 @@ Prefab:
     - target: {fileID: 114612179674990390, guid: 3cacd6bd2e14df941908339d5291b2a3,
         type: 2}
       propertyPath: spring
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4492129548448482, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
       propertyPath: m_LocalScale.x
@@ -229,6 +229,10 @@ Prefab:
     - target: {fileID: 4492129548448482, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
       propertyPath: m_LocalScale.z
       value: 2.0067267
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400008072531342, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
@@ -1026,7 +1030,7 @@ MonoBehaviour:
   player: {fileID: 772054232}
   baseHealth: 0
   speed: 10
-  forwardSpeed: 1
+  forwardSpeed: 10
   despawnOffset: 0
   animat: {fileID: 0}
   waypoints:
@@ -3608,9 +3612,9 @@ MonoBehaviour:
   level2ShowGismoz: 0
   level2LoadDistance: 200
   level2UnloadDistance: 400
-  level3ShowGismoz: 0
+  level3ShowGismoz: 1
   level3LoadDistance: 400
-  level3UnloadDistance: 600
+  level3UnloadDistance: 1000
 --- !u!114 &1575733676
 MonoBehaviour:
   m_ObjectHideFlags: 0
