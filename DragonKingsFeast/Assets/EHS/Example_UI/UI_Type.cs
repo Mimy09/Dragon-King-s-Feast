@@ -24,5 +24,13 @@ public class UI_Type : MonoBehaviour {
                 transform.GetChild(i).gameObject.SetActive(false);
             this.gameObject.SetActive(false);
         }
+
+        if (e.arg == e_UI.INGAMEMENU) {
+            Time.timeScale = 0;
+        }
+
+        if (e.arg == e_UI.GAME) {
+            Time.timeScale = 1;
+        }
     }
 }
