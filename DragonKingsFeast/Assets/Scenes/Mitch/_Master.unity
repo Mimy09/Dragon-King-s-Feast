@@ -178,15 +178,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4492129548448482, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.15466446
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4492129548448482, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.9333317
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4492129548448482, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0.17690194
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4492129548448482, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1007,6 +1007,32 @@ Transform:
   m_Father: {fileID: 772054229}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &242202006 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1400008072531342, guid: 3cacd6bd2e14df941908339d5291b2a3,
+    type: 2}
+  m_PrefabInternal: {fileID: 25860529}
+--- !u!114 &242202012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 242202006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24f01c35fb810c44bf7f52d55b1aaaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 772054232}
+  baseHealth: 0
+  speed: 10
+  forwardSpeed: 1
+  despawnOffset: 0
+  animat: {fileID: 0}
+  waypoints:
+  - {fileID: 1304430204}
+  - {fileID: 981731297}
+  - {fileID: 1523056654}
 --- !u!1 &243977934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2485,6 +2511,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 981731296}
+  childs:
+  - {fileID: 1463117423}
+  - {fileID: 511032392}
+  - {fileID: 69665968}
+  - {fileID: 1885583329}
+  - {fileID: 172517432}
 --- !u!1 &1117051340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,6 +2938,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 1304430203}
+  childs:
+  - {fileID: 2077131231}
+  - {fileID: 1928994546}
+  - {fileID: 868387613}
+  - {fileID: 104496733}
 --- !u!1 &1343181359
 GameObject:
   m_ObjectHideFlags: 0
@@ -3350,6 +3387,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 1523056653}
+  childs:
+  - {fileID: 660241743}
+  - {fileID: 845743890}
+  - {fileID: 17443650}
+  - {fileID: 706408128}
 --- !u!1 &1539869696
 GameObject:
   m_ObjectHideFlags: 0
