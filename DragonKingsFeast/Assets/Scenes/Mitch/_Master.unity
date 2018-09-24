@@ -208,31 +208,42 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 114612179674990390, guid: 3cacd6bd2e14df941908339d5291b2a3,
+    - target: {fileID: 114951856231717628, guid: 3cacd6bd2e14df941908339d5291b2a3,
         type: 2}
-      propertyPath: spread
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114612179674990390, guid: 3cacd6bd2e14df941908339d5291b2a3,
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 772054232}
+    - target: {fileID: 114951856231717628, guid: 3cacd6bd2e14df941908339d5291b2a3,
         type: 2}
-      propertyPath: spring
-      value: 5
+      propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1304430204}
+    - target: {fileID: 114951856231717628, guid: 3cacd6bd2e14df941908339d5291b2a3,
+        type: 2}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 981731297}
+    - target: {fileID: 114951856231717628, guid: 3cacd6bd2e14df941908339d5291b2a3,
+        type: 2}
+      propertyPath: waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1523056654}
+    - target: {fileID: 1904979271837924, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 4492129548448482, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2.006726
-      objectReference: {fileID: 0}
-    - target: {fileID: 4492129548448482, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2.0067267
-      objectReference: {fileID: 0}
-    - target: {fileID: 4492129548448482, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2.0067267
-      objectReference: {fileID: 0}
-    - target: {fileID: 1400008072531342, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
+    - target: {fileID: 1904979271837924, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
       propertyPath: m_TagString
-      value: Enemy
+      value: BadDragon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904979271837924, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114951856231717628, guid: 3cacd6bd2e14df941908339d5291b2a3,
+        type: 2}
+      propertyPath: baseHealth
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3cacd6bd2e14df941908339d5291b2a3, type: 2}
@@ -1011,32 +1022,6 @@ Transform:
   m_Father: {fileID: 772054229}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &242202006 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1400008072531342, guid: 3cacd6bd2e14df941908339d5291b2a3,
-    type: 2}
-  m_PrefabInternal: {fileID: 25860529}
---- !u!114 &242202012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 242202006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e24f01c35fb810c44bf7f52d55b1aaaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 772054232}
-  baseHealth: 0
-  speed: 10
-  forwardSpeed: 10
-  despawnOffset: 0
-  animat: {fileID: 0}
-  waypoints:
-  - {fileID: 1304430204}
-  - {fileID: 981731297}
-  - {fileID: 1523056654}
 --- !u!1 &243977934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,10 +2117,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   projectileSpawnPoint: {fileID: 219979218}
-  damage: 10000
+  damage: 10
   range: 10000
-  rangedAttackSpeed: 10
-  attackCoolDownSpeed: 1
+  rangedAttackSpeed: 25
+  attackCoolDownSpeed: 0.5
   projectileLiveTime: 5
   attackBoostTime: 5
   boostDamage: 3
@@ -3614,7 +3599,7 @@ MonoBehaviour:
   level2UnloadDistance: 400
   level3ShowGismoz: 1
   level3LoadDistance: 400
-  level3UnloadDistance: 1000
+  level3UnloadDistance: 1200
 --- !u!114 &1575733676
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,14 +17,16 @@ public class AdultDragon : Enemy {
     }
 
     private void Start() {
-        //waypoints               = FindObjectsOfType<Waypoint>();
+        Reset();
         waypoint_state          = 0;
         waypoint_child_state    = 0;
         lookAtPos               = new GameObject("LookAt");
         lookAtPos.transform.parent = transform;
     }
 
-    public override void OnDeath() { }
+    public override void OnDeath() {
+        transform.parent.gameObject.SetActive(false);
+    }
     public override void TurnOff() { }
     public override void TurnOn() { }
 

@@ -646,13 +646,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4492129548448482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BadDragon
-  m_TagString: Untagged
+  m_TagString: BadDragon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1917554760916126
 GameObject:
   m_ObjectHideFlags: 1
@@ -1438,7 +1438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  baseHealth: 0
+  baseHealth: 300
   speed: 10
   forwardSpeed: 2
   despawnOffset: 0
