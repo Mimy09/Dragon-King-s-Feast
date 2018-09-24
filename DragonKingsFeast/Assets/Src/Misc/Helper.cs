@@ -56,7 +56,6 @@ public class Helper {
 	public static AudioClip Audio_Character_SwingHit	    = Resources.Load("Sounds\\Characters\\SwingHit") as AudioClip;
 	public static AudioClip Audio_Character_TimeWarp    = Resources.Load("Sounds\\Characters\\TimeWarp") as AudioClip;
 	public static AudioClip Audio_Character_WitchBroom    = Resources.Load("Sounds\\Characters\\WitchBroom") as AudioClip;
-	public static AudioClip Audio_Character_WitchBroomDamaged    = Resources.Load("Sounds\\Characters\\WitchBroomDamaged") as AudioClip;
 
     // Audio - Environment
     public static AudioClip Audio_Environment_Beach           = Resources.Load("Sounds\\Environment\\beach") as AudioClip;
