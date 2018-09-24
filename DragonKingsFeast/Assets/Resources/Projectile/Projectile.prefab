@@ -98,7 +98,8 @@ MonoBehaviour:
   damage: 0
   playerAttack: 0
   forwardSpeed: 0
-  KillTime: 5
+  playerTrackPrecent: 0.1
+  enemyTrackPrecent: 0.01
 --- !u!135 &135262068918809636
 SphereCollider:
   m_ObjectHideFlags: 1

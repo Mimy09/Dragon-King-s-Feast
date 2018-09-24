@@ -20,6 +20,8 @@ public class Projectile : MonoBehaviour {
     //the direction the projectile will move
     private Vector3 m_target;
     private Transform m_enemy;
+    public float playerTrackPrecent;
+    public float enemyTrackPrecent;
 
     public void TurnOn() {
         m_killtimer = 0;
@@ -73,13 +75,13 @@ public class Projectile : MonoBehaviour {
     private void Move() {
         if (playerAttack) {
             if (transform.position.z < m_enemy.transform.position.z) {
-                m_target = Vector3.Lerp(m_target, m_enemy.transform.position, 0.1f);
+                m_target = Vector3.Lerp(m_target, m_enemy.transform.position, playerTrackPrecent);
                 transform.LookAt(m_target);
             }
         }
         else {
             if (transform.position.z > m_enemy.transform.position.z) {
-                m_target = Vector3.Lerp(m_target, m_enemy.transform.position, 0.1f);
+                m_target = Vector3.Lerp(m_target, m_enemy.transform.position, enemyTrackPrecent);
                 transform.LookAt(m_target);
             }
         }
