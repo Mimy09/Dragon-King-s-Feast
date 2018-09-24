@@ -16,7 +16,7 @@ public class MapManager : MonoBehaviour {
     [ReadOnly] public float loaded_percent = 0;
     [ReadOnly] public bool isLoaded_level1, isLoaded_level2, isLoaded_level3;
     [ReadOnly] public bool loaded = false;
-
+    private bool isInGame = false;
 
     // public
     [Header("Level 1")]
@@ -86,9 +86,11 @@ public class MapManager : MonoBehaviour {
     private void Update() {
         if (!loaded) return;
         if (AO_level1.isDone == true && AO_level2.isDone == true && AO_level3.isDone == true) {
-            GameManager.instance.GetUnloadObjects().SetUnloadObjects();
-            __event<e_UI>.InvokeEvent(this, e_UI.GAME);
-            Time.timeScale = 1;
+            if (!isInGame) {
+                GameManager.instance.GetUnloadObjects().SetUnloadObjects();
+                __event<e_UI>.InvokeEvent(this, e_UI.GAME);
+                isInGame = true;
+            }
         }
 
         if (GameManager.playerObject != null) {

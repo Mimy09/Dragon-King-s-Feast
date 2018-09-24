@@ -5,6 +5,8 @@
     OPTIONS,
     LOADING,
     EXIT,
+    INGAMEMENU,
+    INGAMEOPTIONS,
     NULL,
 }
 
