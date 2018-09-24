@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33518684852058952}
   - component: {fileID: 54931923975249984}
   - component: {fileID: 64592754211177146}
+  - component: {fileID: 114768461674159760}
   m_Layer: 0
   m_Name: Mountain_Collider
   m_TagString: Untagged
@@ -39,8 +40,6 @@ GameObject:
   - component: {fileID: 4255761395406440}
   - component: {fileID: 33371808723541746}
   - component: {fileID: 23806886829113304}
-  - component: {fileID: 95454274340126898}
-  - component: {fileID: 64812437913582938}
   m_Layer: 0
   m_Name: Mountain4_low
   m_TagString: Untagged
@@ -145,41 +144,21 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1193080069076302}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a7738342ca606374d93b2e6dea2f8890, type: 3}
---- !u!64 &64812437913582938
-MeshCollider:
+--- !u!114 &114768461674159760
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1568664463289946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 1193080069076302}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: bdf7d409ffae9ed4a90926cead8c9739, type: 3}
---- !u!95 &95454274340126898
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1568664463289946}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: bdf7d409ffae9ed4a90926cead8c9739, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8296298a6b2b8a84a9371e25cdaf0b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

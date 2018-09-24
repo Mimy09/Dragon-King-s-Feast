@@ -22,8 +22,6 @@ GameObject:
   - component: {fileID: 33454633819380246}
   - component: {fileID: 23246565346026368}
   - component: {fileID: 95707264447189656}
-  - component: {fileID: 64962453631980690}
-  - component: {fileID: 54525594625013536}
   m_Layer: 0
   m_Name: Mountain5_low
   m_TagString: Untagged
@@ -42,6 +40,7 @@ GameObject:
   - component: {fileID: 33496871920435830}
   - component: {fileID: 54848230403661328}
   - component: {fileID: 64944772601162274}
+  - component: {fileID: 114023003612220600}
   m_Layer: 0
   m_Name: Mountain_Collider
   m_TagString: Untagged
@@ -124,21 +123,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1180874430499218}
   m_Mesh: {fileID: 4300000, guid: a7738342ca606374d93b2e6dea2f8890, type: 3}
---- !u!54 &54525594625013536
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1104860522005034}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!54 &54848230403661328
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -161,24 +145,10 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1180874430499218}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: a7738342ca606374d93b2e6dea2f8890, type: 3}
---- !u!64 &64962453631980690
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1104860522005034}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a7738342ca606374d93b2e6dea2f8890, type: 3}
@@ -199,3 +169,14 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114023003612220600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1180874430499218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8296298a6b2b8a84a9371e25cdaf0b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

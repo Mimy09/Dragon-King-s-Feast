@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33936243962120004}
   - component: {fileID: 54333313077673646}
   - component: {fileID: 64740494893085528}
+  - component: {fileID: 114826303709514318}
   m_Layer: 0
   m_Name: Mountain_Collider
   m_TagString: Untagged
@@ -39,8 +40,6 @@ GameObject:
   - component: {fileID: 4368916788844284}
   - component: {fileID: 33481502775145288}
   - component: {fileID: 23898215801789710}
-  - component: {fileID: 95534051997497532}
-  - component: {fileID: 64672015232560424}
   m_Layer: 0
   m_Name: Mountain3_low
   m_TagString: Untagged
@@ -138,20 +137,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64672015232560424
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1791043575931536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 72c6e3ca2017c594dba3649a5302a478, type: 3}
 --- !u!64 &64740494893085528
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -159,27 +144,21 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461548186989244}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a7738342ca606374d93b2e6dea2f8890, type: 3}
---- !u!95 &95534051997497532
-Animator:
-  serializedVersion: 3
+--- !u!114 &114826303709514318
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1791043575931536}
+  m_GameObject: {fileID: 1461548186989244}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 72c6e3ca2017c594dba3649a5302a478, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8296298a6b2b8a84a9371e25cdaf0b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
