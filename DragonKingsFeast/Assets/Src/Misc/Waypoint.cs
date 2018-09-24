@@ -6,7 +6,8 @@ using UnityEngine;
 public class Waypoint : MonoBehaviour {
 
     public Transform parent;
-    private Transform[] childs;
+    [ReadOnly]
+    public Transform[] childs;
 
 	// Use this for initialization
 	void Update () {
