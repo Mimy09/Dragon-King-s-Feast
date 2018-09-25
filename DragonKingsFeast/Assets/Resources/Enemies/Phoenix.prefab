@@ -2110,10 +2110,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  baseHealth: 20
+  baseHealth: 30
   speed: 2
   forwardSpeed: 2.5
   despawnOffset: 3
+  animat: {fileID: 0}
   rangedAttack:
     damage: 15
     player: {fileID: 0}

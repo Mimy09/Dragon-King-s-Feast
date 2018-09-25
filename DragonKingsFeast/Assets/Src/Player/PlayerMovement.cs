@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PlayerMovement : MonoBehaviour {
@@ -38,6 +39,11 @@ public class PlayerMovement : MonoBehaviour {
 
     [ReadOnly]
     private float inverse;
+    public float Inverse {
+        get {
+            return inverse;
+        }
+    }
 
     private Player player;
 
@@ -51,6 +57,14 @@ public class PlayerMovement : MonoBehaviour {
         inverse = -1;
 
         player = GetComponent<Player>();
+    }
+
+    public void ChangeXAxisSpeedMultiplyer(Slider slider) {
+        axisSpeedMultiplyer.x = slider.value;
+    }
+
+    public void ChangeYAxisSpeedMultiplyer(Slider slider) {
+        axisSpeedMultiplyer.y = slider.value;
     }
 
     void UpdateNeckBone() {

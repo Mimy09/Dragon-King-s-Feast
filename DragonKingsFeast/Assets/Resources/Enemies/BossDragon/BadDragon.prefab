@@ -298,9 +298,10 @@ GameObject:
   - component: {fileID: 65378451262023348}
   - component: {fileID: 114612179674990390}
   - component: {fileID: 54298019477550300}
+  - component: {fileID: 114951856231717628}
   m_Layer: 0
   m_Name: BadDragon
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -645,9 +646,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4492129548448482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BadDragon
-  m_TagString: Untagged
+  m_TagString: BadDragon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1029,8 +1030,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1904979271837924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15466446, y: 0.9333317, z: -0.17690194}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.006726, y: 2.0067267, z: 2.0067267}
   m_Children:
   - {fileID: 4696208132052952}
   - {fileID: 4962958928071960}
@@ -1423,8 +1424,29 @@ MonoBehaviour:
   bones: []
   wiggleX: 4
   wiggleY: 5
-  lerp: 0.6
-  interval: 0
+  spread: 2
+  spring: 5
+--- !u!114 &114951856231717628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400008072531342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24f01c35fb810c44bf7f52d55b1aaaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  baseHealth: 300
+  speed: 10
+  forwardSpeed: 2
+  despawnOffset: 0
+  animat: {fileID: 0}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!137 &137099134287605652
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

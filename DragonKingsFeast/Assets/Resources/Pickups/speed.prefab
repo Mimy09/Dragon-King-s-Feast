@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23810266623981190}
   - component: {fileID: 95932788204536410}
   - component: {fileID: 65618945751838230}
-  - component: {fileID: 114664272241563774}
+  - component: {fileID: 114949135670238002}
   m_Layer: 0
   m_Name: speed
   m_TagString: Untagged
@@ -92,7 +92,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1200186891377494}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -114,7 +114,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114664272241563774
+--- !u!114 &114949135670238002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
