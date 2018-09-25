@@ -210,7 +210,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void ReadPhoneControls() {
 
-        //Get Speed based off Acelleromator
+        //Get Speed based off Accelerometer
         Vector3 acelleromatorTiltValues = Quaternion.Euler(tiltAngle, 0, 0) * Input.acceleration;
         Vector3 Speed = Vector3.Scale(new Vector3(1, 1, 0), new Vector3(acelleromatorTiltValues.x, acelleromatorTiltValues.z * inverse, acelleromatorTiltValues.y));
 
@@ -219,7 +219,7 @@ public class PlayerMovement : MonoBehaviour {
         Speed.y = (-Speed.y * axisSpeedMultiplyer.y);
 
         //apply the speed to the velocity
-        velocity = (Speed);
+        velocity = Speed;
     }
 
     public void InverseTilt() {
@@ -238,5 +238,14 @@ public class PlayerMovement : MonoBehaviour {
         tiltAngle = holder;
 
         Debug.Log(Input.acceleration.z);
+    }
+
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = new Color(1, 0, 1, 0.1f);
+        if (startPos == null)
+            Gizmos.DrawCube(transform.position + (transform.forward * 600), new Vector3(horizontalBounds * 2, verticalBounds * 2, 1200));
+        else
+            Gizmos.DrawCube(startPos + (transform.forward * 600), new Vector3(horizontalBounds * 2, verticalBounds * 2, 1200));
     }
 }
