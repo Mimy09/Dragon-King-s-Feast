@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
             return health;
         }
     }
-
+    
     [Header("Projectile Info")]
     public Transform projectileSpawnPoint;
 
@@ -48,14 +48,23 @@ public class Player : MonoBehaviour {
 
     private bool m_sheild;
 
-    public void TakeDamage(float amount) {
+    public void TakeDamage() {
 
         if (m_sheild) {
             m_sheild = false;
             return;
         }
 
-        health -= (int)(amount + 0.5f);
+        if (health > 0) {
+            health = 0;
+        }
+        else if (health == 0) {
+            health = -1;
+        }
+    }
+
+    public void hitMountain() {
+        health = -1000000;
     }
 
     public void ApplyBoost(e_ItemType type) {

@@ -6,7 +6,7 @@ public class MountinMurder : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
-            GameManager.player.TakeDamage(1000000);
+            GameManager.player.hitMountain();
         }
         if (other.tag == "Enemy") {
             other.GetComponent<Enemy>().TakeDamage(1000000);

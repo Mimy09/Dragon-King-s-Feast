@@ -96,7 +96,7 @@ public class Projectile : MonoBehaviour {
         }
         else {
             if (other.tag == "Player") {
-                other.GetComponent<Player>().TakeDamage(damage);
+                other.GetComponent<Player>().TakeDamage();
                 TurnOff();
             }
         }

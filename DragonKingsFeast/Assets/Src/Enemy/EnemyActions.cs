@@ -25,7 +25,7 @@ public class MeleeAttack : EnemyActions {
     
     public override bool AttackPlayer() {
         if (m_hasAttacked != true) {
-            player.TakeDamage(damage);
+            player.TakeDamage();
             m_hasAttacked = true;
             return true;
         }

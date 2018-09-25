@@ -27,49 +27,77 @@ public class TutorialManager : MonoBehaviour {
 
     private void Update() {
         if (!start) return;
-        Time.timeScale = timeScail;
+        if (!CloudAheadComp || !LearnToFlyComp) Time.timeScale = timeScail;
 
         if (LearnToFly) {
             StopTime();
             GameManager.instance.GetPlayerIK().MoveBone();
             __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.TILT);
 
-            if (Input.GetMouseButtonDown(1) || Input.GetTouch(0).tapCount > 0) {
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+            if (Input.GetMouseButtonDown(1)) {
                 __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.NULL);
                 LearnToFly = false;
                 CloudAhead = true;
             }
+#endif
 
-        } else if (!LearnToFlyComp) {
+#if UNITY_ANDROID
+            for (int i = 0; i < Input.touchCount; ++i) {
+                if (Input.GetTouch(i).phase == TouchPhase.Began) {
+                    __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.NULL);
+                    LearnToFly = false;
+                    CloudAhead = true;
+                }
+            }
+#endif
+        }
+        else if (!LearnToFlyComp) {
             StartTime();
             if (Time.timeScale == 1) LearnToFlyComp = true;
         }
+
+
+
 
         if (CloudAhead && LearnToFlyComp) {
             StopTime();
             GameManager.instance.GetPlayerIK().MoveBone();
             __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.TAP);
 
-            if (Input.GetMouseButtonDown(1) || Input.GetTouch(0).tapCount > 0) {
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+            if (Input.GetMouseButtonDown(1)) {
                 __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.NULL);
                 CloudAhead = false;
             }
+#endif
 
+#if UNITY_ANDROID
+
+            for (int i = 0; i < Input.touchCount; ++i) {
+                if (Input.GetTouch(i).phase == TouchPhase.Began) {
+                    __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.NULL);
+                    CloudAhead = false;
+                }
+            }
+#endif
         }
         else if (!CloudAheadComp && LearnToFlyComp) {
             StartTime();
             if (Time.timeScale == 1) CloudAheadComp = true;
         }
 
+
+
     }
 
     private void StopTime() {
-        if (timeScail > 0) timeScail -= Time.deltaTime;
-        else if (timeScail < 0.01f && timeScail != 0) timeScail = 0;
+        if (timeScail > 0) timeScail -= Time.fixedDeltaTime;
+        if (timeScail < 0.1f && timeScail != 0) timeScail = 0;
     }
     private void StartTime() {
-        if (timeScail < 1) timeScail += Time.deltaTime * 10;
-        else if (timeScail > 0.99f && timeScail != 1) timeScail = 1;
+        if (timeScail < 1) timeScail += Time.fixedDeltaTime * 10;
+        if (timeScail > 0.9f && timeScail != 1) timeScail = 1;
 
     }
 }

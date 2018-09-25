@@ -105,12 +105,12 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
 
-        //if (IO.Read("data.dat") == null) {
-        //    //IO.Write("data.dat", "loaded");
-        //    firstTimeLoading = false;
-        //} else {
-        //    firstTimeLoading = false;
-        //}
+        if (PlayerPrefs.GetInt("hasLoaded") == 0) {
+            PlayerPrefs.SetInt("hasLoaded", 1);
+            firstTimeLoading = true;
+        } else {
+            firstTimeLoading = true;
+        }
 
         Time.timeScale = 0;
 
