@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour {
 
     public static bool firstTimeLoading = false;
 
+    public static GameObject coinSP;
+
     //**************************************************************************************/
     // ---- Manager functions ---- //
 
@@ -159,6 +161,8 @@ public class GameManager : MonoBehaviour {
 
             // Set timeout to never
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+            coinSP = GameObject.FindGameObjectWithTag("CoinSP");
 
             // Init music
             InitAudio();
