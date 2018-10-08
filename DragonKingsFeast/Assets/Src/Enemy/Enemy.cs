@@ -36,6 +36,9 @@ public class Enemy : MonoBehaviour {
     [Header("Animation")]
     public Animator animat;
 
+    [Header("Flocking")]
+    public Spawner spawner;
+
     public virtual void Reset() { m_health = baseHealth; }
     public virtual void TurnOff() {
         GameManager.instance.GetObjectPool().AddEnemyTooPool(this);
