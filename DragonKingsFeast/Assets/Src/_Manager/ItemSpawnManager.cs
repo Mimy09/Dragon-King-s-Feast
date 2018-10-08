@@ -167,7 +167,9 @@ public class ItemSpawnManager : MonoBehaviour {
         else if (max == defence) i = 2;
         else if (max == attack) i = 1;
 
+
         itemList.Add(GameManager.instance.GetObjectPool().FindItemOfType((e_ItemType)i));
+        itemList[itemList.Count - 1].GetComponent<Item>().value = 1;
     }
 
     public void SpawnEnemy() {

@@ -59,6 +59,11 @@ public class Player : MonoBehaviour {
 
         if (health > 0) {
             health = 0;
+
+            GameObject g = GameObject.FindGameObjectWithTag("CoinSP");
+            for (int i = 0; i < g.transform.childCount; i++) {
+                Destroy(g.transform.GetChild(i).gameObject);
+            }
         }
         else if (health == 0) {
             health = -1;
@@ -180,12 +185,16 @@ public class Player : MonoBehaviour {
         if (GameManager.tutorialManager.LearnToFlyComp == true && gameRunning == true) {
             float dist = range;
             Transform tran = null;
-            if (GameManager.itemSpawnManager.enemyList == null) return;
+            if (GameManager.itemSpawnManager == null) return;
             List<GameObject> holder = GameManager.itemSpawnManager.enemyList;
 
             for (int i = 0; i < holder.Count; i++) {
                 float distance = Vector3.Distance(transform.position, holder[i].transform.position);
-                if (distance < dist && transform.position.z < holder[i].transform.position.z) {
+                if (distance < dist &&
+                    transform.position.z < holder[i].transform.position.z &&
+                    holder[i].GetComponent<Enemy>().EnemyType != e_EnemyType.StormCloud &&
+                    holder[i].activeInHierarchy == true
+                    ) {
                     dist = distance;
                     tran = holder[i].transform;
                 }

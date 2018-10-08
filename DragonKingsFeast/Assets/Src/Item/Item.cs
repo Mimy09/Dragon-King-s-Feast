@@ -27,12 +27,14 @@ public class Item : MonoBehaviour {
             else {
                 GameManager.player.ApplyLoot(value);
                 Transform t = GameObject.FindGameObjectWithTag("CoinSP").transform;
-                GameObject g = Instantiate(Helper.CoinPath, new Vector3(0, 0, 0), Quaternion.identity, t) as GameObject;
-                g.GetComponent<RectTransform>().localPosition = new Vector3(
-                    Random.Range(-10, 10),
-                    0,
-                    0
-                    );
+                for (int i = 0; i < value; i++) {
+                    GameObject g = Instantiate(Helper.CoinPath, new Vector3(0, 0, 0), Quaternion.identity, t) as GameObject;
+                    g.GetComponent<RectTransform>().localPosition = new Vector3(
+                        Random.Range(-10, 10),
+                        0,
+                        0
+                        );
+                }
             }
 
             TurnOff();
