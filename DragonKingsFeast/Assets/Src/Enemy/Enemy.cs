@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour {
     //the units current health   
     protected float m_health;
 
+    public int lootValue;
+
     [Header("Animation")]
     public Animator animat;
 
@@ -41,7 +43,12 @@ public class Enemy : MonoBehaviour {
         GameManager.instance.GetItemSpawnManager().SpawnEnemy();
     }
     public virtual void TurnOn() { Reset(); this.gameObject.SetActive(true); }
-    public virtual void OnDeath() { }
+    public virtual void OnDeath() {
+        Item loot = GameManager.objectPoolManager.FindItemOfType(e_ItemType.Pickup).GetComponent<Item>();
+        loot.transform.position = transform.position;
+        loot.value = lootValue;
+        loot.TurnOn();
+    }
     public virtual void TakeDamage(float damage) { m_health -= damage; if (m_health <= 0) { OnDeath(); TurnOff(); } }
     public Enemy GetEnemy() { return this; }
 

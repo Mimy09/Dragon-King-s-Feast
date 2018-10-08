@@ -40,6 +40,8 @@ public class Player : MonoBehaviour {
     private float m_speedBoostTimer;
     public float speedBoost;
 
+    private bool gameRunning;
+
     public float speedBoostTimer {
         get {
             return m_speedBoostTimer;
@@ -99,6 +101,7 @@ public class Player : MonoBehaviour {
 	void Start () {
         attackTimer = attackCoolDownSpeed;
         pm = GetComponent<PlayerMovement>();
+        __event<e_UI>.Raise(this, EventHandle);
 	}
 	
 	// Update is called once per frame
@@ -107,23 +110,48 @@ public class Player : MonoBehaviour {
         m_attackBoostTimer += Time.deltaTime;
         m_speedBoostTimer += Time.deltaTime;
 
-    #if UNITY_STANDALONE_WIN || UNITY_EDITOR
-        if (Input.GetMouseButtonDown(0)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            
-            if (Physics.Raycast(Camera.main.transform.position, ray.direction * 100, out hit)) {
-                
-                if (hit.transform.gameObject.tag == "Enemy") {
-                    Attack(hit.transform);
-                }
-            }
-        }
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+        RaycastAttackByClick();
 #endif
 
 #if UNITY_ANDROID
+        FindClosestEnemeyToAttack();
+#endif
+
+    }
+
+    public void EventHandle(object o, __eArg<e_UI> e) {
+        if (e.arg == e_UI.GAME) {
+            gameRunning = true;
+        }
+        else {
+            gameRunning = false;
+        }
+    }
+
+    private void RaycastAttackByClick() {
+        if (Input.GetMouseButtonDown(0)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.transform.position, ray.direction * 100, out hit)) {
+
+                if (hit.transform.gameObject.tag == "Enemy") {
+                    Attack(hit.transform);
+                }
+                else {
+                    FindClosestEnemeyToAttack();
+                }
+            }
+            else {
+                FindClosestEnemeyToAttack();
+            }
+        }
+    }
+
+    private bool RaycastAttackByTouch() {
         for (int i = 0; i < Input.touchCount; ++i) {
-            if (Input.GetTouch(i).phase == TouchPhase.Began) { 
+            if (Input.GetTouch(i).phase == TouchPhase.Began) {
 
                 var ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
 
@@ -133,13 +161,40 @@ public class Player : MonoBehaviour {
 
                     if (hit.transform.gameObject.tag == "Enemy") {
                         Attack(hit.transform);
+                        return true;
+                    }
+                    else {
+                        FindClosestEnemeyToAttack();
                     }
 
                 }
-             }
+                else {
+                    FindClosestEnemeyToAttack();
+                }
+            }
         }
-#endif
+        return false;
+    }
 
+    private void FindClosestEnemeyToAttack() {
+        if (GameManager.tutorialManager.LearnToFlyComp == true && gameRunning == true) {
+            float dist = range;
+            Transform tran = null;
+            if (GameManager.itemSpawnManager.enemyList == null) return;
+            List<GameObject> holder = GameManager.itemSpawnManager.enemyList;
+
+            for (int i = 0; i < holder.Count; i++) {
+                float distance = Vector3.Distance(transform.position, holder[i].transform.position);
+                if (distance < dist && transform.position.z < holder[i].transform.position.z) {
+                    dist = distance;
+                    tran = holder[i].transform;
+                }
+            }
+
+            if (tran != null) {
+                Attack(tran);
+            }
+        }
     }
 
     public void Attack(Transform E) {

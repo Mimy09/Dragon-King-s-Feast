@@ -27,6 +27,9 @@ public class Helper {
     //projectile Path
     public static Object ProjectilePath         = Resources.Load("Projectile\\Projectile") as Object;
 
+    // Misc
+    public static Object CoinPath = Resources.Load("Misc\\Coin") as Object;
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // AUDIO
 
