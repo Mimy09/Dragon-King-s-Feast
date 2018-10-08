@@ -19,6 +19,7 @@ public class InfiniteLevelLoader : MonoBehaviour {
         BadDragon = GameObject.FindGameObjectWithTag("BadDragon");
         BadDragon.SetActive(false);
     }
+
     private void Update() {
         currPlayerPos = GameManager.instance.GetPlayer().transform.position;
         //currPlayerPos = p_transform.position;
@@ -26,7 +27,7 @@ public class InfiniteLevelLoader : MonoBehaviour {
         if (currPlayerPos.z < transform.position.z - chunkLoadDistance) return;
         if (!endScene) {
             endScene = true;
-            BadDragon.transform.position = GameManager.instance.GetPlayer().transform.position - (Vector3.up * 3);
+            BadDragon.transform.position = GameManager.instance.GetPlayer().transform.position - (Vector3.up * 5) + (Vector3.forward * 10);
             BadDragon.SetActive(true);
         }
 
