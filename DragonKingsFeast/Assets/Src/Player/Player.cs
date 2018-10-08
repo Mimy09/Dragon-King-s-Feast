@@ -180,6 +180,7 @@ public class Player : MonoBehaviour {
         if (GameManager.tutorialManager.LearnToFlyComp == true && gameRunning == true) {
             float dist = range;
             Transform tran = null;
+            if (GameManager.itemSpawnManager.enemyList == null) return;
             List<GameObject> holder = GameManager.itemSpawnManager.enemyList;
 
             for (int i = 0; i < holder.Count; i++) {
