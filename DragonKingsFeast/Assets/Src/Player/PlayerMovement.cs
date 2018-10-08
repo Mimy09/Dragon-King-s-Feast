@@ -242,8 +242,8 @@ public class PlayerMovement : MonoBehaviour {
 
 
     private void OnDrawGizmosSelected() {
-        Gizmos.color = new Color(1, 0, 1, 0.1f);
-        if (startPos == null)
+        Gizmos.color = new Color(1, 0, 1, 0.4f);
+        if (startPos == new Vector3())
             Gizmos.DrawCube(transform.position + (transform.forward * 600), new Vector3(horizontalBounds * 2, verticalBounds * 2, 1200));
         else
             Gizmos.DrawCube(startPos + (transform.forward * 600), new Vector3(horizontalBounds * 2, verticalBounds * 2, 1200));
