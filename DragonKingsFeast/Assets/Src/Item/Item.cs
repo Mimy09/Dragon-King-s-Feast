@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum e_ItemType {
     Boost_Speed,
@@ -26,7 +27,12 @@ public class Item : MonoBehaviour {
             else {
                 GameManager.player.ApplyLoot(value);
                 Transform t = GameObject.FindGameObjectWithTag("CoinSP").transform;
-                Instantiate(Helper.CoinPath, t.position, Quaternion.identity, t);
+                GameObject g = Instantiate(Helper.CoinPath, new Vector3(0, 0, 0), Quaternion.identity, t) as GameObject;
+                g.GetComponent<RectTransform>().localPosition = new Vector3(
+                    Random.Range(-10, 10),
+                    0,
+                    0
+                    );
             }
 
             TurnOff();
