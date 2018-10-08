@@ -1,0 +1,175 @@
+fileFormatVersion: 2
+guid: feeeca0a3e385694f8c4ae2474a5820c
+timeCreated: 1537939261
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Rotating_Splash_1_Geo
+    100002: Rotating_Splash_2_Geo
+    100004: Rotating_Splash_3_Geo
+    100006: Rotating_Splash_4_Geo
+    100008: Rotating_Splash_5_Geo
+    100010: Rotating_Splash_6_Geo
+    100012: Rotating_Splash_7_Geo
+    100014: Rotating_Splash_8_Geo
+    100016: Rotating_Tip_Geo
+    100018: Rotating_Top_Geo
+    100020: Spout_Geo
+    100022: //RootNode
+    400000: Rotating_Splash_1_Geo
+    400002: Rotating_Splash_2_Geo
+    400004: Rotating_Splash_3_Geo
+    400006: Rotating_Splash_4_Geo
+    400008: Rotating_Splash_5_Geo
+    400010: Rotating_Splash_6_Geo
+    400012: Rotating_Splash_7_Geo
+    400014: Rotating_Splash_8_Geo
+    400016: Rotating_Tip_Geo
+    400018: Rotating_Top_Geo
+    400020: Spout_Geo
+    400022: //RootNode
+    2100000: lambert1
+    2300000: Rotating_Splash_1_Geo
+    2300002: Rotating_Splash_2_Geo
+    2300004: Rotating_Splash_3_Geo
+    2300006: Rotating_Splash_4_Geo
+    2300008: Rotating_Splash_5_Geo
+    2300010: Rotating_Splash_6_Geo
+    2300012: Rotating_Splash_7_Geo
+    2300014: Rotating_Splash_8_Geo
+    2300016: Rotating_Tip_Geo
+    2300018: Rotating_Top_Geo
+    2300020: Spout_Geo
+    3300000: Rotating_Splash_1_Geo
+    3300002: Rotating_Splash_2_Geo
+    3300004: Rotating_Splash_3_Geo
+    3300006: Rotating_Splash_4_Geo
+    3300008: Rotating_Splash_5_Geo
+    3300010: Rotating_Splash_6_Geo
+    3300012: Rotating_Splash_7_Geo
+    3300014: Rotating_Splash_8_Geo
+    3300016: Rotating_Tip_Geo
+    3300018: Rotating_Top_Geo
+    3300020: Spout_Geo
+    4300000: Rotating_Tip_Geo
+    4300002: Rotating_Top_Geo
+    4300004: Rotating_Splash_3_Geo
+    4300006: Rotating_Splash_7_Geo
+    4300008: Rotating_Splash_5_Geo
+    4300010: Rotating_Splash_8_Geo
+    4300012: Rotating_Splash_4_Geo
+    4300014: Rotating_Splash_2_Geo
+    4300016: Rotating_Splash_6_Geo
+    4300018: Rotating_Splash_1_Geo
+    4300020: Spout_Geo
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
