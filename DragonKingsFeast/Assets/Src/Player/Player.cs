@@ -30,7 +30,10 @@ public class Player : MonoBehaviour {
     private float attackTimer;
 
     public float projectileLiveTime;
-    
+
+    public float bulletAmmount;
+    public float maxBulletAmmount;
+
     [Header("Boost Values")]
     public float attackBoostTime;
     public float boostDamage;
@@ -111,6 +114,8 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (bulletAmmount < maxBulletAmmount) bulletAmmount += Time.deltaTime;
+
         attackTimer += Time.deltaTime;
         m_attackBoostTimer += Time.deltaTime;
         m_speedBoostTimer += Time.deltaTime;
@@ -209,12 +214,15 @@ public class Player : MonoBehaviour {
     public void Attack(Transform E) {
         float dist = Vector3.Distance(transform.position, E.position);
 
+        if (bulletAmmount < 1) return;
+        
         if (attackTimer > attackCoolDownSpeed) {
             if (dist <= range) {
                 GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
                 go.transform.position = projectileSpawnPoint.position;
                 go.GetComponent<Projectile>().SetUp(E.transform, m_attackBoostTimer < attackBoostTime ? damage + boostDamage : damage, true, rangedAttackSpeed + pm.forwardSpeed, projectileLiveTime);
                 attackTimer = 0;
+                bulletAmmount--;
             }
         }
     }
