@@ -40,7 +40,7 @@ public class Spawner : MonoBehaviour {
                 DrawBoxFormationGizmos();
                 break;
             case e_FormationType.Cross:
-
+                DrawCrossFormationFizmos();
                 break;
             default:
                 Debug.LogError("NO VALID FORMATION TYPE SELECTED");
@@ -49,7 +49,6 @@ public class Spawner : MonoBehaviour {
     }
 
     public void DrawLineFormationGizmos() {
-        Debug.Log("Test");
         float half = (wingOfEnemies.Count / 2) * spawnDist;
 
         for (int i = 0; i < wingOfEnemies.Count; i++) {
@@ -98,13 +97,28 @@ public class Spawner : MonoBehaviour {
     }
 
     public void DrawCrossFormationFizmos() {
+        
+        float half = ((wingOfEnemies.Count / 2) * spawnDist) / 2;
 
-        Debug.Log("Test");
-        float half = (wingOfEnemies.Count / 2) * spawnDist;
+        int halfnum = wingOfEnemies.Count / 2;
 
-        for (int i = 0; i < wingOfEnemies.Count; i++) {
-            Gizmos.DrawSphere(new Vector3(transform.position.x + (half - spawnDist * i), transform.position.y, transform.position.z), 1);
+        int count = 0;
+
+        for (int i = 0; i < halfnum; i++) {
+            if (new Vector3(transform.position.x, transform.position.y + (half - spawnDist * count), transform.position.z) == transform.position) {
+                count++;
+            }
+            Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y + (half - spawnDist * count), transform.position.z), 1);
+            count++;
         }
+
+        for (int i = 0; i < halfnum; i++) {
+            Gizmos.DrawSphere(new Vector3(transform.position.x + (half - spawnDist * i), transform.position.y, transform.position.z), 1);
+            if (i == halfnum - 1 && (halfnum * 2) != wingOfEnemies.Count) {
+                Gizmos.DrawSphere(new Vector3(transform.position.x + (half - spawnDist * (i + 1)), transform.position.y, transform.position.z), 1);
+            }
+        }
+
     }
 
     /// <summary>
@@ -131,6 +145,10 @@ public class Spawner : MonoBehaviour {
             case e_FormationType.Box:
                 SpawnBoxFormation();
                 break;
+            case e_FormationType.Cross:
+                SpawnCrossFormation();
+                break;
+            default:
                 Debug.LogError("NO VALID FORMATION TYPE SELECTED");
                 break;
         }
@@ -201,4 +219,45 @@ public class Spawner : MonoBehaviour {
 
             }
     }
+
+    public void SpawnCrossFormation() {
+
+        Debug.Log("Test");
+        float half = ((wingOfEnemies.Count / 2) * spawnDist) / 2;
+
+        int halfnum = wingOfEnemies.Count / 2;
+
+        int count = 0;
+
+        for (int i = 0; i < halfnum; i++) {
+            if (new Vector3(transform.position.x, transform.position.y + (half - spawnDist * count), transform.position.z) == transform.position) {
+                count++;
+            }
+
+            GameObject go = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[i]);
+            go.transform.position = new Vector3(transform.position.x, transform.position.y + (half - spawnDist * count), transform.position.z);
+            listOfEnemies.Add(go.GetComponent<Enemy>());
+            listOfEnemies[i].spawner = this;
+            
+            count++;
+        }
+
+        for (int i = 0; i < halfnum; i++) {
+
+            GameObject go = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[i]);
+            go.transform.position = new Vector3(transform.position.x + (half - spawnDist * i), transform.position.y, transform.position.z);
+            listOfEnemies.Add(go.GetComponent<Enemy>());
+            listOfEnemies[halfnum + i].spawner = this;
+            
+            if (i == halfnum - 1 && (halfnum * 2) != wingOfEnemies.Count) {
+                GameObject go2 = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[i+1]);
+                go2.transform.position = new Vector3(transform.position.x + (half - spawnDist * (i+1)), transform.position.y, transform.position.z);
+                listOfEnemies.Add(go2.GetComponent<Enemy>());
+                listOfEnemies[halfnum + i + 1].spawner = this;
+            }
+
+        }
+
+    }
+
 }
