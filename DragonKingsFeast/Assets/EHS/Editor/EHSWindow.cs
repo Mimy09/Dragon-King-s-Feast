@@ -132,7 +132,7 @@ public class EHSWindow : EditorWindow {
         if (Event.current.type == EventType.MouseDown && Event.current.button == 0) {
             int i = 0;
             for (; i < rect_list.Count; i++) {
-                if (rect_list[i].Contains(Event.current.mousePosition)) {
+                if (rect_list[i].Contains(Event.current.mousePosition + scroll_pos)) {
                     if (go_list.Count == __eventSystem.g_events.Count) {
                         GameObject[] gos = new GameObject[1];
                         gos[0] = go_list[i];

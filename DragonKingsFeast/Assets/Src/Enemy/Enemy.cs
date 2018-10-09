@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour {
     public e_EnemyType EnemyType { get { return m_enemyType; } }
 
     [Header("Player")]
-    //this is a refrence to the player character, used for attacks
+    //this is a reference to the player character, used for attacks
     public Player player;
     
     [Header("Base Stats")]
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour {
     public float speed;
     //this is how fast the unit moves forward 
     public float forwardSpeed;
-    //this determins how far behind the player it must be before being turned off
+    //this determines how far behind the player it must be before being turned off
     public float despawnOffset;
     //the units current health   
     protected float m_health;
@@ -36,13 +36,20 @@ public class Enemy : MonoBehaviour {
     [Header("Animation")]
     public Animator animat;
 
+    [Header("Flocking")]
+    public Spawner spawner;
+
     public virtual void Reset() { m_health = baseHealth; }
     public virtual void TurnOff() {
-        GameManager.instance.GetObjectPool().AddEnemyTooPool(this);
-        GameManager.instance.GetItemSpawnManager().enemyList.RemoveAt(0);
-        GameManager.instance.GetItemSpawnManager().SpawnEnemy();
+        Reset();
+        GameManager.objectPoolManager.AddEnemyTooPool(this);
+        GameManager.enemyList.Remove(gameObject);
     }
-    public virtual void TurnOn() { Reset(); this.gameObject.SetActive(true); }
+    public virtual void TurnOn() {
+        Reset();
+        GameManager.enemyList.Add(gameObject);
+        this.gameObject.SetActive(true);
+    }
     public virtual void OnDeath() {
         Item loot = GameManager.objectPoolManager.FindItemOfType(e_ItemType.Pickup).GetComponent<Item>();
         loot.transform.position = transform.position;
@@ -53,7 +60,7 @@ public class Enemy : MonoBehaviour {
     public Enemy GetEnemy() { return this; }
 
     protected virtual void Awake() {
-        animat = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
+        //animat = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
     }
 
     public void ColliderUpdate() {

@@ -21,10 +21,14 @@ public class Phoenix : Enemy {
     }
 
     public void Update() {
-        rangedAttack.Update();
+        //rangedAttack.Update();
+        //
+        //MoveToPlayer();
+        //ShootAttack();
 
-        MoveToPlayer();
-        ShootAttack();
+        if (player.transform.position.z > (transform.position.z + despawnOffset)) {
+            TurnOff();
+        }
     }
 
     private void MoveToPlayer() {

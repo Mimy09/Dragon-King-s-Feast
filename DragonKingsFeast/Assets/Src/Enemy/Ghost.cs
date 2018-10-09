@@ -24,7 +24,12 @@ public class Ghost : Enemy {
     }
 
     public void Update() {
-        MoveToPlayer();
+        if (player.transform.position.z > (transform.position.z + despawnOffset)) {
+            spawner.GetListOfEnemies().Remove(this);
+            TurnOff();
+        }
+
+        //MoveToPlayer();
 
         //if (animat.GetBool("Attack") == true) {
         //    animat.SetBool("Attack", false);

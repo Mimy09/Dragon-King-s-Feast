@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(ObjectPoolManager))]
 [RequireComponent(typeof(MapManager))]
@@ -21,9 +21,15 @@ public class GameManager : MonoBehaviour {
     public static AudioManager audioManager;
     public static MapManager mapManager;
 
+    // Init variables
     public static bool firstTimeLoading = false;
 
+    // Store the coin drop position
     public static GameObject coinSP;
+    
+    // List of active objects
+    public static List<GameObject> enemyList = new List<GameObject>();
+    public static List<GameObject> itemList = new List<GameObject>();
 
     //**************************************************************************************/
     // ---- Manager functions ---- //

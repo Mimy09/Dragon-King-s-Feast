@@ -15,8 +15,16 @@ public class Item : MonoBehaviour {
     public e_ItemType m_itemType;
     public e_ItemType ItemType { get { return m_itemType; } }
 
-    public virtual void TurnOff() { GameManager.instance.GetObjectPool().AddItemTooPool(this); }
-    public virtual void TurnOn() { Reset(); this.gameObject.SetActive(true); }
+    public virtual void TurnOff() {
+        Reset();
+        GameManager.instance.GetObjectPool().AddItemTooPool(this);
+        GameManager.itemList.Add(gameObject);
+    }
+    public virtual void TurnOn() {
+        Reset();
+        GameManager.itemList.Remove(gameObject);
+        this.gameObject.SetActive(true);
+    }
     public virtual void Reset() { }
 
     public void OnTriggerEnter(Collider other) {
