@@ -5864,6 +5864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1946702415}
   - component: {fileID: 1946702414}
+  - component: {fileID: 1946702416}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -5882,9 +5883,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1365a46ca0098544ea8e2dfb55c90488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  formation: 0
-  wingOfEnemies: 010000000100000001000000
-  spawnDist: 1
+  formation: 2
+  wingOfEnemies: 03000000030000000300000003000000030000000300000003000000030000000300000003000000
+  spawnDist: 2.5
+  spawn: 0
 --- !u!4 &1946702415
 Transform:
   m_ObjectHideFlags: 0
@@ -5892,12 +5894,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1946702413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 44.3}
+  m_LocalPosition: {x: 0, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1946702416
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1946702413}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1955959987
 GameObject:
   m_ObjectHideFlags: 0

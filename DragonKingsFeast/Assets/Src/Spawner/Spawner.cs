@@ -5,7 +5,8 @@ using UnityEngine;
 public enum e_FormationType {
     Line,
     VWing,
-    Box
+    Box,
+    Cross
 }
 
 public class Spawner : MonoBehaviour {
@@ -37,6 +38,9 @@ public class Spawner : MonoBehaviour {
                 break;
             case e_FormationType.Box:
                 DrawBoxFormationGizmos();
+                break;
+            case e_FormationType.Cross:
+
                 break;
             default:
                 Debug.LogError("NO VALID FORMATION TYPE SELECTED");
@@ -93,28 +97,21 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    public void DrawCrossFormationFizmos() {
+
+        Debug.Log("Test");
+        float half = (wingOfEnemies.Count / 2) * spawnDist;
+
+        for (int i = 0; i < wingOfEnemies.Count; i++) {
+            Gizmos.DrawSphere(new Vector3(transform.position.x + (half - spawnDist * i), transform.position.y, transform.position.z), 1);
+        }
+    }
+
     /// <summary>
     /// IN Game Spawning
     /// </summary>
 
     public void Update() {
-
-        if (spawn == false) {
-            spawn = true;
-            switch (formation) {
-                case e_FormationType.Line:
-                    SpawnLineFormation();
-                    break;
-                case e_FormationType.VWing:
-                    SpawnVFormation();
-                    break;
-                case e_FormationType.Box:
-                    SpawnBoxFormation();
-                    break;
-                default:
-                    break;
-            }
-        }
     }
 
     public void OnTriggerEnter(Collider other) {
@@ -131,7 +128,9 @@ public class Spawner : MonoBehaviour {
             case e_FormationType.VWing:
                 SpawnVFormation();
                 break;
-            default:
+            case e_FormationType.Box:
+                SpawnBoxFormation();
+                break;
                 Debug.LogError("NO VALID FORMATION TYPE SELECTED");
                 break;
         }
