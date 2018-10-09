@@ -53,12 +53,15 @@ public class Spawner : MonoBehaviour {
         int count = 0;
 
         for (int i = 0; i < wingOfEnemies.Count; i++) {
-            if (i%2 == 0) {
+            if (i%2 == 0 && i != wingOfEnemies.Count - 1) {
                 Gizmos.DrawSphere(new Vector3(transform.position.x + (spawnDist * count), transform.position.y, transform.position.z + (spawnDist * count)), 1);
             }
-            else {
+            else if(i != wingOfEnemies.Count - 1) {
                 count++;
                 Gizmos.DrawSphere(new Vector3(transform.position.x - (spawnDist * count), transform.position.y, transform.position.z + (spawnDist * count)), 1);
+            }            
+            else if (i == wingOfEnemies.Count - 1) {
+                Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y, transform.position.z + (spawnDist * 2)), 1);
             }
 
         }
@@ -124,6 +127,10 @@ public class Spawner : MonoBehaviour {
             else {
                 count++;
                 go.transform.position = new Vector3(transform.position.x - (spawnDist * count), transform.position.y, transform.position.z + (spawnDist * count));
+            }
+
+            if (i == wingOfEnemies.Count - 1) {
+                go.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (spawnDist * 2));
             }
 
             listOfEnemies.Add(go.GetComponent<Enemy>());
