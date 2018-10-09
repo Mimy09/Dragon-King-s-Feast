@@ -98,10 +98,22 @@ public class Spawner : MonoBehaviour {
     /// </summary>
 
     public void Update() {
+
         if (spawn == false) {
             spawn = true;
-
-            SpawnBoxFormation();
+            switch (formation) {
+                case e_FormationType.Line:
+                    SpawnLineFormation();
+                    break;
+                case e_FormationType.VWing:
+                    SpawnVFormation();
+                    break;
+                case e_FormationType.Box:
+                    SpawnBoxFormation();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
