@@ -11,7 +11,8 @@ public class Witch : Enemy {
         rangedAttack.Reset();
     }
 
-    void Awake() {
+    protected override void Awake() {
+        base.Awake();
         player = GameManager.player;
         rangedAttack.SetUp(player, this);
         m_enemyType = e_EnemyType.Witch;
@@ -27,14 +28,16 @@ public class Witch : Enemy {
 
         //MoveForward();
         //ShootAttack();
+
+        if (player.transform.position.z > (transform.position.z + despawnOffset)) {
+            spawner.GetListOfEnemies().Remove(this);
+
+            TurnOff();
+        }
     }
 
     private void MoveForward() {
         transform.position += (Vector3.back * Time.deltaTime) * forwardSpeed;
-
-        if (player.transform.position.z > (transform.position.z + despawnOffset)) {
-            TurnOff();
-        }
     }
 
     private void ShootAttack() {

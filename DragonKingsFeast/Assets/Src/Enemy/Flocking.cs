@@ -32,12 +32,13 @@ public class Flocking : MonoBehaviour {
         formation = GetComponent<Enemy>().spawner.GetListOfEnemies();
         if (formation.Count == 0) return;
         if (formation[0].gameObject == gameObject) isLeader = true;
-
         if (!isLeader) offset = formation[0].transform.position - transform.position;
     }
 
     private void Update() {
         if (formation.Count == 0) return;
+        if (formation[0].gameObject == gameObject) isLeader = true;
+
         if (isLeader) {
             trackPosition = GameManager.player.transform.position;
         }
@@ -49,7 +50,6 @@ public class Flocking : MonoBehaviour {
         vel += (Separation());
         vel += (Alignment());
         vel += (Cohesion());
-        vel.z = -Mathf.Abs(rb.velocity.z);
 
         rb.velocity = vel;
     }
