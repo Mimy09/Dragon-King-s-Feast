@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum e_FormationType {
     Line,
-    VWing
+    VWing,
+    Box
 }
 
 public class Spawner : MonoBehaviour {
@@ -33,6 +34,9 @@ public class Spawner : MonoBehaviour {
                 break;
             case e_FormationType.VWing:
                 DrawVFormationGizmo();
+                break;
+            case e_FormationType.Box:
+                DrawBoxFormationGizmos();
                 break;
             default:
                 Debug.LogError("NO VALID FORMATION TYPE SELECTED");
@@ -67,6 +71,28 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    public void DrawBoxFormationGizmos() {
+        int rows = (int)Mathf.Sqrt(wingOfEnemies.Count);
+        int colums = wingOfEnemies.Count / rows;
+
+        int count = 0;
+
+        float verticalHalf = (colums/2) * spawnDist;
+        float horizontalHalf = (rows/2) * spawnDist;
+
+        for (int x = 0; x < colums; x++) {
+            for (int y = 0; y < rows; y++) {
+                Gizmos.DrawSphere(new Vector3(transform.position.x + (horizontalHalf - spawnDist * x), transform.position.y + (verticalHalf - spawnDist * y), transform.position.z), 1);
+
+                count++;
+            }
+        }
+
+        if (count != wingOfEnemies.Count) {
+            Gizmos.DrawSphere(new Vector3(transform.position.x + (horizontalHalf - spawnDist * (colums)), transform.position.y + verticalHalf, transform.position.z), 1);
+        }
+    }
+
     /// <summary>
     /// IN Game Spawning
     /// </summary>
@@ -75,7 +101,7 @@ public class Spawner : MonoBehaviour {
         if (spawn == false) {
             spawn = true;
 
-            SpawnVFormation();
+            SpawnBoxFormation();
         }
     }
 
@@ -104,7 +130,6 @@ public class Spawner : MonoBehaviour {
         float half = (wingOfEnemies.Count / 2) * spawnDist;
 
         for (int i = 0; i < wingOfEnemies.Count; i++) {
-            Debug.Log("Test");
             GameObject go = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[i]);
             go.transform.position = new Vector3(transform.position.x + (half - spawnDist * i), transform.position.y, transform.position.z);
             listOfEnemies.Add(go.GetComponent<Enemy>());
@@ -117,8 +142,6 @@ public class Spawner : MonoBehaviour {
         int count = 0;
 
         for (int i = 0; i < wingOfEnemies.Count; i++) {
-            Debug.Log("Test V Formation");
-
             GameObject go = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[i]);
 
             if (i % 2 == 0) {
@@ -136,5 +159,35 @@ public class Spawner : MonoBehaviour {
             listOfEnemies.Add(go.GetComponent<Enemy>());
             listOfEnemies[i].spawner = this;
         }
+    }
+
+    public void SpawnBoxFormation() {
+
+        int rows = (int)Mathf.Sqrt(wingOfEnemies.Count);
+        int colums = wingOfEnemies.Count / rows;
+
+        int count = 0;
+
+        float verticalHalf = (colums / 2) * spawnDist;
+        float horizontalHalf = (rows / 2) * spawnDist;
+
+        for (int x = 0; x < colums; x++) {
+            for (int y = 0; y < rows; y++) {
+                GameObject go = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[count]);
+                go.transform.position = new Vector3(transform.position.x + (horizontalHalf - spawnDist * x), transform.position.y + (verticalHalf - spawnDist * y), transform.position.z);
+                listOfEnemies.Add(go.GetComponent<Enemy>());
+                listOfEnemies[count].spawner = this;
+
+                count++;
+            }
+        }
+
+        if (count != wingOfEnemies.Count) {
+            GameObject go = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[count]);
+            go.transform.position = new Vector3(transform.position.x + (horizontalHalf - spawnDist * (colums)), transform.position.y + verticalHalf, transform.position.z);
+            listOfEnemies.Add(go.GetComponent<Enemy>());
+            listOfEnemies[count].spawner = this;
+
+            }
     }
 }
