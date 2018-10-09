@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 65475783802818170}
   - component: {fileID: 114601264633699390}
   - component: {fileID: 54121979808750632}
+  - component: {fileID: 114993637182126944}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -1271,9 +1272,28 @@ MonoBehaviour:
   despawnOffset: 5
   lootValue: 1
   animat: {fileID: 0}
+  spawner: {fileID: 0}
   meleeAttack:
     damage: 10
     player: {fileID: 0}
+--- !u!114 &114993637182126944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774448590492880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4abbd66cf12f514787e92bb2e61d558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seekSpeed: 1
+  separationRadius: 3
+  cohesionRadius: 0
+  alignRadius: 0
+  separationWeight: 0.5
+  cohesionWeight: 0
+  alignWeight: 0
 --- !u!137 &137158218783869390
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
