@@ -41,11 +41,15 @@ public class Enemy : MonoBehaviour {
 
     public virtual void Reset() { m_health = baseHealth; }
     public virtual void TurnOff() {
-        GameManager.instance.GetObjectPool().AddEnemyTooPool(this);
-        //GameManager.instance.GetItemSpawnManager().enemyList.RemoveAt(0);
-        //GameManager.instance.GetItemSpawnManager().SpawnEnemy();
+        Reset();
+        GameManager.objectPoolManager.AddEnemyTooPool(this);
+        GameManager.enemyList.Remove(gameObject);
     }
-    public virtual void TurnOn() { Reset(); this.gameObject.SetActive(true); }
+    public virtual void TurnOn() {
+        Reset();
+        GameManager.enemyList.Add(gameObject);
+        this.gameObject.SetActive(true);
+    }
     public virtual void OnDeath() {
         Item loot = GameManager.objectPoolManager.FindItemOfType(e_ItemType.Pickup).GetComponent<Item>();
         loot.transform.position = transform.position;

@@ -190,8 +190,8 @@ public class Player : MonoBehaviour {
         if (GameManager.tutorialManager.LearnToFlyComp == true && gameRunning == true) {
             float dist = range;
             Transform tran = null;
-            if (GameManager.itemSpawnManager == null) return;
-            List<GameObject> holder = GameManager.itemSpawnManager.enemyList;
+            if (GameManager.enemyList.Count == 0) return;
+            List<GameObject> holder = GameManager.enemyList;
 
             for (int i = 0; i < holder.Count; i++) {
                 float distance = Vector3.Distance(transform.position, holder[i].transform.position);

@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour {
     /// IN Editor Show Gizmos
     /// </summary>
 
-    private void OnDrawGizmosSelected() {
+    private void OnDrawGizmos() {
         switch (formation) {
             case e_FormationType.Line:
                 DrawLineFormationGizmos();
@@ -163,6 +163,7 @@ public class Spawner : MonoBehaviour {
             go.transform.position = new Vector3(transform.position.x + (half - spawnDist * i), transform.position.y, transform.position.z);
             listOfEnemies.Add(go.GetComponent<Enemy>());
             listOfEnemies[i].spawner = this;
+            listOfEnemies[i].GetComponent<Flocking>().Init();
         }
     }
 
@@ -187,6 +188,7 @@ public class Spawner : MonoBehaviour {
 
             listOfEnemies.Add(go.GetComponent<Enemy>());
             listOfEnemies[i].spawner = this;
+            listOfEnemies[i].GetComponent<Flocking>().Init();
         }
     }
 
@@ -206,7 +208,7 @@ public class Spawner : MonoBehaviour {
                 go.transform.position = new Vector3(transform.position.x + (horizontalHalf - spawnDist * x), transform.position.y + (verticalHalf - spawnDist * y), transform.position.z);
                 listOfEnemies.Add(go.GetComponent<Enemy>());
                 listOfEnemies[count].spawner = this;
-
+                listOfEnemies[count].GetComponent<Flocking>().Init();
                 count++;
             }
         }
@@ -216,8 +218,8 @@ public class Spawner : MonoBehaviour {
             go.transform.position = new Vector3(transform.position.x + (horizontalHalf - spawnDist * (colums)), transform.position.y + verticalHalf, transform.position.z);
             listOfEnemies.Add(go.GetComponent<Enemy>());
             listOfEnemies[count].spawner = this;
-
-            }
+            listOfEnemies[count].GetComponent<Flocking>().Init();
+        }
     }
 
     public void SpawnCrossFormation() {
@@ -238,7 +240,7 @@ public class Spawner : MonoBehaviour {
             go.transform.position = new Vector3(transform.position.x, transform.position.y + (half - spawnDist * count), transform.position.z);
             listOfEnemies.Add(go.GetComponent<Enemy>());
             listOfEnemies[i].spawner = this;
-            
+            listOfEnemies[i].GetComponent<Flocking>().Init();
             count++;
         }
 
@@ -248,12 +250,14 @@ public class Spawner : MonoBehaviour {
             go.transform.position = new Vector3(transform.position.x + (half - spawnDist * i), transform.position.y, transform.position.z);
             listOfEnemies.Add(go.GetComponent<Enemy>());
             listOfEnemies[halfnum + i].spawner = this;
-            
+            listOfEnemies[halfnum + i].GetComponent<Flocking>().Init();
+
             if (i == halfnum - 1 && (halfnum * 2) != wingOfEnemies.Count) {
                 GameObject go2 = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[i+1]);
                 go2.transform.position = new Vector3(transform.position.x + (half - spawnDist * (i+1)), transform.position.y, transform.position.z);
                 listOfEnemies.Add(go2.GetComponent<Enemy>());
                 listOfEnemies[halfnum + i + 1].spawner = this;
+                listOfEnemies[halfnum + i + 1].GetComponent<Flocking>().Init();
             }
 
         }

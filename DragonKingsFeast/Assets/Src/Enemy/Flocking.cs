@@ -24,7 +24,7 @@ public class Flocking : MonoBehaviour {
     [Range(0, 1)] public float cohesionWeight = 1;
     [Range(0, 1)] public float alignWeight = 1;
 
-    private void Start() {
+    public void Init() {
         // set the rigidbody
         rb = GetComponent<Rigidbody>();
 
@@ -34,6 +34,7 @@ public class Flocking : MonoBehaviour {
         if (formation[0].gameObject == gameObject) isLeader = true;
         if (!isLeader) offset = formation[0].transform.position - transform.position;
     }
+    
 
     private void Update() {
         if (formation.Count == 0) return;
