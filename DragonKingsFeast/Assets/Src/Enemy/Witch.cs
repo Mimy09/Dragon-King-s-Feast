@@ -23,10 +23,10 @@ public class Witch : Enemy {
     }
 
     public void Update() {
-        rangedAttack.Update();
+        //rangedAttack.Update();
 
-        MoveForward();
-        ShootAttack();
+        //MoveForward();
+        //ShootAttack();
     }
 
     private void MoveForward() {
