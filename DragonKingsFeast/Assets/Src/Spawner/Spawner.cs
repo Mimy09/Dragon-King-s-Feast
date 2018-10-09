@@ -32,6 +32,7 @@ public class Spawner : MonoBehaviour {
                 DrawLineFormationGizmos();
                 break;
             case e_FormationType.VWing:
+                DrawVFormationGizmo();
                 break;
             default:
                 Debug.LogError("NO VALID FORMATION TYPE SELECTED");
@@ -48,6 +49,21 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    public void DrawVFormationGizmo() {
+        int count = 0;
+
+        for (int i = 0; i < wingOfEnemies.Count; i++) {
+            if (i%2 == 0) {
+                Gizmos.DrawSphere(new Vector3(transform.position.x + (spawnDist * count), transform.position.y, transform.position.z + (spawnDist * count)), 1);
+            }
+            else {
+                count++;
+                Gizmos.DrawSphere(new Vector3(transform.position.x - (spawnDist * count), transform.position.y, transform.position.z + (spawnDist * count)), 1);
+            }
+
+        }
+    }
+
     /// <summary>
     /// IN Game Spawning
     /// </summary>
@@ -56,7 +72,7 @@ public class Spawner : MonoBehaviour {
         if (spawn == false) {
             spawn = true;
 
-            SpawnLineFormation();
+            SpawnVFormation();
         }
     }
 
@@ -72,6 +88,7 @@ public class Spawner : MonoBehaviour {
                 SpawnLineFormation();
                 break;
             case e_FormationType.VWing:
+                SpawnVFormation();
                 break;
             default:
                 Debug.LogError("NO VALID FORMATION TYPE SELECTED");
@@ -87,6 +104,28 @@ public class Spawner : MonoBehaviour {
             Debug.Log("Test");
             GameObject go = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[i]);
             go.transform.position = new Vector3(transform.position.x + (half - spawnDist * i), transform.position.y, transform.position.z);
+            listOfEnemies.Add(go.GetComponent<Enemy>());
+            listOfEnemies[i].spawner = this;
+        }
+    }
+
+    public void SpawnVFormation() {
+        
+        int count = 0;
+
+        for (int i = 0; i < wingOfEnemies.Count; i++) {
+            Debug.Log("Test V Formation");
+
+            GameObject go = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[i]);
+
+            if (i % 2 == 0) {
+                go.transform.position = new Vector3(transform.position.x + (spawnDist * count), transform.position.y, transform.position.z + (spawnDist * count));
+            }
+            else {
+                count++;
+                go.transform.position = new Vector3(transform.position.x - (spawnDist * count), transform.position.y, transform.position.z + (spawnDist * count));
+            }
+
             listOfEnemies.Add(go.GetComponent<Enemy>());
             listOfEnemies[i].spawner = this;
         }
