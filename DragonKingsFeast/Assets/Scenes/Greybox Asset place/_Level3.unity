@@ -1004,8 +1004,9 @@ GameObject:
   m_Component:
   - component: {fileID: 158811152}
   - component: {fileID: 158811151}
-  - component: {fileID: 158811150}
   - component: {fileID: 158811149}
+  - component: {fileID: 158811153}
+  - component: {fileID: 158811150}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1047,18 +1048,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &158811150
-SphereCollider:
+--- !u!114 &158811150
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 158811148}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365a46ca0098544ea8e2dfb55c90488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  formation: 3
+  wingOfEnemies: 040000000300000001000000
+  spawnDist: 0
+  spawn: 0
 --- !u!33 &158811151
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1079,6 +1083,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 172
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &158811153
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 158811148}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 1}
+  m_Center: {x: 0, y: 0, z: -20}
 --- !u!1001 &186395733
 Prefab:
   m_ObjectHideFlags: 0
@@ -1610,8 +1626,9 @@ GameObject:
   m_Component:
   - component: {fileID: 239029082}
   - component: {fileID: 239029081}
-  - component: {fileID: 239029080}
   - component: {fileID: 239029079}
+  - component: {fileID: 239029083}
+  - component: {fileID: 239029080}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
@@ -1653,18 +1670,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &239029080
-SphereCollider:
+--- !u!114 &239029080
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 239029078}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365a46ca0098544ea8e2dfb55c90488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  formation: 0
+  wingOfEnemies: 04000000030000000300000001000000010000000100000001000000
+  spawnDist: 0
+  spawn: 0
 --- !u!33 &239029081
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1685,6 +1705,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 174
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &239029083
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 239029078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 1}
+  m_Center: {x: 0, y: 0, z: -20}
 --- !u!1001 &263244127
 Prefab:
   m_ObjectHideFlags: 0
@@ -3014,8 +3046,9 @@ GameObject:
   m_Component:
   - component: {fileID: 523073436}
   - component: {fileID: 523073435}
-  - component: {fileID: 523073434}
   - component: {fileID: 523073433}
+  - component: {fileID: 523073437}
+  - component: {fileID: 523073434}
   m_Layer: 0
   m_Name: Sphere (6)
   m_TagString: Untagged
@@ -3057,18 +3090,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &523073434
-SphereCollider:
+--- !u!114 &523073434
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 523073432}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365a46ca0098544ea8e2dfb55c90488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  formation: 1
+  wingOfEnemies: 030000000100000001000000
+  spawnDist: 0
+  spawn: 0
 --- !u!33 &523073435
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3089,6 +3125,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 178
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &523073437
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 523073432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 1}
+  m_Center: {x: 0, y: 0, z: -20}
 --- !u!1001 &548615238
 Prefab:
   m_ObjectHideFlags: 0
@@ -5916,8 +5964,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1046056592}
   - component: {fileID: 1046056591}
-  - component: {fileID: 1046056590}
   - component: {fileID: 1046056589}
+  - component: {fileID: 1046056593}
+  - component: {fileID: 1046056590}
   m_Layer: 0
   m_Name: Sphere (4)
   m_TagString: Untagged
@@ -5959,18 +6008,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &1046056590
-SphereCollider:
+--- !u!114 &1046056590
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1046056588}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365a46ca0098544ea8e2dfb55c90488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  formation: 1
+  wingOfEnemies: 0300000001000000010000000100000001000000
+  spawnDist: 0
+  spawn: 0
 --- !u!33 &1046056591
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5991,6 +6043,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 176
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1046056593
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1046056588}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 1}
+  m_Center: {x: 0, y: 0, z: -20}
 --- !u!1001 &1055578205
 Prefab:
   m_ObjectHideFlags: 0
@@ -7736,8 +7800,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1323786414}
   - component: {fileID: 1323786413}
-  - component: {fileID: 1323786412}
   - component: {fileID: 1323786411}
+  - component: {fileID: 1323786415}
+  - component: {fileID: 1323786412}
   m_Layer: 0
   m_Name: Sphere (5)
   m_TagString: Untagged
@@ -7779,18 +7844,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &1323786412
-SphereCollider:
+--- !u!114 &1323786412
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1323786410}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365a46ca0098544ea8e2dfb55c90488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  formation: 2
+  wingOfEnemies: 040000000300000001000000
+  spawnDist: 0
+  spawn: 0
 --- !u!33 &1323786413
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7811,6 +7879,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 177
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1323786415
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1323786410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 1}
+  m_Center: {x: 0, y: 0, z: -20}
 --- !u!1001 &1327122942
 Prefab:
   m_ObjectHideFlags: 0
@@ -10656,8 +10736,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1877304397}
   - component: {fileID: 1877304396}
-  - component: {fileID: 1877304395}
   - component: {fileID: 1877304394}
+  - component: {fileID: 1877304398}
+  - component: {fileID: 1877304395}
   m_Layer: 0
   m_Name: Sphere (7)
   m_TagString: Untagged
@@ -10699,18 +10780,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &1877304395
-SphereCollider:
+--- !u!114 &1877304395
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1877304393}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365a46ca0098544ea8e2dfb55c90488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  formation: 0
+  wingOfEnemies: 040000000300000003000000
+  spawnDist: 0
+  spawn: 0
 --- !u!33 &1877304396
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10731,6 +10815,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 179
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1877304398
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1877304393}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 1}
+  m_Center: {x: 0, y: 0, z: -20}
 --- !u!1001 &1887872682
 Prefab:
   m_ObjectHideFlags: 0
@@ -11218,8 +11314,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2061136422}
   - component: {fileID: 2061136421}
-  - component: {fileID: 2061136420}
   - component: {fileID: 2061136419}
+  - component: {fileID: 2061136423}
+  - component: {fileID: 2061136420}
   m_Layer: 0
   m_Name: Sphere (3)
   m_TagString: Untagged
@@ -11261,18 +11358,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &2061136420
-SphereCollider:
+--- !u!114 &2061136420
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2061136418}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365a46ca0098544ea8e2dfb55c90488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  formation: 1
+  wingOfEnemies: 0400000003000000030000000100000001000000
+  spawnDist: 0
+  spawn: 0
 --- !u!33 &2061136421
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11287,12 +11387,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2061136418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -69.1, y: 0, z: 804.49994}
+  m_LocalPosition: {x: -61.3, y: 0, z: 804.49994}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 175
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2061136423
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2061136418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 1}
+  m_Center: {x: 0, y: 0, z: -20}
 --- !u!1 &2066253835
 GameObject:
   m_ObjectHideFlags: 0
@@ -11302,8 +11414,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2066253839}
   - component: {fileID: 2066253838}
-  - component: {fileID: 2066253837}
   - component: {fileID: 2066253836}
+  - component: {fileID: 2066253840}
+  - component: {fileID: 2066253837}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -11345,18 +11458,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &2066253837
-SphereCollider:
+--- !u!114 &2066253837
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2066253835}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365a46ca0098544ea8e2dfb55c90488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  formation: 2
+  wingOfEnemies: 03000000010000000300000001000000
+  spawnDist: 0
+  spawn: 0
 --- !u!33 &2066253838
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11377,6 +11493,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 173
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2066253840
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2066253835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 1}
+  m_Center: {x: 0, y: 0, z: -20}
 --- !u!1001 &2069364326
 Prefab:
   m_ObjectHideFlags: 0
