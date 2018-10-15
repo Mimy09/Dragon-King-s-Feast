@@ -14,20 +14,23 @@ public class Item : MonoBehaviour {
     public int value = 1;
     public e_ItemType m_itemType;
     public e_ItemType ItemType { get { return m_itemType; } }
-
+    public bool spawner = false;
+    
     public virtual void TurnOff() {
         Reset();
         GameManager.instance.GetObjectPool().AddItemTooPool(this);
-        GameManager.itemList.Add(gameObject);
+        GameManager.itemList.Remove(gameObject);
     }
     public virtual void TurnOn() {
         Reset();
-        GameManager.itemList.Remove(gameObject);
+        GameManager.itemList.Add(gameObject);
         this.gameObject.SetActive(true);
     }
     public virtual void Reset() { }
 
     public void OnTriggerEnter(Collider other) {
+        if (spawner == false) return;
+
         if (other.tag == "Player") {
             if (m_itemType != e_ItemType.Pickup) {
                 GameManager.player.ApplyBoost(m_itemType);
@@ -38,7 +41,7 @@ public class Item : MonoBehaviour {
                 for (int i = 0; i < value; i++) {
                     GameObject g = Instantiate(Helper.CoinPath, new Vector3(0, 0, 0), Quaternion.identity, t) as GameObject;
                     g.GetComponent<RectTransform>().localPosition = new Vector3(
-                        Random.Range(-10, 10),
+                        Random.Range(-Screen.width / 40, Screen.width / 40),
                         0,
                         0
                         );
@@ -50,8 +53,21 @@ public class Item : MonoBehaviour {
     }
 
     public void Update() {
+        if (spawner == false) Debug.LogError("WRONG SPAWN!!!!!!!!!!!!");
+
+        Vector3 r = transform.rotation.eulerAngles;
+        r.y += Time.deltaTime * 90;
+        transform.rotation = Quaternion.Euler(r);
+
         if (transform.position.z < (GameManager.player.transform.position.z - 5)) {
             TurnOff();
+        }
+    }
+
+    private void OnDrawGizmos() {
+        if (spawner == false) {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawCube(transform.position, new Vector3(3, 3, 3));
         }
     }
 }

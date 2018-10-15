@@ -31,7 +31,6 @@ public class TutorialManager : MonoBehaviour {
 
         if (LearnToFly) {
             StopTime();
-            GameManager.instance.GetPlayerIK().MoveBone();
             __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.TILT);
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
@@ -62,7 +61,6 @@ public class TutorialManager : MonoBehaviour {
 
         if (CloudAhead && LearnToFlyComp) {
             StopTime();
-            GameManager.instance.GetPlayerIK().MoveBone();
             __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.TAP);
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR

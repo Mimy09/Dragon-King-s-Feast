@@ -29,7 +29,11 @@ public class GameManager : MonoBehaviour {
     
     // List of active objects
     public static List<GameObject> enemyList = new List<GameObject>();
+    [SerializeField]
+    public List<GameObject> EnemyList = new List<GameObject>();
     public static List<GameObject> itemList = new List<GameObject>();
+    [SerializeField]
+    public List<GameObject> ItemList = new List<GameObject>();
 
     //**************************************************************************************/
     // ---- Manager functions ---- //
@@ -174,7 +178,12 @@ public class GameManager : MonoBehaviour {
             InitAudio();
         }
     }
-    
+
+    private void Update() {
+        EnemyList = enemyList;
+        ItemList = itemList;
+    }
+
     //**************************************************************************************/
     // ---- Audio Init---- //
     private void InitAudio() {
