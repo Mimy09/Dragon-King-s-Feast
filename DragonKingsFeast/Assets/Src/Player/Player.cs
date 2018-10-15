@@ -147,7 +147,8 @@ public class Player : MonoBehaviour {
             if (Physics.Raycast(Camera.main.transform.position, ray.direction * 100, out hit)) {
 
                 if (hit.transform.gameObject.tag == "Enemy") {
-                    Attack(hit.transform);
+                    if (hit.transform.gameObject.GetComponent<Enemy>().GetHealth() > 0)
+                        Attack(hit.transform.gameObject.GetComponent<Enemy>());
                 }
                 else {
                     FindClosestEnemeyToAttack();
@@ -171,7 +172,8 @@ public class Player : MonoBehaviour {
                 if (Physics.Raycast(Camera.main.transform.position, ray.direction * 100, out hit)) {
 
                     if (hit.transform.gameObject.tag == "Enemy") {
-                        Attack(hit.transform);
+                        if (hit.transform.gameObject.GetComponent<Enemy>().GetHealth() > 0)
+                            Attack(hit.transform.gameObject.GetComponent<Enemy>());
                         return true;
                     }
                     else {
@@ -200,19 +202,20 @@ public class Player : MonoBehaviour {
                     holder[i].GetComponent<Enemy>().EnemyType != e_EnemyType.StormCloud &&
                     holder[i].activeInHierarchy == true
                     ) {
+                    if (holder[i].GetComponent<Enemy>().GetHealth() <= 0) continue; 
                     dist = distance;
                     tran = holder[i].transform;
                 }
             }
 
             if (tran != null) {
-                Attack(tran);
+                Attack(tran.gameObject.GetComponent<Enemy>());
             }
         }
     }
 
-    public void Attack(Transform E) {
-        float dist = Vector3.Distance(transform.position, E.position);
+    public void Attack(Enemy E) {
+        float dist = Vector3.Distance(transform.position, E.transform.position);
 
         if (bulletAmmount < 1) return;
         
@@ -221,6 +224,9 @@ public class Player : MonoBehaviour {
                 GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
                 go.transform.position = projectileSpawnPoint.position;
                 go.GetComponent<Projectile>().SetUp(E.transform, m_attackBoostTimer < attackBoostTime ? damage + boostDamage : damage, true, rangedAttackSpeed + pm.forwardSpeed, projectileLiveTime);
+
+                E.TakeDamage2( m_attackBoostTimer < attackBoostTime ? damage + boostDamage : damage );
+
                 attackTimer = 0;
                 bulletAmmount--;
             }

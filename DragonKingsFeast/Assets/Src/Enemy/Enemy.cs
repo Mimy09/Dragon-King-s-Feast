@@ -39,6 +39,8 @@ public class Enemy : MonoBehaviour {
     [Header("Flocking")]
     public Spawner spawner;
     
+    public float GetHealth() { return m_health; }
+
     public virtual void Reset() { m_health = baseHealth; }
     public virtual void TurnOff() {
         Reset();
@@ -56,6 +58,8 @@ public class Enemy : MonoBehaviour {
         loot.value = lootValue;
     }
     public virtual void TakeDamage(float damage) { m_health -= damage; if (m_health <= 0) { OnDeath(); TurnOff(); } }
+    public virtual void TakeDamage2(float damage) { m_health -= damage; }
+
     public Enemy GetEnemy() { return this; }
 
     protected virtual void Awake() {
