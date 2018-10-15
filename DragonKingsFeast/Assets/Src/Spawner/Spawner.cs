@@ -6,7 +6,8 @@ public enum e_FormationType {
     Line,
     VWing,
     Box,
-    Cross
+    Cross,
+    Spiral
 }
 
 public class Spawner : MonoBehaviour {
@@ -40,7 +41,10 @@ public class Spawner : MonoBehaviour {
                 DrawBoxFormationGizmos();
                 break;
             case e_FormationType.Cross:
-                DrawCrossFormationFizmos();
+                DrawCrossFormationGizmos();
+                break;
+            case e_FormationType.Spiral:
+                DrawSpiralFormationGizmos();
                 break;
             default:
                 Debug.LogError("NO VALID FORMATION TYPE SELECTED");
@@ -96,7 +100,7 @@ public class Spawner : MonoBehaviour {
         }
     }
 
-    public void DrawCrossFormationFizmos() {
+    public void DrawCrossFormationGizmos() {
         
         float half = ((wingOfEnemies.Count / 2) * spawnDist) / 2;
 
@@ -118,7 +122,12 @@ public class Spawner : MonoBehaviour {
                 Gizmos.DrawSphere(new Vector3(transform.position.x + (half - spawnDist * (i + 1)), transform.position.y, transform.position.z), 1);
             }
         }
+    }
 
+    public void DrawSpiralFormationGizmos() {
+        for (int i = 0; i < wingOfEnemies.Count; i++) {
+            Gizmos.DrawSphere(new Vector3(Mathf.Sin(spawnDist * i) * spawnDist * i, Mathf.Cos(spawnDist * i) * spawnDist * i, transform.position.z + spawnDist * i), 1);
+        }
     }
 
     /// <summary>
@@ -147,6 +156,9 @@ public class Spawner : MonoBehaviour {
                 break;
             case e_FormationType.Cross:
                 SpawnCrossFormation();
+                break;
+            case e_FormationType.Spiral:
+                SpawnSpiralFormation();
                 break;
             default:
                 Debug.LogError("NO VALID FORMATION TYPE SELECTED");
@@ -257,9 +269,17 @@ public class Spawner : MonoBehaviour {
                 listOfEnemies[halfnum + i + 1].spawner = this;
                 listOfEnemies[halfnum + i + 1].GetComponent<Flocking>().Init();
             }
-
         }
+    }
 
+    public void SpawnSpiralFormation() {
+        for (int i = 0; i < wingOfEnemies.Count; i++) {
+            GameObject go = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[i]);
+            go.transform.position = new Vector3(Mathf.Sin(spawnDist * i) * spawnDist * i, Mathf.Cos(spawnDist * i) * spawnDist * i, transform.position.z + spawnDist * i);
+            listOfEnemies.Add(go.GetComponent<Enemy>());
+            listOfEnemies[i].spawner = this;
+            listOfEnemies[i].GetComponent<Flocking>().Init();
+        }
     }
 
 }
