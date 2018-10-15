@@ -41,7 +41,7 @@ public class Item : MonoBehaviour {
                 for (int i = 0; i < value; i++) {
                     GameObject g = Instantiate(Helper.CoinPath, new Vector3(0, 0, 0), Quaternion.identity, t) as GameObject;
                     g.GetComponent<RectTransform>().localPosition = new Vector3(
-                        Random.Range(-10, 10),
+                        Random.Range(-Screen.width / 40, Screen.width / 40),
                         0,
                         0
                         );
