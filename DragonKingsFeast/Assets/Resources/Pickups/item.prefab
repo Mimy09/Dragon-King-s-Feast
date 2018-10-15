@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4907055173904128}
+  - component: {fileID: 114081759275837870}
   m_Layer: 0
   m_Name: item
   m_TagString: Untagged
@@ -39,3 +40,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &114081759275837870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380002387878452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb6ba1f04a32544baf952478cb6fd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 3
+  lootValue: 1
+  gizmosMeshCoin: {fileID: 4300000, guid: ce7718d9b20deac4a8f0bbd10b4001ec, type: 3}
+  gizmosMeshBoost: {fileID: 4300000, guid: 7801223feca41094284cc73a137f023c, type: 3}
