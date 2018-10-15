@@ -120,12 +120,12 @@ public class Player : MonoBehaviour {
         m_attackBoostTimer += Time.deltaTime;
         m_speedBoostTimer += Time.deltaTime;
 
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR
+#if UNITY_STANDALONE_WIN
         RaycastAttackByClick();
 #endif
 
 #if UNITY_ANDROID
-        FindClosestEnemeyToAttack();
+        RaycastAttackByTouch();
 #endif
 
     }
@@ -162,8 +162,9 @@ public class Player : MonoBehaviour {
     private bool RaycastAttackByTouch() {
         for (int i = 0; i < Input.touchCount; ++i) {
             if (Input.GetTouch(i).phase == TouchPhase.Began) {
-
+            //if (Input.touchCount > 0 && Input.GetTouch(i).phase == TouchPhase.Began) { 
                 var ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+
 
                 RaycastHit hit;
 
@@ -176,7 +177,6 @@ public class Player : MonoBehaviour {
                     else {
                         FindClosestEnemeyToAttack();
                     }
-
                 }
                 else {
                     FindClosestEnemeyToAttack();

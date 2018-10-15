@@ -24,10 +24,6 @@ public class PlayerIK : MonoBehaviour {
             bones[i] = bone_parent.transform.GetChild(i).gameObject;
         }
 	}
-
-    public void MoveBone() {
-        //bone_parent.transform.position -= new Vector3(0, 0, 1 - Time.timeScale) * Time.fixedDeltaTime * 5;
-    }
 	
 	void Update () {
         bones[0].transform.position = new Vector3(
