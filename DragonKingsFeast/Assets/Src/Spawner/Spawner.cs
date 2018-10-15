@@ -223,8 +223,6 @@ public class Spawner : MonoBehaviour {
     }
 
     public void SpawnCrossFormation() {
-
-        Debug.Log("Test");
         float half = ((wingOfEnemies.Count / 2) * spawnDist) / 2;
 
         int halfnum = wingOfEnemies.Count / 2;

@@ -21,6 +21,10 @@ public class ObjectPoolManager : MonoBehaviour {
     // ---- Public functions ---- //
 
     private void Start() {
+        if (ObjectPool == null) Init();
+    }
+
+    private void Init() {
         ObjectPool =        new GameObject("Object Pool");
         ItemParent =        new GameObject("Item");
         EnemyParent =       new GameObject("Enemy");
@@ -45,6 +49,10 @@ public class ObjectPoolManager : MonoBehaviour {
 
     public void AddEnemyTooPool(Enemy obj) {
         obj.gameObject.SetActive(false);
+
+        for (int i = 0; i < objectPool_enemy.Count; i++)
+            if (objectPool_enemy[i] == obj) return;
+
         objectPool_enemy.Add(obj);
     }
 
@@ -59,6 +67,9 @@ public class ObjectPoolManager : MonoBehaviour {
                 return go;
             }
         }
+
+        if (EnemyParent == null)
+            Init();
 
         switch (type) {
             case e_EnemyType.AdultDragon:
@@ -92,6 +103,10 @@ public class ObjectPoolManager : MonoBehaviour {
 
     public void AddItemTooPool(Item obj) {
         obj.gameObject.SetActive(false);
+
+        for (int i = 0; i < objectPool_item.Count; i++)
+            if (objectPool_item[i] == obj) return;
+
         objectPool_item.Add(obj);
     }
 
@@ -106,6 +121,9 @@ public class ObjectPoolManager : MonoBehaviour {
                 return go;
             }
         }
+
+        if (ItemParent == null)
+            Init();
 
         switch (type) {
             case e_ItemType.Boost_Attack:
