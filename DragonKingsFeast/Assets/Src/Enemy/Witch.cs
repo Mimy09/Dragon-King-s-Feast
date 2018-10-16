@@ -24,10 +24,11 @@ public class Witch : Enemy {
     }
 
     public void Update() {
-        //rangedAttack.Update();
 
         //MoveForward();
-        //ShootAttack();
+
+        ShootAttack();
+        rangedAttack.Update();
 
         if (player.transform.position.z > (transform.position.z + despawnOffset)) {
             spawner.GetListOfEnemies().Remove(this);

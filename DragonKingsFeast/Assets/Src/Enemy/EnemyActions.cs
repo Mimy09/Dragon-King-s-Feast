@@ -15,6 +15,7 @@ public class EnemyActions{
     public void SetUp(Player p, Enemy e) { player = p; owner = e; }
 
     public virtual bool AttackPlayer() { return false; }
+    public virtual void DealDamage() { }
     public virtual void Reset() { }
 }
 
@@ -25,12 +26,22 @@ public class MeleeAttack : EnemyActions {
     
     public override bool AttackPlayer() {
         if (m_hasAttacked != true) {
-            player.TakeDamage();
             m_hasAttacked = true;
+            owner.animat.SetBool("Attack", true);
             return true;
         }
 
         return false;   
+    }
+
+    public override void DealDamage() {
+        player.TakeDamage();
+    }
+
+    public void Update() {
+        if (m_hasAttacked == true) {
+            owner.animat.SetBool("Attack", false);
+        }
     }
 
 }
@@ -49,9 +60,16 @@ public class RangedAttack : EnemyActions {
     private float attackTimer = 0;
 
     public float projectileLiveTime;
+
+    bool flip = false;
     
     public void Update() {
         attackTimer += Time.deltaTime;
+
+        if (flip == true) {
+            owner.animat.SetBool("Attack", false);
+            flip = false;
+        }
     }
 
     public override bool AttackPlayer() {
@@ -59,15 +77,20 @@ public class RangedAttack : EnemyActions {
 
         if (attackTimer > attackCoolDownSpeed) {
             if (dist <= attackRange) {
-                GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
-                go.transform.position = owner.transform.position + (owner.transform.forward * 3);
-                go.GetComponent<Projectile>().SetUp(player.transform, damage, rangedAttackSpeed + owner.forwardSpeed, projectileLiveTime);
-                attackTimer = 0;
-                
+                owner.animat.SetBool("Attack", true);
+                flip = true;
+
                 return true;
             }
         }
 
         return false;
+    }
+
+    public override void DealDamage() {
+        GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
+        go.transform.position = owner.transform.position + (owner.transform.forward * 3);
+        go.GetComponent<Projectile>().SetUp(player.transform, damage, rangedAttackSpeed + owner.forwardSpeed, projectileLiveTime);
+        attackTimer = 0;
     }
 }

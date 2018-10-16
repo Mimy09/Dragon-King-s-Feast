@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour {
     public Enemy GetEnemy() { return this; }
 
     protected virtual void Awake() {
-        //animat = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
+        
     }
 
     public void ColliderUpdate() {
