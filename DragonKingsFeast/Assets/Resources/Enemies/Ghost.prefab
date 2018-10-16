@@ -1349,9 +1349,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 114601264633699390}
   audioSource: {fileID: 82917348782575090}
+  meleeAttackActions:
+    damage: 0
+    player: {fileID: 0}
+  rangedAttackActions:
+    damage: 0
+    player: {fileID: 0}
+    attackRange: 0
+    rangedAttackSpeed: 0
+    attackCoolDownSpeed: 0
+    projectileLiveTime: 0
   rangedAttack: {fileID: 0}
-  meeleAttack: {fileID: 0}
-  idl: {fileID: 0}
+  meeleAttack: {fileID: 8300000, guid: ebd44e8ccc6497b4ea77e3906858149d, type: 3}
+  idl: {fileID: 8300000, guid: 8317d46467addf145a2909380c6aa99d, type: 3}
   death: {fileID: 0}
 --- !u!114 &114601264633699390
 MonoBehaviour:

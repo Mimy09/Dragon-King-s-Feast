@@ -50,6 +50,8 @@ public class MapManager : MonoBehaviour {
         if (GameManager.firstTimeLoading) {
             GameManager.instance.GetTutorialManager().Init();
         }
+
+        SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive);
     }
 
     IEnumerator LoadAllInBackground() {
