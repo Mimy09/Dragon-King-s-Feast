@@ -29,6 +29,7 @@ public class Helper {
 
     // Misc
     public static Object CoinPath = Resources.Load("Misc\\Coin") as Object;
+    public static Object GemPath = Resources.Load("Misc\\Gem") as Object;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // AUDIO

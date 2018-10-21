@@ -16,7 +16,10 @@ public class Player : MonoBehaviour {
             return health;
         }
     }
-    
+
+    public int currCoinCount;
+    public int maxCoins;
+
     [Header("Projectile Info")]
     public Transform projectileSpawnPoint;
 
@@ -67,6 +70,8 @@ public class Player : MonoBehaviour {
             for (int i = 0; i < g.transform.childCount; i++) {
                 Destroy(g.transform.GetChild(i).gameObject);
             }
+
+            currCoinCount = 0;
         }
         else if (health == 0) {
             health = -1;
@@ -92,7 +97,7 @@ public class Player : MonoBehaviour {
                 break;
 
             case e_ItemType.Pickup:
-                Debug.LogError("USE OTHER FUNCTION WRONG ONE");
+                Debug.LogError("USE ApplyLoot(int amount) FUNCTION, USING WRONG ONE");
                 break;
 
             default:
@@ -102,6 +107,32 @@ public class Player : MonoBehaviour {
 
     public void ApplyLoot(int amount) {
         health += amount;
+        currCoinCount += amount;
+        
+        if (currCoinCount >= maxCoins) {
+            Debug.Log(currCoinCount);
+
+            GameObject SP = GameObject.FindGameObjectWithTag("CoinSP");
+
+            for (int i = 0; i < SP.transform.childCount; i++) {
+
+                if (SP.transform.GetChild(i).tag == "Coin") {
+                    currCoinCount--;
+                    Destroy(SP.transform.GetChild(i).gameObject);
+                }
+
+                if (currCoinCount == 0) {
+                    break;
+                }
+            }
+
+            GameObject go = Instantiate(Helper.GemPath, new Vector3(0, 0, 0), Quaternion.identity, SP.transform) as GameObject;
+            go.GetComponent<RectTransform>().localPosition = new Vector3(
+                Random.Range(-Screen.width / 40, Screen.width / 40),
+                0,
+                0
+                );
+        }
     }
 
 
