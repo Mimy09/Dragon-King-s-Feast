@@ -36,7 +36,6 @@ public class Item : MonoBehaviour {
                 GameManager.player.ApplyBoost(m_itemType);
             }
             else {
-                GameManager.player.ApplyLoot(value);
                 Transform t = GameObject.FindGameObjectWithTag("CoinSP").transform;
                 for (int i = 0; i < value; i++) {
                     GameObject g = Instantiate(Helper.CoinPath, new Vector3(0, 0, 0), Quaternion.identity, t) as GameObject;
@@ -46,6 +45,7 @@ public class Item : MonoBehaviour {
                         0
                         );
                 }
+                GameManager.player.ApplyLoot(value);
             }
 
             TurnOff();
