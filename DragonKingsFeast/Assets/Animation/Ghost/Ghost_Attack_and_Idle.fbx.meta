@@ -90,8 +90,10 @@ ModelImporter:
     4300006: Hood_low
     4300008: Cloak_low
     4300010: Small_Cloud_low
-    7400000: Idl
+    7400000: Attack
     7400002: attack
+    7400004: Idle
+    7400006: Death
     9500000: //RootNode
     13700000: Big_Cloud_low
     13700002: Chest_low
@@ -127,10 +129,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idl
+      name: Attack
       takeName: Take 001
-      firstFrame: 50
-      lastFrame: 90
+      firstFrame: 0
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -155,10 +157,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: attack
+      name: Idle
       takeName: Take 001
-      firstFrame: 0
-      lastFrame: 44
+      firstFrame: 50
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
