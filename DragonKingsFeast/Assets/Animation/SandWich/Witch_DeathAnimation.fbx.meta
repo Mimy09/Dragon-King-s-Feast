@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 641356215bd654c4e9ab16ac6525bf8d
-timeCreated: 1539645556
-licenseType: Pro
+guid: 8538e9c1d0424cf489b5856185bdfad0
+timeCreated: 1540162925
+licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -50,10 +50,10 @@ ModelImporter:
     100084: Right_Wrist_End
     100086: Right_Wrist_Nurb
     100088: Sand_low
-    100090: Spine1
-    100092: Spine2
-    100094: Witch_Low
-    100096: //RootNode
+    100090: //RootNode
+    100092: Spine1
+    100094: Spine2
+    100096: Witch_Low
     400000: Broom_Core
     400002: Broom_Handle1
     400004: Broom_Handle2
@@ -99,11 +99,12 @@ ModelImporter:
     400084: Right_Wrist_End
     400086: Right_Wrist_Nurb
     400088: Sand_low
-    400090: Spine1
-    400092: Spine2
-    400094: Witch_Low
-    400096: //RootNode
-    2100000: lambert1
+    400090: //RootNode
+    400092: Spine1
+    400094: Spine2
+    400096: Witch_Low
+    2100000: lambert8
+    2100002: lambert9
     4300000: Broom_Stick_low
     4300002: Broom_low
     4300004: Broom_Handle_low
@@ -114,7 +115,7 @@ ModelImporter:
     4300014: Face_low
     4300016: Hood_low
     4300018: Hat_low
-    7400000: Take 001
+    7400000: Death
     9500000: //RootNode
     13700000: Broom_Handle_low
     13700002: Broom_low
@@ -152,7 +153,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 145
+      lastFrame: 196
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
