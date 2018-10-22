@@ -1952,9 +1952,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalBounds: 80
   verticalBounds: 30
-  slowDownOffSet: 5
+  slowDownOffSet: 25
   forwardSpeed: 2
-  moveSpeed: 5
+  moveSpeed: 8
   velocity: {x: 0, y: 0, z: 0}
   axisSpeedMultiplyer: {x: 2, y: 2}
   startPos: {x: 0, y: 0, z: 0}
@@ -1993,9 +1993,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  currCoinCount: 0
+  maxCoins: 0
   projectileSpawnPoint: {fileID: 219979218}
   damage: 10
-  range: 10000
+  range: 100
   rangedAttackSpeed: 50
   attackCoolDownSpeed: 0.15
   projectileLiveTime: 5
