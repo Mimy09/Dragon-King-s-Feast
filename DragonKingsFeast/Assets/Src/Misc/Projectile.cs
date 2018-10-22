@@ -23,6 +23,8 @@ public class Projectile : MonoBehaviour {
     public float playerTrackPrecent;
     public float enemyTrackPrecent;
 
+    public GameObject playerFireBall;
+
     public void TurnOn() {
         m_killtimer = 0;
         damage = 0;
@@ -36,6 +38,9 @@ public class Projectile : MonoBehaviour {
 
     public void TurnOff() {
         GameManager.instance.GetObjectPool().AddProjectileToPool(this);
+        for (int i = 0; i < transform.childCount; i++) {
+            Destroy(transform.GetChild(i).gameObject);
+        }
     }
 
     public void SetUp(Transform _target, float _damage, float _forwardSpeed, float _liveTime) {
@@ -56,6 +61,10 @@ public class Projectile : MonoBehaviour {
         m_enemy = _target;
         m_target = _target.transform.position;
         transform.LookAt(_target.transform.position);
+
+        GameObject go = Instantiate(playerFireBall, transform.position, Quaternion.identity);
+        go.transform.SetParent(transform);
+        go.transform.localPosition = new Vector3(0, 0, 0);
 
         m_liveTime = _liveTime;
     }

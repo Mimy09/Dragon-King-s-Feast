@@ -73,7 +73,6 @@ public class MapManager : MonoBehaviour {
         loaded_percent += AO_level2.progress;
 
         AO_level3 = SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive);
-        isLoaded_level3 = true;
         AO_level3.allowSceneActivation = false;
         while (AO_level3.progress < 0.9f) {
             yield return null;

@@ -56,6 +56,10 @@ public class Player : MonoBehaviour {
 
     private bool m_sheild;
 
+    public List<GameObject> watterEffects;
+    public List<GameObject> cloudEffects;
+    public bool effectsOnOff = true;
+
     public void TakeDamage() {
 
         if (m_sheild) {
@@ -164,6 +168,7 @@ public class Player : MonoBehaviour {
         RaycastAttackByTouch();
 #endif
 
+        ManageParticalEffects();
     }
 
     public void EventHandle(object o, __eArg<e_UI> e) {
@@ -172,6 +177,51 @@ public class Player : MonoBehaviour {
         }
         else {
             gameRunning = false;
+        }
+    }
+
+    public void ManageParticalEffects() {
+
+        if (transform.position.y <= 0) {
+            if (GameManager.mapManager.isLoaded_level1 == true) {
+                if (cloudEffects.Count > 0 && cloudEffects[0].activeSelf == false) {
+                    for (int i = 0; i < cloudEffects.Count; i++) {
+                        cloudEffects[i].SetActive(true);
+                    }
+                }
+
+                if (watterEffects.Count > 0 && watterEffects[0].activeSelf == true) {
+                    for (int i = 0; i < watterEffects.Count; i++) {
+                        watterEffects[i].SetActive(false);
+                    }
+                }
+            }
+            else {
+                if (cloudEffects.Count > 0 && cloudEffects[0].activeSelf == true) {
+                    for (int i = 0; i < cloudEffects.Count; i++) {
+                        cloudEffects[i].SetActive(false);
+                    }
+                }
+
+                if (watterEffects.Count > 0 && watterEffects[0].activeSelf == false) {
+                    for (int i = 0; i < watterEffects.Count; i++) {
+                        watterEffects[i].SetActive(true);
+                    }
+                }
+            }
+        }
+        else {
+            if (cloudEffects.Count > 0 && cloudEffects[0].activeSelf == true) {
+                for (int i = 0; i < cloudEffects.Count; i++) {
+                    cloudEffects[i].SetActive(false);
+                }
+            }
+
+            if (watterEffects.Count > 0 && watterEffects[0].activeSelf == true) {
+                for (int i = 0; i < watterEffects.Count; i++) {
+                    watterEffects[i].SetActive(false);
+                }
+            }
         }
     }
 
