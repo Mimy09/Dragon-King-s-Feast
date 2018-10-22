@@ -224,6 +224,8 @@ public class MapManager : MonoBehaviour {
 
                     UnloadAll();
 
+                    Debug.Log("Reseting the player");
+
                     GameManager.instance.GetPlayerMovement().ResetPlayerPos();
                     Time.timeScale = 0;
                     __event<e_UI>.InvokeEvent(this, e_UI.MENU);

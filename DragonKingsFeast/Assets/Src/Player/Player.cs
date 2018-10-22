@@ -78,6 +78,11 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void Dye() {
+
+        //GameManager.mapManager.
+    }
+
     public void hitMountain() {
         health = -1000000;
     }

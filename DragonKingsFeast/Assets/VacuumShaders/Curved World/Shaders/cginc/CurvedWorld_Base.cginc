@@ -21,7 +21,7 @@ const float3 _zero3 = float3(0,0,0);
 //																		  //
 ////////////////////////////////////////////////////////////////////////////
 
-/*DO NOT DELETE - CURVED WORLD BEND TYPE*/ #define V_CW_BENDTYPE_CLASSIC_RUNNER
+/*DO NOT DELETE - CURVED WORLD BEND TYPE*/ #define V_CW_BENDTYPE_LITTLE_PLANET
 
 #define SIGN(a) (float2(a.x < 0 ? -1.0f : 1.0f, a.y < 0 ? -1.0f : 1.0f))
 

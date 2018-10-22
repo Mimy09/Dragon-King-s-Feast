@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.48100787, g: 0.48981595, b: 0.6401509, a: 1}
+  m_IndirectSpecularColor: {r: 0.47968674, g: 0.48994023, b: 0.63988334, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1994,7 +1994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   currCoinCount: 0
-  maxCoins: 0
+  maxCoins: 19
   projectileSpawnPoint: {fileID: 219979218}
   damage: 10
   range: 100
