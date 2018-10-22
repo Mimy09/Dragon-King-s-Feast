@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4988121258705336}
   - component: {fileID: 33306362306744938}
   - component: {fileID: 23187043657790392}
+  - component: {fileID: 136532626520969114}
   m_Layer: 0
   m_Name: Rock_4_low
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1418541932561654}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 355.1, y: 0, z: -173}
+  m_LocalPosition: {x: 51.810146, y: 151.92368, z: -461.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,3 +83,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1418541932561654}
   m_Mesh: {fileID: 4300008, guid: 669ab0a71098f814db4ce2515a4bb709, type: 3}
+--- !u!136 &136532626520969114
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1418541932561654}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 7.9269
+  m_Height: 40.38294
+  m_Direction: 1
+  m_Center: {x: 0.49, y: 18.796316, z: -0.23}

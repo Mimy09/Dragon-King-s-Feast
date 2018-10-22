@@ -21,6 +21,9 @@ GameObject:
   - component: {fileID: 4418502521825434}
   - component: {fileID: 33406299370885878}
   - component: {fileID: 23470470120441974}
+  - component: {fileID: 65517408413389512}
+  - component: {fileID: 135382230818988892}
+  - component: {fileID: 135972226157594856}
   m_Layer: 0
   m_Name: Spire_1_low
   m_TagString: Untagged
@@ -35,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666128499448266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 261.2, y: 0, z: -253.4}
+  m_LocalPosition: {x: -35.2, y: 183.1, z: -431.828}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,3 +85,39 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666128499448266}
   m_Mesh: {fileID: 4300022, guid: 669ab0a71098f814db4ce2515a4bb709, type: 3}
+--- !u!65 &65517408413389512
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666128499448266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.337456, y: 27.732323, z: 14.086456}
+  m_Center: {x: 0.380661, y: 11.334431, z: -1.4319}
+--- !u!135 &135382230818988892
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666128499448266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10.8
+  m_Center: {x: 0, y: 2.45, z: 0}
+--- !u!135 &135972226157594856
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666128499448266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 9.5
+  m_Center: {x: 0.92, y: 24.7, z: -1.34}
