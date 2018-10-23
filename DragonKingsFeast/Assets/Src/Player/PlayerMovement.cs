@@ -11,7 +11,8 @@ public class PlayerMovement : MonoBehaviour {
     public float verticalBounds;
 
     //this value is used to determin how far the player is from the center before applying the slow down
-    public float slowDownOffSet;
+    public float horizontalSlowDownOffset;
+    public float VerticalSlowDownOffSet;
 
     //the base speed that we are moving the player forward
     public float forwardSpeed;
@@ -120,28 +121,28 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 pos = transform.position - startPos;
         float scale = 0;
 
-        float horizontalValue = horizontalBounds - slowDownOffSet;
-        float verticalValue = verticalBounds - slowDownOffSet;
+        float horizontalValue = horizontalBounds - horizontalSlowDownOffset;
+        float verticalValue = verticalBounds - VerticalSlowDownOffSet;
 
         if (velocity.x > 0) {
             if (pos.x > 0) {
                 scale = (horizontalBounds - pos.x);
 
-                if (scale < slowDownOffSet) {
-                    velocity.x *= aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+                if (scale < horizontalSlowDownOffset) {
+                    velocity.x *= aniCurve.Evaluate(1 - (horizontalSlowDownOffset - scale) / horizontalSlowDownOffset);
                     /////////////////
-                    num.x = aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+                    num.x = aniCurve.Evaluate(1 - (horizontalSlowDownOffset - scale) / horizontalSlowDownOffset);
                 }
             }
         }
         else {
-
             if (pos.x < 0) {
                 scale = (horizontalBounds + pos.x);
-                if (scale < slowDownOffSet) {
-                    velocity.x *= aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+
+                if (scale < horizontalSlowDownOffset) {
+                    velocity.x *= aniCurve.Evaluate(1 - (horizontalSlowDownOffset - scale) / horizontalSlowDownOffset);
                     //////////////////
-                    num.x = aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+                    num.x = aniCurve.Evaluate(1 - (horizontalSlowDownOffset - scale) / horizontalSlowDownOffset);
                 }
             }
         }
@@ -150,10 +151,10 @@ public class PlayerMovement : MonoBehaviour {
             if (pos.y > 0) {
                 scale = (verticalBounds - pos.y);
 
-                if (scale < slowDownOffSet) {
-                    velocity.y *= aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+                if (scale < VerticalSlowDownOffSet) {
+                    velocity.y *= aniCurve.Evaluate(1 - (VerticalSlowDownOffSet - scale) / VerticalSlowDownOffSet);
                     //////////////////
-                    num.y = aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+                    num.y = aniCurve.Evaluate(1 - (VerticalSlowDownOffSet - scale) / VerticalSlowDownOffSet);
                 }
             }
         }
@@ -162,10 +163,10 @@ public class PlayerMovement : MonoBehaviour {
             if (pos.y < 0) {
                 scale = (verticalBounds + pos.y);
 
-                if (scale < slowDownOffSet) {
-                    velocity.y *= aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+                if (scale < VerticalSlowDownOffSet) {
+                    velocity.y *= aniCurve.Evaluate(1 - (VerticalSlowDownOffSet - scale) / VerticalSlowDownOffSet);
                     //////////////////
-                    num.y = aniCurve.Evaluate(1 - (slowDownOffSet - scale) / slowDownOffSet);
+                    num.y = aniCurve.Evaluate(1 - (VerticalSlowDownOffSet - scale) / slowDownOffSet);
                 }
             }
         }

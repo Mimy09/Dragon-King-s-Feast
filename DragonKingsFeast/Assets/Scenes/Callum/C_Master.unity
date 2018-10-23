@@ -1954,7 +1954,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalBounds: 80
   verticalBounds: 30
-  slowDownOffSet: 5
+  horizontalSlowDownOffset: 75
+  VerticalSlowDownOffSet: 25
   forwardSpeed: 2
   moveSpeed: 3
   velocity: {x: 0, y: 0, z: 0}
