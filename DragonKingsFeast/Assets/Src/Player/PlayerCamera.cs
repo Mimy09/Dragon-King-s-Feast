@@ -15,15 +15,15 @@ public class PlayerCamera : MonoBehaviour {
     public Text debugText;
 
     private Vector3 targtPos;
-    private Vector3 vel = Vector3.zero;
+    private Vector3 camVelocity = Vector3.zero;
 
     public void Start() {
     }
 
     public void Update() {
 
-        targtPos = new Vector3(player.transform.position.x, player.transform.position.y - hightFromPlayer, player.transform.position.z + distanceFromPlayer);
-
+    }
+    private void FixedUpdate() {
         //Vector3 targetDir = targtPos - transform.position;
         ////transform.position += (targetDir * Time.deltaTime * speed);
 
@@ -33,14 +33,9 @@ public class PlayerCamera : MonoBehaviour {
         //t.z = player.transform.position.z + distanceFromPlayer;
         //transform.position = t;
 
-        Vector3 point = Camera.main.WorldToViewportPoint(targtPos);
-        Vector3 delta = targtPos - Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
-        Vector3 destination = transform.position + delta;
-        transform.position = Vector3.SmoothDamp(transform.position, destination, ref vel, Time.smoothDeltaTime);
-    }
+        targtPos = new Vector3(player.transform.position.x, player.transform.position.y - hightFromPlayer, player.transform.position.z + distanceFromPlayer);
+        transform.position = Vector3.SmoothDamp(transform.position, targtPos, ref camVelocity, speed, Mathf.Infinity, Time.smoothDeltaTime);
 
-    private void UpdatePosition() {
-        
     }
 
     private void OnDrawGizmosSelected() {
