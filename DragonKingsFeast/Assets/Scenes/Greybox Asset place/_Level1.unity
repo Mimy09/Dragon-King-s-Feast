@@ -4997,7 +4997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 1
   wingOfEnemies: 0300000001000000010000000100000001000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!33 &811469135
 MeshFilter:
@@ -5757,7 +5757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 1
   wingOfEnemies: 03000000010000000100000003000000030000000100000001000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!33 &942529464
 MeshFilter:
@@ -8421,7 +8421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 3
   wingOfEnemies: 010000000100000001000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!33 &1267492125
 MeshFilter:
@@ -9501,7 +9501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 0
   wingOfEnemies: 0300000001000000010000000100000003000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!33 &1509760869
 MeshFilter:
@@ -12417,7 +12417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 1
   wingOfEnemies: 01000000010000000100000001000000010000000100000001000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!33 &1816763862
 MeshFilter:
@@ -14377,7 +14377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 3
   wingOfEnemies: 0100000001000000010000000100000001000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!33 &2058944832
 MeshFilter:

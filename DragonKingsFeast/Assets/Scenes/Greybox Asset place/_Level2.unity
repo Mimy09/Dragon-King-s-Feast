@@ -3277,7 +3277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 2
   wingOfEnemies: 030000000300000001000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!1001 &375593615
 Prefab:
@@ -3955,7 +3955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 3
   wingOfEnemies: 030000000300000001000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!33 &475184899
 MeshFilter:
@@ -5057,7 +5057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 2
   wingOfEnemies: 030000000300000003000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!33 &706744001
 MeshFilter:
@@ -6645,7 +6645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 0
   wingOfEnemies: 03000000030000000300000001000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!33 &904552224
 MeshFilter:
@@ -8019,7 +8019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 1
   wingOfEnemies: 0300000003000000030000000100000001000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!33 &1011440674
 MeshFilter:
@@ -9035,7 +9035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 0
   wingOfEnemies: 040000000100000001000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!1001 &1116858833
 Prefab:
@@ -10965,7 +10965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 3
   wingOfEnemies: 030000000300000003000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!65 &1322922476
 BoxCollider:
@@ -15673,7 +15673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formation: 1
   wingOfEnemies: 04000000
-  spawnDist: 0
+  spawnDist: 5
   spawn: 0
 --- !u!33 &1928266665
 MeshFilter:
