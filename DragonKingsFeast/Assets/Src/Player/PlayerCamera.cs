@@ -14,26 +14,38 @@ public class PlayerCamera : MonoBehaviour {
     [Header("Debugning")]
     public Text debugText;
 
+    private Vector3 targtPos;
+    private Vector3 vel = Vector3.zero;
 
     public void Start() {
     }
 
     public void Update() {
 
-        transform.position = new Vector3(transform.position.x, transform.position.y, player.transform.position.z + distanceFromPlayer);
-        
-        UpdatePosition();
+        targtPos = new Vector3(player.transform.position.x, player.transform.position.y - hightFromPlayer, player.transform.position.z + distanceFromPlayer);
+
+        //Vector3 targetDir = targtPos - transform.position;
+        ////transform.position += (targetDir * Time.deltaTime * speed);
+
+        //transform.position = Vector3.Lerp(transform.position, targtPos, Time.smoothDeltaTime * speed);
+
+        //Vector3 t = transform.position;
+        //t.z = player.transform.position.z + distanceFromPlayer;
+        //transform.position = t;
+
+        Vector3 point = Camera.main.WorldToViewportPoint(targtPos);
+        Vector3 delta = targtPos - Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
+        Vector3 destination = transform.position + delta;
+        transform.position = Vector3.SmoothDamp(transform.position, destination, ref vel, Time.smoothDeltaTime);
     }
 
     private void UpdatePosition() {
-        Vector3 targtPos = new Vector3(player.transform.position.x, player.transform.position.y - hightFromPlayer, player.transform.position.z + distanceFromPlayer);
-        Vector3 targetDir = targtPos - transform.position;
-        transform.position += (targetDir * Time.deltaTime * speed);
+        
+    }
 
-       //debugText.text = targetDir.ToString();
-       //debugText.text += "\n" + targetDir * Time.deltaTime;
-       //debugText.text +=  "\n" + ((targetDir * Time.deltaTime) * speed).ToString();
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(targtPos, 0.1f);
 
-        //transform.position = new Vector3(player.transform.position.x, player.transform.position.y - hightFromPlayer, player.transform.position.z + distanceFromPlayer);
     }
 }

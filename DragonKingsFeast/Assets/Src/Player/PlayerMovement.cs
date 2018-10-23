@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void LateUpdate() {
 
         //UpdateNeckBone();
 
@@ -93,6 +93,8 @@ public class PlayerMovement : MonoBehaviour {
 
         transform.LookAt(Vector3.Normalize(velocity) + transform.position);
         transform.Rotate(new Vector3(90, 0, 0));
+
+        // Horizontal Vertical
 
         GetComponent<Rigidbody>().velocity = (velocity * moveSpeed);
     }
