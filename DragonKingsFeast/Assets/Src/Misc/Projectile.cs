@@ -23,7 +23,15 @@ public class Projectile : MonoBehaviour {
     public float playerTrackPrecent;
     public float enemyTrackPrecent;
 
+    private bool hit;
+    private bool isFireBall;
+
     public GameObject playerFireBall;
+    public GameObject playerFireBallHit;
+
+    public GameObject sandAttack;
+    public GameObject sandAttackHit;
+
 
     public void TurnOn() {
         m_killtimer = 0;
@@ -38,18 +46,27 @@ public class Projectile : MonoBehaviour {
 
     public void TurnOff() {
         GameManager.instance.GetObjectPool().AddProjectileToPool(this);
+
         for (int i = 0; i < transform.childCount; i++) {
             Destroy(transform.GetChild(i).gameObject);
         }
     }
 
-    public void SetUp(Transform _target, float _damage, float _forwardSpeed, float _liveTime) {
+    public void SetUp(Transform _target, float _damage, float _forwardSpeed, float _liveTime, bool _isFireBall) {
         damage = _damage;
         playerAttack = false;
         forwardSpeed = _forwardSpeed;
         m_enemy = _target;
         m_target = _target.transform.position;
         transform.LookAt(_target);
+
+        isFireBall = _isFireBall;
+        if (isFireBall) {
+            Instantiate(playerFireBall, transform.position, Quaternion.identity, transform);
+        }
+        else {
+            Instantiate(sandAttack, transform.position, Quaternion.identity, transform);
+        }
 
         m_liveTime = _liveTime;
     }
@@ -97,16 +114,28 @@ public class Projectile : MonoBehaviour {
     }
 
     public void OnTriggerEnter(Collider other) {
+        
         if (playerAttack) {
             if (other.tag == "Enemy") {
                 other.GetComponent<Enemy>().TakeDamage(damage);
                 TurnOff();
+
+                GameObject go = Instantiate(playerFireBallHit);
+                go.transform.position = transform.position;
+                Destroy(go, 2.0f);
             }
         }
         else {
             if (other.tag == "Player") {
                 other.GetComponent<Player>().TakeDamage();
                 TurnOff();
+
+                if (isFireBall) {
+                    Destroy(Instantiate(playerFireBallHit, transform.position, Quaternion.identity), 2.0f);
+                }
+                else {
+                    Destroy(Instantiate(sandAttackHit, transform.position, Quaternion.identity), 2.0f);
+                }
             }
         }
     }

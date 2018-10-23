@@ -15,6 +15,8 @@ public class Item : MonoBehaviour {
     public e_ItemType m_itemType;
     public e_ItemType ItemType { get { return m_itemType; } }
     public bool spawner = false;
+
+    public GameObject Shine;
     
     public virtual void TurnOff() {
         Reset();
@@ -36,6 +38,8 @@ public class Item : MonoBehaviour {
                 GameManager.player.ApplyBoost(m_itemType);
             }
             else {
+                Destroy(Instantiate(Shine, transform.position, Quaternion.identity), 2.0f);
+
                 Transform t = GameObject.FindGameObjectWithTag("CoinSP").transform;
                 for (int i = 0; i < value; i++) {
                     GameObject g = Instantiate(Helper.CoinPath, new Vector3(0, 0, 0), Quaternion.identity, t) as GameObject;

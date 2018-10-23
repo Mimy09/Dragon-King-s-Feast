@@ -90,7 +90,7 @@ public class RangedAttack : EnemyActions {
     public override void DealDamage() {
         GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
         go.transform.position = owner.transform.position + (owner.transform.forward * 3);
-        go.GetComponent<Projectile>().SetUp(player.transform, damage, rangedAttackSpeed + owner.forwardSpeed, projectileLiveTime);
+        go.GetComponent<Projectile>().SetUp(player.transform, damage, rangedAttackSpeed + owner.forwardSpeed, projectileLiveTime, owner.EnemyType == e_EnemyType.Witch ? false : true);
         attackTimer = 0;
     }
 }

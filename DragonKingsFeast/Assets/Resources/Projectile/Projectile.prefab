@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1426841674954582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.842958, y: 4.0142856, z: 74.959694}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,7 +100,10 @@ MonoBehaviour:
   forwardSpeed: 0
   playerTrackPrecent: 0.1
   enemyTrackPrecent: 0.01
+  hit: 0
   playerFireBall: {fileID: 1327601197149336, guid: 51ba4b3247661ea4093148c151d791f8,
+    type: 2}
+  playerFireBallHit: {fileID: 1142551447796424, guid: 0e9644d43340c3341810afe7eaba7d41,
     type: 2}
 --- !u!135 &135262068918809636
 SphereCollider:

@@ -21,10 +21,12 @@ public class Phoenix : Enemy {
     }
 
     public void Update() {
-        //rangedAttack.Update();
+
+        rangedAttack.Update();
+
         //
         //MoveToPlayer();
-        //ShootAttack();
+        ShootAttack();
 
         if (player.transform.position.z > (transform.position.z + despawnOffset)) {
             TurnOff();
