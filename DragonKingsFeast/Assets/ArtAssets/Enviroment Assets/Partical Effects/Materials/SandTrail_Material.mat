@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: New Material
+  m_Name: SandTrail_Material
   m_Shader: {fileID: 4800000, guid: 8b8b87c8ecebf7943b6ca44e102df26e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b98dff226b60e3c4cafd4640d5d6b52a, type: 3}
+        m_Texture: {fileID: 2800000, guid: d16a8d0b6c78f4446938457338d3dbf6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -109,7 +109,7 @@ Material:
     - _V_CW_SecondaryNormalMap_UV_Scale: 1
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.769, g: 0.769, b: 0.769, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _V_CW_MainTex_Scroll: {r: 0, g: 0, b: 0, a: 0}
     - _V_CW_ReflectColor: {r: 1, g: 1, b: 1, a: 1}

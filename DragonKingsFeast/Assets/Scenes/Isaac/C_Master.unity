@@ -2546,7 +2546,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalBounds: 10
   verticalBounds: 10
-  slowDownOffSet: 5
+  horizontalSlowDownOffset: 0
+  VerticalSlowDownOffSet: 0
   forwardSpeed: 2
   moveSpeed: 3
   velocity: {x: 0, y: 0, z: 0}
@@ -2601,6 +2602,9 @@ MonoBehaviour:
   boostDamage: 3
   speedBoostTime: 5
   speedBoost: 3
+  watterEffects: []
+  cloudEffects: []
+  effectsOnOff: 1
 --- !u!54 &772054233
 Rigidbody:
   m_ObjectHideFlags: 0
