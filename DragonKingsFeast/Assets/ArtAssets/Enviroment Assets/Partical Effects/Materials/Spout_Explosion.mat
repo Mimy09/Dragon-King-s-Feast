@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Star_Material
+  m_Name: Spout_Explosion
   m_Shader: {fileID: 4800000, guid: 8b8b87c8ecebf7943b6ca44e102df26e, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _ALPHATEST_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6aae969c2bcbc1c4489ab5a61406b5bd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5cd02176974aac2448946d59aedb5b86, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -84,14 +84,14 @@ Material:
     - V_CW_Rendering_Mode: 0
     - V_CW_Texture_Mix_Mode: 0
     - _BumpScale: 1
-    - _Cutoff: 0.5
+    - _Cutoff: 0.63
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
@@ -109,7 +109,7 @@ Material:
     - _V_CW_SecondaryNormalMap_UV_Scale: 1
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.8704542, b: 0.48400003, a: 1}
+    - _Color: {r: 0.853, g: 0.91484135, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _V_CW_MainTex_Scroll: {r: 0, g: 0, b: 0, a: 0}
     - _V_CW_ReflectColor: {r: 1, g: 1, b: 1, a: 1}
