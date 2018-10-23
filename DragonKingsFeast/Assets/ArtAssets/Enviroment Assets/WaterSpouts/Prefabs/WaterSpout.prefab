@@ -138,8 +138,24 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4285520646459626}
+  - component: {fileID: 114318180722466040}
   m_Layer: 0
   m_Name: WaterSpout
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1372778163329906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4784595310349184}
+  m_Layer: 0
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,10 +289,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1338895896309140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 62.74064, y: 56.625336, z: -285.49503}
-  m_LocalScale: {x: 80, y: 50, z: 80}
+  m_LocalPosition: {x: 33.955215, y: -39.15, z: -120.4}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 4218043731249116}
+  - {fileID: 4784595310349184}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -357,6 +374,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4218043731249116}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4784595310349184
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372778163329906}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.217, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4285520646459626}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4884875966164538
 Transform:
@@ -878,3 +908,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114318180722466040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1338895896309140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb1875902963704b82f8058dd2e67c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  height: -6
+  bias: 50
+  bubbles: {fileID: 1122659074045260, guid: f2c57980125d02d41ae83da351b92011, type: 2}
+  spout: {fileID: 1515466374833112, guid: 3d0aa952c4dce8b4994dddc0f754c370, type: 2}
+  p: {fileID: 4784595310349184}
