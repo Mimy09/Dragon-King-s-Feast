@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
-    //valuse that we use to figure out when to start slowing the players directional movemeant
+    //values that we use to figure out when to start slowing the players directional movement
     public float horizontalBounds;
     public float verticalBounds;
 
@@ -17,13 +17,13 @@ public class PlayerMovement : MonoBehaviour {
     //the base speed that we are moving the player forward
     public float forwardSpeed;
 
-    //a multiplyer that we modifie the finall speed given to the player
+    //a multiplier that we modify the final speed given to the player
     public float moveSpeed;
 
     //how much the player will move this frame
     public Vector3 velocity;
 
-    //these values are applyed to the axis when moving thecharacter up, down, left or right
+    //these values are applied to the axis when moving the character up, down, left or right
     public Vector2 axisSpeedMultiplyer;
 
     public Vector3 startPos;
@@ -68,31 +68,10 @@ public class PlayerMovement : MonoBehaviour {
         axisSpeedMultiplyer.y = slider.value;
     }
 
-    void UpdateNeckBone() {
-        Quaternion r = neck.transform.rotation;
-        Vector3 e = r.eulerAngles;
-
-        e.x = 0;
-        e.y = -90 + (velocity.x * constraint);
-        e.z = velocity.y * constraint;
-
-        r.eulerAngles = e;
-        neck.transform.rotation = r;
-
-        Vector3 t = neck.transform.localPosition;
-        t.x += Mathf.Sin(-Time.time) * 0.05f - t.x;
-        t.y += Mathf.Sin(Time.time * 2) * 0.05f - t.y;
-
-        t.x += velocity.x * 0.1f;
-        t.y += velocity.y * 0.1f;
-        t.z = Mathf.Abs(velocity.y + velocity.x) * 0.05f;
-        neck.transform.localPosition = t;
-    }
-
     // Update is called once per frame
     void Update() {
 
-        UpdateNeckBone();
+        //UpdateNeckBone();
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
         ReadKeyBoardControls();
@@ -103,17 +82,19 @@ public class PlayerMovement : MonoBehaviour {
 #endif
 
         SpeedScale();
-
-        velocity.z += forwardSpeed;
+        
 
         Vector3 holder = ((velocity * Time.deltaTime) * moveSpeed);
         if (player.speedBoostTimer > player.speedBoostTime) {
             holder *= player.speedBoost;
         }
 
-        //GetComponent<Rigidbody>().AddForce(velocity * moveSpeed);
-        transform.Translate((velocity * Time.deltaTime) * moveSpeed);
+        velocity.z = forwardSpeed;
 
+        transform.LookAt(Vector3.Normalize(velocity) + transform.position);
+        transform.Rotate(new Vector3(90, 0, 0));
+
+        GetComponent<Rigidbody>().velocity = (velocity * moveSpeed);
     }
 
     public void SpeedScale() {
@@ -166,7 +147,7 @@ public class PlayerMovement : MonoBehaviour {
                 if (scale < VerticalSlowDownOffSet) {
                     velocity.y *= aniCurve.Evaluate(1 - (VerticalSlowDownOffSet - scale) / VerticalSlowDownOffSet);
                     //////////////////
-                    num.y = aniCurve.Evaluate(1 - (VerticalSlowDownOffSet - scale) / slowDownOffSet);
+                    num.y = aniCurve.Evaluate(1 - (VerticalSlowDownOffSet - scale) / VerticalSlowDownOffSet);
                 }
             }
         }
@@ -248,5 +229,8 @@ public class PlayerMovement : MonoBehaviour {
             Gizmos.DrawCube(transform.position + (transform.forward * 600), new Vector3(horizontalBounds * 2, verticalBounds * 2, 1200));
         else
             Gizmos.DrawCube(startPos + (transform.forward * 600), new Vector3(horizontalBounds * 2, verticalBounds * 2, 1200));
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere( Vector3.Normalize(velocity) + transform.position, 0.1f);
     }
 }
