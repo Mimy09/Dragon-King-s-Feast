@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.47968674, g: 0.48994023, b: 0.63988334, a: 1}
+  m_IndirectSpecularColor: {r: 0.48100787, g: 0.48981595, b: 0.6401509, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2546,7 +2546,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalBounds: 10
   verticalBounds: 10
-  slowDownOffSet: 5
+  horizontalSlowDownOffset: 0
+  VerticalSlowDownOffSet: 0
   forwardSpeed: 2
   moveSpeed: 3
   velocity: {x: 0, y: 0, z: 0}
@@ -2587,6 +2588,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
+  currCoinCount: 0
+  maxCoins: 0
   projectileSpawnPoint: {fileID: 219979218}
   damage: 10
   range: 10000
@@ -2599,6 +2602,9 @@ MonoBehaviour:
   boostDamage: 3
   speedBoostTime: 5
   speedBoost: 3
+  watterEffects: []
+  cloudEffects: []
+  effectsOnOff: 1
 --- !u!54 &772054233
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4801,6 +4807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94a1f9cc9bd028047aeee2f167e69165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyList: []
+  ItemList: []
 --- !u!114 &1575733677
 MonoBehaviour:
   m_ObjectHideFlags: 0
