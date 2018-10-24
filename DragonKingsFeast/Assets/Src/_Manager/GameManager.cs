@@ -116,12 +116,11 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-
         if (PlayerPrefs.GetInt("hasLoaded") == 0) {
             PlayerPrefs.SetInt("hasLoaded", 1);
-            firstTimeLoading = true;
+            firstTimeLoading = false;
         } else {
-            firstTimeLoading = true;
+            firstTimeLoading = false;
         }
 
         Time.timeScale = 0;
