@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
     private float m_speedBoostTimer;
     public float speedBoost;
 
-    private bool gameRunning;
+    public bool gameRunning;
 
     public float speedBoostTimer {
         get {
@@ -275,7 +275,7 @@ public class Player : MonoBehaviour {
     }
 
     private void FindClosestEnemeyToAttack() {
-        if (GameManager.tutorialManager.LearnToFlyComp == true && gameRunning == true) {
+        if (gameRunning == true) {
             float dist = range;
             Transform tran = null;
             if (GameManager.enemyList.Count == 0) return;
