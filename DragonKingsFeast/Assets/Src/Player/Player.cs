@@ -79,12 +79,23 @@ public class Player : MonoBehaviour {
         }
         else if (health == 0) {
             health = -1;
+            // Dye();
         }
     }
 
-    public void Dye() {
+    public void Reset() {
+        GameObject g = GameObject.FindGameObjectWithTag("CoinSP");
+        for (int i = 0; i < g.transform.childCount; i++) {
+            Destroy(g.transform.GetChild(i).gameObject);
+        }
+        currCoinCount = 0;
+        health = 0;
+    }
 
-        //GameManager.mapManager.
+    public void Dye() {
+        GameManager.instance.GetMapManager().UnloadLevel(1);
+        GameManager.instance.GetMapManager().UnloadLevel(2);
+        GameManager.instance.GetMapManager().UnloadLevel(3);
     }
 
     public void hitMountain() {

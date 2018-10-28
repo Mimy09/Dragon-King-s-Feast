@@ -183,7 +183,7 @@ public class MapManager : MonoBehaviour {
         }
     }
 
-    void UnloadAll() {
+    public void UnloadAll() {
         isLoaded_level1 = false;
         isLoaded_level2 = false;
         isLoaded_level3 = false;
@@ -191,9 +191,10 @@ public class MapManager : MonoBehaviour {
         AO_level1 = null;
         AO_level2 = null;
         AO_level3 = null;
+        isInGame = false;
     }
 
-    void UnloadLevel(int level) {
+    public void UnloadLevel(int level) {
         switch (level) {
             case 1:
                 // If level 1 is loaded then unload
@@ -218,6 +219,7 @@ public class MapManager : MonoBehaviour {
                 if (isLoaded_level3) {
                     GameManager.instance.GetUnloadObjects().UnloadLevel(3);
                     SceneManager.UnloadSceneAsync(3);
+                    SceneManager.UnloadSceneAsync(4);
                     isLoaded_level3 = false;
                     //GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level3, 10);
 
@@ -226,6 +228,7 @@ public class MapManager : MonoBehaviour {
                     Debug.Log("Reseting the player");
 
                     GameManager.instance.GetPlayerMovement().ResetPlayerPos();
+                    GameManager.instance.GetPlayer().Reset();
                     Time.timeScale = 0;
                     __event<e_UI>.InvokeEvent(this, e_UI.MENU);
                 }
