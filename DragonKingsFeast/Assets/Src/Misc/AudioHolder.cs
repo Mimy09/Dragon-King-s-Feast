@@ -7,8 +7,8 @@ public class AudioHolder : MonoBehaviour {
     public Enemy owner;
     public AudioSource audioSource;
     
-    public MeleeAttack meleeAttackActions = null;
-    public RangedAttack rangedAttackActions = null;
+    private MeleeAttack meleeAttackActions = null;
+    private RangedAttack rangedAttackActions = null;
 
     public AudioClip rangedAttack;
     public AudioClip meeleAttack;

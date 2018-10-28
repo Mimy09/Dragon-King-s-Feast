@@ -130,8 +130,7 @@ public class Player : MonoBehaviour {
         currCoinCount += amount;
         
         if (currCoinCount >= maxCoins) {
-            Debug.Log(currCoinCount);
-
+            
             GameObject SP = GameObject.FindGameObjectWithTag("CoinSP");
 
             for (int i = 0; i < SP.transform.childCount; i++) {
