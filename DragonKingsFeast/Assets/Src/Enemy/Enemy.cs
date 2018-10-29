@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour {
     private float m_timeSinceDead;
     private bool m_isDead;
 
+    public GameObject deathEffect;
+
     public int lootValue;
 
     [Header("Animation")]
@@ -63,6 +65,8 @@ public class Enemy : MonoBehaviour {
         Item loot = GameManager.objectPoolManager.FindItemOfType(e_ItemType.Pickup).GetComponent<Item>();
         loot.transform.position = transform.position;
         loot.value = lootValue;
+
+        Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity, transform), 2.0f);
     }
 
     public virtual void TakeDamage(float damage) { m_health -= damage; if (m_health <= 0) { OnDeath(); animat.SetBool("Dead", true); } }
@@ -71,6 +75,7 @@ public class Enemy : MonoBehaviour {
     public Enemy GetEnemy() { return this; }
 
     protected virtual void Update() {
+
     }
 
 
