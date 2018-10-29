@@ -22,7 +22,9 @@ public class StormCloud : Enemy {
         m_health = baseHealth;
     }
 
-    public void Update() {
+    protected override void Update() {
+        base.Update();
+
         if (player.transform.position.z > (transform.position.z + despawnOffset)) {
             TurnOff();
         }
