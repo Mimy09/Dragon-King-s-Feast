@@ -193,11 +193,10 @@ public class PlayerMovement : MonoBehaviour {
 
 
     private void ReadPhoneControls() {
-
         //Get Speed based off Accelerometer
         Vector3 acelleromatorTiltValues = Quaternion.Euler(tiltAngle, 0, 0) * Input.acceleration;
         Vector3 Speed = Vector3.Scale(new Vector3(1, 1, 0), new Vector3(acelleromatorTiltValues.x, acelleromatorTiltValues.z * inverse, acelleromatorTiltValues.y));
-
+        
         //apply speed modifiers
         Speed.x *= axisSpeedMultiplyer.x;
         Speed.y = (-Speed.y * axisSpeedMultiplyer.y);
