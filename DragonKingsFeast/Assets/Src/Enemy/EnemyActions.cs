@@ -78,7 +78,7 @@ public class RangedAttack : EnemyActions {
         if (attackTimer > attackCoolDownSpeed) {
             if (dist <= attackRange) {
                 owner.animat.SetBool("Attack", true);
-                flip = true;
+                attackTimer = 0;
 
                 return true;
             }
@@ -91,6 +91,7 @@ public class RangedAttack : EnemyActions {
         GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
         go.transform.position = owner.transform.position + (owner.transform.forward * 3);
         go.GetComponent<Projectile>().SetUp(player.transform, damage, rangedAttackSpeed + owner.forwardSpeed, projectileLiveTime, owner.EnemyType == e_EnemyType.Witch ? false : true);
-        attackTimer = 0;
+        
+        flip = true;
     }
 }
