@@ -20,12 +20,11 @@ public class Phoenix : Enemy {
         m_enemyType = e_EnemyType.Phoenix;
     }
 
-    public void Update() {
+    protected override void Update() {
+        base.Update();
 
         rangedAttack.Update();
-
-        //
-        //MoveToPlayer();
+        
         ShootAttack();
 
         if (player.transform.position.z > (transform.position.z + despawnOffset)) {

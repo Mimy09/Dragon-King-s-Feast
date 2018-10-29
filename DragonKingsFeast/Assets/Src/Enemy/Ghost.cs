@@ -23,17 +23,13 @@ public class Ghost : Enemy {
         m_health = baseHealth;
     }
 
-    public void Update() {
+    protected override void Update() {
+        base.Update();
+
         if (player.transform.position.z > (transform.position.z + despawnOffset)) {
             spawner.GetListOfEnemies().Remove(this);
             TurnOff();
         }
-
-        //MoveToPlayer();
-
-        //if (animat.GetBool("Attack") == true) {
-        //    animat.SetBool("Attack", false);
-        //}
     }
 
     private void MoveToPlayer() {

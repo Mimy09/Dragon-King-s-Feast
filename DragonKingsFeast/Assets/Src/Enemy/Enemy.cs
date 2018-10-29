@@ -30,6 +30,10 @@ public class Enemy : MonoBehaviour {
     public float despawnOffset;
     //the units current health   
     protected float m_health;
+    //the time of the death animation
+    public float deathTime;
+    private float m_timeSinceDead;
+    private bool m_isDead;
 
     public int lootValue;
 
@@ -51,16 +55,24 @@ public class Enemy : MonoBehaviour {
         Reset();
         GameManager.enemyList.Add(gameObject);
         this.gameObject.SetActive(true);
+        animat.SetBool("Dead", false);
+        m_isDead = false;
+        m_timeSinceDead = 0;
     }
     public virtual void OnDeath() {
         Item loot = GameManager.objectPoolManager.FindItemOfType(e_ItemType.Pickup).GetComponent<Item>();
         loot.transform.position = transform.position;
         loot.value = lootValue;
     }
-    public virtual void TakeDamage(float damage) { m_health -= damage; if (m_health <= 0) { OnDeath(); TurnOff(); } }
+
+    public virtual void TakeDamage(float damage) { m_health -= damage; if (m_health <= 0) { OnDeath(); animat.SetBool("Dead", true); } }
     public virtual void TakeDamage2(float damage) { m_health -= damage; }
 
     public Enemy GetEnemy() { return this; }
+
+    protected virtual void Update() {
+    }
+
 
     protected virtual void Awake() {
         

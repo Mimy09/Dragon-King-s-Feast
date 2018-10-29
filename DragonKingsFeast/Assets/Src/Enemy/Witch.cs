@@ -23,10 +23,9 @@ public class Witch : Enemy {
         m_health = baseHealth;
     }
 
-    public void Update() {
-
-        //MoveForward();
-
+    protected override void Update() {
+        base.Update();
+        
         ShootAttack();
         rangedAttack.Update();
 

@@ -53,5 +53,7 @@ public class AudioHolder : MonoBehaviour {
     public void SetUpDeath() {
         audioSource.clip = death;
         audioSource.loop = false;
+        owner.TurnOff();
+        Debug.Log("Died " + owner.EnemyType);
     }
 }
