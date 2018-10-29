@@ -20,6 +20,7 @@ public class PlayerCamera : MonoBehaviour {
     private void FixedUpdate() {
         targtPos = new Vector3(player.transform.position.x, player.transform.position.y - hightFromPlayer, player.transform.position.z + distanceFromPlayer);
         transform.position = Vector3.SmoothDamp(transform.position, targtPos, ref camVelocity, speed, Mathf.Infinity, Time.smoothDeltaTime);
+       // transform.LookAt(GameManager.instance.GetPlayer().transform.position);
     }
 
     private void OnDrawGizmosSelected() {

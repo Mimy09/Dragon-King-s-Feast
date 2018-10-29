@@ -86,8 +86,9 @@ public class MapManager : MonoBehaviour {
 
     private void Update() {
         if (!loaded) return;
-        if (AO_level1.isDone == true && AO_level2.isDone == true && AO_level3.isDone == true) {
-            if (!isInGame) {
+
+        if (!isInGame) {
+            if (AO_level1.isDone == true && AO_level2.isDone == true && AO_level3.isDone == true) {
                 GameManager.instance.GetUnloadObjects().SetUnloadObjects();
                 __event<e_UI>.InvokeEvent(this, e_UI.GAME);
                 isInGame = true;
@@ -200,7 +201,8 @@ public class MapManager : MonoBehaviour {
                 // If level 1 is loaded then unload
                 if (isLoaded_level1) {
                     GameManager.instance.GetUnloadObjects().UnloadLevel(1);
-                    SceneManager.UnloadSceneAsync(1);
+                    if (AO_level1 != null) SceneManager.UnloadSceneAsync(1);
+                    AO_level1 = null;
                     isLoaded_level1 = false;
                     //GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level1, 3);
                 }
@@ -209,7 +211,8 @@ public class MapManager : MonoBehaviour {
                 // If level 2 is loaded then unload
                 if (isLoaded_level2) {
                     GameManager.instance.GetUnloadObjects().UnloadLevel(2);
-                    SceneManager.UnloadSceneAsync(2);
+                    if (AO_level2 != null) SceneManager.UnloadSceneAsync(2);
+                    AO_level2 = null;
                     isLoaded_level2 = false;
                     //GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level2, 3);
                 }
@@ -218,8 +221,9 @@ public class MapManager : MonoBehaviour {
                 // If level 3 is loaded then unload
                 if (isLoaded_level3) {
                     GameManager.instance.GetUnloadObjects().UnloadLevel(3);
-                    SceneManager.UnloadSceneAsync(3);
                     SceneManager.UnloadSceneAsync(4);
+                    if (AO_level3 != null) SceneManager.UnloadSceneAsync(3);
+                    AO_level3 = null;
                     isLoaded_level3 = false;
                     //GameManager.instance.GetAudioManager().FadeOutMusic(Helper.Audio_Music_Level3, 10);
 

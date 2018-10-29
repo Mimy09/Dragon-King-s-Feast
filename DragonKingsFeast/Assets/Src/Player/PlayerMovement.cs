@@ -56,7 +56,8 @@ public class PlayerMovement : MonoBehaviour {
     void Start() {
         startPos = transform.position;
         inverse = -1;
-
+        axisSpeedMultiplyer.y = 2.293255f;
+        axisSpeedMultiplyer.x = 3.834884f;
         player = GetComponent<Player>();
     }
 
