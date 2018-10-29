@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45038295, g: 0.4981563, b: 0.563201, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6669,10 +6669,6 @@ Prefab:
     - target: {fileID: 1591026586476094, guid: a73a61a7d000ffb498c51c4cc75b38a9, type: 2}
       propertyPath: m_Name
       value: CloudWaves (29)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4739595733920410, guid: a73a61a7d000ffb498c51c4cc75b38a9, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 9.811001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a73a61a7d000ffb498c51c4cc75b38a9, type: 2}
