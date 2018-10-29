@@ -1713,6 +1713,8 @@ MonoBehaviour:
   forwardSpeed: 3.5
   despawnOffset: 5
   deathTime: 2
+  deathEffect: {fileID: 1205449864048238, guid: e20bbc0800d0e354ba2bc44b984f1e17,
+    type: 2}
   lootValue: 2
   animat: {fileID: 95717195263128660}
   spawner: {fileID: 0}
