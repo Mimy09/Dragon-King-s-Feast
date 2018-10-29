@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AdultDragon : Enemy {
-    
+
+    public RangedAttack rangedAttack;
     public Waypoint[] waypoints;
-    private int waypoint_state;
+    public int waypoint_state;
     private int waypoint_child_state;
     private float waypoint_collider_size = 3;
-    private int waypoint_timer = 0;
 
     private GameObject lookAtPos;
 
@@ -18,6 +18,7 @@ public class AdultDragon : Enemy {
 
     private void Start() {
         Reset();
+        rangedAttack.SetUp(player, this);
         waypoint_state          = 0;
         waypoint_child_state    = 0;
         lookAtPos               = new GameObject("LookAt");
@@ -51,6 +52,9 @@ public class AdultDragon : Enemy {
             waypoints[waypoint_state].childs[waypoint_child_state].transform.position
             ) < waypoint_collider_size) {
             // Go to next waypoint
+            if (waypoint_state == 1) {
+                ShootAttack();
+            }
             waypoint_child_state++;
 
             // If went to last waypoint, go to next set of waypoints
@@ -64,5 +68,9 @@ public class AdultDragon : Enemy {
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, waypoint_collider_size);
+    }
+
+    private void ShootAttack() {
+        //rangedAttack.AttackPlayer();
     }
 }
