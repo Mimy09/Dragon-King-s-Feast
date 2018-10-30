@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour {
 
     //how much the player will move this frame
     public Vector3 velocity;
+    //public float keneticVelocity;
+    //public float keneticTerminalVelocity;
 
     //these values are applied to the axis when moving the character up, down, left or right
     public Vector2 axisSpeedMultiplyer;
@@ -30,7 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public int tiltAngle;
 
-    public GameObject neck;
+    public Transform neck;
     public float constraint;
 
     public float boostSpeed;
@@ -69,6 +71,12 @@ public class PlayerMovement : MonoBehaviour {
         axisSpeedMultiplyer.y = slider.value;
     }
 
+    private void Update() {
+        Vector3 v = neck.localPosition;
+        v.x = Mathf.Sin(Time.time * 5) / 5;
+        neck.localPosition = v;
+    }
+
     // Update is called once per frame
     void LateUpdate() {
 
@@ -95,10 +103,31 @@ public class PlayerMovement : MonoBehaviour {
         transform.LookAt(Vector3.Normalize(velocity) + transform.position);
         transform.Rotate(new Vector3(90, 0, 0));
 
-        // Horizontal Vertical
+        
 
+        // Horizontal Vertical
         GetComponent<Rigidbody>().velocity = (velocity * moveSpeed);
     }
+
+    //void CalcKenetic() {
+    //    Vector3 v = GetComponent<Rigidbody>().velocity;
+
+    //    if (velocity.y < 0) {
+    //        keneticVelocity += velocity.y * Time.deltaTime * 5;
+    //        if (keneticVelocity < -keneticTerminalVelocity) {
+    //            keneticVelocity = -keneticTerminalVelocity;
+    //        }
+    //    } else if (velocity.y > 0) {
+    //        keneticVelocity += velocity.y * Time.deltaTime * 2;
+    //        if (keneticVelocity > keneticTerminalVelocity) {
+    //            keneticVelocity = keneticTerminalVelocity;
+    //        }
+
+    //    }
+    //    v.z -= keneticVelocity;
+
+    //    GetComponent<Rigidbody>().velocity = v;
+    //}
 
     public void SpeedScale() {
 
