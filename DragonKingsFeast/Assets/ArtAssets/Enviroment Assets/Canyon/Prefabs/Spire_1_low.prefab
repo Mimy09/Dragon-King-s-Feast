@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4418502521825434}
   - component: {fileID: 33406299370885878}
   - component: {fileID: 23470470120441974}
-  - component: {fileID: 65517408413389512}
-  - component: {fileID: 135382230818988892}
-  - component: {fileID: 135972226157594856}
+  - component: {fileID: 114019069430587782}
+  - component: {fileID: 136981924234007778}
+  - component: {fileID: 136954218100328364}
+  - component: {fileID: 136872353381922046}
   m_Layer: 0
   m_Name: Spire_1_low
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666128499448266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.2, y: 183.1, z: -431.828}
+  m_LocalPosition: {x: 63.3, y: 332.4414, z: -810.8}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,8 +86,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666128499448266}
   m_Mesh: {fileID: 4300022, guid: 669ab0a71098f814db4ce2515a4bb709, type: 3}
---- !u!65 &65517408413389512
-BoxCollider:
+--- !u!114 &114019069430587782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1666128499448266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8296298a6b2b8a84a9371e25cdaf0b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &136872353381922046
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -94,11 +106,12 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 14.337456, y: 27.732323, z: 14.086456}
-  m_Center: {x: 0.380661, y: 11.334431, z: -1.4319}
---- !u!135 &135382230818988892
-SphereCollider:
+  m_Radius: 7.8378296
+  m_Height: 23.4325
+  m_Direction: 0
+  m_Center: {x: 0.24316311, y: 1.6041994, z: 0.44567108}
+--- !u!136 &136954218100328364
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -106,11 +119,12 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 10.8
-  m_Center: {x: 0, y: 2.45, z: 0}
---- !u!135 &135972226157594856
-SphereCollider:
+  m_Radius: 4.1541004
+  m_Height: 24.07937
+  m_Direction: 2
+  m_Center: {x: 0, y: 1.867876, z: 0.06946087}
+--- !u!136 &136981924234007778
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -118,6 +132,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 9.5
-  m_Center: {x: 0.92, y: 24.7, z: -1.34}
+  m_Radius: 6.9680376
+  m_Height: 34.687683
+  m_Direction: 1
+  m_Center: {x: 0.6600255, y: 14.812111, z: -1.4200002}

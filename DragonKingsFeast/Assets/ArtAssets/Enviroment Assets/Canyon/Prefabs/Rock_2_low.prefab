@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 136142821227650458}
   - component: {fileID: 135481326577797056}
   - component: {fileID: 65655942515112540}
+  - component: {fileID: 114711057394877416}
   m_Layer: 0
   m_Name: Rock_2_low
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1403877236812628}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.23, y: 63.726906, z: -294.20956}
+  m_LocalPosition: {x: -76.9, y: 265.47086, z: -556.5}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,8 +96,19 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18.60786, y: 15.342537, z: 23.19461}
-  m_Center: {x: 3.4953365, y: 1.590374, z: -4.896805}
+  m_Size: {x: 18.60786, y: 13.677387, z: 18.59076}
+  m_Center: {x: 3.495336, y: 3.8359165, z: -3.981927}
+--- !u!114 &114711057394877416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403877236812628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8296298a6b2b8a84a9371e25cdaf0b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135481326577797056
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -107,8 +119,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 14.26
-  m_Center: {x: 0.8, y: 5.13, z: 3.73}
+  m_Radius: 11.223432
+  m_Center: {x: 0.8000004, y: 8.529998, z: 7.11}
 --- !u!136 &136142821227650458
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -118,7 +130,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 6.8
-  m_Height: 35.8
+  m_Radius: 6.7020307
+  m_Height: 31.685944
   m_Direction: 1
-  m_Center: {x: 0.9, y: 14.129831, z: -1.7}
+  m_Center: {x: 0.89999974, y: 14.423714, z: -1.602031}

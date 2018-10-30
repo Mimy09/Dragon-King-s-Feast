@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23394709622877222}
   - component: {fileID: 136796391067878752}
   - component: {fileID: 136934727083281868}
+  - component: {fileID: 114972533896263336}
   m_Layer: 0
   m_Name: Rock_1_low
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1888809203591212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 61.89196, y: 64.93693, z: -323.41653}
+  m_LocalPosition: {x: 72.5, y: 266.14883, z: -666}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,6 +85,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1888809203591212}
   m_Mesh: {fileID: 4300002, guid: 669ab0a71098f814db4ce2515a4bb709, type: 3}
+--- !u!114 &114972533896263336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1888809203591212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8296298a6b2b8a84a9371e25cdaf0b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136796391067878752
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -93,10 +105,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 8.8
-  m_Height: 55.801235
+  m_Radius: 6.965561
+  m_Height: 26.342888
   m_Direction: 1
-  m_Center: {x: 0.7, y: 26, z: 1.79}
+  m_Center: {x: 0.6999999, y: 40.72918, z: 1.89785}
 --- !u!136 &136934727083281868
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -106,7 +118,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 12.58
-  m_Height: 38.68
+  m_Radius: 11.285138
+  m_Height: 34.68746
   m_Direction: 1
-  m_Center: {x: -1.8, y: 14.4, z: 0.49}
+  m_Center: {x: -1.7999995, y: 14.777679, z: 1.7848635}

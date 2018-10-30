@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 33570761055487180}
   - component: {fileID: 23809646700789126}
   - component: {fileID: 136527472752406900}
+  - component: {fileID: 114046785249325462}
+  - component: {fileID: 136349090108798464}
   m_Layer: 0
   m_Name: Rock_3_low
   m_TagString: Untagged
@@ -36,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1362935907646420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29.357025, y: 142.1, z: -448.8}
+  m_LocalPosition: {x: -121.9, y: 265.7097, z: -577.6}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,6 +85,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1362935907646420}
   m_Mesh: {fileID: 4300006, guid: 669ab0a71098f814db4ce2515a4bb709, type: 3}
+--- !u!114 &114046785249325462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362935907646420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8296298a6b2b8a84a9371e25cdaf0b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &136349090108798464
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362935907646420}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 4.202862
+  m_Height: 20.583782
+  m_Direction: 1
+  m_Center: {x: 0, y: 40.76146, z: 0.81}
 --- !u!136 &136527472752406900
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -92,7 +118,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 7.4064817
-  m_Height: 50.988712
+  m_Radius: 6.4745235
+  m_Height: 32.815483
   m_Direction: 1
-  m_Center: {x: 0, y: 25.55898, z: 0}
+  m_Center: {x: 0, y: 16.472374, z: 0.21000028}
