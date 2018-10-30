@@ -21,9 +21,11 @@ GameObject:
   - component: {fileID: 4755525648407886}
   - component: {fileID: 33527558798420136}
   - component: {fileID: 23884581646549388}
-  - component: {fileID: 135387551934266982}
   - component: {fileID: 135430021855637538}
   - component: {fileID: 65196708935648216}
+  - component: {fileID: 114518530664143786}
+  - component: {fileID: 136100950635575690}
+  - component: {fileID: 136054826422173884}
   m_Layer: 0
   m_Name: Spire_2_low
   m_TagString: Untagged
@@ -38,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967251650467358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 100, y: 178.94, z: -429.21844}
+  m_LocalPosition: {x: -306.9, y: 261.932, z: -651.5}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,20 +97,19 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.347649, y: 34.058334, z: 13.391449}
-  m_Center: {x: -1.1274223, y: 14.509499, z: 1.6559906}
---- !u!135 &135387551934266982
-SphereCollider:
+  m_Size: {x: 12.34765, y: 21.212112, z: 13.391449}
+  m_Center: {x: -1.1274225, y: 20.932613, z: 1.6559905}
+--- !u!114 &114518530664143786
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967251650467358}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 12
-  m_Center: {x: 0, y: 7.19, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8296298a6b2b8a84a9371e25cdaf0b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135430021855637538
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -119,5 +120,31 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8.8
-  m_Center: {x: 0, y: 27.6, z: 0.7}
+  m_Radius: 7.6417303
+  m_Center: {x: 0, y: 26.44173, z: 0.6999999}
+--- !u!136 &136054826422173884
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967251650467358}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 8.294826
+  m_Height: 26.04946
+  m_Direction: 2
+  m_Center: {x: 0.28, y: 5.1, z: 0.11999965}
+--- !u!136 &136100950635575690
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967251650467358}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.705769
+  m_Height: 12.30701
+  m_Direction: 1
+  m_Center: {x: -0.54, y: 33.958794, z: 2.21}
