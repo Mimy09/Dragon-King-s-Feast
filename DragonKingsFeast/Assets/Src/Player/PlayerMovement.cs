@@ -146,6 +146,12 @@ public class PlayerMovement : MonoBehaviour {
                     /////////////////
                     num.x = aniCurve.Evaluate(1 - (horizontalSlowDownOffset - scale) / horizontalSlowDownOffset);
                 }
+                else {
+                    num.x = 1;
+                }
+            }
+            else {
+                num.x = 1;
             }
         }
         else {
@@ -157,6 +163,12 @@ public class PlayerMovement : MonoBehaviour {
                     //////////////////
                     num.x = aniCurve.Evaluate(1 - (horizontalSlowDownOffset - scale) / horizontalSlowDownOffset);
                 }
+                else {
+                    num.x = 1;
+                }
+            }
+            else {
+                num.x = 1;
             }
         }
 
@@ -169,10 +181,15 @@ public class PlayerMovement : MonoBehaviour {
                     //////////////////
                     num.y = aniCurve.Evaluate(1 - (VerticalSlowDownOffSet - scale) / VerticalSlowDownOffSet);
                 }
+                else {
+                    num.y = 1;
+                }
+            }
+            else {
+                num.y = 1;
             }
         }
         else {
-
             if (pos.y < 0) {
                 scale = (verticalBounds + pos.y);
 
@@ -181,6 +198,12 @@ public class PlayerMovement : MonoBehaviour {
                     //////////////////
                     num.y = aniCurve.Evaluate(1 - (VerticalSlowDownOffSet - scale) / VerticalSlowDownOffSet);
                 }
+                else {
+                    num.y = 1;
+                }
+            }
+            else {
+                num.y = 1;
             }
         }
         
