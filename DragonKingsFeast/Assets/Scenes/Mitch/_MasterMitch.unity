@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.47968674, g: 0.48994023, b: 0.63988334, a: 1}
+  m_IndirectSpecularColor: {r: 0.48100787, g: 0.48981595, b: 0.6401509, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1256,6 +1256,26 @@ Prefab:
     - target: {fileID: 4902907162935052, guid: 7dac2a33e2addd640b92eb7fcda3d02c, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.1609647
+      objectReference: {fileID: 0}
+    - target: {fileID: 198897864886461216, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: randomSeed
+      value: 916471050
+      objectReference: {fileID: 0}
+    - target: {fileID: 198897864886461216, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 198106959162797244, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1736647620
+      objectReference: {fileID: 0}
+    - target: {fileID: 198106959162797244, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dac2a33e2addd640b92eb7fcda3d02c, type: 2}
@@ -2791,6 +2811,36 @@ Prefab:
         type: 2}
       propertyPath: m_Value
       value: 2.293255
+      objectReference: {fileID: 0}
+    - target: {fileID: 224357626566796640, guid: 7ba7bc0ceff649f4599e46a3be065a10,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224189137532935218, guid: 7ba7bc0ceff649f4599e46a3be065a10,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224189137532935218, guid: 7ba7bc0ceff649f4599e46a3be065a10,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040298698711826, guid: 7ba7bc0ceff649f4599e46a3be065a10,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.14369501
+      objectReference: {fileID: 0}
+    - target: {fileID: 224879587294998644, guid: 7ba7bc0ceff649f4599e46a3be065a10,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.14369501
+      objectReference: {fileID: 0}
+    - target: {fileID: 224879587294998644, guid: 7ba7bc0ceff649f4599e46a3be065a10,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.14369501
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ba7bc0ceff649f4599e46a3be065a10, type: 2}
@@ -4404,16 +4454,26 @@ Prefab:
     - target: {fileID: 198897864886461216, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
         type: 2}
       propertyPath: randomSeed
-      value: 916471050
+      value: -1783025157
       objectReference: {fileID: 0}
     - target: {fileID: 198106959162797244, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
         type: 2}
       propertyPath: randomSeed
-      value: -1736647620
+      value: -1564080597
       objectReference: {fileID: 0}
     - target: {fileID: 1397587314319400, guid: 7dac2a33e2addd640b92eb7fcda3d02c, type: 2}
       propertyPath: m_Name
       value: CloudSplash (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 198897864886461216, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 198106959162797244, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dac2a33e2addd640b92eb7fcda3d02c, type: 2}
