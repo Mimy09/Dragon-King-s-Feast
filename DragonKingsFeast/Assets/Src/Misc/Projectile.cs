@@ -32,6 +32,26 @@ public class Projectile : MonoBehaviour {
     public GameObject sandAttack;
     public GameObject sandAttackHit;
 
+    public List<AudioClip> fireBallSound;
+    public List<AudioClip> sandBallSound;
+
+    private AudioSource audioSource;
+
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null) {
+            Debug.LogError("NO AUDIO SOURCE FOR " + this.name);
+        }
+
+        if (fireBallSound.Count == 0) {
+            Debug.LogError("NO FIRE BALL SOUND CLIPS " + this.name);
+        }
+
+        if (sandBallSound.Count == 0) {
+            Debug.LogError("NO SAND BALL SOUND CLIPS " + this.name);
+        }
+    }
 
     public void TurnOn() {
         m_killtimer = 0;
@@ -46,6 +66,8 @@ public class Projectile : MonoBehaviour {
 
     public void TurnOff() {
         GameManager.instance.GetObjectPool().AddProjectileToPool(this);
+
+        audioSource.Stop();
 
         for (int i = 0; i < transform.childCount; i++) {
             Destroy(transform.GetChild(i).gameObject);
@@ -63,11 +85,14 @@ public class Projectile : MonoBehaviour {
         isFireBall = _isFireBall;
         if (isFireBall) {
             Instantiate(playerFireBall, transform.position, Quaternion.identity, transform);
+            audioSource.clip = fireBallSound[Random.Range(0, fireBallSound.Count)];
         }
         else {
             Instantiate(sandAttack, transform.position, Quaternion.identity, transform);
+            audioSource.clip = sandBallSound[Random.Range(0, sandBallSound.Count)];
         }
 
+        audioSource.Play();
         m_liveTime = _liveTime;
     }
 
@@ -83,6 +108,9 @@ public class Projectile : MonoBehaviour {
         go.transform.SetParent(transform);
         go.transform.localPosition = new Vector3(0, 0, 0);
 
+        audioSource.clip = fireBallSound[Random.Range(0, fireBallSound.Count)];
+        audioSource.Play();
+
         m_liveTime = _liveTime;
     }
 
@@ -93,7 +121,7 @@ public class Projectile : MonoBehaviour {
 
         transform.position += (transform.forward * Time.deltaTime) * forwardSpeed;
 
-        if (m_killtimer > m_liveTime) {
+        if (m_killtimer > m_liveTime || (transform.position.z + 5) < GameManager.player.transform.position.z) {
             TurnOff();
         }
 	}

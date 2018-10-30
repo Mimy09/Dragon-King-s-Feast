@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioHolder : MonoBehaviour {
+public class AnimationManager : MonoBehaviour {
 
     public Enemy owner;
     public AudioSource audioSource;
@@ -54,6 +54,5 @@ public class AudioHolder : MonoBehaviour {
         audioSource.clip = death;
         audioSource.loop = false;
         owner.TurnOff();
-        Debug.Log("Died " + owner.EnemyType);
     }
 }

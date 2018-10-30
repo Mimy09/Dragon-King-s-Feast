@@ -926,6 +926,26 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.1609647
       objectReference: {fileID: 0}
+    - target: {fileID: 198897864886461216, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: randomSeed
+      value: 916471050
+      objectReference: {fileID: 0}
+    - target: {fileID: 198897864886461216, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 198106959162797244, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1736647620
+      objectReference: {fileID: 0}
+    - target: {fileID: 198106959162797244, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dac2a33e2addd640b92eb7fcda3d02c, type: 2}
   m_IsPrefabParent: 0
@@ -4434,16 +4454,26 @@ Prefab:
     - target: {fileID: 198897864886461216, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
         type: 2}
       propertyPath: randomSeed
-      value: 916471050
+      value: -1783025157
       objectReference: {fileID: 0}
     - target: {fileID: 198106959162797244, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
         type: 2}
       propertyPath: randomSeed
-      value: -1736647620
+      value: -1564080597
       objectReference: {fileID: 0}
     - target: {fileID: 1397587314319400, guid: 7dac2a33e2addd640b92eb7fcda3d02c, type: 2}
       propertyPath: m_Name
       value: CloudSplash (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 198897864886461216, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 198106959162797244, guid: 7dac2a33e2addd640b92eb7fcda3d02c,
+        type: 2}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dac2a33e2addd640b92eb7fcda3d02c, type: 2}
