@@ -176,11 +176,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   baseHealth: 50
-  speed: 0
+  speed: 12
   forwardSpeed: 0
   despawnOffset: 5
+  deathTime: 0
+  deathEffect: {fileID: 0}
   lootValue: 10000000
   animat: {fileID: 0}
+  spawner: {fileID: 0}
   meleeAttack:
     damage: 50
     player: {fileID: 0}

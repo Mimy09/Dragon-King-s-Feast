@@ -1689,7 +1689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4abbd66cf12f514787e92bb2e61d558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seekSpeed: 1
+  seekSpeed: 3
   separationRadius: 3
   cohesionRadius: 0
   alignRadius: 0
@@ -1709,8 +1709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   baseHealth: 20
-  speed: 1.5
-  forwardSpeed: 3.5
+  speed: 12
+  forwardSpeed: 10
   despawnOffset: 5
   deathTime: 2
   deathEffect: {fileID: 1205449864048238, guid: e20bbc0800d0e354ba2bc44b984f1e17,
