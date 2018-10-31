@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6526582, g: 0.6305297, b: 0.5869631, a: 1}
+  m_IndirectSpecularColor: {r: 0.6554566, g: 0.6299249, b: 0.58766395, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2042,7 +2042,7 @@ MonoBehaviour:
   verticalBounds: 30
   horizontalSlowDownOffset: 1
   VerticalSlowDownOffSet: 1
-  forwardSpeed: 1
+  forwardSpeed: 0.5
   moveSpeed: 8
   velocity: {x: 0, y: 0, z: 0}
   axisSpeedMultiplyer: {x: 1, y: 1}
