@@ -3,6 +3,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class MapManager : MonoBehaviour {
 
@@ -193,6 +194,21 @@ public class MapManager : MonoBehaviour {
         AO_level2 = null;
         AO_level3 = null;
         isInGame = false;
+
+        UnloadEntities();
+    }
+
+    public void UnloadEntities() {
+        int enemyCount = GameManager.enemyList.Count;
+        int ItemCount = GameManager.itemList.Count;
+
+        for (int i = 0; i < enemyCount; i++) {
+            GameManager.enemyList[0].GetComponent<Enemy>().TurnOff();
+        }
+
+        for (int i = 0; i < ItemCount; i++) {
+            GameManager.itemList[0].GetComponent<Item>().TurnOff();
+        }
     }
 
     public void UnloadLevel(int level) {
