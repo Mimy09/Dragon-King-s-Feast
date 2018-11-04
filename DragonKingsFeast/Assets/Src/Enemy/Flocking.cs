@@ -4,6 +4,13 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Flocking : MonoBehaviour {
+    enum Direction {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
     Rigidbody rb = null;
     List<Enemy> formation = new List<Enemy>();
     List<Enemy> neighbour = new List<Enemy>();
@@ -47,10 +54,15 @@ public class Flocking : MonoBehaviour {
 
         Vector3 vel = Vector3.zero;
 
-        vel = (Seek());
-        vel += (Separation());
-        vel += (Alignment());
-        vel += (Cohesion());
+        vel = Seek();
+        vel += Separation();
+        vel += Alignment();
+        vel += Cohesion();
+
+        vel += Prong(Direction.Up, 10, Time.deltaTime * 10);
+        vel += Prong(Direction.Down, 10, Time.deltaTime * 10);
+        vel += Prong(Direction.Left, 10, Time.deltaTime * 10);
+        vel += Prong(Direction.Right, 10, Time.deltaTime * 10);
 
         rb.velocity = vel;
     }
@@ -109,6 +121,53 @@ public class Flocking : MonoBehaviour {
         cohesionForce /= neighbour.Count;
 
         return (cohesionForce - rb.velocity) * cohesionWeight;
+    }
+
+    Vector3 Prong(Direction direction, float distance, float force) {
+        Vector3 dir = Vector3.zero;
+        float scailDir = 3;
+
+        // Set direction
+        switch (direction) {
+            case Direction.Up:
+                dir = transform.position + (Vector3.Normalize(rb.velocity + (transform.up * scailDir)) * distance);
+                break;
+            case Direction.Down:
+                dir = transform.position + (Vector3.Normalize(rb.velocity - (transform.up * scailDir)) * distance);
+                break;
+            case Direction.Left:
+                dir = transform.position + (Vector3.Normalize(rb.velocity - (transform.right * scailDir)) * distance);
+                break;
+            case Direction.Right:
+                dir = transform.position + (Vector3.Normalize(rb.velocity + (transform.right * scailDir)) * distance);
+                break;
+            default:
+                return Vector3.zero;
+        }
+        
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, dir - transform.position, out hit)) {
+            Debug.DrawLine(transform.position, dir, Color.green);
+
+            if (hit.collider.tag == "Mountain") {
+                switch (direction) {
+                    case Direction.Up:
+                        return -(transform.up * force);
+                    case Direction.Down:
+                        return (transform.up * force);
+                    case Direction.Left:
+                        return (transform.right * force);
+                    case Direction.Right:
+                        return -(transform.right * force);
+                }
+            } else {
+                return Vector3.zero;
+            }
+        } else {
+            Debug.DrawLine(transform.position, dir, Color.red);
+        }
+
+        return Vector3.zero;
     }
 
     private void OnDrawGizmosSelected() {
