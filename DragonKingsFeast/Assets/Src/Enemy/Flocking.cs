@@ -53,6 +53,7 @@ public class Flocking : MonoBehaviour {
         else trackPosition = formation[0].transform.position - offset;
 
         transform.LookAt(GameManager.player.transform);
+        transform.Rotate(new Vector3(0, 180, 0));
 
         Vector3 vel = Vector3.zero;
 
