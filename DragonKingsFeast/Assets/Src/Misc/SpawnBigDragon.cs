@@ -8,8 +8,8 @@ public class SpawnBigDragon : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        dragon = GameObject.FindGameObjectWithTag("BadDragon");
-        dragon.SetActive(false);
+        //dragon = GameObject.FindGameObjectWithTag("BadDragon");
+        //dragon.SetActive(false);
     }
 
     // Update is called once per frame
