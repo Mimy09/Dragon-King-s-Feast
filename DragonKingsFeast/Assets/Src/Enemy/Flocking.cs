@@ -52,6 +52,8 @@ public class Flocking : MonoBehaviour {
         }
         else trackPosition = formation[0].transform.position - offset;
 
+        transform.LookAt(GameManager.player.transform);
+
         Vector3 vel = Vector3.zero;
 
         vel = Seek();
@@ -59,10 +61,10 @@ public class Flocking : MonoBehaviour {
         vel += Alignment();
         vel += Cohesion();
 
-        vel += Prong(Direction.Up, 10, Time.deltaTime * 10);
-        vel += Prong(Direction.Down, 10, Time.deltaTime * 10);
-        vel += Prong(Direction.Left, 10, Time.deltaTime * 10);
-        vel += Prong(Direction.Right, 10, Time.deltaTime * 10);
+        vel += Prong(Direction.Up, 10, Time.deltaTime * 50);
+        vel += Prong(Direction.Down, 10, Time.deltaTime * 50);
+        vel += Prong(Direction.Left, 10, Time.deltaTime * 50);
+        vel += Prong(Direction.Right, 10, Time.deltaTime * 50);
 
         rb.velocity = vel;
     }
@@ -125,7 +127,7 @@ public class Flocking : MonoBehaviour {
 
     Vector3 Prong(Direction direction, float distance, float force) {
         Vector3 dir = Vector3.zero;
-        float scailDir = 3;
+        float scailDir = 4;
 
         // Set direction
         switch (direction) {
@@ -146,7 +148,7 @@ public class Flocking : MonoBehaviour {
         }
         
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, dir - transform.position, out hit)) {
+        if (Physics.Raycast(transform.position, dir - transform.position, out hit, 10, 9)) {
             Debug.DrawLine(transform.position, dir, Color.green);
 
             if (hit.collider.tag == "Mountain") {
