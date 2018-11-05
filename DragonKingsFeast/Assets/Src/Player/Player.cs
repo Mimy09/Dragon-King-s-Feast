@@ -94,12 +94,10 @@ public class Player : MonoBehaviour {
     }
 
     public void Dye() {
-        GameManager.instance.GetMapManager().isLoaded_level1 = true;
-        GameManager.instance.GetMapManager().isLoaded_level2 = true;
-        GameManager.instance.GetMapManager().isLoaded_level3 = true;
-        GameManager.instance.GetMapManager().UnloadLevel(1);
-        GameManager.instance.GetMapManager().UnloadLevel(2);
-        GameManager.instance.GetMapManager().UnloadLevel(3);
+        GameManager.instance.GetPlayerMovement().ResetPlayerPos();
+        Reset();
+
+        __event<e_UI>.InvokeEvent(this, e_UI.ENDGAME);
     }
 
     public void hitMountain() {

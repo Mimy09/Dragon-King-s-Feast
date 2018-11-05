@@ -7,6 +7,7 @@
     EXIT,
     INGAMEMENU,
     INGAMEOPTIONS,
+    ENDGAME,
     NULL,
 }
 

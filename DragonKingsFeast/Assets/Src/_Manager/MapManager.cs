@@ -247,10 +247,8 @@ public class MapManager : MonoBehaviour {
 
                     Debug.Log("Reseting the player");
 
-                    GameManager.instance.GetPlayerMovement().ResetPlayerPos();
-                    GameManager.instance.GetPlayer().Reset();
                     Time.timeScale = 0;
-                    __event<e_UI>.InvokeEvent(this, e_UI.MENU);
+                    __event<e_UI>.InvokeEvent(this, e_UI.MENU, true);
                 }
                 break;
         }
