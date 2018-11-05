@@ -8,6 +8,7 @@
     INGAMEMENU,
     INGAMEOPTIONS,
     ENDGAME,
+    WINGAME,
     NULL,
 }
 
