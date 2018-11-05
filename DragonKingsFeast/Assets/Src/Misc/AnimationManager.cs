@@ -5,10 +5,12 @@ using UnityEngine;
 public class AnimationManager : MonoBehaviour {
 
     public Enemy owner;
-    public AudioSource audioSource;
+    public GameObject audioSource;
     
     private MeleeAttack meleeAttackActions = null;
     private RangedAttack rangedAttackActions = null;
+
+
 
     public AudioClip rangedAttack;
     public AudioClip meeleAttack;
@@ -34,25 +36,23 @@ public class AnimationManager : MonoBehaviour {
 
     public void SetUpRangedAttack () {
         rangedAttackActions.DealDamage();
-        audioSource.clip = rangedAttack;
-        audioSource.loop = false;
-
     }
 
     public void SetUpMeeleAttack() {
         meleeAttackActions.DealDamage();
-        audioSource.clip = meeleAttack;
-        audioSource.loop = false;
     }
 
     public void SetUpIdl() {
-        audioSource.clip = idl;
-        audioSource.loop = true;
     }
 
     public void SetUpDeath() {
-        audioSource.clip = death;
-        audioSource.loop = false;
         owner.TurnOff();
+    }
+
+    public void PlayDeathSound() {
+        GameObject go = Instantiate(audioSource, transform.position, Quaternion.identity, transform);
+        go.GetComponent<AudioSource>().clip = death;
+        go.GetComponent<AudioSource>().Play();
+        Destroy(go, 2.0f);
     }
 }
