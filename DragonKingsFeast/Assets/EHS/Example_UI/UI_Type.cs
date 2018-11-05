@@ -36,5 +36,11 @@ public class UI_Type : MonoBehaviour {
         if (e.arg == e_UI.MENU && (bool)e.value == true && type == e_UI.MENU) {
             transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
         }
+        
+        if (e.arg == e_UI.LOADING) {
+            GameManager.instance.GetPlayerMovement().ResetPlayerPos();
+            GameManager.player.Reset();
+            GameManager.mapManager.hasWon = false;
+        }
     }
 }

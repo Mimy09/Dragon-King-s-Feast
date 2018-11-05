@@ -86,8 +86,10 @@ public class Player : MonoBehaviour {
 
     public void Reset() {
         GameObject g = GameObject.FindGameObjectWithTag("CoinSP");
-        for (int i = 0; i < g.transform.childCount; i++) {
-            Destroy(g.transform.GetChild(i).gameObject);
+        if (g != null) {
+            for (int i = 0; i < g.transform.childCount; i++) {
+                Destroy(g.transform.GetChild(i).gameObject);
+            }
         }
         currCoinCount = 0;
         health = 0;

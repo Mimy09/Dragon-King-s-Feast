@@ -11,12 +11,13 @@ public class MapManager : MonoBehaviour {
     // ---- Variables ---- //
 
     // private
-    AsyncOperation AO_level1, AO_level2, AO_level3;
+    AsyncOperation AO_level1, AO_level2, AO_level3, AO_level4;
 
     [Header("Manager Options")]
     [ReadOnly] public float loaded_percent = 0;
     [ReadOnly] public bool isLoaded_level1, isLoaded_level2, isLoaded_level3;
     [ReadOnly] public bool loaded = false;
+    [ReadOnly] public bool hasWon = false;
     private bool isInGame = false;
 
     // public
@@ -52,7 +53,8 @@ public class MapManager : MonoBehaviour {
             GameManager.instance.GetTutorialManager().Init();
         }
 
-        SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive);
+        AO_level4 = SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive);
+        AO_level4.allowSceneActivation = true;
     }
 
     IEnumerator LoadAllInBackground() {
@@ -134,6 +136,10 @@ public class MapManager : MonoBehaviour {
                 if (pos.z <= level3UnloadDistance) {
                     LoadLevel(3);
                 } else { // Unload levels
+
+                    // if unloaded by reaching end
+                    // then player has won the game
+                    hasWon = true;
                     UnloadLevel(3);
                 }
             }
@@ -194,7 +200,6 @@ public class MapManager : MonoBehaviour {
         AO_level2 = null;
         AO_level3 = null;
         isInGame = false;
-
         UnloadEntities();
     }
 
@@ -237,7 +242,8 @@ public class MapManager : MonoBehaviour {
                 // If level 3 is loaded then unload
                 if (isLoaded_level3) {
                     GameManager.instance.GetUnloadObjects().UnloadLevel(3);
-                    SceneManager.UnloadSceneAsync(4);
+                    if (AO_level4 != null) SceneManager.UnloadSceneAsync(4);
+                    AO_level4 = null;
                     if (AO_level3 != null) SceneManager.UnloadSceneAsync(3);
                     AO_level3 = null;
                     isLoaded_level3 = false;
@@ -245,10 +251,12 @@ public class MapManager : MonoBehaviour {
 
                     UnloadAll();
 
-                    Debug.Log("Reseting the player");
-
                     Time.timeScale = 0;
-                    __event<e_UI>.InvokeEvent(this, e_UI.MENU, true);
+
+                    if (!hasWon)
+                        __event<e_UI>.InvokeEvent(this, e_UI.MENU, true);
+                    else
+                        __event<e_UI>.InvokeEvent(this, e_UI.WINGAME, true);
                 }
                 break;
         }
