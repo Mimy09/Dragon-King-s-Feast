@@ -154,6 +154,11 @@ public class Projectile : MonoBehaviour {
 
                     TurnOff();
                 }
+                else if (other.transform == m_enemy) {
+                    GameObject go = Instantiate(playerFireBallHit);
+                    go.transform.position = transform.position;
+                    Destroy(go, 2.0f);
+                }
             }
         }
         else {
