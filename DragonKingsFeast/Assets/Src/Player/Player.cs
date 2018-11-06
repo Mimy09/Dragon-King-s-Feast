@@ -328,7 +328,7 @@ public class Player : MonoBehaviour {
             if (dist <= range) {
                 GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
                 go.transform.position = projectileSpawnPoint.position;
-                go.GetComponent<Projectile>().SetUp(E.transform, m_attackBoostTimer < attackBoostTime ? damage + boostDamage : damage, true, rangedAttackSpeed + pm.forwardSpeed, projectileLiveTime);
+                go.GetComponent<Projectile>().SetUp(E.transform, 0, true, rangedAttackSpeed + pm.forwardSpeed, projectileLiveTime);
 
                 E.TakeDamage2( m_attackBoostTimer < attackBoostTime ? damage + boostDamage : damage );
 

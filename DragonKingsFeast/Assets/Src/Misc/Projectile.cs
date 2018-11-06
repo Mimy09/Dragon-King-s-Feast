@@ -145,18 +145,20 @@ public class Projectile : MonoBehaviour {
         
         if (playerAttack) {
             if (other.tag == "Enemy") {
-                other.GetComponent<Enemy>().TakeDamage(damage);
-                TurnOff();
+                if (other.GetComponent<Enemy>().isDead == false) {
+                    other.GetComponent<Enemy>().TakeDamage(damage);
 
-                GameObject go = Instantiate(playerFireBallHit);
-                go.transform.position = transform.position;
-                Destroy(go, 2.0f);
+                    GameObject go = Instantiate(playerFireBallHit);
+                    go.transform.position = transform.position;
+                    Destroy(go, 2.0f);
+
+                    TurnOff();
+                }
             }
         }
         else {
             if (other.tag == "Player") {
                 other.GetComponent<Player>().TakeDamage();
-                TurnOff();
 
                 if (isFireBall) {
                     Destroy(Instantiate(playerFireBallHit, transform.position, Quaternion.identity), 2.0f);
@@ -164,6 +166,8 @@ public class Projectile : MonoBehaviour {
                 else {
                     Destroy(Instantiate(sandAttackHit, transform.position, Quaternion.identity), 2.0f);
                 }
+
+                TurnOff();
             }
         }
     }
