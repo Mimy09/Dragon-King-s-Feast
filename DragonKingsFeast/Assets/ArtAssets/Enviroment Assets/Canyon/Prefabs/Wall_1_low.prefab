@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 65144198937276220}
   - component: {fileID: 65903296210244550}
   - component: {fileID: 114787487786315578}
+  - component: {fileID: 65226596942168166}
   m_Layer: 0
   m_Name: Wall_1_low
   m_TagString: Mountain
@@ -38,13 +39,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1347157714713848}
-  m_LocalRotation: {x: -0, y: 0.9007825, z: -0, w: 0.4342706}
-  m_LocalPosition: {x: -60.2, y: -5, z: 308.9}
+  m_LocalRotation: {x: -0, y: -0.9228207, z: -0, w: -0.38522974}
+  m_LocalPosition: {x: 32.3, y: -5, z: 486.1}
   m_LocalScale: {x: -1.6, y: 1.6, z: -1.6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 128.522, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -225.316, z: 0}
 --- !u!23 &23358025406818010
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -98,6 +99,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 15.41, y: 50.01627, z: 16.771393}
   m_Center: {x: 0, y: 27.19079, z: 6.357255}
+--- !u!65 &65226596942168166
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347157714713848}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 22.098398, y: 11.569004, z: 25.205408}
+  m_Center: {x: -0.000000046597307, y: 4.7035456, z: 2.1402693}
 --- !u!65 &65777473616229052
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -120,8 +133,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20.02825, y: 12.56094, z: 9.833527}
-  m_Center: {x: 0.13701534, y: 5.1995106, z: -6.504318}
+  m_Size: {x: 20.02825, y: 8.727127, z: 10.909215}
+  m_Center: {x: 0.13701577, y: 3.2826037, z: -7.0421553}
 --- !u!114 &114787487786315578
 MonoBehaviour:
   m_ObjectHideFlags: 1
