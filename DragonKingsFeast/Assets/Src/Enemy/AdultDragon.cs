@@ -40,7 +40,8 @@ public class AdultDragon : Enemy {
         g.transform.position = transform.position;
     }
 
-    public override void TakeDamage2(float damage) { }
+    public override void TakeDamage2(float damage) {
+    }
 
     protected override void Update() {
         if (waypoints.Length <= 0) return;
