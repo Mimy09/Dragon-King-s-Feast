@@ -9,6 +9,7 @@
     INGAMEOPTIONS,
     ENDGAME,
     WINGAME,
+    CUTSCENE,
     NULL,
 }
 

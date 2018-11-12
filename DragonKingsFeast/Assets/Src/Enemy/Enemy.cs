@@ -33,7 +33,8 @@ public class Enemy : MonoBehaviour {
     //the time of the death animation
     public float deathTime;
     private float m_timeSinceDead;
-    private bool m_isDead;
+    public bool isDead;
+    
 
     public GameObject deathEffect;
 
@@ -58,7 +59,7 @@ public class Enemy : MonoBehaviour {
         GameManager.enemyList.Add(gameObject);
         this.gameObject.SetActive(true);
         animat.SetBool("Dead", false);
-        m_isDead = false;
+        isDead = false;
         m_timeSinceDead = 0;
     }
     public virtual void OnDeath() {
@@ -69,7 +70,7 @@ public class Enemy : MonoBehaviour {
         Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity, transform), 2.0f);
     }
 
-    public virtual void TakeDamage(float damage) { m_health -= damage; if (m_health <= 0) { OnDeath(); animat.SetBool("Dead", true); } }
+    public virtual void TakeDamage(float damage) { if (m_health <= 0) { OnDeath(); animat.SetBool("Dead", true); isDead = true; } }
     public virtual void TakeDamage2(float damage) { m_health -= damage; }
 
     public Enemy GetEnemy() { return this; }

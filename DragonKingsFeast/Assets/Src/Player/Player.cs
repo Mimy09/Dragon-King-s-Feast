@@ -38,9 +38,9 @@ public class Player : MonoBehaviour {
     public float maxBulletAmmount;
 
     [Header("Boost Values")]
-    public float attackBoostTime;
+    public float maxAttackBoostTime;
     public float boostDamage;
-    private float m_attackBoostTimer;
+    [ReadOnly] public float attackBoostTimer;
 
     public float speedBoostTime;
     private float m_speedBoostTimer;
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private bool m_sheild;
+    public bool sheildBoost;
 
     public List<GameObject> watterEffects;
     public List<GameObject> cloudEffects;
@@ -62,8 +62,8 @@ public class Player : MonoBehaviour {
 
     public void TakeDamage() {
 
-        if (m_sheild) {
-            m_sheild = false;
+        if (sheildBoost) {
+            sheildBoost = false;
             return;
         }
 
@@ -86,11 +86,14 @@ public class Player : MonoBehaviour {
 
     public void Reset() {
         GameObject g = GameObject.FindGameObjectWithTag("CoinSP");
-        for (int i = 0; i < g.transform.childCount; i++) {
-            Destroy(g.transform.GetChild(i).gameObject);
+        if (g != null) {
+            for (int i = 0; i < g.transform.childCount; i++) {
+                Destroy(g.transform.GetChild(i).gameObject);
+            }
         }
         currCoinCount = 0;
         health = 0;
+        attackBoostTimer = 10;
     }
 
     public void Dye() {
@@ -107,15 +110,15 @@ public class Player : MonoBehaviour {
     public void ApplyBoost(e_ItemType type) {
         switch (type) {
             case e_ItemType.Boost_Speed:
-                m_attackBoostTimer = 0;
+                attackBoostTimer = 0;
                 break;
 
             case e_ItemType.Boost_Attack:
-                m_speedBoostTimer = 0;
+                attackBoostTimer = 0;
                 break;
 
             case e_ItemType.Boost_Defense:
-                m_sheild = true;
+                sheildBoost = true;
                 break;
 
             case e_ItemType.Pickup:
@@ -174,7 +177,7 @@ public class Player : MonoBehaviour {
         if (bulletAmmount < maxBulletAmmount) bulletAmmount += Time.deltaTime;
 
         attackTimer += Time.deltaTime;
-        m_attackBoostTimer += Time.deltaTime;
+        attackBoostTimer += Time.deltaTime;
         m_speedBoostTimer += Time.deltaTime;
 
 #if UNITY_STANDALONE_WIN
@@ -326,9 +329,9 @@ public class Player : MonoBehaviour {
             if (dist <= range) {
                 GameObject go = GameManager.instance.GetObjectPool().FindProjectile();
                 go.transform.position = projectileSpawnPoint.position;
-                go.GetComponent<Projectile>().SetUp(E.transform, m_attackBoostTimer < attackBoostTime ? damage + boostDamage : damage, true, rangedAttackSpeed + pm.forwardSpeed, projectileLiveTime);
+                go.GetComponent<Projectile>().SetUp(E.transform, 0, true, rangedAttackSpeed + pm.forwardSpeed, projectileLiveTime);
 
-                E.TakeDamage2( m_attackBoostTimer < attackBoostTime ? damage + boostDamage : damage );
+                E.TakeDamage2(attackBoostTimer < maxAttackBoostTime ? damage + boostDamage : damage );
 
                 attackTimer = 0;
                 bulletAmmount--;

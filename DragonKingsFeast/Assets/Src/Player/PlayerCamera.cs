@@ -8,7 +8,6 @@ public class PlayerCamera : MonoBehaviour {
     public Transform player;
     public float distanceFromPlayer;
     public float hightFromPlayer;
-
     public float speed;
 
     [Header("Debugging")]
@@ -17,8 +16,14 @@ public class PlayerCamera : MonoBehaviour {
     private Vector3 targtPos;
     private Vector3 camVelocity = Vector3.zero;
 
+    public bool isHittingWall = false;
+
     private void FixedUpdate() {
-        targtPos = new Vector3(player.transform.position.x, player.transform.position.y - hightFromPlayer, player.transform.position.z + distanceFromPlayer);
+        if (isHittingWall) {
+            targtPos = new Vector3(player.transform.position.x, player.transform.position.y - hightFromPlayer, player.transform.position.z - 1);
+        } else {
+            targtPos = new Vector3(player.transform.position.x, player.transform.position.y - hightFromPlayer, player.transform.position.z + distanceFromPlayer);
+        }
 
         if (GameManager.playerMovement.num.x != 1 || GameManager.playerMovement.num.y != 1) {
             transform.position = Vector3.SmoothDamp(
@@ -48,5 +53,18 @@ public class PlayerCamera : MonoBehaviour {
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(targtPos, 0.1f);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.transform.tag == "Mountain") {
+            isHittingWall = true;
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.transform.tag == "Mountain") {
+            isHittingWall = false;
+        }
     }
 }
