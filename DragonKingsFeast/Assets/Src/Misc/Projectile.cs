@@ -144,7 +144,7 @@ public class Projectile : MonoBehaviour {
     public void OnTriggerEnter(Collider other) {
         
         if (playerAttack) {
-            if (other.tag == "Enemy") {
+            if (other.tag == "Enemy" || other.tag == "BadDragon") {
                 if (other.GetComponent<Enemy>().isDead == false) {
                     other.GetComponent<Enemy>().TakeDamage(damage);
 
