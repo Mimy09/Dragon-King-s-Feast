@@ -84,14 +84,20 @@ public class GameManager : MonoBehaviour {
     }
     
     public Player GetPlayer() {
+        if (player == null)
+            SetupPlayer();
         return player;
     }
 
     public PlayerIK GetPlayerIK() {
+        if (playerIK == null)
+            SetupPlayer();
         return playerIK;
     }
 
     public PlayerMovement GetPlayerMovement() {
+        if (playerMovement == null)
+            SetupPlayer();
         return playerMovement;
     }
 
@@ -115,6 +121,19 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    void SetupPlayer() {
+        Player player_go = FindObjectOfType<Player>();
+        if (player_go != null) {
+            // Player object
+            playerObject = player_go.gameObject;
+
+            // Player scripts
+            player = player_go;
+            playerIK = player_go.GetComponent<PlayerIK>();
+            playerMovement = player_go.GetComponent<PlayerMovement>();
+        }
+    }
+
     private void Start() {
         if (PlayerPrefs.GetInt("hasLoaded") == 0) {
             PlayerPrefs.SetInt("hasLoaded", 1);
@@ -130,17 +149,7 @@ public class GameManager : MonoBehaviour {
             // Initialize manager
             Initialize();
 
-            // Get player scripts
-            Player player_go = FindObjectOfType<Player>();
-            if (player_go != null) {
-                // Player object
-                playerObject    = player_go.gameObject;
-
-                // Player scripts
-                player          = player_go;
-                playerIK        = player_go.GetComponent<PlayerIK>();
-                playerMovement  = player_go.GetComponent<PlayerMovement>();
-            }
+            SetupPlayer();
 
             // get object pool manager
             if (objectPoolManager == null)
