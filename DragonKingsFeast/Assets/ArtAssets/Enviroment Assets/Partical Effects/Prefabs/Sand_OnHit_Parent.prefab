@@ -198,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioHolder:
   - {fileID: 8300000, guid: 605d6fde51dc51c46956a061eaa85018, type: 3}
+  - {fileID: 8300000, guid: 6d0c2d2d216fd40438c803daa776e74b, type: 3}
 --- !u!198 &198545908465345664
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -258,7 +259,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1734734551
+  randomSeed: 1001915357
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3625,7 +3626,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1674622022
+  randomSeed: 1130929491
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6986,7 +6987,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1745359783
+  randomSeed: -490111072
   InitialModule:
     serializedVersion: 3
     enabled: 1

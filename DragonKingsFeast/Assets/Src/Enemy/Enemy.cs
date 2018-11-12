@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour {
         loot.transform.position = transform.position;
         loot.value = lootValue;
 
-        Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity, transform), 2.0f);
+        Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity, transform), 5.0f);
     }
 
     public virtual void TakeDamage(float damage) { if (m_health <= 0) { OnDeath(); animat.SetBool("Dead", true); isDead = true; } }

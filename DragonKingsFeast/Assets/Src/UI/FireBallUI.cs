@@ -16,6 +16,8 @@ public class FireBallUI : MonoBehaviour {
     RawImage UIImage;
     Texture2D temp;
 
+
+
     private void Start() {
         UIImage = GetComponent<RawImage>();
         temp = new Texture2D(1, 1);

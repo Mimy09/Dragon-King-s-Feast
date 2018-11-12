@@ -48,6 +48,8 @@ public class Player : MonoBehaviour {
 
     public bool gameRunning;
 
+    public List<AudioClip> sheildBreakSounds;
+
     public float speedBoostTimer {
         get {
             return m_speedBoostTimer;
@@ -64,6 +66,14 @@ public class Player : MonoBehaviour {
 
         if (sheildBoost) {
             sheildBoost = false;
+
+            if(GetComponent<AudioSource>().clip = sheildBreakSounds[Random.Range(0, sheildBreakSounds.Count)]) {
+                GetComponent<AudioSource>().Play();
+            }
+            else {
+                Debug.Log("NO AUDIO SOURCE ON " + gameObject.name);
+            }
+
             return;
         }
 
@@ -93,7 +103,8 @@ public class Player : MonoBehaviour {
         }
         currCoinCount = 0;
         health = 0;
-        attackBoostTimer = 10;
+        attackBoostTimer = maxAttackBoostTime;
+        sheildBoost = false;
     }
 
     public void Dye() {

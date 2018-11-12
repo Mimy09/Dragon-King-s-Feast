@@ -190,8 +190,11 @@ MonoBehaviour:
     type: 2}
   fireBallSound:
   - {fileID: 8300000, guid: 53ef822a7086c134a99c89221eb30ee8, type: 3}
+  - {fileID: 8300000, guid: 335d19ce39895e844be47566b85fba75, type: 3}
+  - {fileID: 8300000, guid: ece3bd88642b7ac4bbfb2141d6f44340, type: 3}
   sandBallSound:
   - {fileID: 8300000, guid: 28b787743e484384fbd077070e08710c, type: 3}
+  - {fileID: 8300000, guid: 9cf86f3a0048efc429825618b7756bf8, type: 3}
 --- !u!135 &135262068918809636
 SphereCollider:
   m_ObjectHideFlags: 1
