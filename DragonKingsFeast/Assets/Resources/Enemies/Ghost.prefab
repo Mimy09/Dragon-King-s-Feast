@@ -1348,11 +1348,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 114601264633699390}
-  audioSource: {fileID: 82307368617222178}
+  audioSource: {fileID: 1753197767382958, guid: 661fd663d7137284ca7354b457f86f9d,
+    type: 2}
   rangedAttack: {fileID: 0}
   meeleAttack: {fileID: 0}
   idl: {fileID: 0}
-  death: {fileID: 0}
+  death: {fileID: 8300000, guid: dc230f25cf7fc8e41b9e5b121a862117, type: 3}
 --- !u!114 &114601264633699390
 MonoBehaviour:
   m_ObjectHideFlags: 1

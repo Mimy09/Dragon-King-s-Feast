@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour {
             __event<e_GameEvents>.Raise(this, EventHandle);
 
             // Make menu show up
-            __event<e_UI>.InvokeEvent(this, e_UI.MENU);
+            __event<e_UI>.InvokeEvent(this, e_UI.MENU, false);
             __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.NULL);
 
             // Set timeout to never

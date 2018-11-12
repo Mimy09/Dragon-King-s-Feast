@@ -16,12 +16,12 @@ public class UI_Type : MonoBehaviour {
             Application.Quit();
 
         if (e.arg == type) {
-            for (int i = 0; i < transform.childCount; i++)
-                transform.GetChild(i).gameObject.SetActive(true);
+            //for (int i = 0; i < transform.childCount; i++)
+            //    transform.GetChild(i).gameObject.SetActive(true);
             this.gameObject.SetActive(true);
         } else {
-            for (int i = 0; i < transform.childCount; i++)
-                transform.GetChild(i).gameObject.SetActive(false);
+            //for (int i = 0; i < transform.childCount; i++)
+            //    transform.GetChild(i).gameObject.SetActive(false);
             this.gameObject.SetActive(false);
         }
 
@@ -31,6 +31,10 @@ public class UI_Type : MonoBehaviour {
 
         if (e.arg == e_UI.GAME) {
             Time.timeScale = 1;
+        }
+
+        if (e.arg == e_UI.MENU && (bool)e.value == true && type == e_UI.MENU) {
+            transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
         }
     }
 }
