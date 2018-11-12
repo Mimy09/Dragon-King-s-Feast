@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour {
         Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity, transform), 2.0f);
     }
 
-    public virtual void TakeDamage(float damage) { m_health -= damage; if (m_health <= 0) { OnDeath(); animat.SetBool("Dead", true); isDead = true; } }
+    public virtual void TakeDamage(float damage) { if (m_health <= 0) { OnDeath(); animat.SetBool("Dead", true); isDead = true; } }
     public virtual void TakeDamage2(float damage) { m_health -= damage; }
 
     public Enemy GetEnemy() { return this; }

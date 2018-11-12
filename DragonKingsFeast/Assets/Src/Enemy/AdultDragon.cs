@@ -31,20 +31,35 @@ public class AdultDragon : Enemy {
     public override void TurnOff() { }
     public override void TurnOn() { }
 
-    private void Update() {
+    public void OnEnable() {
+        GameManager.enemyList.Add(this.gameObject);
+    }
+
+    public override void TakeDamage(float damage) {
+        GameObject g = GameManager.objectPoolManager.FindItemOfType(e_ItemType.Pickup);
+        g.transform.position = transform.position;
+    }
+
+    public override void TakeDamage2(float damage) { }
+
+    protected override void Update() {
         if (waypoints.Length <= 0) return;
         if (waypoint_state > waypoints.Length - 1) waypoint_state = 0;
         if (waypoint_child_state > waypoints[waypoint_state].childs.Length - 1) return;
 
         lookAtPos.transform.position = transform.position;
         lookAtPos.transform.LookAt(waypoints[waypoint_state].childs[waypoint_child_state].transform);
+        lookAtPos.transform.Rotate(new Vector3(90, 0, 0));
+
         transform.rotation = Quaternion.Lerp(
             transform.rotation,
             lookAtPos.transform.rotation,
             Time.deltaTime * forwardSpeed
             );
 
-        transform.position += transform.forward * Time.deltaTime * speed;
+
+        GetComponent<Rigidbody>().velocity = (transform.up * speed);
+        //transform.position += transform.forward * Time.deltaTime * speed;
 
         // Check if is at next waypoint
         if ( Vector3.Distance(
