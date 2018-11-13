@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
     }
 
     public int currCoinCount;
+    public int currGemCount;
     public int maxCoins;
 
     [Header("Projectile Info")]
@@ -149,19 +150,48 @@ public class Player : MonoBehaviour {
             
             GameObject SP = GameObject.FindGameObjectWithTag("CoinSP");
 
+            int j = 0;
             for (int i = 0; i < SP.transform.childCount; i++) {
-
                 if (SP.transform.GetChild(i).tag == "Coin") {
+                    j++;
                     currCoinCount--;
                     Destroy(SP.transform.GetChild(i).gameObject);
                 }
-
+                if (j >= maxCoins) break;
                 if (currCoinCount == 0) {
                     break;
                 }
             }
 
             GameObject go = Instantiate(Helper.GemPath, new Vector3(0, 0, 0), Quaternion.identity, SP.transform) as GameObject;
+            go.GetComponent<RectTransform>().localPosition = new Vector3(
+                Random.Range(-Screen.width / 40, Screen.width / 40),
+                0,
+                0
+                );
+
+            currGemCount++;
+        }
+
+        if (currGemCount >= maxCoins) {
+
+            GameObject SP = GameObject.FindGameObjectWithTag("CoinSP");
+
+            int j = 0;
+            for (int i = 0; i < SP.transform.childCount; i++) {
+
+                if (SP.transform.GetChild(i).tag == "Gem") {
+                    currGemCount--;
+                    j++;
+                    Destroy(SP.transform.GetChild(i).gameObject);
+                }
+                if (j >= maxCoins) break;
+                if (currGemCount == 0) {
+                    break;
+                }
+            }
+
+            GameObject go = Instantiate(Helper.Gem2Path, new Vector3(0, 0, 0), Quaternion.identity, SP.transform) as GameObject;
             go.GetComponent<RectTransform>().localPosition = new Vector3(
                 Random.Range(-Screen.width / 40, Screen.width / 40),
                 0,
