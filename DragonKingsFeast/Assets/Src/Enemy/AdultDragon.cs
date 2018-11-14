@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class AdultDragon : Enemy {
 
-    public RangedAttack rangedAttack;
+    public MeleeAttack meleeAttack;
+
     public Waypoint[] waypoints;
     public int waypoint_state;
     private int waypoint_child_state;
     private float waypoint_collider_size = 3;
 
     private GameObject lookAtPos;
+    private float timer;
+    public float DamageTime;
+    public bool canDamage = false;
 
     protected override void Awake () {
         m_enemyType = e_EnemyType.AdultDragon;
@@ -18,7 +22,10 @@ public class AdultDragon : Enemy {
 
     private void Start() {
         Reset();
-        rangedAttack.SetUp(player, this);
+        meleeAttack.SetUp(player, this);
+        meleeAttack.canAttackMultipleTimes = true;
+        meleeAttack.usesAnimation = false;
+
         waypoint_state          = 0;
         waypoint_child_state    = 0;
         lookAtPos               = new GameObject("LookAt");
@@ -44,6 +51,13 @@ public class AdultDragon : Enemy {
     }
 
     protected override void Update() {
+        if (timer < DamageTime && canDamage == false) {
+            timer += Time.deltaTime;
+        } else {
+            canDamage = true;
+            timer = 0;
+        }
+
         if (waypoints.Length <= 0) return;
         if (waypoint_state > waypoints.Length - 1) waypoint_state = 0;
         if (waypoint_child_state > waypoints[waypoint_state].childs.Length - 1) return;
@@ -67,10 +81,6 @@ public class AdultDragon : Enemy {
             transform.position,
             waypoints[waypoint_state].childs[waypoint_child_state].transform.position
             ) < waypoint_collider_size) {
-            // Go to next waypoint
-            if (waypoint_state == 1) {
-                ShootAttack();
-            }
             waypoint_child_state++;
 
             // If went to last waypoint, go to next set of waypoints
@@ -85,8 +95,13 @@ public class AdultDragon : Enemy {
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, waypoint_collider_size);
     }
+    
 
-    private void ShootAttack() {
-        //rangedAttack.AttackPlayer();
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "Player" && canDamage == true) {
+            // animat.SetBool("Attack", true);
+            canDamage = false;
+            meleeAttack.DealDamage();
+        }
     }
 }

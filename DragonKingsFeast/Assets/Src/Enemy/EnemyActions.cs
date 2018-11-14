@@ -23,11 +23,15 @@ public class EnemyActions{
 public class MeleeAttack : EnemyActions {
     //determins if it has made a melee attack or not
     protected bool m_hasAttacked;
-    
+    public bool canAttackMultipleTimes = false;
+    public bool usesAnimation = true;
+
     public override bool AttackPlayer() {
+        if (canAttackMultipleTimes) m_hasAttacked = false;
         if (m_hasAttacked != true) {
             m_hasAttacked = true;
-            owner.animat.SetBool("Attack", true);
+
+            if (usesAnimation) owner.animat.SetBool("Attack", true);
             return true;
         }
 
@@ -39,6 +43,7 @@ public class MeleeAttack : EnemyActions {
     }
 
     public void Update() {
+        if (!usesAnimation) return;
         if (m_hasAttacked == true) {
             owner.animat.SetBool("Attack", false);
         }

@@ -3516,6 +3516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   currCoinCount: 0
+  currGemCount: 0
   maxCoins: 10
   projectileSpawnPoint: {fileID: 1917066411}
   damage: 10
@@ -3531,6 +3532,7 @@ MonoBehaviour:
   speedBoostTime: 5
   speedBoost: 3
   gameRunning: 0
+  sheildBreakSounds: []
   sheildBoost: 0
   watterEffects:
   - {fileID: 1311527965}
@@ -4198,7 +4200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24f01c35fb810c44bf7f52d55b1aaaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 813529346}
   baseHealth: 300
   speed: 10
   forwardSpeed: 2
@@ -4209,16 +4211,16 @@ MonoBehaviour:
   lootValue: 0
   animat: {fileID: 0}
   spawner: {fileID: 0}
-  rangedAttack:
-    damage: 0
-    player: {fileID: 0}
-    attackRange: 0
-    rangedAttackSpeed: 0
-    attackCoolDownSpeed: 0
-    projectileLiveTime: 0
+  meleeAttack:
+    damage: 10
+    player: {fileID: 813529346}
+    canAttackMultipleTimes: 0
+    usesAnimation: 1
   waypoints:
   - {fileID: 502049949}
   waypoint_state: 0
+  DamageTime: 0
+  canDamage: 0
 --- !u!65 &1131912135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4229,7 +4231,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Size: {x: 0.05, y: 0.05, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1141267874
 GameObject:
