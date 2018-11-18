@@ -9,7 +9,8 @@ public class MountinMurder : MonoBehaviour {
             GameManager.player.hitMountain();
         }
         if (other.tag == "Enemy") {
-            other.GetComponent<Enemy>().TakeDamage(1000000);
+            other.GetComponent<Enemy>().TakeDamage2(1000000);
+            other.GetComponent<Enemy>().TakeDamage();
         }
     }
 }

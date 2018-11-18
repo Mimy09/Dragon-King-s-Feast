@@ -146,7 +146,7 @@ public class Projectile : MonoBehaviour {
         if (playerAttack) {
             if (other.tag == "Enemy" || other.tag == "BadDragon") {
                 if (other.GetComponent<Enemy>().isDead == false) {
-                    other.GetComponent<Enemy>().TakeDamage(damage);
+                    other.GetComponent<Enemy>().TakeDamage();
 
                     GameObject go = Instantiate(playerFireBallHit);
                     go.transform.position = transform.position;

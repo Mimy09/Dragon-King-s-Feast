@@ -20,8 +20,7 @@ public class Phoenix : Enemy {
         m_enemyType = e_EnemyType.Phoenix;
     }
 
-    protected override void Update() {
-        base.Update();
+    protected void Update() {
 
         rangedAttack.Update();
         

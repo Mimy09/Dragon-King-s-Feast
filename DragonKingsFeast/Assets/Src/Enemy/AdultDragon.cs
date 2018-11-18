@@ -16,7 +16,7 @@ public class AdultDragon : Enemy {
     public float DamageTime;
     public bool canDamage = false;
 
-    protected override void Awake () {
+    protected void Awake () {
         m_enemyType = e_EnemyType.AdultDragon;
     }
 
@@ -42,7 +42,7 @@ public class AdultDragon : Enemy {
         GameManager.enemyList.Add(this.gameObject);
     }
 
-    public override void TakeDamage(float damage) {
+    public override void TakeDamage() {
         GameObject g = GameManager.objectPoolManager.FindItemOfType(e_ItemType.Pickup);
         g.transform.position = transform.position;
     }
@@ -50,7 +50,7 @@ public class AdultDragon : Enemy {
     public override void TakeDamage2(float damage) {
     }
 
-    protected override void Update() {
+    protected void Update() {
         if (timer < DamageTime && canDamage == false) {
             timer += Time.deltaTime;
         } else {

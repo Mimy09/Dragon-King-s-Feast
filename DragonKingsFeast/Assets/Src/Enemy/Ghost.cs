@@ -11,8 +11,7 @@ public class Ghost : Enemy {
         meleeAttack.Reset();
     }
 
-    protected override void Awake() {
-        base.Awake();
+    protected void Awake() {
 
         player = GameManager.player;
         meleeAttack.SetUp(player, this);
@@ -23,8 +22,7 @@ public class Ghost : Enemy {
         m_health = baseHealth;
     }
 
-    protected override void Update() {
-        base.Update();
+    protected void Update() {
 
         if (player.transform.position.z > (transform.position.z + despawnOffset)) {
             spawner.GetListOfEnemies().Remove(this);
