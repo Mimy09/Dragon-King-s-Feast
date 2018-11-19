@@ -69,10 +69,11 @@ public class Helper {
     public static AudioClip Audio_Environment_Ocean           = Resources.Load("Sounds\\Environment\\Ocean") as AudioClip;
 
     // Audio - Music
-    public static AudioClip Audio_Music_Level1                = Resources.Load("Sounds\\Music\\DKF01") as AudioClip;
-    public static AudioClip Audio_Music_Level2                = Resources.Load("Sounds\\Music\\DKF02") as AudioClip;
-    public static AudioClip Audio_Music_Level3                = Resources.Load("Sounds\\Music\\DKF03") as AudioClip;
     public static AudioClip Audio_Music_Level                 = Resources.Load("Sounds\\Music\\LevelMusic") as AudioClip;
+    public static AudioClip Audio_Music_Level2                = Resources.Load("Sounds\\Music\\CS2") as AudioClip;
+    public static AudioClip Audio_Music_Level3                = Resources.Load("Sounds\\Music\\CS3") as AudioClip;
+    public static AudioClip Audio_Music_Level4                = Resources.Load("Sounds\\Music\\MUS_Gameplay_Loop") as AudioClip;
+
 
     public static AudioClip Audio_Music_BossFight             = Resources.Load("Sounds\\Music\\DKF04") as AudioClip;
     public static AudioClip Audio_Music_Menu                  = Resources.Load("Sounds\\Music\\Menu") as AudioClip;

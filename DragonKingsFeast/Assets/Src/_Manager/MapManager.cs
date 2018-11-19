@@ -49,16 +49,6 @@ public class MapManager : MonoBehaviour {
     // ---- Functions ---- //
 
     /// <summary>
-    /// Starts the background music
-    /// </summary>
-    private void Start() {
-        GameManager.instance.GetAudioManager().volume = 0.5f;
-        GameManager.instance.GetAudioManager().AddMusic(Helper.Audio_Music_Level);
-        GameManager.instance.GetAudioManager().PlayMusic(Helper.Audio_Music_Level, true);
-        GameManager.instance.GetAudioManager().FadeInMusic(Helper.Audio_Music_Level, 3);
-    }
-
-    /// <summary>
     /// Set up the scenes to load all other levels asynchronously
     /// </summary>
     public void StartLoad() {
