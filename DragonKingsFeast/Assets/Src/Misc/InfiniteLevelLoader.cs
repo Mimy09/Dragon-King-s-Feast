@@ -2,33 +2,68 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// Creates an infinite level by continually creating more environment
+/// 
+/// <para>
+/// Author: Mitchell Jenkins
+/// </para>
+/// 
+/// </summary>
 public class InfiniteLevelLoader : MonoBehaviour {
 
+    /// <summary>
+    /// The chunk to continually create
+    /// </summary>
     public GameObject chunk;
+
+    /// <summary>
+    /// Distance until next chunk is loaded
+    /// </summary>
     public float chunkLoadDistance = 10;
+
+    /// <summary>
+    /// Should the next chunk load
+    /// </summary>
     public bool shouldLoadChunks = false;
+
+    /// <summary>
+    /// List of all the loaded chunks
+    /// </summary>
     private List<GameObject> chunkLoads;
+
+    /// <summary>
+    /// Players position last time a chunk loaded 
+    /// </summary>
     private Vector3 prevPlayerPos;
+
+    /// <summary>
+    /// Current player position
+    /// </summary>
     private Vector3 currPlayerPos;
-    public Transform p_transform;
-    private GameObject BadDragon;
+
+    /// <summary>
+    /// Has the player reached the end of the level
+    /// </summary>
     private bool endScene = false;
 
+    /// <summary>
+    /// Sets up the chunks
+    /// </summary>
     private void Start() {
         chunkLoads = new List<GameObject>();
-        //BadDragon = GameObject.FindGameObjectWithTag("BadDragon");
-        //BadDragon.SetActive(false);
     }
 
+    /// <summary>
+    /// Updates the chunks and loads them in when required
+    /// </summary>
     private void Update() {
         currPlayerPos = GameManager.instance.GetPlayer().transform.position;
-        //currPlayerPos = p_transform.position;
 
         if (currPlayerPos.z < transform.position.z - chunkLoadDistance) return;
         if (!endScene) {
             endScene = true;
-            //BadDragon.transform.position = GameManager.instance.GetPlayer().transform.position - (Vector3.up * 5) + (Vector3.forward * 10);
-            //BadDragon.SetActive(true);
         }
 
         if (currPlayerPos.z - prevPlayerPos.z > chunkLoadDistance * 2) {
@@ -39,10 +74,11 @@ public class InfiniteLevelLoader : MonoBehaviour {
                 LoadChunk();
             }
         }
-
-
     }
 
+    /// <summary>
+    /// Loads in the next chunk
+    /// </summary>
     void LoadChunk() {
         shouldLoadChunks = false;
         prevPlayerPos = GameManager.instance.GetPlayer().transform.position;
@@ -52,10 +88,9 @@ public class InfiniteLevelLoader : MonoBehaviour {
         chunkLoads.Add(c);
     }
 
-    void UnloadChunk() {
-
-    }
-
+    /// <summary>
+    /// Draws Gizmos for chunk loading
+    /// </summary>
     private void OnDrawGizmos() {
         Gizmos.color = new Color(1, 0, 0, 0.4f);
         Gizmos.DrawCube(transform.position, new Vector3(10, 10, 5));

@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿// Credits: https://answers.unity.com/questions/1005277/can-i-change-variable-name-on-inspector.html
+// Author: andrew-lukasik
+
+using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

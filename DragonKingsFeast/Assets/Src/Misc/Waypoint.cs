@@ -2,20 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// Hold the waypoint data for the big bad dragon to follow
+/// 
+/// <para>
+/// Author: Mitchell Jenkins
+/// </para>
+/// 
+/// </summary>
 [ExecuteInEditMode]
 public class Waypoint : MonoBehaviour {
 
+    /// <summary>
+    /// the parent holding the waypoints
+    /// </summary>
     public Transform parent;
+
+    /// <summary>
+    /// the childs in the parent
+    /// </summary>
     [ReadOnly]
     public Transform[] childs;
 
-	// Use this for initialization
+	/// <summary>
+    /// Updates the list of childs
+    /// </summary>
 	void Update () {
         childs = new Transform[parent.transform.childCount];
         for (int i = 0; i < childs.Length; i++)
             childs[i] = parent.transform.GetChild(i);
 	}
 
+    /// <summary>
+    /// Draws the Gizmos used showing the position and path of the waypoints
+    /// </summary>
     private void OnDrawGizmos() {
         if (childs == null) return;
         if (childs.Length < 1) return;
