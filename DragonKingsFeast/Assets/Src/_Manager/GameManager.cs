@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour {
 
     // Player scripts
     public static Player player;
-    public static PlayerIK playerIK;
     public static PlayerMovement playerMovement;
 
     // Player Object
@@ -115,16 +114,7 @@ public class GameManager : MonoBehaviour {
             SetupPlayer();
         return player;
     }
-
-    /// <summary>
-    /// Returns the PlayerIK
-    /// </summary>
-    public PlayerIK GetPlayerIK() {
-        if (playerIK == null)
-            SetupPlayer();
-        return playerIK;
-    }
-
+    
     /// <summary>
     /// Returns the PlayerMovement
     /// </summary>
@@ -166,7 +156,6 @@ public class GameManager : MonoBehaviour {
 
             // Player scripts
             player = player_go;
-            playerIK = player_go.GetComponent<PlayerIK>();
             playerMovement = player_go.GetComponent<PlayerMovement>();
         }
     }

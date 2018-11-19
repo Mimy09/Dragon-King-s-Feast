@@ -2,82 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-* Class: Witch
-* ------------
-*
-* this is the wich sub class, it inhearits from the Enemy class
-* this script is used for the witchs AI
-*
-* Author: Callum Dunstone
-*/
+
+/// <summary>
+/// 
+/// this is the Witch sub class, it inherits from the Enemy class
+/// this script is used for the witches AI'
+/// 
+/// <para>Author: Callum Dunstone</para>
+/// 
+/// </summary>
 public class Witch : Enemy {
 
-    //this is a script used to manage using ranged attacks
+    /// <summary> this is a script used to manage using ranged attacks </summary>
     public RangedAttack rangedAttack;
 
-    /*
-    * Function: Reset
-    * ---------------
-    *
-    * this overrides the enemys classes reset function
-    * so that it can also reset the rangedAttack for this enemy
-    *
-    * Author: Callum Dunstone
-    */
+    /// <summary>
+    /// 
+    /// this overrides the enemy classes reset function
+    /// so that it can also reset the rangedAttack for this enemy
+    /// 
+    /// <para>Author: Callum Dunstone</para>
+    /// 
+    /// </summary>
     public override void Reset() {
         base.Reset();
         rangedAttack.Reset();
     }
 
-    /*
-    * Function: Awake
-    * ---------------
-    *
-    * This is a unity monobehaviour base function
-    *
-    * this function is called at the start of the gameobjects life
-    * it is used to get the player and set up its attack scipts
-    * as well as assign its enemy type
-    *
-    * Author: Callum Dunstone
-    */
+    /// <summary>
+    /// 
+    /// this function is called at the start of the gameobjects life
+    /// it is used to get the player and set up its attack scripts
+    /// as well as assign its enemy type
+    /// 
+    /// <para>Author: Callum Dunstone</para>
+    /// 
+    /// </summary>
     protected void Awake() {
         player = GameManager.player;
         rangedAttack.SetUp(player, this);
         m_enemyType = e_EnemyType.Witch;
     }
-
-    /*
-    * Function: Start
-    * ---------------
-    *
-    * This is a unity monobehaviour base function
-    *
-    * called at the start of the game objects life. this is used to 
-    * make sure the enemes health is correct and that it has the player
-    * 
-    * Highly likely this is obsoleate 
-    *
-    * Author: callum dunstone
-    */
+    
+    /// <summary>
+    /// 
+    /// called at the start of the game objects life. this is used to 
+    /// make sure the enemies health is correct and that it has the player
+    ///  
+    /// <para>Author: Callum Dunstone</para>
+    /// 
+    /// </summary>
     private void Start() {
         player = GameManager.player;
         m_health = baseHealth;
     }
-
-    /*
-    * Function: Update
-    * ----------------
-    *
-    * This is a unity monobehaviour base function
-    *
-    * this is used to check to see if we can shoot the player every frame
-    * and if the enemy is behind the player then we deactivate the enemy
-    * sending them to the object pool
-    *
-    * Author: Callum Dunstone
-    */
+    
+    /// <summary>
+    /// 
+    /// this is used to check to see if we can shoot the player every frame
+    /// and if the enemy is behind the player then we deactivate the enemy
+    /// sending them to the object pool  
+    /// 
+    /// <para>Author: Callum Dunstone</para>
+    /// 
+    /// </summary>
     protected void Update() {
         //check if we can shoot the player
         rangedAttack.AttackPlayer();

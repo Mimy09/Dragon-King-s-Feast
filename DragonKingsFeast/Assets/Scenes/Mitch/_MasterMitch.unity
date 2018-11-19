@@ -3518,7 +3518,6 @@ GameObject:
   - component: {fileID: 813529345}
   - component: {fileID: 813529343}
   - component: {fileID: 813529346}
-  - component: {fileID: 813529347}
   m_Layer: 0
   m_Name: Player Dragon
   m_TagString: Player
@@ -3533,7 +3532,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 813529341}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -15.84, y: 25.992859, z: -219.25}
+  m_LocalPosition: {x: -31.29, y: 22.04, z: -216.64}
   m_LocalScale: {x: 17.171917, y: 17.17194, z: 17.17194}
   m_Children:
   - {fileID: 276395882}
@@ -3560,7 +3559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a135a25cb2492894aab21cfeced4244b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalBounds: 100
+  horizontalBounds: 120
   verticalBounds: 30
   horizontalSlowDownOffset: 1
   VerticalSlowDownOffSet: 1
@@ -3657,24 +3656,6 @@ MonoBehaviour:
   - {fileID: 371373762}
   - {fileID: 1916877721}
   effectsOnOff: 1
---- !u!114 &813529347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 813529341}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c7493a3f1cbc849a7cb58c502a3f29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bone_parent: {fileID: 0}
-  head: {fileID: 0}
-  bones: []
-  wiggleX: 0
-  wiggleY: 0
-  spread: 0
-  spring: 0
 --- !u!95 &813529348
 Animator:
   serializedVersion: 3

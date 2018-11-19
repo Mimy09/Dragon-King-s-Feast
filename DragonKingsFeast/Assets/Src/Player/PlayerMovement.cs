@@ -6,55 +6,86 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
-    //values that we use to figure out when to start slowing the players directional movement
-    public float horizontalBounds;
-    public float verticalBounds;
+    /// <summary>
+    /// values that we use to figure out when to start slowing the players directional movement
+    /// </summary>
+    public float horizontalBounds, verticalBounds;
 
-    //this value is used to determin how far the player is from the center before applying the slow down
-    public float horizontalSlowDownOffset;
-    public float VerticalSlowDownOffSet;
+    /// <summary>
+    /// this value is used to determine how far the player is from the center before applying the slow down
+    /// </summary>
+    public float horizontalSlowDownOffset, VerticalSlowDownOffSet;
 
-    //the base speed that we are moving the player forward
+    /// <summary>
+    /// the base speed that we are moving the player forward
+    /// </summary>
     public float forwardSpeed;
 
-    //a multiplier that we modify the final speed given to the player
+    /// <summary>
+    /// a multiplier that we modify the final speed given to the player
+    /// </summary>
     public float moveSpeed;
 
-    //how much the player will move this frame
+    /// <summary>
+    /// how much the player will move this frame
+    /// </summary>
     public Vector3 velocity;
-    //public float keneticVelocity;
-    //public float keneticTerminalVelocity;
 
-    //these values are applied to the axis when moving the character up, down, left or right
+    /// <summary>
+    /// these values are applied to the axis when moving the character up, down, left or right
+    /// </summary>
     public Vector2 axisSpeedMultiplyer;
 
+    /// <summary>
+    /// The position where the player started
+    /// </summary>
     public Vector3 startPos;
 
+    /// <summary>
+    /// The angle that the device uses as flying level with the environment.
+    /// </summary>
     public int tiltAngle;
 
+    /// <summary>
+    /// Used to rotate the neck of the player dragon
+    /// </summary>
     public Transform neck;
-    public float constraint;
 
-    public float boostSpeed;
-
+    /// <summary>
+    /// The curve used to slow down the player when reaching out of bounds
+    /// </summary>
     public AnimationCurve aniCurve;
+
+    /// <summary>
+    /// Holder value for acceleration
+    /// </summary>
     public Vector2 num;
 
-    [ReadOnly]
-    private float inverse;
+    /// <summary>
+    /// Flips the movement controls to inverse (-1, 1)
+    /// </summary>
+    [ReadOnly] private float inverse;
     public float Inverse {
         get {
             return inverse;
         }
     }
 
+    /// <summary>
+    /// Reference to the Player script
+    /// </summary>
     private Player player;
 
+    /// <summary>
+    /// Resets the player position to the start position
+    /// </summary>
     public void ResetPlayerPos() {
         transform.position = startPos;
     }
 
-    // Use this for initialization
+    /// <summary>
+    /// initialization of the variables
+    /// </summary>
     void Start() {
         startPos = transform.position;
         inverse = -1;
@@ -63,24 +94,35 @@ public class PlayerMovement : MonoBehaviour {
         player = GetComponent<Player>();
     }
 
+    /// <summary>
+    /// sets the speed X multiplier to the sliders in the settings
+    /// </summary>
+    /// <param name="slider"></param>
     public void ChangeXAxisSpeedMultiplyer(Slider slider) {
         axisSpeedMultiplyer.x = slider.value;
     }
 
+    /// <summary>
+    /// sets the speed Y multiplier to the sliders in the settings
+    /// </summary>
+    /// <param name="slider"></param>
     public void ChangeYAxisSpeedMultiplyer(Slider slider) {
         axisSpeedMultiplyer.y = slider.value;
     }
 
+    /// <summary>
+    /// Updates the neck rotation
+    /// </summary>
     private void Update() {
         Vector3 v = neck.localPosition;
         v.x = Mathf.Sin(Time.time * 5) / 5;
         neck.localPosition = v;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Updates the players movement
+    /// </summary>
     void LateUpdate() {
-
-        //UpdateNeckBone();
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR
         ReadKeyBoardControls();
@@ -94,9 +136,6 @@ public class PlayerMovement : MonoBehaviour {
         
 
         Vector3 holder = ((velocity * Time.deltaTime) * moveSpeed);
-        if (player.speedBoostTimer > player.speedBoostTime) {
-            holder *= player.speedBoost;
-        }
 
         velocity.z = forwardSpeed;
 
@@ -108,27 +147,10 @@ public class PlayerMovement : MonoBehaviour {
         // Horizontal Vertical
         GetComponent<Rigidbody>().velocity = (velocity * moveSpeed);
     }
-
-    //void CalcKenetic() {
-    //    Vector3 v = GetComponent<Rigidbody>().velocity;
-
-    //    if (velocity.y < 0) {
-    //        keneticVelocity += velocity.y * Time.deltaTime * 5;
-    //        if (keneticVelocity < -keneticTerminalVelocity) {
-    //            keneticVelocity = -keneticTerminalVelocity;
-    //        }
-    //    } else if (velocity.y > 0) {
-    //        keneticVelocity += velocity.y * Time.deltaTime * 2;
-    //        if (keneticVelocity > keneticTerminalVelocity) {
-    //            keneticVelocity = keneticTerminalVelocity;
-    //        }
-
-    //    }
-    //    v.z -= keneticVelocity;
-
-    //    GetComponent<Rigidbody>().velocity = v;
-    //}
-
+    
+    /// <summary>
+    /// Scales the speed based on the distance form the boundaries
+    /// </summary>
     public void SpeedScale() {
 
         Vector3 pos = transform.position - startPos;
@@ -209,6 +231,9 @@ public class PlayerMovement : MonoBehaviour {
         
     }
 
+    /// <summary>
+    /// Reads the keyboard input controls (WASD)
+    /// </summary>
     public void ReadKeyBoardControls() {
 
         Vector3 acceleration = new Vector3(velocity.x, velocity.y, 0);
@@ -243,8 +268,9 @@ public class PlayerMovement : MonoBehaviour {
         velocity = (acceleration);
     }
 
-
-
+    /// <summary>
+    /// Reads the phone controls (accelerometer)
+    /// </summary>
     private void ReadPhoneControls() {
         //Get Speed based off Accelerometer
         Vector3 acelleromatorTiltValues = Quaternion.Euler(tiltAngle, 0, 0) * Input.acceleration;
@@ -258,6 +284,9 @@ public class PlayerMovement : MonoBehaviour {
         velocity = Speed;
     }
 
+    /// <summary>
+    /// Inverses the tilt of the accelerometer
+    /// </summary>
     public void InverseTilt() {
         if (inverse == 1) {
             inverse = -1;
@@ -267,6 +296,9 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Sets the tilt level
+    /// </summary>
     public void SetTilt() {
         int holder = (int)(Input.acceleration.z * 90);
         //holder *= -1;
@@ -276,7 +308,9 @@ public class PlayerMovement : MonoBehaviour {
         Debug.Log(Input.acceleration.z);
     }
 
-
+    /// <summary>
+    /// Draws the boundary box around the player
+    /// </summary>
     private void OnDrawGizmosSelected() {
         Gizmos.color = new Color(1, 0, 1, 0.4f);
         if (startPos == new Vector3())

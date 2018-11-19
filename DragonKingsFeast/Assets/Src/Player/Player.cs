@@ -2,69 +2,93 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerIK))]
+/// <summary>
+/// 
+/// this is the script that is handling the player stats
+/// and player attacking as well as death
+/// 
+/// <para>Author: Callum Dunstone & Mitchell Jenkins </para>
+/// 
+/// </summary>
 [RequireComponent(typeof(PlayerMovement))]
 public class Player : MonoBehaviour {
 
+    /// <summary> reference to the player movement </summary> 
     private PlayerMovement pm;
 
+    /// <summary> stores the players health </summary> 
     [Header("Player Stats")]
     public int health;
 
+    /// <summary> wrapper for health to be accessed out side of the player script </summary> 
     public int score {
         get {
             return health;
         }
     }
-
+    /// <summary> how many coins are in the players loot sack </summary> 
     public int currCoinCount;
+    /// <summary> how many gems are in the players loot sack </summary> 
     public int currGemCount;
+    /// <summary> the max amount of coins or gems that can be in the players loot sack at a given point </summary> 
     public int maxCoins;
 
+    /// <summary> this is where the player projectiles spawn at </summary> 
     [Header("Projectile Info")]
     public Transform projectileSpawnPoint;
 
+    /// <summary> how much damage the player dose </summary> 
     public int damage;
+    /// <summary> how far away the player can target the enemy </summary> 
     public int range;
 
+    /// <summary> how quickly the player projectile moves relative to the player character </summary> 
     public float rangedAttackSpeed;
 
+    /// <summary> how often the player can spam out shots </summary> 
     public float attackCoolDownSpeed;
-    [ReadOnly]
-    private float attackTimer;
+    /// <summary> elapsed time between attacks </summary> 
+    [ReadOnly]  private float attackTimer;
 
+    /// <summary> how long the projectile will live before committing suicide </summary> 
     public float projectileLiveTime;
 
+    /// <summary> how many shots you have stored </summary> 
     public float bulletAmmount;
+    /// <summary> max amount of shots you can have stored </summary> 
     public float maxBulletAmmount;
 
+    /// <summary> how long the attack boost lasts for </summary> 
     [Header("Boost Values")]
     public float maxAttackBoostTime;
-    public float boostDamage;
+    /// <summary> elapsed time the boost has run for </summary> 
     [ReadOnly] public float attackBoostTimer;
-
-    public float speedBoostTime;
-    private float m_speedBoostTimer;
-    public float speedBoost;
-
+    
+    /// <summary> is the game paused or not </summary> 
     public bool gameRunning;
 
+    /// <summary> the sound for when the shield brakes </summary> 
     public List<AudioClip> sheildBreakSounds;
-
-    public float speedBoostTimer {
-        get {
-            return m_speedBoostTimer;
-        }
-    }
-
+    
+    /// <summary> dose the player have a protective shield or not </summary> 
     public bool sheildBoost;
 
+    /// <summary> the particle effects for flying through watter </summary> 
     public List<GameObject> watterEffects;
+    /// <summary> the particle effects for flying through clouds </summary> 
     public List<GameObject> cloudEffects;
+    /// <summary> this toggles on and off the particle for flying through clouds/water </summary> 
     public bool effectsOnOff = true;
 
+
+    /// <summary>
+    /// 
+    /// this handles the player taking damage from enemies
+    /// 
+    /// </summary>
     public void TakeDamage() {
 
+        //if the player has a shield remove the shield and exit the function
         if (sheildBoost) {
             sheildBoost = false;
 
@@ -78,6 +102,7 @@ public class Player : MonoBehaviour {
             return;
         }
 
+        //remove all off the players score and loot in their loot bag
         if (health > 0) {
             health = 0;
 
@@ -87,7 +112,7 @@ public class Player : MonoBehaviour {
             }
 
             currCoinCount = 0;
-        }
+        }// if they already have no loot they dye
         else if (health == 0) {
             health = -1;
             Dye();
@@ -95,11 +120,17 @@ public class Player : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// 
+    /// this resets all of the players values and clears the coin in the loot bag
+    /// 
+    /// </summary>
     public void Reset() {
         GameObject g = GameObject.FindGameObjectWithTag("CoinSP");
         if (g != null) {
-            for (int i = 0; i < g.transform.childCount; i++) {
-                Destroy(g.transform.GetChild(i).gameObject);
+            int h = g.transform.childCount;
+            for (int i = 0; i < h; i++) {
+                Destroy(g.transform.GetChild(0).gameObject);
             }
         }
         currCoinCount = 0;
@@ -108,6 +139,11 @@ public class Player : MonoBehaviour {
         sheildBoost = false;
     }
 
+    /// <summary>
+    /// 
+    /// this is used to inform the game the player is dead
+    /// 
+    /// </summary>
     public void Dye() {
         GameManager.instance.GetPlayerMovement().ResetPlayerPos();
         Reset();
@@ -115,10 +151,21 @@ public class Player : MonoBehaviour {
         __event<e_UI>.InvokeEvent(this, e_UI.ENDGAME);
     }
 
+    /// <summary>
+    /// 
+    /// this function is used if the player flys into the terrain 
+    /// 
+    /// </summary>
     public void hitMountain() {
         health = -1000000;
     }
 
+    /// <summary>
+    /// 
+    /// this is used to apply a boost to the player depending on the
+    /// enum type passed
+    /// 
+    /// </summary>
     public void ApplyBoost(e_ItemType type) {
         switch (type) {
             case e_ItemType.Boost_Speed:
@@ -142,6 +189,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this applies any loot we pick up to our health
+    /// as well as giving us a visual representation in our loot bag
+    /// 
+    /// </summary>
     public void ApplyLoot(int amount) {
         health += amount;
         currCoinCount += amount;
@@ -201,15 +254,24 @@ public class Player : MonoBehaviour {
     }
 
 
-	// Use this for initialization
-	void Start () {
+    /// <summary>
+    /// 
+    /// called when the player first starts the game
+    /// 
+    /// </summary>
+    void Start () {
         attackTimer = attackCoolDownSpeed;
         pm = GetComponent<PlayerMovement>();
         __event<e_UI>.Raise(this, EventHandle);
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    /// <summary>
+    /// 
+    /// called every frame, checks the player is still alive.
+    /// handles any attack requests and managing of boosts and particle effects
+    /// 
+    /// </summary>
+    void Update () {
 
         if (health < 0) {
             Dye();
@@ -219,7 +281,6 @@ public class Player : MonoBehaviour {
 
         attackTimer += Time.deltaTime;
         attackBoostTimer += Time.deltaTime;
-        m_speedBoostTimer += Time.deltaTime;
 
 #if UNITY_STANDALONE_WIN
         RaycastAttackByClick();
@@ -241,6 +302,11 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this is used to manage what particle effects are active and when
+    /// 
+    /// </summary>
     public void ManageParticalEffects() {
 
         if (transform.position.y <= 0) {
@@ -286,6 +352,11 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this is the function used when the player clicks to see if the are targeting any enemies for attack
+    /// 
+    /// </summary>
     private void RaycastAttackByClick() {
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -307,6 +378,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this is the function used when playing on a mobile devise to see
+    /// if the player is trying to target a specific enemy for attack
+    /// 
+    /// </summary>
     private bool RaycastAttackByTouch() {
         for (int i = 0; i < Input.touchCount; ++i) {
             if (Input.GetTouch(i).phase == TouchPhase.Began) {
@@ -335,6 +412,12 @@ public class Player : MonoBehaviour {
         return false;
     }
 
+    /// <summary>
+    /// 
+    /// if the player touched or click the screen with out targeting an enemy
+    /// we search for the nearest enemy and try and attack them instead
+    /// 
+    /// </summary>
     private void FindClosestEnemeyToAttack() {
         if (gameRunning == true) {
             float dist = range;
@@ -361,6 +444,13 @@ public class Player : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// if we have an enemy we want to attack then we use this function to initiate the
+    /// attack against them, spawning a projectile to shoot at them and dealing damage to
+    /// our target
+    /// 
+    /// </summary>
     public void Attack(Enemy E) {
         float dist = Vector3.Distance(transform.position, E.transform.position);
 
@@ -372,7 +462,7 @@ public class Player : MonoBehaviour {
                 go.transform.position = projectileSpawnPoint.position;
                 go.GetComponent<Projectile>().SetUp(E.transform, 0, true, rangedAttackSpeed + pm.forwardSpeed, projectileLiveTime);
 
-                E.TakeDamage2(attackBoostTimer < maxAttackBoostTime ? damage + boostDamage : damage );
+                E.TakeDamage2(attackBoostTimer < maxAttackBoostTime ? damage * 2 : damage );
 
                 attackTimer = 0;
                 bulletAmmount--;
