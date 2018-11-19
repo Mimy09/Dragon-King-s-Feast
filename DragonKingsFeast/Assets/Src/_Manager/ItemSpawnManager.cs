@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete("Obsolete class")]
 public class ItemSpawnManager : MonoBehaviour {
 
     //**************************************************************************************/

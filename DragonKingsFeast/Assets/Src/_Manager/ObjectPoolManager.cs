@@ -3,6 +3,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// Stores objects in a object pool for use later on
+/// 
+/// <para>
+/// Author: Mitchell Jenkins
+/// </para>
+/// </summary>
 public class ObjectPoolManager : MonoBehaviour {
 
     //**************************************************************************************/
@@ -20,10 +28,16 @@ public class ObjectPoolManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- Public functions ---- //
 
+    /// <summary>
+    /// calls the initialization for the object pool
+    /// </summary>
     private void Start() {
         if (ObjectPool == null) Init();
     }
 
+    /// <summary>
+    /// Initialize the object pool
+    /// </summary>
     private void Init() {
         ObjectPool =        new GameObject("Object Pool");
         ItemParent =        new GameObject("Item");
@@ -35,6 +49,9 @@ public class ObjectPoolManager : MonoBehaviour {
         ProjectileParent.transform.parent   = ObjectPool.transform;
     }
 
+    /// <summary>
+    /// Resets the object pool
+    /// </summary>
     public void Reset() {
         for (int i = 0; i < objectPool_item.Count; i++) {
             objectPool_item[i].Reset();
@@ -47,6 +64,10 @@ public class ObjectPoolManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- enemy functions ---- //
 
+    /// <summary>
+    /// Adds an enemy to the object pool and disables it
+    /// </summary>
+    /// <param name="obj">Enemy to add</param>
     public void AddEnemyTooPool(Enemy obj) {
         obj.gameObject.SetActive(false);
 
@@ -56,6 +77,12 @@ public class ObjectPoolManager : MonoBehaviour {
         objectPool_enemy.Add(obj);
     }
 
+    /// <summary>
+    /// Returns a enemy from the object pool if one is available.
+    /// If not, create a new enemy
+    /// </summary>
+    /// <param name="type">enemy type to find</param>
+    /// <returns></returns>
     public GameObject FindEnemyOfType(e_EnemyType type) {
         GameObject go;
 
@@ -101,6 +128,10 @@ public class ObjectPoolManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- item functions ---- //
 
+    /// <summary>
+    /// Adds an item to the object pool and disables it
+    /// </summary>
+    /// <param name="obj">Item to add</param>
     public void AddItemTooPool(Item obj) {
         obj.gameObject.SetActive(false);
 
@@ -110,6 +141,12 @@ public class ObjectPoolManager : MonoBehaviour {
         objectPool_item.Add(obj);
     }
 
+    /// <summary>
+    /// Returns a item from the object pool if one is available.
+    /// If not, create a new item
+    /// </summary>
+    /// <param name="type">item type to find</param>
+    /// <returns></returns>
     public GameObject FindItemOfType(e_ItemType type) {
         GameObject go;
 
@@ -152,11 +189,20 @@ public class ObjectPoolManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- Projectile functions ---- //
 
+    /// <summary>
+    /// Adds a projectile to the object pool and disables it
+    /// </summary>
+    /// <param name="obj">Projectile to add</param>
     public void AddProjectileToPool(Projectile obj) {
         obj.gameObject.SetActive(false);
         objectPool_Projectile.Add(obj);
     }
 
+    /// <summary>
+    /// Returns a projectile from the object pool if one is available.
+    /// If not, create a new projectile
+    /// </summary>
+    /// <returns></returns>
     public GameObject FindProjectile() {
         GameObject go;
 

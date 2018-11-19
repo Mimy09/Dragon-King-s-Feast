@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+
+/// <summary>
+/// This controls all the interactions between the other managers
+/// 
+/// <para>
+/// Author: Mitchell Jenkins
+/// </para>
+/// </summary>
 [RequireComponent(typeof(ObjectPoolManager))]
 [RequireComponent(typeof(MapManager))]
 public class GameManager : MonoBehaviour {
@@ -36,81 +44,107 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> ItemList = new List<GameObject>();
 
     //**************************************************************************************/
-    // ---- Manager functions ---- //
+    // ---- Get Functions ---- //
 
-    public void ResetLevel() {
-
-    }
-
-    // ---- Get Functions ----
+    /// <summary>
+    /// Returns the AudioManager
+    /// </summary>
     public AudioManager GetAudioManager() {
         if (audioManager == null)
             audioManager = GetComponent<AudioManager>();
         return audioManager;
     }
 
+    /// <summary>
+    /// Returns the ObjectPool
+    /// </summary>
     public ObjectPoolManager GetObjectPool() {
         if (objectPoolManager == null)
             objectPoolManager = GetComponent<ObjectPoolManager>();
         return objectPoolManager;
     }
 
+    /// <summary>
+    /// Returns the MapManager
+    /// </summary>
     public MapManager GetMapManager() {
         if (mapManager == null)
             mapManager = GetComponent<MapManager>();
         return mapManager;
     }
 
+    /// <summary>
+    /// Returns the SpawnManager
+    /// </summary>
     public ItemSpawnManager GetItemSpawnManager() {
         if (itemSpawnManager == null)
             itemSpawnManager = GetComponent<ItemSpawnManager>();
         return itemSpawnManager;
     }
 
+    /// <summary>
+    /// Returns the UnloadManager
+    /// </summary>
     public UnloadObjects GetUnloadObjects() {
         if (unloadObjects == null)
             unloadObjects = GetComponent<UnloadObjects>();
         return unloadObjects;
     }
 
+    /// <summary>
+    /// Returns the TutorialManager
+    /// </summary>
     public TutorialManager GetTutorialManager() {
         if (tutorialManager == null)
             tutorialManager = GetComponent<TutorialManager>();
         return tutorialManager;
     }
 
+    /// <summary>
+    /// Returns the PlayerCamera
+    /// </summary>
     public PlayerCamera GetPlayerCamera() {
         return Camera.main.gameObject.GetComponent<PlayerCamera>();
     }
-    
+
+    /// <summary>
+    /// Returns the Player
+    /// </summary>
     public Player GetPlayer() {
         if (player == null)
             SetupPlayer();
         return player;
     }
 
+    /// <summary>
+    /// Returns the PlayerIK
+    /// </summary>
     public PlayerIK GetPlayerIK() {
         if (playerIK == null)
             SetupPlayer();
         return playerIK;
     }
 
+    /// <summary>
+    /// Returns the PlayerMovement
+    /// </summary>
     public PlayerMovement GetPlayerMovement() {
         if (playerMovement == null)
             SetupPlayer();
         return playerMovement;
     }
 
-    // ---- Set Functions ----
-
-
-
-
     //**************************************************************************************/
     // ---- Game manager instancing ---- //
 
+    /// <summary>
+    /// instance to accesses the game manager
+    /// </summary>
     public static GameManager instance;
 
+    /// <summary>
+    /// set the instance
+    /// </summary>
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -121,6 +155,9 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Sets up the player components to be accessed
+    /// </summary>
     void SetupPlayer() {
         Player player_go = FindObjectOfType<Player>();
         if (player_go != null) {
@@ -134,6 +171,9 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Sets up manager components to be accessed
+    /// </summary>
     private void Start() {
         if (PlayerPrefs.GetInt("hasLoaded") == 0) {
             PlayerPrefs.SetInt("hasLoaded", 1);
@@ -170,9 +210,6 @@ public class GameManager : MonoBehaviour {
             if (tutorialManager == null)
                 tutorialManager = GetComponent<TutorialManager>();
             
-            // Set up event handler
-            __event<e_GameEvents>.Raise(this, EventHandle);
-
             // Make menu show up
             __event<e_UI>.InvokeEvent(this, e_UI.MENU, false);
             __event<e_UI_TUTRIAL>.InvokeEvent(this, e_UI_TUTRIAL.NULL);
@@ -181,49 +218,31 @@ public class GameManager : MonoBehaviour {
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
             coinSP = GameObject.FindGameObjectWithTag("CoinSP");
-
-            // Init music
-            InitAudio();
         }
     }
 
+    /// <summary>
+    /// Updates the public lists for access in the inspector
+    /// </summary>
     private void Update() {
         EnemyList = enemyList;
         ItemList = itemList;
     }
 
     //**************************************************************************************/
-    // ---- Audio Init---- //
-    private void InitAudio() {
-        //if (audioManager) {
-        //    audioManager.volume = 0.5f;
-        //    audioManager.AddMusic(Helper.Audio_Music_Level1);
-        //    audioManager.PlayMusic(Helper.Audio_Music_Level1, true);
-        //    audioManager.FadeInMusic(Helper.Audio_Music_Level1, 0.1f);
-        //}
-    }
-
-
-    //**************************************************************************************/
-    // ---- Game event handler ---- //
-
-    private void EventHandle(object s, __eArg<e_GameEvents> e) {
-        switch (e.arg) {
-            case e_GameEvents.RESET:
-                ResetLevel();
-                break;
-            default: break;
-        }
-    }
-
-    //**************************************************************************************/
     // ---- System events ---- //
 
+    /// <summary>
+    /// Sends the INIT event
+    /// </summary>
     private void Initialize() {
         // Send INIT event
         __event<e_SystemEvents>.InvokeEvent(this, e_SystemEvents._INIT_);
     }
 
+    /// <summary>
+    /// Sends the close event
+    /// </summary>
     private void OnApplicationQuit() {
         // Send CLOSE event
         __event<e_SystemEvents>.InvokeEvent(this, e_SystemEvents._CLOSE_);

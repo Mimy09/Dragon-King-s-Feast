@@ -5,12 +5,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
+/// <summary>
+/// Manages the maps to be loaded in
+/// 
+/// <para>
+/// Author: Mitchell Jenkins
+/// </para>
+/// </summary>
 public class MapManager : MonoBehaviour {
 
     //**************************************************************************************/
     // ---- Variables ---- //
 
-    // private
+    /// <summary>
+    /// AsyncOperation controlling the loading operations
+    /// </summary>
     AsyncOperation AO_level1, AO_level2, AO_level3, AO_level4;
 
     [Header("Manager Options")]
@@ -39,6 +48,9 @@ public class MapManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- Functions ---- //
 
+    /// <summary>
+    /// Starts the background music
+    /// </summary>
     private void Start() {
         GameManager.instance.GetAudioManager().volume = 0.5f;
         GameManager.instance.GetAudioManager().AddMusic(Helper.Audio_Music_Level);
@@ -46,6 +58,9 @@ public class MapManager : MonoBehaviour {
         GameManager.instance.GetAudioManager().FadeInMusic(Helper.Audio_Music_Level, 3);
     }
 
+    /// <summary>
+    /// Set up the scenes to load all other levels asynchronously
+    /// </summary>
     public void StartLoad() {
         Application.backgroundLoadingPriority = ThreadPriority.Normal;
         StartCoroutine(LoadAllInBackground());
@@ -57,6 +72,9 @@ public class MapManager : MonoBehaviour {
         AO_level4.allowSceneActivation = true;
     }
 
+    /// <summary>
+    /// Loads all levels into the master asynchronously
+    /// </summary>
     IEnumerator LoadAllInBackground() {
         
         AO_level1 = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
@@ -87,6 +105,9 @@ public class MapManager : MonoBehaviour {
         loaded = true;
     }
 
+    /// <summary>
+    /// Checks what levels need to be unloaded
+    /// </summary>
     private void Update() {
         if (!loaded) return;
 
@@ -146,7 +167,11 @@ public class MapManager : MonoBehaviour {
         }
     }
 
-    // returns if level is loaded
+    /// <summary>
+    /// Checks if the level is loaded
+    /// </summary>
+    /// <param name="level">ID of level in build</param>
+    /// <returns></returns>
     bool IsLevelLoaded(int level) {
         switch (level) {
             case 1: return isLoaded_level1;
@@ -156,6 +181,11 @@ public class MapManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Loads a level into the scene
+    /// </summary>
+    /// <param name="level">ID of level in build</param>
+    [System.Obsolete("obsolete method")]
     void LoadLevel(int level) {
         switch (level) {
             case 1:
@@ -191,6 +221,9 @@ public class MapManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Unloads and resets the levels
+    /// </summary>
     public void UnloadAll() {
         isLoaded_level1 = false;
         isLoaded_level2 = false;
@@ -203,6 +236,9 @@ public class MapManager : MonoBehaviour {
         UnloadEntities();
     }
 
+    /// <summary>
+    /// Unloads all enemies and items from the game
+    /// </summary>
     public void UnloadEntities() {
         int enemyCount = GameManager.enemyList.Count;
         int ItemCount = GameManager.itemList.Count;
@@ -216,6 +252,10 @@ public class MapManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Unloads a level asynchronously
+    /// </summary>
+    /// <param name="level">ID of level in build</param>
     public void UnloadLevel(int level) {
         switch (level) {
             case 1:
@@ -265,6 +305,9 @@ public class MapManager : MonoBehaviour {
     //**************************************************************************************/
     // ---- Gizmos ---- //
 
+    /// <summary>
+    /// Draws the Gizmos for where the levels load and unload
+    /// </summary>
     private void OnDrawGizmos() {
         Vector3 scale = new Vector3(50, 50, 1);
 

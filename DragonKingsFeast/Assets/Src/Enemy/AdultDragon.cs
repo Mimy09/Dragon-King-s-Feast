@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// This class controls the AI for the Adult Dragon
+/// 
+/// <para>
+/// Author: Mitchell Jenkins
+/// </para>
+/// </summary>
 public class AdultDragon : Enemy {
 
     public MeleeAttack meleeAttack;
@@ -16,10 +24,16 @@ public class AdultDragon : Enemy {
     public float DamageTime;
     public bool canDamage = false;
 
+    /// <summary>
+    /// Set the enemy type
+    /// </summary>
     protected void Awake () {
         m_enemyType = e_EnemyType.AdultDragon;
     }
 
+    /// <summary>
+    /// Initializes the adult dragon
+    /// </summary>
     private void Start() {
         Reset();
         meleeAttack.SetUp(player, this);
@@ -32,24 +46,45 @@ public class AdultDragon : Enemy {
         lookAtPos.transform.parent = transform;
     }
 
+    /// <summary>
+    /// Deactivates the adult dragon 
+    /// </summary>
     public override void OnDeath() {
         transform.parent.gameObject.SetActive(false);
     }
+    /// <summary>
+    /// Overrides TurnOff
+    /// </summary>
     public override void TurnOff() { }
+
+    /// <summary>
+    /// Overrides TurnOn
+    /// </summary>
     public override void TurnOn() { }
 
+    /// <summary>
+    /// Activates the adult dragon
+    /// </summary>
     public void OnEnable() {
         GameManager.enemyList.Add(this.gameObject);
     }
 
+    /// <summary>
+    /// Spawns a coin when taking damage
+    /// </summary>
     public override void TakeDamage() {
         GameObject g = GameManager.objectPoolManager.FindItemOfType(e_ItemType.Pickup);
         g.transform.position = transform.position;
     }
+    /// <summary>
+    /// Overrides TakeDamage2
+    /// </summary>
+    /// <param name="damage"></param>
+    public override void TakeDamage2(float damage) { }
 
-    public override void TakeDamage2(float damage) {
-    }
-
+    /// <summary>
+    /// Updates the AI
+    /// </summary>
     protected void Update() {
         if (timer < DamageTime && canDamage == false) {
             timer += Time.deltaTime;
@@ -91,12 +126,18 @@ public class AdultDragon : Enemy {
         }
     }
 
+    /// <summary>
+    /// Gizmos that show the collider distance around the adult dragon
+    /// </summary>
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, waypoint_collider_size);
     }
     
-
+    /// <summary>
+    /// If the player collides with the adult dragon, dead damage to the player
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player" && canDamage == true) {
             // animat.SetBool("Attack", true);
