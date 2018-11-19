@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Flocking behavior for all the enemies
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class Flocking : MonoBehaviour {
     enum Direction {
@@ -31,6 +34,9 @@ public class Flocking : MonoBehaviour {
     [Range(0, 1)] public float cohesionWeight = 1;
     [Range(0, 1)] public float alignWeight = 1;
 
+    /// <summary>
+    /// Initalization for the flocking
+    /// </summary>
     public void Init() {
         // set the rigidbody
         rb = GetComponent<Rigidbody>();
@@ -42,7 +48,9 @@ public class Flocking : MonoBehaviour {
         if (!isLeader) offset = formation[0].transform.position - transform.position;
     }
     
-
+    /// <summary>
+    /// Updates the behavior
+    /// </summary>
     private void Update() {
         if (formation.Count == 0) return;
         if (formation[0].gameObject == gameObject) isLeader = true;
@@ -70,10 +78,17 @@ public class Flocking : MonoBehaviour {
         rb.velocity = vel;
     }
 
+    /// <summary>
+    /// Returns the velocity
+    /// </summary>
+    /// <returns></returns>
     Vector3 GetVelocity() {
         return rb.velocity;
     }
 
+    /// <summary>
+    /// Gets all the enemies within the given radius
+    /// </summary>
     void GetNeighbourhood(float radius) {
         neighbour.Clear();
         for (int i = 0; i < formation.Count; i++) {
@@ -84,12 +99,20 @@ public class Flocking : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Seeks using the neighboring enemies
+    /// </summary>
+    /// <returns></returns>
     Vector3 Seek() {
         Vector3 direction = trackPosition - transform.position;
         direction = direction.normalized;
         return direction * seekSpeed;
     }
 
+    /// <summary>
+    /// Separates using the neighboring enemies
+    /// </summary>
+    /// <returns></returns>
     Vector3 Separation() {
         GetNeighbourhood(separationRadius);
         if (neighbour.Count == 0) return Vector3.zero;
@@ -102,6 +125,10 @@ public class Flocking : MonoBehaviour {
         return (separateForce - rb.velocity) * separationWeight;
     }
 
+    /// <summary>
+    /// Aligns using the neighboring enemies
+    /// </summary>
+    /// <returns></returns>
     Vector3 Alignment() {
         GetNeighbourhood(alignRadius);
         if (neighbour.Count == 0) return Vector3.zero;
@@ -114,6 +141,10 @@ public class Flocking : MonoBehaviour {
         return (alignForce - rb.velocity) * alignWeight;
     }
 
+    /// <summary>
+    /// Aligns using the neighboring enemies
+    /// </summary>
+    /// <returns></returns>
     Vector3 Cohesion() {
         GetNeighbourhood(cohesionRadius);
         if (neighbour.Count == 0) return Vector3.zero;
