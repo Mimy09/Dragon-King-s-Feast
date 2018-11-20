@@ -80,6 +80,8 @@ public class Player : MonoBehaviour {
     /// <summary> this toggles on and off the particle for flying through clouds/water </summary> 
     public bool effectsOnOff = true;
 
+    ///<summary>  </summary>
+    public List<AudioClip> hurtSounds;
 
     /// <summary>
     /// 
@@ -87,7 +89,7 @@ public class Player : MonoBehaviour {
     /// 
     /// </summary>
     public void TakeDamage() {
-
+        
         //if the player has a shield remove the shield and exit the function
         if (sheildBoost) {
             sheildBoost = false;
@@ -100,6 +102,10 @@ public class Player : MonoBehaviour {
             }
 
             return;
+        }
+
+        if (GetComponent<AudioSource>().clip = hurtSounds[Random.Range(0, hurtSounds.Count)]) {
+            GetComponent<AudioSource>().Play();
         }
 
         //remove all off the players score and loot in their loot bag

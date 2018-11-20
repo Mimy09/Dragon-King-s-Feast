@@ -28,6 +28,9 @@ public class BackgroundMusic : MonoBehaviour {
     /// </summary>
     List<AudioClip> audioList = new List<AudioClip>();
 
+    /// <summary> this is used to manage audio fade in and out </summary>
+    private bool flip = false;
+
     /// <summary>
     /// Adds the audio clips to the audio manager
     /// </summary>
@@ -47,13 +50,14 @@ public class BackgroundMusic : MonoBehaviour {
     /// Changes the audio when song finishes
     /// </summary>
     void FixedUpdate () {
+
         if (timer > 0) {
             timer -= Time.fixedDeltaTime;
         } else {
             GameManager.instance.GetAudioManager().FadeOutMusic(audioList[index], 3);
 
             index++;
-            if (index > audioList.Count) index = 0;
+            if (index >= audioList.Count) index = 0;
 
             GameManager.instance.GetAudioManager().PlayMusic(audioList[index], false);
             GameManager.instance.GetAudioManager().FadeInMusic(audioList[index], 3);

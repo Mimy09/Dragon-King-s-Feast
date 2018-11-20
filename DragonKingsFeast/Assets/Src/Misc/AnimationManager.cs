@@ -23,7 +23,7 @@ public class AnimationManager : MonoBehaviour {
     private RangedAttack rangedAttackActions = null;
         
     /// <summary> audio of the enemies death sound </summary> 
-    public AudioClip death;
+    public List<AudioClip> death;
 
     /// <summary>
     /// 
@@ -76,7 +76,7 @@ public class AnimationManager : MonoBehaviour {
     /// </summary>
     public void PlayDeathSound() {
         GameObject go = Instantiate(audioSource, transform.position, Quaternion.identity, transform);
-        go.GetComponent<AudioSource>().clip = death;
+        go.GetComponent<AudioSource>().clip = death[Random.Range(0, death.Count)];
         go.GetComponent<AudioSource>().Play();
         Destroy(go, 2.0f);
     }

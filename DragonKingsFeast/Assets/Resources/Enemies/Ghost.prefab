@@ -1350,10 +1350,8 @@ MonoBehaviour:
   owner: {fileID: 114601264633699390}
   audioSource: {fileID: 1753197767382958, guid: 661fd663d7137284ca7354b457f86f9d,
     type: 2}
-  rangedAttack: {fileID: 0}
-  meeleAttack: {fileID: 0}
-  idl: {fileID: 0}
-  death: {fileID: 8300000, guid: dc230f25cf7fc8e41b9e5b121a862117, type: 3}
+  death:
+  - {fileID: 8300000, guid: dc230f25cf7fc8e41b9e5b121a862117, type: 3}
 --- !u!114 &114601264633699390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1371,6 +1369,7 @@ MonoBehaviour:
   forwardSpeed: 197.36
   despawnOffset: 5
   deathTime: 1
+  isDead: 0
   deathEffect: {fileID: 1276913481305848, guid: d356d409608c36545947b1d169a8045c,
     type: 2}
   lootValue: 1
@@ -1379,6 +1378,8 @@ MonoBehaviour:
   meleeAttack:
     damage: 10
     player: {fileID: 0}
+    canAttackMultipleTimes: 0
+    usesAnimation: 1
 --- !u!114 &114993637182126944
 MonoBehaviour:
   m_ObjectHideFlags: 1

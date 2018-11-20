@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 114310265865732734}
   - component: {fileID: 54633217046606536}
   - component: {fileID: 114194844139464926}
+  - component: {fileID: 82244469229287484}
   m_Layer: 0
   m_Name: Witch
   m_TagString: Enemy
@@ -1631,7 +1632,87 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82244469229287484
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1470521306965398}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
     m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1675,10 +1756,8 @@ MonoBehaviour:
   owner: {fileID: 114310265865732734}
   audioSource: {fileID: 1753197767382958, guid: 661fd663d7137284ca7354b457f86f9d,
     type: 2}
-  rangedAttack: {fileID: 0}
-  meeleAttack: {fileID: 0}
-  idl: {fileID: 0}
-  death: {fileID: 8300000, guid: d9c7ad340a4674d418021ce31c665ea1, type: 3}
+  death:
+  - {fileID: 8300000, guid: d9c7ad340a4674d418021ce31c665ea1, type: 3}
 --- !u!114 &114194844139464926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1714,6 +1793,7 @@ MonoBehaviour:
   forwardSpeed: 10
   despawnOffset: 5
   deathTime: 2
+  isDead: 0
   deathEffect: {fileID: 1205449864048238, guid: e20bbc0800d0e354ba2bc44b984f1e17,
     type: 2}
   lootValue: 2
@@ -1726,6 +1806,9 @@ MonoBehaviour:
     rangedAttackSpeed: 20
     attackCoolDownSpeed: 2
     projectileLiveTime: 4
+  flying: {fileID: 8300000, guid: 0d3612ac6aeb30448a3d802ad62e3ba3, type: 3}
+  damagedFlying: {fileID: 8300000, guid: f8b25d0a906e35d4ab8fc3ff28f20f8c, type: 3}
+  audioSource: {fileID: 82244469229287484}
 --- !u!137 &137157714477353234
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2370,7 +2453,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1853145070
+  randomSeed: -1494441860
   InitialModule:
     serializedVersion: 3
     enabled: 1

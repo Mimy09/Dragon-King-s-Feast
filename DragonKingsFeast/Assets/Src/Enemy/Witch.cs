@@ -16,6 +16,14 @@ public class Witch : Enemy {
     /// <summary> this is a script used to manage using ranged attacks </summary>
     public RangedAttack rangedAttack;
 
+    /// <summary> witches idl sound when not damaged </summary>
+    public AudioClip flying;
+    /// <summary> witches idl sound when damaged </summary>
+    public AudioClip damagedFlying;
+
+    /// <summary> audio source we play the sounds through </summary>
+    public AudioSource audioSource;
+
     /// <summary>
     /// 
     /// this overrides the enemy classes reset function
@@ -27,6 +35,36 @@ public class Witch : Enemy {
     public override void Reset() {
         base.Reset();
         rangedAttack.Reset();
+    }
+
+    /// <summary>
+    /// 
+    /// this overrides the enemy classes Turn on function 
+    /// so that we are playing the right idl sound
+    /// 
+    /// <para>Author: Callum Dunstone</para>
+    /// 
+    /// </summary>
+    public override void TurnOn() {
+        base.TurnOn();
+        audioSource.clip = flying;
+        audioSource.Play();
+        audioSource.loop = true;
+    }
+
+    /// <summary>
+    /// 
+    /// this overrides the enemy classes Damage function so that we swap
+    /// to the right audio sound
+    /// 
+    /// <para>Author: Callum Dunstone</para>
+    /// 
+    /// </summary>
+    public override void TakeDamage() {
+        base.TakeDamage();
+        audioSource.clip = damagedFlying;
+        audioSource.Play();
+        audioSource.loop = true;
     }
 
     /// <summary>
