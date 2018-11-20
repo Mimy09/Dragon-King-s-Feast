@@ -2,41 +2,66 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// this script is used on the projectiles in the game to 
+/// make them move to their target. it is used by both the enemy and player
+/// projectiles
+/// 
+/// <para>Author: Callum Dunstone </para>
+/// 
+/// </summary>
 public class Projectile : MonoBehaviour {
 
-    //the damage the projectile will do when it hits its target
+    /// <summary> the damage the projectile will do when it hits its target </summary> 
     [ReadOnly] public float damage;
-
-    //this dictates where it was shot from the player or the enemys and who the projectile will harm
+    
+    /// <summary> this dictates where it was shot from the player or the enemys and who the projectile will harm </summary> 
     [ReadOnly] public bool playerAttack;
-
-    //this is how fast it will move forward relative to the shooter
+    
+    /// <summary> this is how fast it will move forward relative to the shooter </summary> 
     [ReadOnly] public float forwardSpeed;
-
-    //how long it will wait before shutting its self off
+    
+    /// <summary> how long it will wait before shutting its self off </summary> 
     private float m_liveTime;
+    /// <summary> when kill time is greater then live time we turn off the projectile </summary> 
     private float m_killtimer;
-
-    //the direction the projectile will move
+    
+    /// <summary> this is target we are tying to hit </summary> 
     private Vector3 m_target;
+    /// <summary> this is the gameobject we are trying to hit </summary> 
     private Transform m_enemy;
+    /// <summary> this is how much the players projectiles will correct to hit their target </summary> 
     public float playerTrackPrecent;
+    /// <summary> this is how much the enemy projectiles will correct to hit their target </summary> 
     public float enemyTrackPrecent;
-
-    private bool hit;
+    
+    /// <summary> if this is false it is a whitch attack </summary> 
     private bool isFireBall;
 
+    /// <summary> this is the partical effects for the fireball traveling </summary> 
     public GameObject playerFireBall;
+    /// <summary> this is the partical effects for the fireball hitting </summary> 
     public GameObject playerFireBallHit;
 
+    /// <summary> this is the partical effects for the sand attack traveling </summary> 
     public GameObject sandAttack;
+    /// <summary> this is the partical effects for the sand attack hitting </summary> 
     public GameObject sandAttackHit;
 
+    /// <summary> audio clips for the fireball traveling </summary> 
     public List<AudioClip> fireBallSound;
+    /// <summary> audio clips for the sand attack traveling </summary> 
     public List<AudioClip> sandBallSound;
 
+    /// <summary> the audio source we will be playing sounds from </summary> 
     private AudioSource audioSource;
 
+    /// <summary>
+    /// 
+    /// here we set up the audio stuff for use in the game
+    /// 
+    /// </summary>
     private void Awake() {
         audioSource = GetComponent<AudioSource>();
 
@@ -53,6 +78,12 @@ public class Projectile : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// here we turn on the projectile and set its values to default
+    /// used after we get it from the object pool
+    /// 
+    /// </summary>
     public void TurnOn() {
         m_killtimer = 0;
         damage = 0;
@@ -64,6 +95,11 @@ public class Projectile : MonoBehaviour {
         m_liveTime = 0;
     }
 
+    /// <summary>
+    /// 
+    /// here we turn off the projectile as we send it to the object pool
+    /// 
+    /// </summary>
     public void TurnOff() {
         GameManager.instance.GetObjectPool().AddProjectileToPool(this);
 
@@ -74,6 +110,16 @@ public class Projectile : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this is the set up used by the enemies when they are shooting their projectiles
+    /// 
+    /// </summary>
+    /// <param name="_target"></param>
+    /// <param name="_damage"></param>
+    /// <param name="_forwardSpeed"></param>
+    /// <param name="_liveTime"></param>
+    /// <param name="_isFireBall"></param>
     public void SetUp(Transform _target, float _damage, float _forwardSpeed, float _liveTime, bool _isFireBall) {
         damage = _damage;
         playerAttack = false;
@@ -96,6 +142,16 @@ public class Projectile : MonoBehaviour {
         m_liveTime = _liveTime;
     }
 
+    /// <summary>
+    /// 
+    /// this is the set up used by the player when they are shooting their projectiles
+    /// 
+    /// </summary>
+    /// <param name="_target"></param>
+    /// <param name="_damage"></param>
+    /// <param name="_playerAttack"></param>
+    /// <param name="_forwardSpeed"></param>
+    /// <param name="_liveTime"></param>
     public void SetUp(Transform _target, float _damage, bool _playerAttack, float _forwardSpeed, float _liveTime) {
         damage = _damage;
         playerAttack = _playerAttack;
@@ -114,6 +170,12 @@ public class Projectile : MonoBehaviour {
         m_liveTime = _liveTime;
     }
 
+    /// <summary>
+    /// 
+    /// here we move the projectile towards its target, while updating its time to see if it has lived to long
+    /// if the projectile also moves behind the player we turn it off
+    /// 
+    /// </summary>
     void Update () {
         m_killtimer += Time.deltaTime;
         
@@ -126,6 +188,12 @@ public class Projectile : MonoBehaviour {
         }
 	}
 
+    /// <summary>
+    /// 
+    /// here we move the projectile forwards and have it track its target
+    /// depending on it its a player projectile or not depends on what diffrent tracking we use
+    /// 
+    /// </summary>
     private void Move() {
         if (playerAttack) {
             if (transform.position.z < m_enemy.transform.position.z) {
@@ -141,10 +209,18 @@ public class Projectile : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// here we check if we have collided with our target
+    /// 
+    /// </summary>
+    /// <param name="other"></param>
     public void OnTriggerEnter(Collider other) {
         
+        //if it is a player attack and it has hit something we first check if it is a viable target
         if (playerAttack) {
             if (other.tag == "Enemy" || other.tag == "BadDragon") {
+                //check that the target is not already dead and if not we hit them
                 if (other.GetComponent<Enemy>().isDead == false) {
                     other.GetComponent<Enemy>().TakeDamage();
 
@@ -153,7 +229,7 @@ public class Projectile : MonoBehaviour {
                     Destroy(go, 2.0f);
 
                     TurnOff();
-                }
+                }//else if the transform is our target but they are dieing still hit them
                 else if (other.transform == m_enemy) {
                     GameObject go = Instantiate(playerFireBallHit);
                     go.transform.position = transform.position;
@@ -161,7 +237,7 @@ public class Projectile : MonoBehaviour {
                 }
             }
         }
-        else {
+        else { // if we have hit the player deal damage then play the right partical effects dependning on if it was a fireball attack or not
             if (other.tag == "Player") {
                 other.GetComponent<Player>().TakeDamage();
 

@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// these are the diffrent formations that can be spawned in game
+/// 
+/// </summary>
 public enum e_FormationType {
     Line,
     VWing,
@@ -10,25 +15,50 @@ public enum e_FormationType {
     Spiral
 }
 
+/// <summary>
+/// 
+/// this is used to spawn enemies into the game in a set formation
+/// 
+/// <para>Author: Callum Dunstone </para>
+/// 
+/// </summary>
 public class Spawner : MonoBehaviour {
+
+    /// <summary> the formation we want to spawn the enemies in </summary> 
     [Header("Formation")]
     public e_FormationType formation;
+
+    /// <summary> the enemies that will make up the formation </summary> 
     public List<e_EnemyType> wingOfEnemies;
+
+    /// <summary> these are the gameObejcts of the enemies that have spawned in </summary> 
     private List<Enemy> listOfEnemies = new List<Enemy>();
 
+
+    /// <summary> 
+    /// 
+    /// returns the list of enemies that have been spawned in
+    /// this is used in flocking and helping the enemies keep formation
+    /// 
+    /// </summary> 
     public List<Enemy> GetListOfEnemies() {
         return listOfEnemies;
     }
 
+    /// <summary> the distance the enemies will spawn from each other in formation </summary> 
     [Header("Spawn Info")]
     public float spawnDist;
-
-    public bool spawn = false;
 
     /// <summary>
     /// IN Editor Show Gizmos
     /// </summary>
 
+    /// <summary>
+    /// 
+    /// this is used to show the Gizmos in editor based on what
+    /// spawn formation has been slected
+    /// 
+    /// </summary>
     private void OnDrawGizmos() {
         switch (formation) {
             case e_FormationType.Line:
@@ -52,6 +82,11 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this is used to show the line formation in editor, it is a simple formation that runs straight along the x axis
+    /// 
+    /// </summary>
     public void DrawLineFormationGizmos() {
         float half = (wingOfEnemies.Count / 2) * spawnDist;
 
@@ -60,6 +95,11 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this draws the V formation in editor, this formation has a diamond like tip and then fans out in a V
+    /// 
+    /// </summary>
     public void DrawVFormationGizmo() {
         int count = 0;
 
@@ -78,6 +118,12 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this draws the box formation in the editor, the box formation
+    /// faces the player as a flat square filled with enemies
+    /// 
+    /// </summary>
     public void DrawBoxFormationGizmos() {
         int rows = (int)Mathf.Sqrt(wingOfEnemies.Count);
         int colums = wingOfEnemies.Count / rows;
@@ -100,6 +146,12 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this draws out a cross formation in the editor, the cross formation looks like a + symbols 
+    /// when it is drawn out.
+    /// 
+    /// </summary>
     public void DrawCrossFormationGizmos() {
         
         float half = ((wingOfEnemies.Count / 2) * spawnDist) / 2;
@@ -124,6 +176,12 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this draws out the spiral formation in editor, the spiral formation is very hard to properly see
+    /// in editor as gizmos don't have a depth buffer, creating a very cluttered look.
+    ///  
+    /// </summary>
     public void DrawSpiralFormationGizmos() {
         for (int i = 0; i < wingOfEnemies.Count; i++) {
             Gizmos.DrawSphere(new Vector3(Mathf.Sin(spawnDist * i) * spawnDist * i, Mathf.Cos(spawnDist * i) * spawnDist * i, transform.position.z + spawnDist * i), 1);
@@ -133,16 +191,24 @@ public class Spawner : MonoBehaviour {
     /// <summary>
     /// IN Game Spawning
     /// </summary>
-
-    public void Update() {
-    }
-
+    
+    /// <summary>
+    /// 
+    /// we use a collider marked as a trigger to determine weather or not we spawn in the 
+    /// formation. the trigger is set off when the player flies through it
+    /// 
+    /// </summary>
     public void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             SpawnFormation();
         }
     }
 
+    /// <summary>
+    /// 
+    /// this is used to determine what formation we will spawn in
+    /// 
+    /// </summary>
     public void SpawnFormation() {
         switch (formation) {
             case e_FormationType.Line:
@@ -166,6 +232,11 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this spawns the formation into the world, it is a simple formation that runs straight along the x axis in a straight line
+    /// 
+    /// </summary>
     public void SpawnLineFormation() {
 
         float half = (wingOfEnemies.Count / 2) * spawnDist;
@@ -179,6 +250,11 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this spawns the formation into the world, this formation has a diamond like tip and then fans out in a V
+    /// 
+    /// </summary>
     public void SpawnVFormation() {
         
         int count = 0;
@@ -204,6 +280,12 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this spawns the formation into the world, the box formation
+    /// faces the player as a flat square filled with enemies
+    /// 
+    /// </summary>
     public void SpawnBoxFormation() {
 
         int rows = (int)Mathf.Sqrt(wingOfEnemies.Count);
@@ -234,6 +316,12 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this spawns the formation into the world, the cross formation looks like a + symbols 
+    /// when it is drawn out.
+    /// 
+    /// </summary>
     public void SpawnCrossFormation() {
         float half = ((wingOfEnemies.Count / 2) * spawnDist) / 2;
 
@@ -272,6 +360,12 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// this spawns the formation into the world, the spiral formation is very hard to properly see
+    /// in editor as gizmos don't have a depth buffer, creating a very cluttered look.
+    ///  
+    /// </summary>
     public void SpawnSpiralFormation() {
         for (int i = 0; i < wingOfEnemies.Count; i++) {
             GameObject go = GameManager.objectPoolManager.FindEnemyOfType(wingOfEnemies[i]);

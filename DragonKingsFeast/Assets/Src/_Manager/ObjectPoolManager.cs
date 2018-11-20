@@ -53,9 +53,6 @@ public class ObjectPoolManager : MonoBehaviour {
     /// Resets the object pool
     /// </summary>
     public void Reset() {
-        for (int i = 0; i < objectPool_item.Count; i++) {
-            objectPool_item[i].Reset();
-        }
         for (int i = 0; i < objectPool_enemy.Count; i++) {
             objectPool_enemy[i].Reset();
         }
@@ -151,7 +148,7 @@ public class ObjectPoolManager : MonoBehaviour {
         GameObject go;
 
         for (int i = 0; i < objectPool_item.Count; i++) {
-            if (objectPool_item[i].ItemType == type) {
+            if (objectPool_item[i].itemType == type) {
                 objectPool_item[i].TurnOn();
                 go = objectPool_item[i].gameObject;
                 objectPool_item.RemoveAt(i);
