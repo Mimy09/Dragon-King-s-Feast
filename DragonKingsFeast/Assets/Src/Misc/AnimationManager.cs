@@ -76,6 +76,8 @@ public class AnimationManager : MonoBehaviour {
     /// </summary>
     public void PlayDeathSound() {
         GameObject go = Instantiate(audioSource, transform.position, Quaternion.identity, transform);
+        go.GetComponent<AudioSource>().spatialBlend = 1;
+        go.GetComponent<AudioSource>().minDistance = 15;
         go.GetComponent<AudioSource>().clip = death[Random.Range(0, death.Count)];
         go.GetComponent<AudioSource>().Play();
         Destroy(go, 2.0f);

@@ -47,6 +47,7 @@ public class Witch : Enemy {
     /// </summary>
     public override void TurnOn() {
         base.TurnOn();
+        audioSource.spatialBlend = 1;
         audioSource.clip = flying;
         audioSource.Play();
         audioSource.loop = true;
